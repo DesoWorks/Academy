@@ -7,6 +7,11 @@ const { protocol } = require("electron");
 const { CSP, MODULE_CSP, resolveAcademyPath, mimeFor } = require("./protocol-path");
 
 const BRIDGE = '<script src="/__desktop/bridge.js"></script>';
+const HOST_LINKS = '<link rel="stylesheet" href="/__academy/design-tokens.css"><link rel="stylesheet" href="/__academy/host.css">';
+const HOST_ASSETS = {
+  "/__academy/design-tokens.css": "design-tokens.css",
+  "/__academy/host.css": "host.css"
+};
 
 function declareScheme() {
   protocol.registerSchemesAsPrivileged([
@@ -31,7 +36,40 @@ function injectBridge(html) {
   return BRIDGE + html;
 }
 
+function injectHost(html) {
+  const source = String(html);
+  if (/<\/head>/i.test(source)) {
+    return source.replace(/<\/head>/i, `${HOST_LINKS}</head>`);
+  }
+  return HOST_LINKS + source;
+}
+
+function serveHostAsset(options, url) {
+  const name = HOST_ASSETS[url.pathname];
+  if (!name) return null;
+  const root = options.desktopRoot;
+  if (!root) return new Response("Nicht gefunden", { status: 404 });
+  const resolved = path.resolve(root, name);
+  const rootResolved = path.resolve(root);
+  if (resolved !== rootResolved && !resolved.startsWith(rootResolved + path.sep)) {
+    return new Response("Anfrage abgelehnt", { status: 403 });
+  }
+  if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
+    return new Response("Nicht gefunden", { status: 404 });
+  }
+  return new Response(fs.readFileSync(resolved), {
+    headers: {
+      "content-type": "text/css; charset=utf-8",
+      "content-security-policy": MODULE_CSP,
+      "x-content-type-options": "nosniff",
+      "cache-control": "no-store"
+    }
+  });
+}
+
 function serveModule(options, url) {
+  const hostAsset = serveHostAsset(options, url);
+  if (hostAsset) return hostAsset;
   const resolve = options.resolveModuleFile;
   if (typeof resolve !== "function") return new Response("Unbekannter Host", { status: 404 });
   const id = decodeURIComponent(url.hostname);
@@ -44,7 +82,7 @@ function serveModule(options, url) {
     "cache-control": "no-store"
   };
   if (path.extname(file).toLowerCase() === ".html") {
-    return new Response(fs.readFileSync(file), { headers });
+    return new Response(injectHost(fs.readFileSync(file, "utf8")), { headers });
   }
   return new Response(Readable.toWeb(fs.createReadStream(file)), { headers });
 }
@@ -100,4 +138,4 @@ function registerProtocol(options) {
   });
 }
 
-module.exports = { declareScheme, registerProtocol, injectBridge };
+module.exports = { declareScheme, registerProtocol, injectBridge, injectHost };

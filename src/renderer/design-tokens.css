@@ -1,0 +1,37 @@
+/* DesoWorks Academy – zentrale Markentokens.
+   Quelle: Website-Produktion, nicht frei erfunden.
+   shared/theme.css, Standard dark + knight, Stand der lokalen Produktion.
+   deck.css liefert die Schriftstapel.
+   desoworks.dev antwortete am 2026-11-21 mit HTTP 401.
+   Ein Modul nutzt diese Namen. Es muss keine eigenen globalen Regeln schreiben. */
+
+:root {
+  --dw-canvas: #070708;
+  --dw-surface: #141114;
+  --dw-surface-raised: #24171C;
+  --dw-surface-accent: #39141E;
+  --dw-text: #F7F4F5;
+  --dw-text-muted: #C4B8BD;
+  --dw-border: #55434A;
+  --dw-accent: #FF5369;
+  --dw-accent-hover: #FF8091;
+  --dw-on-accent: #16060A;
+  --dw-focus: #FFB0BA;
+  --dw-font-display: "Consolas", "Cascadia Mono", "Liberation Mono", monospace;
+  --dw-font-text: "Verdana", "Segoe UI", sans-serif;
+  /* Funktionsfarbe. Steht nicht in den Website-Tokens. */
+  --dw-ok: #b7f7c8;
+
+  --dw-space-1: 4px;
+  --dw-space-2: 8px;
+  --dw-space-3: 12px;
+  --dw-space-4: 16px;
+  --dw-space-5: 24px;
+  --dw-space-6: 32px;
+  --dw-radius: 3px;
+  --dw-control-height: 44px;
+  --dw-text-sm: 0.92rem;
+  --dw-text-md: 1rem;
+  --dw-text-lg: 1.25rem;
+  --dw-text-xl: 2rem;
+}

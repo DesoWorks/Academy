@@ -1,0 +1,66 @@
+{
+  "probe": {
+    "offen": true,
+    "title": "IT-Systemintegration",
+    "frame": {
+      "w": 1904,
+      "h": 832,
+      "src": "academy://desoworks.it-systemintegration/index.html"
+    },
+    "accent": "#FF5369",
+    "canvas": "#070708",
+    "overflow": "hidden"
+  },
+  "notes": [
+    {
+      "file": "D:\\Desoworks\\Workspace\\Academy\\docs\\operation-academy\\fenster-l-start.png",
+      "bounds": {
+        "x": 640,
+        "y": 276,
+        "width": 1280,
+        "height": 840
+      },
+      "fullscreen": false
+    },
+    {
+      "file": "D:\\Desoworks\\Workspace\\Academy\\docs\\operation-academy\\fenster-l-modul-1280x720.png",
+      "bounds": {
+        "x": 640,
+        "y": 276,
+        "width": 1280,
+        "height": 720
+      },
+      "fullscreen": false
+    },
+    {
+      "file": "D:\\Desoworks\\Workspace\\Academy\\docs\\operation-academy\\fenster-l-modul-1280x840.png",
+      "bounds": {
+        "x": 640,
+        "y": 276,
+        "width": 1280,
+        "height": 840
+      },
+      "fullscreen": false
+    },
+    {
+      "file": "D:\\Desoworks\\Workspace\\Academy\\docs\\operation-academy\\fenster-l-modul-1920x1080.png",
+      "bounds": {
+        "x": 640,
+        "y": 276,
+        "width": 1920,
+        "height": 1080
+      },
+      "fullscreen": false
+    },
+    {
+      "file": "D:\\Desoworks\\Workspace\\Academy\\docs\\operation-academy\\fenster-l-modul-f11.png",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 1440
+      },
+      "fullscreen": true
+    }
+  ]
+}

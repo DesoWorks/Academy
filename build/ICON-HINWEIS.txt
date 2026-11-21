@@ -1,8 +1,8 @@
-Icon-Stand von DesoWorks Academy, geprüft in Phase K am 2026-11-21.
+Icon-Stand von DesoWorks Academy, geprüft in Phase L am 2026-11-21.
 
-build/icon.ico existiert. Dateigröße 35517 Bytes. ICO-Kopf 00-00-01-00, ein Bild, Breite/Höhe 00 bedeutet 256 Pixel.
-build/icon.png existiert, 35495 Bytes. src/window.js setzt das Fenstericon nur, wenn die PNG-Datei vorhanden ist.
+build/icon.ico ist ein mehrstufiges Paket: 16, 32, 48, 64, 128 und 256 Pixel, PNG-Nutzlast, ICO-Kopf 00-00-01-00, Bildanzahl 6.
+Quelle ist die vorhandene build/icon.png. Erzeugt mit scripts/build-icon.ps1. Das Logo wurde nicht neu gezeichnet.
+src/window.js setzt das Fenstericon aus build/icon.png, sofern die Datei vorhanden ist.
 package.json verweist für EXE, Installer und Deinstaller auf build/icon.ico.
 
-Das ICO ist eine einzelne 256-Pixel-Variante, kein mehrstufiges Paket mit 16, 32, 48 und 64. Es ist kein signiertes Markenpaket und kein Ersatz für ein fehlendes Herausgeberzertifikat.
-Der Electron-Standard wird nicht verwendet, solange der Builder diese Datei einbindet. Das ist am Testbuild zu prüfen, nicht vorauszusetzen.
+Das Paket ist nicht signiert. Ein fehlendes Herausgeberzertifikat bleibt ein Stable-Release-Blocker. Kein Release in Phase L.

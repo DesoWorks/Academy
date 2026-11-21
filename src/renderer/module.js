@@ -5,6 +5,8 @@
   var shell = window.AcademyShell;
   var meldung = document.getElementById("meldung");
   var liste = document.getElementById("liste");
+  var lastResult = null;
+  var wechsel = document.getElementById("modul-wechsel");
   var text = shell.text;
 
   function say(value, fehler) {
@@ -69,10 +71,12 @@
       var inhalt = document.getElementById("inhalt");
       inhalt.replaceChildren();
       if (!response || !response.ok) {
+        document.body.classList.remove("modul-offen");
         say((response && response.message) || "Das Modul lässt sich nicht öffnen.", true);
         return;
       }
       if (response.kind !== "module") {
+        document.body.classList.remove("modul-offen");
         say("Dieser Lernbereich lässt sich nicht öffnen.", true);
         return;
       }
@@ -80,6 +84,9 @@
       shell.writeLastArea(id);
       view.hidden = false;
       text(document.getElementById("modul-titel"), response.module.name);
+      fillSwitcher(id);
+      var hosted = Boolean(response.runtime && response.runtime.kind === "hosted-web" && response.runtime.entry);
+      document.body.classList.toggle("modul-offen", hosted);
       if (response.runtime && response.runtime.kind === "hosted-web" && response.runtime.entry) {
         var frame = document.createElement("iframe");
         frame.className = "modul-frame";
@@ -90,8 +97,6 @@
         inhalt.appendChild(frame);
         return;
       }
-      view.hidden = false;
-      text(document.getElementById("modul-titel"), response.module.name);
       var course = response.course || {};
       var lead = document.createElement("p");
       text(lead, course.responsibility || "");
@@ -176,7 +181,27 @@
         say((response && response.message) || "Die Modulverwaltung ist nicht verfügbar. Der Core bleibt nutzbar.", true);
         return;
       }
+      lastResult = response;
       renderList(response);
+    });
+  }
+
+  function fillSwitcher(currentId) {
+    if (!wechsel) return;
+    wechsel.replaceChildren();
+    shell.visibleModules(lastResult || { modules: [] }).forEach(function (entry) {
+      if (!entry || entry.state === "disabled" || entry.state === "uninstalled") return;
+      var option = document.createElement("option");
+      option.value = entry.id;
+      text(option, entry.name);
+      if (entry.id === currentId) option.selected = true;
+      wechsel.appendChild(option);
+    });
+  }
+
+  if (wechsel) {
+    wechsel.addEventListener("change", function () {
+      if (wechsel.value) show(wechsel.value);
     });
   }
 

@@ -1,0 +1,40 @@
+/* Academy-Laufzeit für eingebettete Module.
+   Wird nur vom academy://-Protokoll vor </head> eingehängt.
+   :where() hat keine Spezifität und verliert gegen jedes Modul-Stylesheet.
+   Die Shell ist der Rahmen. Dieses Blatt räumt nur die doppelte Marke weg.
+   Scrollen gehört dem Modulrahmen, nicht einer zweiten Shell-Leiste. */
+
+:where(body) {
+  background: var(--dw-canvas);
+  color: var(--dw-text);
+  font-family: var(--dw-font-text);
+  font-size: var(--dw-text-md);
+  line-height: 1.55;
+}
+
+:where(h1, h2, h3, button, input, select, textarea) {
+  font-family: var(--dw-font-display);
+}
+
+/* Doppeltes Markenlogo: der Academy-Kopf trägt das Signet bereits. */
+body > header.kopf > a.kopf-logo {
+  display: none;
+}
+
+body > header.kopf {
+  padding-block: 0.45rem;
+}
+
+/* Die Modulleiste scrollt nicht mehr für sich. Der Modulrahmen ist der einzige Scrollverantwortliche. */
+nav.site-nav {
+  position: static;
+  top: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+@media print {
+  body > header.kopf > a.kopf-logo {
+    display: revert;
+  }
+}

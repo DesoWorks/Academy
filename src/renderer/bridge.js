@@ -6,12 +6,13 @@
   var snapshot = api.storageLoadAll();
   var banner = document.createElement("div");
   banner.setAttribute("role", "status");
-  banner.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:9999;max-width:320px;padding:10px 12px;background:#172033;color:#f4f7fb;border:1px solid #2d3c56;font:13px/1.4 Segoe UI,sans-serif;";
+  banner.className = "desktop-status";
 
   if (!snapshot || snapshot.ok !== true) {
     banner.textContent = (snapshot && snapshot.message) || "Die Lerndatenbank ist nicht verfügbar. Es wird nichts stillschweigend verworfen.";
     document.addEventListener("DOMContentLoaded", function () {
-      document.body.appendChild(banner);
+      var kopf = document.querySelector(".kopf-inhalt");
+      (kopf || document.body).appendChild(banner);
     });
     return;
   }
@@ -73,7 +74,8 @@
     if (foot && foot.textContent.indexOf("Desktop-Anwendung") === -1) {
       foot.appendChild(document.createTextNode(" Desktop-Anwendung, Daten liegen außerhalb des Programmordners."));
     }
-    document.body.appendChild(banner);
+    var kopf = document.querySelector(".kopf-inhalt");
+    (kopf || document.body).appendChild(banner);
     api.status().then(function (result) {
       if (result && result.ok) paint(result);
     }).catch(function () {
