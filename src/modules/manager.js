@@ -7,7 +7,7 @@ const { compare } = require("../updates/semver");
 const { ModuleError } = require("./errors");
 const { openRegistry } = require("./registry");
 const { verifyPackage } = require("./signature");
-const { validateManifest, satisfies, assertRelativeFile } = require("./spec");
+const { validateManifest, satisfies, assertRelativeFile, assertPayloadPath, PAYLOAD_LIMITS } = require("./spec");
 
 const EXPORT_FORMAT = "desoworks.academy.module-data";
 const EXPORT_FORMAT_VERSION = 1;
@@ -78,7 +78,61 @@ function readPackage(sourceDir) {
   if (size > 2097152 || manifest.sizeBytes !== size) {
     fail("integrity", "Die Installationsgröße stimmt nicht oder das Paket ist zu groß. Es wurde nicht installiert.", { declared: manifest.sizeBytes, measured: size });
   }
-  return { root, manifest, files, size };
+  const payload = readPayload(root, manifest);
+  return { root, manifest, files, size, payload };
+}
+
+function readPayload(root, manifest) {
+  if (!manifest.runtime) return { files: {}, size: 0 };
+  const indexPath = path.resolve(root, manifest.runtime.index);
+  const indexStat = fs.statSync(indexPath);
+  if (indexStat.size > PAYLOAD_LIMITS.maxIndexBytes) fail("too-large", "Der Nutzlastindex ist zu groß.");
+  let index;
+  try {
+    index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
+  } catch (error) {
+    fail("invalid-package", "Der Nutzlastindex ist kein gültiges JSON.");
+  }
+  if (!index || index.format !== "desoworks.academy.payload-index" || Number(index.formatVersion) !== 1 || !Array.isArray(index.files)) {
+    fail("invalid-package", "Der Nutzlastindex hat das falsche Format.");
+  }
+  if (index.files.length > PAYLOAD_LIMITS.maxFiles) fail("too-large", "Die Lernumgebung enthält zu viele Dateien.");
+  const files = {};
+  let size = 0;
+  for (const entry of index.files) {
+    if (!entry || typeof entry.path !== "string" || typeof entry.sha256 !== "string" || !Number.isInteger(entry.size)) {
+      fail("invalid-package", "Ein Nutzlasteintrag ist unvollständig.");
+    }
+    const relative = assertPayloadPath(entry.path);
+    if (files[relative]) fail("invalid-package", "Der Nutzlastindex enthält Doppelungen.", { file: relative });
+    if (!/^[a-f0-9]{64}$/.test(entry.sha256)) fail("invalid-package", "Eine Nutzlastprüfsumme ist ungültig.", { file: relative });
+    const full = path.resolve(root, relative);
+    const inside = path.relative(root, full);
+    if (inside.startsWith("..") || path.isAbsolute(inside)) fail("bad-file", "Ein Nutzlastpfad verlässt das Paket.", { file: relative });
+    let stat;
+    try {
+      stat = fs.lstatSync(full);
+    } catch (error) {
+      fail("invalid-package", "Eine Nutzlastdatei fehlt.", { file: relative });
+    }
+    if (stat.isSymbolicLink() || !stat.isFile()) fail("bad-file", "Symlinks und Verzeichnisse werden nicht installiert.", { file: relative });
+    const realFile = fs.realpathSync(full);
+    const insideReal = path.relative(root, realFile);
+    if (insideReal.startsWith("..") || path.isAbsolute(insideReal)) {
+      fail("bad-file", "Eine Nutzlastdatei verlässt das Paket über einen Link.", { file: relative });
+    }
+    if (stat.size !== entry.size || stat.size > PAYLOAD_LIMITS.maxFileBytes) {
+      fail("integrity", "Eine Nutzlastdatei hat die falsche Größe.", { file: relative });
+    }
+    const sha256 = hashFile(full);
+    if (sha256 !== entry.sha256) fail("integrity", "Eine Nutzlastdatei stimmt nicht mit dem Index überein.", { file: relative });
+    size += stat.size;
+    files[relative] = { full, sha256, size: stat.size };
+  }
+  if (size > PAYLOAD_LIMITS.maxBytes) fail("too-large", "Die Lernumgebung ist zu groß. Sie wurde nicht installiert.", { measured: size });
+  const entryFile = "web/" + String(manifest.runtime.entry).replace(/^\/+/, "");
+  if (!files[entryFile]) fail("invalid-package", "Der Einstieg der Lernumgebung fehlt im Index.", { file: entryFile });
+  return { files, size };
 }
 
 function stripAnswers(value) {
@@ -183,7 +237,9 @@ function createModuleManager(options) {
       state: entry.state,
       publisher: manifest.publisher.name,
       permissions: manifest.permissions,
-      sizeBytes: entry.size_bytes,
+      sizeBytes: entry.size_bytes + (manifest.payloadBytes || 0),
+      payloadBytes: manifest.payloadBytes || 0,
+      runtime: manifest.runtime ? manifest.runtime.kind : null,
       subject: manifest.subject,
       audience: manifest.audience,
       license: manifest.license,
@@ -244,6 +300,22 @@ function createModuleManager(options) {
         fail("module-faulted", "Die Integrität des Moduls stimmt nicht. Es wurde nicht gelöscht und nicht ausgeführt.");
       }
     }
+    if (manifest.runtime) {
+      const payloadHashes = manifest.payloadHashes || {};
+      const names = Object.keys(payloadHashes);
+      if (!names.length) {
+        markFault(entry.id, "Die Lernumgebung fehlt. Das Modul wurde deaktiviert, andere Module bleiben unberührt.");
+        fail("module-faulted", "Die Lernumgebung fehlt. Das Modul wurde deaktiviert, andere Module bleiben unberührt.");
+      }
+      for (const relativeFile of names) {
+        const hosted = path.resolve(entry.install_path, relativeFile);
+        const hostedInside = path.relative(entry.install_path, hosted);
+        if (hostedInside.startsWith("..") || path.isAbsolute(hostedInside) || !fs.existsSync(hosted) || hashFile(hosted) !== payloadHashes[relativeFile]) {
+          markFault(entry.id, "Die Integrität der Lernumgebung stimmt nicht. Sie wurde nicht gelöscht und nicht ausgeführt.");
+          fail("module-faulted", "Die Integrität der Lernumgebung stimmt nicht. Sie wurde nicht gelöscht und nicht ausgeführt.");
+        }
+      }
+    }
     try {
       return { manifest, course: JSON.parse(fs.readFileSync(courseFile, "utf8")) };
     } catch (error) {
@@ -289,6 +361,7 @@ function createModuleManager(options) {
         publisher: pack.manifest.publisher.name,
         trust: pack.manifest.trust,
         permissions: pack.manifest.permissions.slice(),
+        runtime: pack.manifest.runtime ? pack.manifest.runtime.kind : null,
         replaces: existing && existing.state !== "uninstalled" ? existing.version : null
       };
     },
@@ -329,9 +402,20 @@ function createModuleManager(options) {
         fs.copyFileSync(file.full, target);
         fileHashes[relative] = file.sha256;
       }
+      const payloadHashes = {};
+      for (const [relative, file] of Object.entries(pack.payload.files)) {
+        const target = path.resolve(incoming, relative);
+        const inside = path.relative(path.resolve(incoming), target);
+        if (!inside || inside.startsWith("..") || path.isAbsolute(inside) || !inside.replace(/\\/g, "/").startsWith("web/")) {
+          fail("bad-file", "Zielpfad verlässt die Lernumgebung.");
+        }
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.copyFileSync(file.full, target);
+        payloadHashes[relative] = file.sha256;
+      }
       if (fs.existsSync(dest)) fs.rmSync(dest, { recursive: true, force: true });
       fs.renameSync(incoming, dest);
-      const stored = Object.assign({}, pack.manifest, { fileHashes, sizeBytes: pack.size });
+      const stored = Object.assign({}, pack.manifest, { fileHashes, payloadHashes, payloadBytes: pack.payload.size, sizeBytes: pack.size });
       const at = (options.now || (() => new Date()))().toISOString();
       registry.db.prepare(`
         INSERT INTO module_install (id, version, trust, state, manifest_json, install_path, installed_at, fault_reason, size_bytes)
@@ -393,8 +477,29 @@ function createModuleManager(options) {
         kind: "module",
         module: publicRow(current),
         course: sanitizeCourse(loaded.course),
+        runtime: loaded.manifest.runtime ? { kind: loaded.manifest.runtime.kind, entry: loaded.manifest.runtime.entry } : null,
         progress
       };
+    },
+    resolveHostedFile(id, requestPath) {
+      requireRegistry();
+      const current = row(id);
+      if (!current || current.state !== "active") return null;
+      const manifest = JSON.parse(current.manifest_json);
+      if (!manifest.runtime || manifest.runtime.kind !== "hosted-web") return null;
+      const relativeUrl = String(requestPath || "").replace(/^\/+/, "");
+      if (!relativeUrl || relativeUrl.includes("\0") || relativeUrl.includes("\\") || relativeUrl.split("/").includes("..")) return null;
+      const relative = "web/" + relativeUrl;
+      const expected = manifest.payloadHashes && manifest.payloadHashes[relative];
+      if (!expected) return null;
+      const full = path.resolve(current.install_path, relative);
+      const inside = path.relative(path.resolve(current.install_path), full);
+      if (!inside || inside.startsWith("..") || path.isAbsolute(inside) || !fs.existsSync(full) || !fs.statSync(full).isFile()) return null;
+      if (hashFile(full) !== expected) {
+        markFault(id, "Die Integrität der Lernumgebung stimmt nicht. Sie wurde nicht ausgeliefert.");
+        return null;
+      }
+      return full;
     },
     progress(id, value) {
       requireRegistry();

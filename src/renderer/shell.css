@@ -148,6 +148,7 @@ label { display: inline-block; margin: 6px 12px 6px 0; }
 }
 
 .modul { margin: 12px 0; padding: 12px; border: 1px solid var(--rahmen); }
+.modul-frame { width: 100%; height: 70vh; border: 1px solid var(--rahmen); background: #fff; }
 
 .fehler { color: var(--fehler); }
 .ok { color: var(--ok); }

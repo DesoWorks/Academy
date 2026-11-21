@@ -29,7 +29,20 @@
     var installed = Boolean(installedIds[entry.id]);
     box.appendChild(shell.el("p", "meta", installed ? "Bereits installiert." : "Nicht installiert."));
     var actions = shell.el("div", "zeile");
-    if (entry.id === EXAMPLE_ID && typeof api.moduleInstallExample === "function") {
+    if (entry.localPackage && typeof api.moduleInstallCatalog === "function") {
+      var install = shell.el("button", "", installed ? "Erneut installieren" : "Installieren");
+      install.type = "button";
+      install.addEventListener("click", function () {
+        var call = entry.id === EXAMPLE_ID && typeof api.moduleInstallExample === "function"
+          ? api.moduleInstallExample()
+          : api.moduleInstallCatalog(entry.id);
+        call.then(function (response) {
+          say(response && response.ok ? "Modul installiert. Du findest es unter Meine Lernbereiche." : (response && response.message) || "Installation abgebrochen.", !(response && response.ok));
+          loadInstalled().then(function () { loadCatalog(); });
+        });
+      });
+      actions.appendChild(install);
+    } else if (entry.id === EXAMPLE_ID && typeof api.moduleInstallExample === "function") {
       var install = shell.el("button", "", installed ? "Beispielmodul erneut installieren" : "Beispielmodul installieren");
       install.type = "button";
       install.addEventListener("click", function () {

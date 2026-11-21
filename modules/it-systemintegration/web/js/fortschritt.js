@@ -1,0 +1,504 @@
+/* Gemeinsame Abschlussableitung aus den bestehenden Lernzuständen.
+ * Es wird kein eigener Abschlusswert gespeichert. */
+(function (global) {
+  "use strict";
+  var SCHLUESSEL = {
+    "computer-grundlagen": "it-ausbildung.computer-grundlagen.v1",
+    "lf1-betrieb-aufgaben": "it-ausbildung.lf1-betrieb-aufgaben.v1",
+    "lf1-leitbild-ziele": "it-ausbildung.lf1-leitbild-ziele.v1",
+    "lf1-markt-kundschaft": "it-ausbildung.lf1-markt-kundschaft.v1",
+    "lf1-wertschoepfung": "it-ausbildung.lf1-wertschoepfung.v1",
+    "lf1-organisation": "it-ausbildung.lf1-organisation.v1",
+    "lf1-handlungsspielraum": "it-ausbildung.lf1-handlungsspielraum.v1",
+    "lf1-weiterbildung": "it-ausbildung.lf1-weiterbildung.v1",
+    "lf1-praesentation": "it-ausbildung.lf1-praesentation.v1",
+    "lf1-qualitaet": "it-ausbildung.lf1-qualitaet.v1",
+    "lf1-reflexion": "it-ausbildung.lf1-reflexion.v1",
+    "lf1-abschluss": "it-ausbildung.lf1-abschluss.v1",
+    "lf1-lernziel": "it-ausbildung.lf1-lernziel.v1",
+    "lf2-kundenbedarf": "it-ausbildung.lf2-kundenbedarf.v1",
+    "lf2-kriterien": "it-ausbildung.lf2-kriterien.v1",
+    "lf2-sichere-auswahl": "it-ausbildung.lf2-sichere-auswahl.v1",
+    "lf2-technische-daten": "it-ausbildung.lf2-technische-daten.v1",
+    "lf2-varianten": "it-ausbildung.lf2-varianten.v1",
+    "lf2-energie": "it-ausbildung.lf2-energie.v1",
+    "lf2-angebote": "it-ausbildung.lf2-angebote.v1",
+    "lf2-angebot": "it-ausbildung.lf2-angebot.v1",
+    "lf2-beschaffung": "it-ausbildung.lf2-beschaffung.v1",
+    "lf2-einrichten": "it-ausbildung.lf2-einrichten.v1",
+    "lf2-uebergabe": "it-ausbildung.lf2-uebergabe.v1",
+    "lf2-auswertung": "it-ausbildung.lf2-auswertung.v1",
+    "lf2-abschluss": "it-ausbildung.lf2-abschluss.v1",
+    "lf2-lernziel": "it-ausbildung.lf2-lernziel.v1",
+    "lf3-client-anbindung": "it-ausbildung.lf3-client-anbindung.v1",
+    "lf3-ipv4-konfiguration": "it-ausbildung.lf3-ipv4-konfiguration.v1",
+    "lf3-dhcp": "it-ausbildung.lf3-dhcp.v1",
+    "lf3-dns": "it-ausbildung.lf3-dns.v1",
+    "lf3-verbindung-eingrenzen": "it-ausbildung.lf3-verbindung-eingrenzen.v1",
+    "lf3-fehlerbild-protokoll": "it-ausbildung.lf3-fehlerbild-protokoll.v1",
+    "lf3-abschluss": "it-ausbildung.lf3-abschluss.v1",
+    "lf3-lernziel": "it-ausbildung.lf3-lernziel.v1",
+    "lf3-ipv4": "it-ausbildung.netzwerkgrundlagen.v1",
+    "lf3-netzmaske": "it-ausbildung.netzmaske.v1",
+    "lf3-subnetting": "it-ausbildung.subnetting.v1",
+    "lf4-lernziel": "it-ausbildung.lf4-lernziel.v1",
+    "lf4-schutzbedarf": "it-ausbildung.lf4-schutzbedarf.v1",
+    "lf4-schutzziele": "it-ausbildung.lf4-schutzziele.v1",
+    "lf4-risiken": "it-ausbildung.lf4-risiken.v1",
+    "lf4-handlungen": "it-ausbildung.lf4-handlungen.v1",
+    "lf4-zugang": "it-ausbildung.lf4-zugang.v1",
+    "lf4-vorfall": "it-ausbildung.lf4-vorfall.v1",
+    "lf4-abschluss": "it-ausbildung.lf4-abschluss.v1",
+    "lf5-anweisung": "it-ausbildung.lf5-anweisung.v1",
+    "lf5-werte": "it-ausbildung.lf5-werte.v1",
+    "lf5-ablauf": "it-ausbildung.lf5-ablauf.v1",
+    "lf5-wiederholung": "it-ausbildung.lf5-wiederholung.v1",
+    "lf5-ablage": "it-ausbildung.lf5-ablage.v1",
+    "lf5-einordnen": "it-ausbildung.lf5-einordnen.v1",
+    "lf5-testfall": "it-ausbildung.lf5-testfall.v1",
+    "lf5-doku": "it-ausbildung.lf5-doku.v1",
+    "lf5-format": "it-ausbildung.lf5-format.v1",
+    "lf5-prozess": "it-ausbildung.lf5-prozess.v1",
+    "lf5-abschluss": "it-ausbildung.lf5-abschluss.v1",
+    "lf5-lernziel": "it-ausbildung.lf5-lernziel.v1",
+    "lf6-anfrage": "it-ausbildung.lf6-anfrage.v1",
+    "lf6-fragen": "it-ausbildung.lf6-fragen.v1",
+    "lf6-level": "it-ausbildung.lf6-level.v1",
+    "lf6-notiz": "it-ausbildung.lf6-notiz.v1",
+    "lf6-sla": "it-ausbildung.lf6-sla.v1",
+    "lf6-status": "it-ausbildung.lf6-status.v1",
+    "lf6-kontakt": "it-ausbildung.lf6-kontakt.v1",
+    "lf6-ursache": "it-ausbildung.lf6-ursache.v1",
+    "lf6-loesung": "it-ausbildung.lf6-loesung.v1",
+    "lf6-gespraech": "it-ausbildung.lf6-gespraech.v1",
+    "lf6-qualitaet": "it-ausbildung.lf6-qualitaet.v1",
+    "lf6-kontrolle": "it-ausbildung.lf6-kontrolle.v1",
+    "lf7-system": "it-ausbildung.lf7-system.v1",
+    "lf7-schnittstelle": "it-ausbildung.lf7-schnittstelle.v1",
+    "lf7-fluesse": "it-ausbildung.lf7-fluesse.v1",
+    "lf7-auswahl": "it-ausbildung.lf7-auswahl.v1",
+    "lf7-unterlage": "it-ausbildung.lf7-unterlage.v1",
+    "lf7-zusammenfuehren": "it-ausbildung.lf7-zusammenfuehren.v1",
+    "lf7-pruefung": "it-ausbildung.lf7-pruefung.v1",
+    "lf7-sicherheit": "it-ausbildung.lf7-sicherheit.v1",
+    "lf7-kontrolle": "it-ausbildung.lf7-kontrolle.v1",
+    "lf8-quellen": "it-ausbildung.lf8-quellen.v1",
+    "lf8-struktur": "it-ausbildung.lf8-struktur.v1",
+    "lf8-recht": "it-ausbildung.lf8-recht.v1",
+    "lf8-auswahl": "it-ausbildung.lf8-auswahl.v1",
+    "lf8-konzept": "it-ausbildung.lf8-konzept.v1",
+    "lf8-aufbereiten": "it-ausbildung.lf8-aufbereiten.v1",
+    "lf8-uebergabe": "it-ausbildung.lf8-uebergabe.v1",
+    "lf8-reflexion": "it-ausbildung.lf8-reflexion.v1",
+    "lf8-kontrolle": "it-ausbildung.lf8-kontrolle.v1",
+    "lf9-anforderung": "it-ausbildung.lf9-anforderung.v1",
+    "lf9-ist": "it-ausbildung.lf9-ist.v1",
+    "lf9-dienste": "it-ausbildung.lf9-dienste.v1",
+    "lf9-infrastruktur": "it-ausbildung.lf9-infrastruktur.v1",
+    "lf9-eignung": "it-ausbildung.lf9-eignung.v1",
+    "lf9-standard": "it-ausbildung.lf9-standard.v1",
+    "lf9-schutz": "it-ausbildung.lf9-schutz.v1",
+    "lf9-zukunft": "it-ausbildung.lf9-zukunft.v1",
+    "lf9-kontrolle": "it-ausbildung.lf9-kontrolle.v1"
+  };
+
+  function abgeschlossen(id) {
+    var key = SCHLUESSEL[id];
+    if (!key) return false;
+    try {
+      var raw = global.localStorage.getItem(key);
+      if (!raw) return false;
+      var state = JSON.parse(raw);
+      if (id === "computer-grundlagen") {
+        var cards = ["computer", "bildschirm", "tastatur", "maus", "netzwerk"];
+        var exercise = [
+          ["u-tastatur", "eingabe"], ["u-bildschirm", "ausgabe"],
+          ["u-computer", "verarbeitung"], ["u-maus", "eingabe"], ["u-drucker", "ausgabe"]
+        ];
+        var quiz = ["q1", "q2", "q3", "q4", "q5"];
+        return !!state.abschlussGesehen && cards.every(function (k) { return !!state.karten[k]; }) &&
+          exercise.every(function (e) { return state.uebung[e[0]] === e[1]; }) &&
+          quiz.every(function (q) {
+            var answer = state.quiz[q];
+            return typeof answer === "number" && answer >= 0;
+          }) && quiz.every(function (q) { return [1, 0, 1, 0, 1][quiz.indexOf(q)] === state.quiz[q]; });
+      }
+      if (id === "lf1-betrieb-aufgaben") {
+        var lf1 = state.answers || {};
+        return !!state.finish && lf1.q1 === "team" && lf1.q2 === "abstimmen" && lf1.q3 === "betrieb";
+      }
+      if (id === "lf1-leitbild-ziele") {
+        var lf12 = state.answers || {};
+        return !!state.finish && !!state.checked && lf12.q1 === "q1-orientierung" && lf12.q2 === "q2-oekologisch" &&
+          lf12.q3 === "q3-sozial" && lf12.q4 === "q4-oekonomisch" && lf12.q5 === "q5-abwaegen";
+      }
+      if (id === "lf1-markt-kundschaft") {
+        var market = state.answers || {};
+        return !!state.finish && !!state.checked && market.q1 === "kunde" && market.q2 === "lieferant" &&
+          market.q3 === "intern" && market.q4 === "wettbewerber";
+      }
+      if (id === "lf1-wertschoepfung") {
+        return !!state.finish && !!state.checked && state.answer === "plan";
+      }
+      if (id === "lf1-organisation") {
+        var org = state.answers || {};
+        return !!state.finish && !!state.checked && org.q1 === "service" && org.q2 === "zuordnung" && org.q3 === "leitung";
+      }
+      if (id === "lf1-handlungsspielraum") {
+        var action = state.answers || {};
+        return !!state.finish && !!state.checked && action.q1 === "selbst" && action.q2 === "klaeren" && action.q3 === "fragen";
+      }
+      if (id === "lf1-weiterbildung") {
+        return !!state.finish && !!state.checked && state.answer === "step";
+      }
+      if (id === "lf1-praesentation" || id === "lf1-qualitaet" || id === "lf1-reflexion") {
+        var expected = { "lf1-praesentation": "purpose", "lf1-qualitaet": "add", "lf1-reflexion": "learn" };
+        return !!state.finish && !!state.checked && state.answer === expected[id];
+      }
+      if (id === "lf2-kundenbedarf") {
+        var need = state.answers || {};
+        return !!state.finish && !!state.checked && need.q1 === "anforderung" && need.q2 === "software" && need.q3 === "rahmen" && need.q4 === "klaeren";
+      }
+      if (id === "lf2-kriterien") {
+        var crit = state.answers || {};
+        return !!state.finish && !!state.checked && crit.q1 === "pflicht" && crit.q2 === "wunsch" && crit.q3 === "messbar" && crit.q4 === "ausscheiden";
+      }
+      if (id === "lf2-sichere-auswahl") {
+        var safe = state.answers || {};
+        return !!state.finish && !!state.checked && safe.q1 === "klaeren" && safe.q2 === "getrennt" && safe.q3 === "unbelegt" && safe.q4 === "sicherheit";
+      }
+      if (id === "lf2-technische-daten") {
+        var tech = state.answers || {};
+        return !!state.finish && !!state.checked && tech.q1 === "erweiterbar" && tech.q2 === "brisa" && tech.q3 === "typisch" && tech.q4 === "einsenden";
+      }
+      if (id === "lf2-varianten") {
+        var variants = state.answers || {};
+        return !!state.finish && !!state.checked && variants.q1 === "pflicht" && variants.q2 === "verschraubt" && variants.q3 === "c43" && variants.q4 === "vento" && variants.q5 === "offen";
+      }
+      if (id === "lf2-energie") {
+        var energy = state.answers || {};
+        return !!state.finish && !!state.checked && energy.q1 === "formel" && energy.q2 === "k0116" && energy.q3 === "k3124" && energy.q4 === "diff1672" && energy.q5 === "annahmen";
+      }
+      if (id === "lf2-angebote") {
+        var offers = state.answers || {};
+        return !!state.finish && !!state.checked && offers.q1 === "ergaenzen" && offers.q2 === "s960" && offers.q3 === "p38" && offers.q4 === "bvorn" && offers.q5 === "empfehlung";
+      }
+      if (id === "lf2-angebot") {
+        var quote = state.answers || {};
+        return !!state.finish && !!state.checked && quote.q1 === "n2850" && quote.q2 === "z19950" && quote.q3 === "g15248" && quote.q4 === "e320198" && quote.q5 === "pruefen";
+      }
+      if (id === "lf2-beschaffung") {
+        var procure = state.answers || {};
+        return !!state.finish && !!state.checked && procure.q1 === "ablegen" && procure.q2 === "abgleich" && procure.q3 === "mittwoch" && procure.q4 === "fehlt" && procure.q5 === "sachlich" && procure.q6 === "melden";
+      }
+      if (id === "lf2-einrichten") {
+        var setup = state.answers || {};
+        return !!state.finish && !!state.checked && setup.q1 === "vorbereiten" && setup.q2 === "melden" && setup.q3 === "stoppen" && setup.q4 === "kabel" && setup.q5 === "eintrag" && setup.q6 === "nichtfrei";
+      }
+      if (id === "lf2-uebergabe") {
+        var handover = state.answers || {};
+        return !!state.finish && !!state.checked && handover.q1 === "nachweis" && handover.q2 === "zurueckgestellt" && handover.q3 === "mangeltext" && handover.q4 === "ehrlich" && handover.q5 === "nachpruefen" && handover.q6 === "einweisung";
+      }
+      if (id === "lf2-auswertung") {
+        var review = state.answers || {};
+        return !!state.finish && !!state.checked && review.q1 === "kriterium" && review.q2 === "fakten" && review.q3 === "massnahme" && review.q4 === "einordnen" && review.q5 === "pruefen";
+      }
+      if (id === "lf2-abschluss") {
+        var integrated = state.answers || {};
+        return !!state.finish && !!state.checked && integrated.q1 === "anforderung" && integrated.q2 === "pflicht" && integrated.q3 === "gesamt" && integrated.q4 === "melden" && integrated.q5 === "pruefen" && integrated.q6 === "massnahme";
+      }
+      if (id === "lf1-abschluss") {
+        var finalAnswers = state.answers || {};
+        return !!state.finish && !!state.checked && ["q1", "q2", "q3", "q4"].every(function (q) { return finalAnswers[q] === "yes"; });
+      }
+      if (id === "lf1-lernziel" || id === "lf2-lernziel" || id === "lf3-lernziel" || id === "lf4-lernziel" || id === "lf5-lernziel" || id === "lf6-kontrolle" || id === "lf7-kontrolle" || id === "lf8-kontrolle" || id === "lf9-kontrolle") {
+        var kontrolle = state.answers || {};
+        var sollMap = {
+          "lf1-lernziel": ["b", "b", "a", "c", "a", "b", "a", "c", "c", "a", "b", "a", "b", "c", "a", "c", "b", "a", "b", "b", "b", "a", "b", "b"],
+          "lf2-lernziel": ["b", "b", "b", "b", "c", "b", "b", "b", "b", "b", "b", "c", "b", "b", "c", "c", "a", "c", "c", "c", "c", "c", "c", "c"],
+          "lf3-lernziel": ["a", "b", "a", "b", "b", "b", "b", "c", "a", "c", "c", "c", "a", "a", "a", "a", "a", "a", "a", "c", "a", "b", "b", "b"],
+          "lf4-lernziel": ["b", "b", "a", "b", "b", "a", "a", "c", "c", "c", "a", "c", "c", "a", "b", "b", "c", "b", "a", "b", "a", "a", "b", "a"],
+          "lf5-lernziel": ["b", "c", "c", "b", "c", "b", "b", "b", "b", "b", "c", "a", "a", "c", "a", "a", "c", "c", "c", "c", "a", "b", "b", "a"],
+          "lf6-kontrolle": ["a", "c", "b", "b", "a", "c", "c", "b", "a", "a", "c", "b", "b", "a", "c", "c", "b", "a", "a", "c", "b", "b", "a", "c"],
+          "lf7-kontrolle": ["a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c"],
+          "lf8-kontrolle": ["a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c"],
+          "lf9-kontrolle": ["a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c"]
+        };
+        var soll = sollMap[id];
+        return !!state.finish && soll.every(function (wert, index) { return kontrolle[index] === wert; });
+      }
+      if (id === "lf3-client-anbindung") {
+        var client = state.answers || {};
+        return !!state.finish && !!state.checked && client.q1 === "mira" && client.q2 === "switch" && client.q3 === "folge" && client.q4 === "fiktiv";
+      }
+      if (id === "lf3-ipv4-konfiguration") {
+        var shown = state.answers || {};
+        return !!state.finish && !!state.checked && shown.q1 === "adresse" && shown.q2 === "praefix" && shown.q3 === "gateway" && shown.q4 === "passt";
+      }
+      if (id === "lf3-dhcp") {
+        var dhcp = state.answers || {};
+        return !!state.finish && !!state.checked && dhcp.q1 === "automatisch" && dhcp.q2 === "adresse" && dhcp.q3 === "vier" && dhcp.q4 === "grenze";
+      }
+      if (id === "lf3-dns") {
+        var dns = state.answers || {};
+        return !!state.finish && !!state.checked && dns.q1 === "zuordnen" && dns.q2 === "wert" && dns.q3 === "dnsserver" && dns.q4 === "erreichbar";
+      }
+      if (id === "lf3-verbindung-eingrenzen") {
+        var eingrenzen = state.answers || {};
+        return !!state.finish && !!state.checked && eingrenzen.q1 === "adresse" && eingrenzen.q2 === "getrennt" && eingrenzen.q3 === "tabelle" && eingrenzen.q4 === "echt";
+      }
+      if (id === "lf3-fehlerbild-protokoll") {
+        var protokoll = state.answers || {};
+        return !!state.finish && !!state.checked && protokoll.q1 === "link" && protokoll.q2 === "schritt" && protokoll.q3 === "getrennt" && protokoll.q4 === "frist";
+      }
+      if (id === "lf3-abschluss") {
+        var zusammen = state.answers || {};
+        return !!state.finish && !!state.checked && zusammen.q1 === "oktett" && zusammen.q2 === "passt" && zusammen.q3 === "dienst" && zusammen.q4 === "zuordnung" && zusammen.q5 === "naechste" && zusammen.q6 === "getrennt";
+      }
+      if (id === "lf3-ipv4") {
+        var questions = ["anzahl", "wertebereich", "gueltig"];
+        var correct = { anzahl: 1, wertebereich: 2, gueltig: 0 };
+        return !!state.abschlussGesehen && !!state.eigeneGueltig &&
+          questions.every(function (q) { return state.antworten && state.antworten[q] === correct[q]; });
+      }
+      if (id === "lf3-netzmaske") {
+        var answers = state.answers || {};
+        return !!state.finish && !!state.network && !!state.broadcast &&
+          answers[0] === true && answers[1] === true && answers[2] === true;
+      }
+      if (id === "lf3-subnetting") {
+        var subnetAnswers = state.answers || {};
+        return !!state.finish && subnetAnswers.q1 === "true" && subnetAnswers.q2 === "true" &&
+          subnetAnswers.net1 === "192.168.1.127" && subnetAnswers.net2 === "192.168.1.129";
+      }
+      if (id === "lf4-schutzbedarf") {
+        var schutzbedarf = state.answers || {};
+        return !!state.finish && !!state.checked && schutzbedarf.q1 === "hoch" && schutzbedarf.q2 === "mittel" && schutzbedarf.q3 === "niedrig" && schutzbedarf.q4 === "abstimmen";
+      }
+      if (id === "lf4-schutzziele") {
+        var schutzziele = state.answers || {};
+        return !!state.finish && !!state.checked && schutzziele.q1 === "vertraulichkeit" && schutzziele.q2 === "integritaet" && schutzziele.q3 === "verfuegbarkeit" && schutzziele.q4 === "abstimmen";
+      }
+      if (id === "lf4-risiken") {
+        var risiken = state.answers || {};
+        return !!state.finish && !!state.checked && risiken.q1 === "offen" && risiken.q2 === "melden" && risiken.q3 === "zettel" && risiken.q4 === "nichtprobieren";
+      }
+      if (id === "lf4-handlungen") {
+        var handlungen = state.answers || {};
+        return !!state.finish && !!state.checked && handlungen.q1 === "sperren" && handlungen.q2 === "liegenlassen" && handlungen.q3 === "fragen" && handlungen.q4 === "nichttesten";
+      }
+      if (id === "lf4-zugang") {
+        var zugang = state.answers || {};
+        return !!state.finish && !!state.checked && zugang.q1 === "eigen" && zugang.q2 === "nichtteilen" && zugang.q3 === "zettelweg" && zugang.q4 === "abstimmen";
+      }
+      if (id === "lf4-vorfall") {
+        var vorfall = state.answers || {};
+        return !!state.finish && !!state.checked && vorfall.q1 === "beobachten" && vorfall.q2 === "nichtvermuten" && vorfall.q3 === "melden" && vorfall.q4 === "nichtuntersuchen";
+      }
+      if (id === "lf4-abschluss") {
+        var abschluss = state.answers || {};
+        return !!state.finish && !!state.checked && abschluss.q1 === "hoch" && abschluss.q2 === "sperren" && abschluss.q3 === "vertraulichkeit" && abschluss.q4 === "melden" && abschluss.q5 === "eigen" && abschluss.q6 === "nachfragen";
+      }
+      if (id === "lf5-anweisung") {
+        var anweisung = state.answers || {};
+        return !!state.finish && !!state.checked && anweisung.q1 === "anweisung" && anweisung.q2 === "daten" && anweisung.q3 === "nichtmischen" && anweisung.q4 === "nachfragen";
+      }
+      if (id === "lf5-werte") {
+        var werte = state.answers || {};
+        return !!state.finish && !!state.checked && werte.q1 === "text" && werte.q2 === "zahl" && werte.q3 === "janein" && werte.q4 === "nichtrechnen";
+      }
+      if (id === "lf5-ablauf") {
+        var ablauf = state.answers || {};
+        return !!state.finish && !!state.checked && ablauf.q1 === "reihenfolge" && ablauf.q2 === "entscheidung" && ablauf.q3 === "stoppen" && ablauf.q4 === "nachfragen";
+      }
+      if (id === "lf5-wiederholung") {
+        var wiederholung = state.answers || {};
+        return !!state.finish && !!state.checked && wiederholung.q1 === "gleiche" && wiederholung.q2 === "anzahl" && wiederholung.q3 === "nichtmischen" && wiederholung.q4 === "nachfragen";
+      }
+      if (id === "lf5-ablage") {
+        var ablage = state.answers || {};
+        return !!state.finish && !!state.checked && ablage.q1 === "name" && ablage.q2 === "inhalt" && ablage.q3 === "nichtloeschen" && ablage.q4 === "nachfragen";
+      }
+      if (id === "lf5-einordnen") {
+        var einordnen = state.answers || {};
+        return !!state.finish && !!state.checked && einordnen.q1 === "herkunft" && einordnen.q2 === "text" && einordnen.q3 === "schutz" && einordnen.q4 === "speicher";
+      }
+      if (id === "lf5-testfall") {
+        var testfall = state.answers || {};
+        return !!state.finish && !!state.checked && testfall.q1 === "lage" && testfall.q2 === "handlung" && testfall.q3 === "erwartet" && testfall.q4 === "abweichung";
+      }
+      if (id === "lf5-doku") {
+        var doku = state.answers || {};
+        return !!state.finish && !!state.checked && doku.q1 === "zweck" && doku.q2 === "eingabe" && doku.q3 === "pruefung" && doku.q4 === "offen";
+      }
+      if (id === "lf5-format") {
+        var format = state.answers || {};
+        return !!state.finish && !!state.checked && format.q1 === "felder" && format.q2 === "tabelle" && format.q3 === "getrennt" && format.q4 === "keinebank";
+      }
+      if (id === "lf5-prozess") {
+        var prozess = state.answers || {};
+        return !!state.finish && !!state.checked && prozess.q1 === "geplant" && prozess.q2 === "geprueft" && prozess.q3 === "offen" && prozess.q4 === "ehrlich";
+      }
+      if (id === "lf5-abschluss") {
+        var lf5abschluss = state.answers || {};
+        return !!state.finish && !!state.checked && lf5abschluss.q1 === "anweisung" && lf5abschluss.q2 === "zahl" && lf5abschluss.q3 === "stoppen" && lf5abschluss.q4 === "gleiche" && lf5abschluss.q5 === "name" && lf5abschluss.q6 === "nachfragen";
+      }
+      if (id === "lf6-anfrage") {
+        var v_anfrage = state.answers || {};
+        return !!state.finish && !!state.checked && v_anfrage.q1 === "stoerung" && v_anfrage.q2 === "arbeitsplatz" && v_anfrage.q3 === "dringend" && v_anfrage.q4 === "keinursache";
+      }
+      if (id === "lf6-fragen") {
+        var v_fragen = state.answers || {};
+        return !!state.finish && !!state.checked && v_fragen.q1 === "seitwann" && v_fragen.q2 === "umfang" && v_fragen.q3 === "lampe" && v_fragen.q4 === "anzeige";
+      }
+      if (id === "lf6-level") {
+        var v_level = state.answers || {};
+        return !!state.finish && !!state.checked && v_level.q1 === "first" && v_level.q2 === "fragen" && v_level.q3 === "second" && v_level.q4 === "keine-strafe";
+      }
+      if (id === "lf6-notiz") {
+        var v_notiz = state.answers || {};
+        return !!state.finish && !!state.checked && v_notiz.q1 === "beobachtet" && v_notiz.q2 === "naechster" && v_notiz.q3 === "informiert" && v_notiz.q4 === "keine-ursache";
+      }
+      if (id === "lf6-sla") {
+        var v_sla = state.answers || {};
+        return !!state.finish && !!state.checked && v_sla.q1 === "reaktion" && v_sla.q2 === "aufnahme" && v_sla.q3 === "vorort" && v_sla.q4 === "klaeren";
+      }
+      if (id === "lf6-status") {
+        var v_status = state.answers || {};
+        return !!state.finish && !!state.checked && v_status.q1 === "neu" && v_status.q2 === "arbeit" && v_status.q3 === "warten" && v_status.q4 === "sichtbar";
+      }
+      if (id === "lf6-kontakt") {
+        var v_kontakt = state.answers || {};
+        return !!state.finish && !!state.checked && v_kontakt.q1 === "direkt" && v_kontakt.q2 === "zeitversetzt" && v_kontakt.q3 === "gesammelt" && v_kontakt.q4 === "notieren";
+      }
+      if (id === "lf6-ursache") {
+        var v_ursache = state.answers || {};
+        return !!state.finish && !!state.checked && v_ursache.q1 === "lampe" && v_ursache.q2 === "stecker" && v_ursache.q3 === "lose" && v_ursache.q4 === "offen";
+      }
+      if (id === "lf6-loesung") {
+        var v_loesung = state.answers || {};
+        return !!state.finish && !!state.checked && v_loesung.q1 === "stecker" && v_loesung.q2 === "abgeben" && v_loesung.q3 === "uebergabe" && v_loesung.q4 === "info";
+      }
+      if (id === "lf6-gespraech") {
+        var v_gespraech = state.answers || {};
+        return !!state.finish && !!state.checked && v_gespraech.q1 === "sache" && v_gespraech.q2 === "zuhoeren" && v_gespraech.q3 === "ich" && v_gespraech.q4 === "englisch";
+      }
+      if (id === "lf6-qualitaet") {
+        var v_qualitaet = state.answers || {};
+        return !!state.finish && !!state.checked && v_qualitaet.q1 === "rueckblick" && v_qualitaet.q2 === "liste" && v_qualitaet.q3 === "pruefbar" && v_qualitaet.q4 === "offen";
+      }
+      if (id === "lf7-system") {
+        var v_system = state.answers || {};
+        return !!state.finish && !!state.checked && v_system.q1 === "sensor" && v_system.q2 === "steuerung" && v_system.q3 === "leuchte" && v_system.q4 === "ziel";
+      }
+      if (id === "lf7-schnittstelle") {
+        var v_schnitt = state.answers || {};
+        return !!state.finish && !!state.checked && v_schnitt.q1 === "kontext" && v_schnitt.q2 === "uebergang" && v_schnitt.q3 === "format" && v_schnitt.q4 === "alt";
+      }
+      if (id === "lf7-fluesse") {
+        var v_fluss = state.answers || {};
+        return !!state.finish && !!state.checked && v_fluss.q1 === "energie" && v_fluss.q2 === "information" && v_fluss.q3 === "kein" && v_fluss.q4 === "trennen";
+      }
+      if (id === "lf7-auswahl") {
+        var v_auswahl = state.answers || {};
+        return !!state.finish && !!state.checked && v_auswahl.q1 === "passung" && v_auswahl.q2 === "aufloesung" && v_auswahl.q3 === "kompatibel" && v_auswahl.q4 === "liste";
+      }
+      if (id === "lf7-unterlage") {
+        var v_unterlage = state.answers || {};
+        return !!state.finish && !!state.checked && v_unterlage.q1 === "genauigkeit" && v_unterlage.q2 === "ja" && v_unterlage.q3 === "schritte" && v_unterlage.q4 === "offen";
+      }
+      if (id === "lf7-zusammenfuehren") {
+        var v_zusammen = state.answers || {};
+        return !!state.finish && !!state.checked && v_zusammen.q1 === "sensor" && v_zusammen.q2 === "steuerung" && v_zusammen.q3 === "stoerung" && v_zusammen.q4 === "funktionsplan";
+      }
+      if (id === "lf7-pruefung") {
+        var v_pruef = state.answers || {};
+        return !!state.finish && !!state.checked && v_pruef.q1 === "abweichung" && v_pruef.q2 === "ein" && v_pruef.q3 === "zehn" && v_pruef.q4 === "protokoll";
+      }
+      if (id === "lf7-sicherheit") {
+        var v_sicher = state.answers || {};
+        return !!state.finish && !!state.checked && v_sicher.q1 === "versorgung" && v_sicher.q2 === "integritaet" && v_sicher.q3 === "sicher" && v_sicher.q4 === "noetig";
+      }
+      if (id === "lf8-quellen") {
+        var v_quellen = state.answers || {};
+        return !!state.finish && !!state.checked && v_quellen.q1 === "kasse" && v_quellen.q2 === "neben" && v_quellen.q3 === "beschreiben" && v_quellen.q4 === "ohne";
+      }
+      if (id === "lf8-struktur") {
+        var v_struktur = state.answers || {};
+        return !!state.finish && !!state.checked && v_struktur.q1 === "felder" && v_struktur.q2 === "liste" && v_struktur.q3 === "lesen" && v_struktur.q4 === "luecke";
+      }
+      if (id === "lf8-recht") {
+        var v_recht = state.answers || {};
+        return !!state.finish && !!state.checked && v_recht.q1 === "leitung" && v_recht.q2 === "person" && v_recht.q3 === "gaeste" && v_recht.q4 === "fragen";
+      }
+      if (id === "lf8-auswahl") {
+        var v_lf8auswahl = state.answers || {};
+        return !!state.finish && !!state.checked && v_lf8auswahl.q1 === "auftrag" && v_lf8auswahl.q2 === "drei" && v_lf8auswahl.q3 === "grund" && v_lf8auswahl.q4 === "gewohnt";
+      }
+      if (id === "lf8-konzept") {
+        var v_konzept = state.answers || {};
+        return !!state.finish && !!state.checked && v_konzept.q1 === "leitung" && v_konzept.q2 === "ende" && v_konzept.q3 === "drei" && v_konzept.q4 === "live";
+      }
+      if (id === "lf8-aufbereiten") {
+        var v_aufber = state.answers || {};
+        return !!state.finish && !!state.checked && v_aufber.q1 === "format" && v_aufber.q2 === "leer" && v_aufber.q3 === "neben" && v_aufber.q4 === "regel";
+      }
+      if (id === "lf8-uebergabe") {
+        var v_uebergabe = state.answers || {};
+        return !!state.finish && !!state.checked && v_uebergabe.q1 === "notiz" && v_uebergabe.q2 === "nicht" && v_uebergabe.q3 === "offen" && v_uebergabe.q4 === "klar";
+      }
+      if (id === "lf8-reflexion") {
+        var v_reflexion = state.answers || {};
+        return !!state.finish && !!state.checked && v_reflexion.q1 === "papier" && v_reflexion.q2 === "andere" && v_reflexion.q3 === "grund" && v_reflexion.q4 === "abnahme";
+      }
+      if (id === "lf9-anforderung") {
+        var lf9_anforderung = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_anforderung.q1 === "trennung" && lf9_anforderung.q2 === "zehn" && lf9_anforderung.q3 === "nein" && lf9_anforderung.q4 === "an";
+      }
+      if (id === "lf9-ist") {
+        var lf9_ist = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_ist.q1 === "ohne" && lf9_ist.q2 === "luecke" && lf9_ist.q3 === "adresse" && lf9_ist.q4 === "soll";
+      }
+      if (id === "lf9-dienste") {
+        var lf9_dienste = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_dienste.q1 === "gast" && lf9_dienste.q2 === "getrennt" && lf9_dienste.q3 === "geraet" && lf9_dienste.q4 === "datei";
+      }
+      if (id === "lf9-infrastruktur") {
+        var lf9_infrastruktur = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_infrastruktur.q1 === "keinweg" && lf9_infrastruktur.q2 === "annahme" && lf9_infrastruktur.q3 === "papier" && lf9_infrastruktur.q4 === "live";
+      }
+      if (id === "lf9-eignung") {
+        var lf9_eignung = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_eignung.q1 === "grenze" && lf9_eignung.q2 === "offen" && lf9_eignung.q3 === "nur" && lf9_eignung.q4 === "grund";
+      }
+      if (id === "lf9-standard") {
+        var lf9_standard = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_standard.q1 === "regel" && lf9_standard.q2 === "kasse" && lf9_standard.q3 === "weg" && lf9_standard.q4 === "mess";
+      }
+      if (id === "lf9-schutz") {
+        var lf9_schutz = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_schutz.q1 === "erheben" && lf9_schutz.q2 === "liste" && lf9_schutz.q3 === "sichtbar" && lf9_schutz.q4 === "nicht";
+      }
+      if (id === "lf9-zukunft") {
+        var lf9_zukunft = state.answers || {};
+        return !!state.finish && !!state.checked && lf9_zukunft.q1 === "drei" && lf9_zukunft.q2 === "sichtbar" && lf9_zukunft.q3 === "extra" && lf9_zukunft.q4 === "frei";
+      }
+    } catch (e) { return false; }
+    return false;
+  }
+
+  function abschlusszeichen() {
+    var mark = global.document.createElement("span");
+    mark.className = "abschlusszeichen";
+    mark.setAttribute("role", "img");
+    mark.setAttribute("aria-label", "Abgeschlossen");
+    mark.textContent = "✓";
+    return mark;
+  }
+
+  function benachrichtigen() {
+    try { global.dispatchEvent(new Event("lernfortschritt-geaendert")); } catch (e) { /* nicht jeder Browser stellt Custom Events bereit */ }
+  }
+
+  global.LERNFORTSCHRITT = { abgeschlossen: abgeschlossen, abschlusszeichen: abschlusszeichen, benachrichtigen: benachrichtigen };
+})(typeof window !== "undefined" ? window : globalThis);

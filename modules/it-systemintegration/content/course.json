@@ -1,0 +1,553 @@
+{
+  "offer": {
+    "id": "it-systemintegration",
+    "kind": "self-study",
+    "title": "IT-Systemintegration"
+  },
+  "path": {
+    "id": "ausbildung",
+    "title": "Fachinformatiker für Systemintegration"
+  },
+  "area": {
+    "id": "it",
+    "title": "IT-Ausbildung"
+  },
+  "responsibility": "Die fachlichen Seiten stammen unverändert aus dem Projekt IT-Ausbildung. Die Academy ist nur der Rahmen.",
+  "tutorPolicy": {
+    "revealSolutions": false,
+    "level": "ausbildung"
+  },
+  "sections": [
+    {
+      "id": "it-seiten",
+      "title": "Vorhandene Lernseiten",
+      "lessons": [
+        {
+          "id": "index",
+          "title": "Themenübersicht",
+          "objectives": [
+            "Die vorhandene IT-Ausbildung über die Academy öffnen."
+          ],
+          "blocks": [
+            {
+              "type": "text",
+              "id": "glossar-html",
+              "text": "glossar.html — Wörter & Begriffe · IT-Ausbildung"
+            },
+            {
+              "type": "text",
+              "id": "index-html",
+              "text": "index.html — IT-Ausbildung – Themenübersicht"
+            },
+            {
+              "type": "text",
+              "id": "module-bwl-werkstatt-html",
+              "text": "module/bwl-werkstatt.html — Werkzeug: BWL-Werkstatt"
+            },
+            {
+              "type": "text",
+              "id": "module-computer-grundlagen-html",
+              "text": "module/computer-grundlagen.html — Den Computer kennenlernen"
+            },
+            {
+              "type": "text",
+              "id": "module-einheiten-html",
+              "text": "module/einheiten.html — Werkzeug: Bit-/Byte- und Einheitenrechner"
+            },
+            {
+              "type": "text",
+              "id": "module-ipv4-rechner-html",
+              "text": "module/ipv4-rechner.html — IPv4-Subnetzrechner – Tools &amp; Nachschlagen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-ausbildungsbetrieb-html",
+              "text": "module/lf1-ausbildungsbetrieb.html — Dein Ausbildungsbetrieb und deine Aufgaben · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-handlungsspielraum-html",
+              "text": "module/lf1-handlungsspielraum.html — Was darf ich entscheiden? · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-leitbild-html",
+              "text": "module/lf1-leitbild.html — Woran orientiert sich ein Betrieb? · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-lernziel-html",
+              "text": "module/lf1-lernziel.html — LF1 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-markt-kundschaft-html",
+              "text": "module/lf1-markt-kundschaft.html — Betrieb, Markt und Kundschaft · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-organisation-html",
+              "text": "module/lf1-organisation.html — Wie ein Betrieb organisiert sein kann · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-praesentation-html",
+              "text": "module/lf1-praesentation.html — Arbeitsergebnisse verständlich präsentieren · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-qualitaet-html",
+              "text": "module/lf1-qualitaet.html — Qualität prüfen und verbessern · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-reflexion-html",
+              "text": "module/lf1-reflexion.html — Rolle und eigenes Handeln reflektieren · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-weiterbildung-html",
+              "text": "module/lf1-weiterbildung.html — Lernen und sich weiterentwickeln · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf1-wertschoepfung-html",
+              "text": "module/lf1-wertschoepfung.html — Von der Anfrage zur IT-Leistung · Lernfeld 1"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-angebot-html",
+              "text": "module/lf2-angebot.html — Ein nachvollziehbares Angebot erstellen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-angebote-html",
+              "text": "module/lf2-angebote.html — Angebote und Bezugsquellen vergleichen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-auswertung-html",
+              "text": "module/lf2-auswertung.html — Auftrag auswerten und verbessern · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-beschaffung-html",
+              "text": "module/lf2-beschaffung.html — Beschaffung und Wareneingang planen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-einrichten-html",
+              "text": "module/lf2-einrichten.html — Arbeitsplatz einrichten und prüfen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-energie-html",
+              "text": "module/lf2-energie.html — Energiebedarf transparent vergleichen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-kriterien-html",
+              "text": "module/lf2-kriterien.html — Anforderungen in Kriterien übersetzen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-kundenbedarf-html",
+              "text": "module/lf2-kundenbedarf.html — Kundenbedarf verstehen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-lernziel-html",
+              "text": "module/lf2-lernziel.html — LF2 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-sichere-auswahl-html",
+              "text": "module/lf2-sichere-auswahl.html — Sicher auswählen und Kennzeichnungen prüfen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-technische-daten-html",
+              "text": "module/lf2-technische-daten.html — Technische Daten lesen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-uebergabe-html",
+              "text": "module/lf2-uebergabe.html — Arbeitsplatz übergeben und dokumentieren · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf2-varianten-html",
+              "text": "module/lf2-varianten.html — Arbeitsplatzvarianten vergleichen · Lernfeld 2"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-abnahme-html",
+              "text": "module/lf3-abnahme.html — Lernfeld 3: Lektionsabnahme · IT-Ausbildung"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-client-anbindung-html",
+              "text": "module/lf3-client-anbindung.html — Client-Anbindung: vom Anschluss bis zur Verbindung · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-dhcp-html",
+              "text": "module/lf3-dhcp.html — DHCP: automatische Konfiguration nachvollziehen · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-dns-html",
+              "text": "module/lf3-dns.html — DNS: Namen und IP-Adressen unterscheiden · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-fehlerbild-protokoll-html",
+              "text": "module/lf3-fehlerbild-protokoll.html — Typische Client-Fehlerbilder dokumentieren und übergeben · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-ipv4-konfiguration-html",
+              "text": "module/lf3-ipv4-konfiguration.html — IPv4-Konfiguration eines Clients lesen · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-lernziel-html",
+              "text": "module/lf3-lernziel.html — LF3 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf3-verbindung-eingrenzen-html",
+              "text": "module/lf3-verbindung-eingrenzen.html — Verbindung systematisch eingrenzen · Lernfeld 3"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-handlungen-html",
+              "text": "module/lf4-handlungen.html — Sichere und unsichere Handlungen unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-lernziel-html",
+              "text": "module/lf4-lernziel.html — LF4 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-risiken-html",
+              "text": "module/lf4-risiken.html — Einfache Risiken einordnen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-schutzbedarf-html",
+              "text": "module/lf4-schutzbedarf.html — Schutzbedarf erkennen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-schutzziele-html",
+              "text": "module/lf4-schutzziele.html — Schutzziele unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-vorfall-html",
+              "text": "module/lf4-vorfall.html — Einen Vorfall beobachten und melden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf4-zugang-html",
+              "text": "module/lf4-zugang.html — Zugangsgrundlagen ohne echte Zugangswörter"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-ablage-html",
+              "text": "module/lf5-ablage.html — Daten ablegen und wiederfinden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-ablauf-html",
+              "text": "module/lf5-ablauf.html — Reihenfolge und Entscheidung lesen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-anweisung-html",
+              "text": "module/lf5-anweisung.html — Anweisung und Daten unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-doku-html",
+              "text": "module/lf5-doku.html — Eine kurze Dokumentation lesen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-einordnen-html",
+              "text": "module/lf5-einordnen.html — Daten vor dem Speichern einordnen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-format-html",
+              "text": "module/lf5-format.html — Ein Datenformat wählen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-lernziel-html",
+              "text": "module/lf5-lernziel.html — LF5 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-prozess-html",
+              "text": "module/lf5-prozess.html — Den Arbeitsprozess bewerten"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-testfall-html",
+              "text": "module/lf5-testfall.html — Einen Testfall formulieren"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-werte-html",
+              "text": "module/lf5-werte.html — Einfache Werte lesen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf5-wiederholung-html",
+              "text": "module/lf5-wiederholung.html — Eine Wiederholung erkennen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-anfrage-html",
+              "text": "module/lf6-anfrage.html — Eine Serviceanfrage einordnen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-fragen-html",
+              "text": "module/lf6-fragen.html — Die Störung enger fassen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-gespraech-html",
+              "text": "module/lf6-gespraech.html — Situationsgerecht kommunizieren und deeskalieren"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-kontakt-html",
+              "text": "module/lf6-kontakt.html — Direkten und indirekten Kundenkontakt unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-kontrolle-html",
+              "text": "module/lf6-kontrolle.html — LF6 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-level-html",
+              "text": "module/lf6-level.html — Das Support-Level einordnen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-loesung-html",
+              "text": "module/lf6-loesung.html — Eine Lösung im eigenen Support-Level wählen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-notiz-html",
+              "text": "module/lf6-notiz.html — Den Bearbeitungsstand notieren"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-qualitaet-html",
+              "text": "module/lf6-qualitaet.html — Den Bearbeitungsprozess reflektieren"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-sla-html",
+              "text": "module/lf6-sla.html — Die vertragliche Grundlage prüfen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-status-html",
+              "text": "module/lf6-status.html — Den Status einer Anfrage unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf6-ursache-html",
+              "text": "module/lf6-ursache.html — Eine Fehlerursache eingrenzen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-auswahl-html",
+              "text": "module/lf7-auswahl.html — Kriterien für Energieversorgung, Hardware und Software aufstellen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-fluesse-html",
+              "text": "module/lf7-fluesse.html — Energiefluss, Stofffluss und Informationsfluss unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-kontrolle-html",
+              "text": "module/lf7-kontrolle.html — LF7 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-pruefung-html",
+              "text": "module/lf7-pruefung.html — Funktion, Messwert und Energiebedarf prüfen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-schnittstelle-html",
+              "text": "module/lf7-schnittstelle.html — Den Datenfluss an der Schnittstelle beschreiben"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-sicherheit-html",
+              "text": "module/lf7-sicherheit.html — Betriebssicherheit und Datensicherheit unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-system-html",
+              "text": "module/lf7-system.html — Ein cyber-physisches System erkennen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-unterlage-html",
+              "text": "module/lf7-unterlage.html — Eine technische Unterlage lesen und eine fehlende Angabe erkennen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf7-zusammenfuehren-html",
+              "text": "module/lf7-zusammenfuehren.html — Komponenten funktional zusammenführen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-aufbereiten-html",
+              "text": "module/lf8-aufbereiten.html — Daten für die Übersicht aufbereiten, ohne sie zu verfälschen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-auswahl-html",
+              "text": "module/lf8-auswahl.html — Quellen nach Auftrag auswählen, nicht nach Gewohnheit"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-kontrolle-html",
+              "text": "module/lf8-kontrolle.html — LF8 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-konzept-html",
+              "text": "module/lf8-konzept.html — Ein Bereitstellungskonzept mit Schutzbedarf skizzieren"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-quellen-html",
+              "text": "module/lf8-quellen.html — Datenquellen und ihren Zweck unterscheiden"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-recht-html",
+              "text": "module/lf8-recht.html — Rechtliche Grenze und Zugriffszweck klären"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-reflexion-html",
+              "text": "module/lf8-reflexion.html — Werkzeug und Dokumentationsqualität beurteilen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-struktur-html",
+              "text": "module/lf8-struktur.html — Struktur, Format und Zugriff einer Quelle beschreiben"
+            },
+            {
+              "type": "text",
+              "id": "module-lf8-uebergabe-html",
+              "text": "module/lf8-uebergabe.html — Übergabe und Dokumentation vorbereiten"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-anforderung-html",
+              "text": "module/lf9-anforderung.html — Anforderungen an das Netzwerk mit dem Kunden klären"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-dienste-html",
+              "text": "module/lf9-dienste.html — Benötigte Dienste vom Kundenauftrag ableiten"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-eignung-html",
+              "text": "module/lf9-eignung.html — Technische, wirtschaftliche und nachhaltige Eignung vergleichen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-infrastruktur-html",
+              "text": "module/lf9-infrastruktur.html — Infrastruktur skizzieren: Trennung, Weg und Grenze"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-ist-html",
+              "text": "module/lf9-ist.html — Den vorhandenen Zustand beschreiben, ohne ihn zu verändern"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-kontrolle-html",
+              "text": "module/lf9-kontrolle.html — LF9 Lernzielkontrolle"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-schutz-html",
+              "text": "module/lf9-schutz.html — Datenschutz und Datensicherheit am geplanten Dienst beurteilen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-standard-html",
+              "text": "module/lf9-standard.html — Einen Standard und eine Funktionsprüfung festlegen"
+            },
+            {
+              "type": "text",
+              "id": "module-lf9-zukunft-html",
+              "text": "module/lf9-zukunft.html — Kundenzufriedenheit und Zukunftsfähigkeit der Planung beurteilen"
+            },
+            {
+              "type": "text",
+              "id": "module-netzmaske-html",
+              "text": "module/netzmaske.html — Netzwerkgrundlagen – Lektion 2: Netzmaske"
+            },
+            {
+              "type": "text",
+              "id": "module-netzwerkgrundlagen-html",
+              "text": "module/netzwerkgrundlagen.html — Netzwerkgrundlagen – Lektion 1: IPv4-Adresse"
+            },
+            {
+              "type": "text",
+              "id": "module-pc-explorer-html",
+              "text": "module/pc-explorer.html — PC-Explorer: Desktop-PC und Notebook (Entwurf)"
+            },
+            {
+              "type": "text",
+              "id": "module-raid-labor-html",
+              "text": "module/raid-labor.html — RAID-Lernlabor · IT-Ausbildung"
+            },
+            {
+              "type": "text",
+              "id": "module-subnetting-html",
+              "text": "module/subnetting.html — Netzwerkgrundlagen – Lektion 3: Subnetting"
+            },
+            {
+              "type": "text",
+              "id": "module-windows-werkzeugkiste-html",
+              "text": "module/windows-werkzeugkiste.html — Werkzeug: Windows-Werkzeugkiste"
+            },
+            {
+              "type": "text",
+              "id": "module-zahlensysteme-html",
+              "text": "module/zahlensysteme.html — Werkzeug: Zahlensystemrechner"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "DesoWorks/IT-Ausbildung",
+      "note": "Gelesen von feature/operation-academy-unified-platform, Commit b7c60e1. Das Ursprungsrepository wurde nicht verändert."
+    }
+  ]
+}

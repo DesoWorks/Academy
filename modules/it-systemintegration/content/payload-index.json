@@ -1,0 +1,1247 @@
+{
+  "format": "desoworks.academy.payload-index",
+  "formatVersion": 1,
+  "sourceCommit": "b7c60e1ae4353b6872e9af73d5e188e129420657",
+  "files": [
+    {
+      "path": "web/assets/desoworks-02-terminal.svg",
+      "sha256": "0194849974ce2f8e12aa61224797c22dcd7977d88ee538b15e67b3f3f1a9d942",
+      "size": 1034
+    },
+    {
+      "path": "web/assets/desoworks/favicon-32.png",
+      "sha256": "a5ea7191dbccb8defee2c4f6c57c7b4a18a4fa31ec0dc598bf4fe6ad3926a284",
+      "size": 788
+    },
+    {
+      "path": "web/assets/desoworks/favicon.ico",
+      "sha256": "4036fca55104e104898c4526079cdda909b0462e2277c1f208eb012d32ca3c33",
+      "size": 2600
+    },
+    {
+      "path": "web/assets/desoworks/favicon.svg",
+      "sha256": "8908a6974d0dac244f208a229e3d11171d28dfc1e027e6a7b5784dc1a79931aa",
+      "size": 564
+    },
+    {
+      "path": "web/assets/desoworks/logo-orbital-werkstatt.svg",
+      "sha256": "317c93b76fa050d5c14ce5c25e814285f99a11e61d43cce4111754593a3c14c7",
+      "size": 1744
+    },
+    {
+      "path": "web/assets/desoworks/signet.svg",
+      "sha256": "4b994a642dfae483edf6255516b4849050eb2aef68aa917084804530e7fe2107",
+      "size": 409
+    },
+    {
+      "path": "web/assets/pc-explorer/commons/LGA_1155_socket-6510.jpg",
+      "sha256": "a4b4c34712d360b1585ae5d17d8d7a9b48c90cd23585d2715872711e8171c1d4",
+      "size": 3091012
+    },
+    {
+      "path": "web/assets/pc-explorer/commons/Pentium_4_Underside_Demonstrating_PGA_Socket.JPG",
+      "sha256": "c071442e46a9f75c6159d4e3085c5b750abc55cd7149d4cb6f4643ec741580e7",
+      "size": 3993600
+    },
+    {
+      "path": "web/assets/pc-explorer/commons/Solder_ball_grid.jpg",
+      "sha256": "dfe9d6219925474c6f92f7f66a60a488266204838eb75e53e5a75815e412fb3b",
+      "size": 4097171
+    },
+    {
+      "path": "web/css/bwl-werkstatt.css",
+      "sha256": "c0ed3c5e623fb192571bd724d31f6eeb79340b6ce81e897352d2b2132ca73e22",
+      "size": 5216
+    },
+    {
+      "path": "web/css/einheiten.css",
+      "sha256": "d2f0c309190a4a58fe8ed236044781cab5167415484d46316ddc7c595c13de16",
+      "size": 2045
+    },
+    {
+      "path": "web/css/ipv4-rechner.css",
+      "sha256": "7e5b08691206a1864a1f5358a41c784cc125c6add07b52fae127a6b87d601eaa",
+      "size": 2606
+    },
+    {
+      "path": "web/css/lf89-praxis.css",
+      "sha256": "135002c525e376e570c87cdfa2e4a3fd43f558f7aff98ea54ea98e4f25c98efa",
+      "size": 1717
+    },
+    {
+      "path": "web/css/netzwerk.css",
+      "sha256": "120a474866ba700ca6a846cd61c21dd792df0ce80fe17f5c6de32a5db41007b8",
+      "size": 5471
+    },
+    {
+      "path": "web/css/pc-explorer.css",
+      "sha256": "ea339f3380baea10779a39fbc57f6073004cecf76cea3b8df42caf5b1c26f0d3",
+      "size": 17884
+    },
+    {
+      "path": "web/css/raid-labor.css",
+      "sha256": "961c68f97b12fedc7a4ab304de204cd61a413572a75b89dc67fa3f03a824b32c",
+      "size": 2683
+    },
+    {
+      "path": "web/css/raid-rack.css",
+      "sha256": "4d072ced8bb785b5749e2cf408774e1568bbede0a884bb6607d146931a864c4c",
+      "size": 5977
+    },
+    {
+      "path": "web/css/startseite.css",
+      "sha256": "e1486753cedb2bf2edf2ebc4942dcf20de849988115c9e0af33e2d6ee6e25992",
+      "size": 6366
+    },
+    {
+      "path": "web/css/styles.css",
+      "sha256": "087e2931c1a97172f3a3344b4172322f19f79a86a76e7dcab2b3f5677c42c5dd",
+      "size": 24577
+    },
+    {
+      "path": "web/css/windows-werkzeugkiste.css",
+      "sha256": "a3f2672ff31386ed2310a55026d55a2b200b5878a1796de98c7fc22505a41413",
+      "size": 4078
+    },
+    {
+      "path": "web/css/zahlensysteme.css",
+      "sha256": "df3b060ea5232426a662dcbf058e32b897fc1e06efb7f582555cc4d3fd5dfc25",
+      "size": 2431
+    },
+    {
+      "path": "web/glossar.html",
+      "sha256": "a5bd9b08f3d62607e156999ad71c16cb1fac44ff1aa0b2b3fc6dbb93e1edadc1",
+      "size": 2392
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "d1fd5f10018492fa91d8473c1ac738cd90470b9ac92a99365323cafa05c28183",
+      "size": 2365
+    },
+    {
+      "path": "web/js/anzeige-glossar.js",
+      "sha256": "6fa9311675678511c6daa3cf71c873b7de22c274035b415b1ef35297ec7613d5",
+      "size": 6993
+    },
+    {
+      "path": "web/js/app.js",
+      "sha256": "486b5ffb1b063ff5c932868b3eb2e004321bb74a523642659a40e3426b1a3629",
+      "size": 23825
+    },
+    {
+      "path": "web/js/bwl-werkstatt.js",
+      "sha256": "1e7a692d3cf3871577cab35d7c98f755b7ed3ac362f0c84abcb68ab1f2a5c0b7",
+      "size": 39332
+    },
+    {
+      "path": "web/js/einheiten.js",
+      "sha256": "7756765b5e73971ebd67e752ac601210f7ba744fb7c418b3e9eabd361e2ac635",
+      "size": 9291
+    },
+    {
+      "path": "web/js/fortschritt.js",
+      "sha256": "63141583a6dbbe02b931bc1ad665c84e297d129212a8c2696d86adc5ffad91be",
+      "size": 31583
+    },
+    {
+      "path": "web/js/glossar-daten.js",
+      "sha256": "ab630a23449095a6a4ddae3fc232c178ec1b2226d91604b268be84a49a3fc31b",
+      "size": 20964
+    },
+    {
+      "path": "web/js/glossar-seite.js",
+      "sha256": "4cc2433fba5ba72ce29d4f58e84f7a8175fd4f2b72f80f8ece80078e46f15dd2",
+      "size": 1921
+    },
+    {
+      "path": "web/js/ipv4-rechner.js",
+      "sha256": "2dd682f37fa166cc9d649f6dad227adeff726c980db9d893e1c6256ff46b1322",
+      "size": 8329
+    },
+    {
+      "path": "web/js/lernziel-reset.js",
+      "sha256": "5d079d04c0f8e8c52bbb17171e283b1cf86a013a9cb9edb479eb90ad1097c611",
+      "size": 3867
+    },
+    {
+      "path": "web/js/lf1-ausbildungsbetrieb.js",
+      "sha256": "925c1c3827be8781b422f6f3f1fcd947096ff18ab2cb58016be7595aa9b23ba0",
+      "size": 7863
+    },
+    {
+      "path": "web/js/lf1-handlungsspielraum.js",
+      "sha256": "310bb147715d022596943c6522195627815535afa5a22500eaa9bde3ef1a1710",
+      "size": 7342
+    },
+    {
+      "path": "web/js/lf1-leitbild.js",
+      "sha256": "5e0c24b8275d387fbd67b1c12e01ef36b09d4c52ffe1a9a9cb1c1fb24ee811d3",
+      "size": 14878
+    },
+    {
+      "path": "web/js/lf1-lernziel-rest.js",
+      "sha256": "23b3aec9ff3e79ce88a2bf71906ea1fd5ba0617ddce4a6fe54ffeb72ef4b2402",
+      "size": 10676
+    },
+    {
+      "path": "web/js/lf1-lernziel.js",
+      "sha256": "032f2f8638fcd1fbbc61a7bcb0a6ec44f6a29e38b89d1a812068d1757c457b3d",
+      "size": 10250
+    },
+    {
+      "path": "web/js/lf1-markt-kundschaft.js",
+      "sha256": "ca4d392aa494cbe9eae9c1e8ea5e538414720cbc36b6cc8253e2d7ef60807d46",
+      "size": 9177
+    },
+    {
+      "path": "web/js/lf1-organisation.js",
+      "sha256": "7c34141c10bf22441ded51da1b3ae7f4d7a0c639ec4c0134c08638b75c7d762f",
+      "size": 7593
+    },
+    {
+      "path": "web/js/lf1-praesentation.js",
+      "sha256": "c44047504ff4573e94a55d2eb1e77678a7aa39785707b462bcf3cee672a621f9",
+      "size": 3303
+    },
+    {
+      "path": "web/js/lf1-qualitaet.js",
+      "sha256": "a6a119a76b600440b7c59454a2e9429c2822a402a46a90bfca7027432c60c01d",
+      "size": 3204
+    },
+    {
+      "path": "web/js/lf1-reflexion.js",
+      "sha256": "1f158978ad7931cbbfc2f9043e084b7dce52e70180c5e79394fea222218139d6",
+      "size": 3213
+    },
+    {
+      "path": "web/js/lf1-weiterbildung.js",
+      "sha256": "6c64ff727a42e827342a1968207f31e5da56f548defb9954d791618fb67a7d84",
+      "size": 3261
+    },
+    {
+      "path": "web/js/lf1-wertschoepfung.js",
+      "sha256": "d219625db4f361e964d3fe3592a6d5bafb13e3e1352917e280aa12f829e7e2b0",
+      "size": 3509
+    },
+    {
+      "path": "web/js/lf2-angebot.js",
+      "sha256": "3aa67f2fcc5226f2fa7ba717da878f4afd0e7c89445c522063b83194968a9148",
+      "size": 13748
+    },
+    {
+      "path": "web/js/lf2-angebote.js",
+      "sha256": "fc9c0696c5b1e482c8dbd4f390176bc7b318324a4bc426abcbbf46301fa408a9",
+      "size": 14167
+    },
+    {
+      "path": "web/js/lf2-auswertung.js",
+      "sha256": "f4fbe27f998308136836359d06ae02d8a41c1f315ca22923f956e312255fa8b9",
+      "size": 9750
+    },
+    {
+      "path": "web/js/lf2-beschaffung.js",
+      "sha256": "9b13716683b8cd8855ae02470b3f7be3a1aaaf798b84d6da0aaf2c4f56d01aec",
+      "size": 14746
+    },
+    {
+      "path": "web/js/lf2-einrichten.js",
+      "sha256": "4b82b46aca5edef3bc8735390ec31a498ed58680bbb0c34c10cc788c4941cfb8",
+      "size": 14476
+    },
+    {
+      "path": "web/js/lf2-energie.js",
+      "sha256": "4aed93bb5b305513a7b3ebd386d3177f518f4f176db79d9048417c43a44288b1",
+      "size": 11663
+    },
+    {
+      "path": "web/js/lf2-kriterien.js",
+      "sha256": "f7ef251d010b8b614339cc5d9001a4c48b7785c7ac469a433afa214e578f9dbe",
+      "size": 9858
+    },
+    {
+      "path": "web/js/lf2-kundenbedarf.js",
+      "sha256": "61951b72eb71337ec205cc876f25a7b13aa5e6aecd9652fa78320ca3a1de60cd",
+      "size": 8113
+    },
+    {
+      "path": "web/js/lf2-lernziel-rest.js",
+      "sha256": "aac1b15fb1b9becef7a098028845fce1053191a321940c7b82b4d685bf35a1ec",
+      "size": 7318
+    },
+    {
+      "path": "web/js/lf2-lernziel.js",
+      "sha256": "81880ef7a733e54314ea4c1ba0a23118a800c6ce36c0d3af292442e30a131f77",
+      "size": 12526
+    },
+    {
+      "path": "web/js/lf2-sichere-auswahl.js",
+      "sha256": "754ca534c7cb97711866b64d050df54236178c09469091a0446da67bf9f2dbcc",
+      "size": 10546
+    },
+    {
+      "path": "web/js/lf2-technische-daten.js",
+      "sha256": "f20f1ceac1f8380dc99bb6ae69eb13644b13439ce5f6d3547cad2e8b02640191",
+      "size": 10395
+    },
+    {
+      "path": "web/js/lf2-uebergabe.js",
+      "sha256": "691b7970dd67bd842c787980280669710a501056b2e7883579cd7b52bb25315a",
+      "size": 14669
+    },
+    {
+      "path": "web/js/lf2-varianten.js",
+      "sha256": "fdb5c1df3c8c8f7d7f9d2fc6e3a9b10497fe33663beeb0b4d7cf916950d41b5e",
+      "size": 13197
+    },
+    {
+      "path": "web/js/lf3-client-anbindung.js",
+      "sha256": "d8f8b56409038986d85cb8697dde25c51035c9fc0de57132c964638812169e3f",
+      "size": 9470
+    },
+    {
+      "path": "web/js/lf3-dhcp.js",
+      "sha256": "1994d147b7c3d8ed29df7248da91a43938fed2b65049771266811bfb7bed0b27",
+      "size": 9305
+    },
+    {
+      "path": "web/js/lf3-dns.js",
+      "sha256": "e040ea0a38fb83f4157f38f37eeff983e7aafe4d2cdfc8009ee32b995566197e",
+      "size": 9273
+    },
+    {
+      "path": "web/js/lf3-fehlerbild-protokoll.js",
+      "sha256": "c8b71de3c1cbab753d316f4cf7bc70bc293e19e539a997c89cce1af136814c8f",
+      "size": 9795
+    },
+    {
+      "path": "web/js/lf3-ipv4-konfiguration.js",
+      "sha256": "bf8902aa138c364045ed2128c932355c90e48e9f1f083082344d22b6b9f3f303",
+      "size": 9379
+    },
+    {
+      "path": "web/js/lf3-lernziel-rest.js",
+      "sha256": "f6a67f8fade4fa2b63833388a8bd2ccb3f896925a6e98b4b5f83bcfc42304252",
+      "size": 7318
+    },
+    {
+      "path": "web/js/lf3-lernziel.js",
+      "sha256": "c86f2cd172e4a06c2e8d4c28a67c9b62eff44dc6227981c7e059d22abaad1047",
+      "size": 9597
+    },
+    {
+      "path": "web/js/lf3-verbindung-eingrenzen.js",
+      "sha256": "31b5e155572a4946dfc31aa03e82edf2489fa092abfafa54a802d8f6aa8ac5b9",
+      "size": 10013
+    },
+    {
+      "path": "web/js/lf4-handlungen.js",
+      "sha256": "1faa057aa17e1000de330a6265a04a9cc3c3fb1083a80bee2bc0c06c9b5a69f9",
+      "size": 10239
+    },
+    {
+      "path": "web/js/lf4-lernziel-rest.js",
+      "sha256": "5ed29881e8e54c53c80c646f8c28bc0387cc092bc3a59811f3fd59a24862066a",
+      "size": 7318
+    },
+    {
+      "path": "web/js/lf4-lernziel.js",
+      "sha256": "5dd8450cd6c872e6e6e4d02d82f7e06ed1968f6aad76d17568b6f5c9554dd991",
+      "size": 11067
+    },
+    {
+      "path": "web/js/lf4-risiken.js",
+      "sha256": "dd1de334629a13723156a3bb193e21dc6f786d00c7f739cecf5c829df132ed95",
+      "size": 9850
+    },
+    {
+      "path": "web/js/lf4-schutzbedarf.js",
+      "sha256": "e3364b3d5bd202d98ec518b93989b178b19b046ffe4f09f947ec374e886ba0ba",
+      "size": 10014
+    },
+    {
+      "path": "web/js/lf4-schutzziele.js",
+      "sha256": "68a6de28fe349ff5d7b34bc0736e5563183ccc67731b488c17ee2e078f73deff",
+      "size": 9834
+    },
+    {
+      "path": "web/js/lf4-vorfall.js",
+      "sha256": "c548136c8bfa778b87ea3a4a5c60cb25c24437ec873fff75d4968100dd63091d",
+      "size": 10247
+    },
+    {
+      "path": "web/js/lf4-zugang.js",
+      "sha256": "daaa4eeed2ff0f85e0492bc3d128603a4d98d782362aff4d4b9242858a7dff64",
+      "size": 10074
+    },
+    {
+      "path": "web/js/lf5-ablage.js",
+      "sha256": "2671e5f9750149e504b00cdecf0623fc9969795cca153bdb51450467504ccfb5",
+      "size": 10438
+    },
+    {
+      "path": "web/js/lf5-ablauf.js",
+      "sha256": "fe4facd837daf2c369bc056dc38dd2ac3f49d1a5e5c90798c78992c7431e501e",
+      "size": 10494
+    },
+    {
+      "path": "web/js/lf5-anweisung.js",
+      "sha256": "9ef05610b2fb734c247bb2b75c1f3afd4841eb68f7ba9001dc6584c17467ff6c",
+      "size": 10557
+    },
+    {
+      "path": "web/js/lf5-doku.js",
+      "sha256": "0af77a6f1779e97a77e769fe42dcabc7754a4dc9ace237e4dc1686bd5b26dac3",
+      "size": 10312
+    },
+    {
+      "path": "web/js/lf5-einordnen.js",
+      "sha256": "54fd76794a5d7646b8cd67b0bbd13a6e5d401bfea3f4ea1afa34b3d0972eaec7",
+      "size": 10655
+    },
+    {
+      "path": "web/js/lf5-format.js",
+      "sha256": "e2f6bd3c61248ac7d4c04251c22b2f802cc077006b465f2b3c7bae4d5773855f",
+      "size": 10755
+    },
+    {
+      "path": "web/js/lf5-lernziel-rest.js",
+      "sha256": "791cb3b24cabefc9331584e9c536550afc109a5541c795c575b3d9bc06db085b",
+      "size": 8092
+    },
+    {
+      "path": "web/js/lf5-lernziel.js",
+      "sha256": "9820f5b18ff7568120613429b135d55d0238fa2afdd034f75262333e2a531bec",
+      "size": 10435
+    },
+    {
+      "path": "web/js/lf5-prozess.js",
+      "sha256": "02b62a0572ab72eea8b00a8dbccab0ebb3b12cb490c2acf77af952fa49fae4c4",
+      "size": 10456
+    },
+    {
+      "path": "web/js/lf5-testfall.js",
+      "sha256": "9453185ce95342b53ee1818a7b927be455d0b5b4fe5800f6c1759ead29e21b67",
+      "size": 10608
+    },
+    {
+      "path": "web/js/lf5-werte.js",
+      "sha256": "a156e51ec4a8fc3c4b1ace7505d10a1640f79525e24644d9255cff38d0623011",
+      "size": 10371
+    },
+    {
+      "path": "web/js/lf5-wiederholung.js",
+      "sha256": "49dd4aa27208f1da4648b59a47074a16627bbdb5d141dd4bf665d92400c84f49",
+      "size": 10411
+    },
+    {
+      "path": "web/js/lf6-anfrage.js",
+      "sha256": "3274c5aec088ed75feb1a9f8a5f028774d7d2e27246c32c00a95f15c5f95805c",
+      "size": 11215
+    },
+    {
+      "path": "web/js/lf6-fragen.js",
+      "sha256": "d123b19afbb00c1f502c8a7481bee31b987176f04b9dcfc060ba7ad644a0ba33",
+      "size": 11443
+    },
+    {
+      "path": "web/js/lf6-gespraech.js",
+      "sha256": "8ad43456760837fd1c76c776bf61c8d68b184071cef72708a499f994bebb44d2",
+      "size": 11044
+    },
+    {
+      "path": "web/js/lf6-kontakt.js",
+      "sha256": "87c8d66019d0a691026e21fdc5a0ecfe57aab107d88150287f140212989cfc94",
+      "size": 11511
+    },
+    {
+      "path": "web/js/lf6-kontrolle-rest.js",
+      "sha256": "9b8d09b910505490373e9c2b42be09b93751f2a33cfb005681c32a142f196c03",
+      "size": 8094
+    },
+    {
+      "path": "web/js/lf6-kontrolle.js",
+      "sha256": "e171fa42a2baa0a247daaf0ef3b8a3d3de1f9061a71b3a3dfcd9d95a53618009",
+      "size": 12315
+    },
+    {
+      "path": "web/js/lf6-level.js",
+      "sha256": "a7b37cdd3ed4930e75a2676441458702dad77346b70ddd885826f4efc794c0c4",
+      "size": 10880
+    },
+    {
+      "path": "web/js/lf6-loesung.js",
+      "sha256": "3b092f93e24e1a7b8ac094c77a6116ef7bb4ee318a189492038163b2069bd779",
+      "size": 11286
+    },
+    {
+      "path": "web/js/lf6-notiz.js",
+      "sha256": "fd01a02f9cbc4556ce5769a4a24f538750ddf84543f2dbdbead377f06a2e9182",
+      "size": 10855
+    },
+    {
+      "path": "web/js/lf6-qualitaet.js",
+      "sha256": "5a24c6fb2450c5f8406988dcbbff4317e3dc610dcc9df574ae89a250952ee278",
+      "size": 11138
+    },
+    {
+      "path": "web/js/lf6-sla.js",
+      "sha256": "8502cb4e51d5d0fe006bb86720aa53a11b6ea1f16a53d40904de67098adf1f90",
+      "size": 11269
+    },
+    {
+      "path": "web/js/lf6-status.js",
+      "sha256": "1d097947b6bcd1c9901249c5c05b413ae3ebf70691617c839745340d955c20ba",
+      "size": 11405
+    },
+    {
+      "path": "web/js/lf6-ursache.js",
+      "sha256": "7b21f3a7e9aafb9c06c9da42bc0fb11428c15231791e0501577be4e2970d1692",
+      "size": 11371
+    },
+    {
+      "path": "web/js/lf7-auswahl.js",
+      "sha256": "b1c693b15d06130c5bfb6068e53883451e68cc50a2d16092b31ec93ee05baf25",
+      "size": 5406
+    },
+    {
+      "path": "web/js/lf7-fluesse.js",
+      "sha256": "ff3595f85fdc7eb38732855e454ca3d0ac6f6c97203b2cf641b0e8a31c2c8b61",
+      "size": 5065
+    },
+    {
+      "path": "web/js/lf7-kontrolle.js",
+      "sha256": "53e8de2a714a20e1e016821da8d6492fbb5ca8ba477f6b23d61ffc8502a4decf",
+      "size": 18242
+    },
+    {
+      "path": "web/js/lf7-lektion.js",
+      "sha256": "6d77c81a3683ba9d4a70b4c16379b51366c3b735520232a7ba80ac353a89d3fb",
+      "size": 7387
+    },
+    {
+      "path": "web/js/lf7-pruefung.js",
+      "sha256": "c672089d8b43f02e0aa1831fc90a22d7400028a3ccc64695cdcb8d3926e7da34",
+      "size": 5658
+    },
+    {
+      "path": "web/js/lf7-schnittstelle.js",
+      "sha256": "fa00af4896ea112e9d4b92f9072cb1ba2eb8a35ed695d5b19796fe45be87829d",
+      "size": 5138
+    },
+    {
+      "path": "web/js/lf7-sicherheit.js",
+      "sha256": "280d596533b7be8afa0012629fd3581781ee167db11adb040f9653b6d8cc6cf0",
+      "size": 5497
+    },
+    {
+      "path": "web/js/lf7-system.js",
+      "sha256": "45ee93821db280096b8af304a7bad7a2f155e9394d0b99102410f8d4a4fd2f04",
+      "size": 4768
+    },
+    {
+      "path": "web/js/lf7-unterlage.js",
+      "sha256": "65a5455676c29c275b003db39f2e7c43ab085e7bcd992587dc002436bbcf507a",
+      "size": 5160
+    },
+    {
+      "path": "web/js/lf7-zusammenfuehren.js",
+      "sha256": "236938b9519d95f6d59e9078673ce2ca0f7b18614f08381678703ea49429171f",
+      "size": 5125
+    },
+    {
+      "path": "web/js/lf8-aufbereiten.js",
+      "sha256": "c74ece7b5109774422ee6a7cac2e333fafb5774b6c9ac1adfabc98915de75b9d",
+      "size": 5313
+    },
+    {
+      "path": "web/js/lf8-auswahl.js",
+      "sha256": "f73917dea6667b207cfaaf1abc05b6c33d8f0cab1585d68b972bc5fed5765123",
+      "size": 4181
+    },
+    {
+      "path": "web/js/lf8-kontrolle.js",
+      "sha256": "9299ef6a1f2c7113cf340e67664bc9936fb0e3e49fd0a834cdc0de2eececafda",
+      "size": 16630
+    },
+    {
+      "path": "web/js/lf8-konzept.js",
+      "sha256": "434750d2c403ca67423a6b88eb1012242b8a638c8b0f10427ea7982bb74ec6ba",
+      "size": 4293
+    },
+    {
+      "path": "web/js/lf8-lektion.js",
+      "sha256": "b0d1eb2faa65563fa1b7eb48c5ec25ba22ccfea78171df170f29ef5299733ffb",
+      "size": 8046
+    },
+    {
+      "path": "web/js/lf8-praxis.js",
+      "sha256": "0967392298605e72a4a1b9c81e38053ae351bb4b02c7a222fde9dc38994c0df3",
+      "size": 8437
+    },
+    {
+      "path": "web/js/lf8-quellen.js",
+      "sha256": "fe48716bc14470fbef77a18a47db961978e3f0003e564480ee64965b49ba425e",
+      "size": 4251
+    },
+    {
+      "path": "web/js/lf8-recht.js",
+      "sha256": "4e4d0c89b940d7aad70b0e5433d540ce6025be79f09fd8e01e069982f6c1779e",
+      "size": 5055
+    },
+    {
+      "path": "web/js/lf8-reflexion.js",
+      "sha256": "53a581990fce0f97aafcdaad8d66db47f0e8bf2c9831e3eaf9f41f7f022d1550",
+      "size": 4515
+    },
+    {
+      "path": "web/js/lf8-struktur.js",
+      "sha256": "fe578b486007965c429991243669a114480dcbb4d00fd5ed6dcbce93bf69120f",
+      "size": 4184
+    },
+    {
+      "path": "web/js/lf8-uebergabe.js",
+      "sha256": "311bf471d9e6e896f3677b132d1651af252045014aa77749a21b24d1ed190cf7",
+      "size": 4386
+    },
+    {
+      "path": "web/js/lf9-anforderung.js",
+      "sha256": "0d886f209c8ba949eb4ee57407fdd78d0137ce29305901527785436292fa1fed",
+      "size": 4546
+    },
+    {
+      "path": "web/js/lf9-dienste.js",
+      "sha256": "a2cc0d9706ebb895493fce61f1fbd6c4301b44288006d5eef2d2ad79c8be1dae",
+      "size": 4729
+    },
+    {
+      "path": "web/js/lf9-eignung.js",
+      "sha256": "5cdc87093714b9e45525b790bec0c7fd2d3301042e0fb34ffb056d8208eda7b0",
+      "size": 4601
+    },
+    {
+      "path": "web/js/lf9-infrastruktur.js",
+      "sha256": "58916c3a22b19a74dde4239272c74a3e3ae85cb1bc10bd493f25618b0ee4848e",
+      "size": 4514
+    },
+    {
+      "path": "web/js/lf9-ist.js",
+      "sha256": "b009c73240f2b7184f461049ad7aaf8a796e606ea3451a34f23a6428b8604bbe",
+      "size": 4285
+    },
+    {
+      "path": "web/js/lf9-kontrolle.js",
+      "sha256": "0af0ce8e9c2c67c7281557ea8389d9ef0b937045f4cd59d05f0bbc2ee9b553b0",
+      "size": 17325
+    },
+    {
+      "path": "web/js/lf9-lektion.js",
+      "sha256": "26921dc6535b443f5d0bcc860d31fd9ab85b1cb5feee57a9159849cfb45e30fd",
+      "size": 8046
+    },
+    {
+      "path": "web/js/lf9-praxis.js",
+      "sha256": "134739fd9b26c49c224a8c2f5b21e918d8eb274b7a535babe58b6a9aa9fb3af4",
+      "size": 9042
+    },
+    {
+      "path": "web/js/lf9-schutz.js",
+      "sha256": "1e625f95bea601592d96a4bda78b44c3ce4582236e9dd644e8117242162733d6",
+      "size": 4929
+    },
+    {
+      "path": "web/js/lf9-standard.js",
+      "sha256": "6ef1624ec23754bfce6c1f4fb663e8635319f4fcd3b0a32d4263529928078b7b",
+      "size": 4783
+    },
+    {
+      "path": "web/js/lf9-zukunft.js",
+      "sha256": "aadeae1ceddf632a5427d62283606181d1cb6889c25e9304daa052bb219bb037",
+      "size": 4585
+    },
+    {
+      "path": "web/js/module-daten.js",
+      "sha256": "ccb97df5619292cfaa7d7edd90f60b64bd87b7ed232d0e56e0ba5f80d3ed3f60",
+      "size": 30983
+    },
+    {
+      "path": "web/js/navigation.js",
+      "sha256": "991e24096c041bf0d5c99c0ba39fbc85d85fa7dc0ac1c58e642f4a4fa8f21764",
+      "size": 10322
+    },
+    {
+      "path": "web/js/netzmaske.js",
+      "sha256": "e395081af501225f62b8b8e46ae6566df57dd6d7e6641462fb4b14ac12fb804c",
+      "size": 7904
+    },
+    {
+      "path": "web/js/netzwerk-lektion1.js",
+      "sha256": "868f991e41a2e85d831cdad843a7366328e667101fba5faf2161892abd14da96",
+      "size": 15345
+    },
+    {
+      "path": "web/js/pc-explorer.js",
+      "sha256": "1b8235eb31e79f3d8263ed26b573106b2c80e60839d21bd69601705dc0666276",
+      "size": 118622
+    },
+    {
+      "path": "web/js/raid-kern.js",
+      "sha256": "36b0337591722760aac55f229eb19e7e5aa51bc98fbb943d9e74ce2110510f06",
+      "size": 4656
+    },
+    {
+      "path": "web/js/raid-labor.js",
+      "sha256": "c5aba4058bc1a558ff2546d28aa80ee3002576b24e864c5bdd92306e44b5b9b0",
+      "size": 7285
+    },
+    {
+      "path": "web/js/raid-rack-modell.js",
+      "sha256": "01ed662e4710f71e5c2fcc973039c5ee06b194d89658007ec0839ddf674e1433",
+      "size": 5031
+    },
+    {
+      "path": "web/js/raid-rack.js",
+      "sha256": "b90d3ffabbc2a10bf41136cf49142fa2d3d168c5576dc3b657ec64c264b3d9f7",
+      "size": 14030
+    },
+    {
+      "path": "web/js/startseite.js",
+      "sha256": "0147674ee16d6c33d1edaeaf89ebf7aa613aad30b3c0a29b00b2cfb5186c3921",
+      "size": 8514
+    },
+    {
+      "path": "web/js/subnetting.js",
+      "sha256": "d1ff38cdef7ff6a4c267c0bea2a1cb9409751da09d7fe1bdd617f62733e9cbbb",
+      "size": 7535
+    },
+    {
+      "path": "web/js/version.js",
+      "sha256": "b21dec0a4ba0d731f1544d196386c9d080e0cb32a4ab078681e5943ad5a28d8d",
+      "size": 536
+    },
+    {
+      "path": "web/js/windows-labor-daten.js",
+      "sha256": "78f93efce075629da1621849cf9d690dfb3991684752ea4ce20b0a55d6a62b47",
+      "size": 96952
+    },
+    {
+      "path": "web/js/windows-labor.js",
+      "sha256": "ec742d2de58311d03ac0d16db0c7de62fbe54a44848e6056acbc272bff98d3e5",
+      "size": 7844
+    },
+    {
+      "path": "web/js/windows-werkzeugkiste-daten.js",
+      "sha256": "e34288272481b08b18ba09e1819a5ef197f04c184689f0c39951723f1048005b",
+      "size": 22254
+    },
+    {
+      "path": "web/js/windows-werkzeugkiste.js",
+      "sha256": "b89d22bd5de8e5a646ff22274070e27f5e7ed53a8d301c6ccc2cdc9283faed8c",
+      "size": 18525
+    },
+    {
+      "path": "web/js/zahlensysteme.js",
+      "sha256": "99fed1d516c5b83b664e229587dc06a513953c37bf5bd4fa81dbc15f4ba7e017",
+      "size": 11633
+    },
+    {
+      "path": "web/module/bwl-werkstatt.html",
+      "sha256": "d53e0ad521de7e60075b737b33c88aa315c13e84fad65f375fee3cd78a34f3e9",
+      "size": 17045
+    },
+    {
+      "path": "web/module/computer-grundlagen.html",
+      "sha256": "598491994277b4acd9cc82e766a848113d15c32aa23b6a7586621c6b40faf1f8",
+      "size": 8326
+    },
+    {
+      "path": "web/module/einheiten.html",
+      "sha256": "c143a39a0893d9fd065202a2b29172b3a82b4c9d31a95e302ea8a037c21c7e7d",
+      "size": 4430
+    },
+    {
+      "path": "web/module/ipv4-rechner.html",
+      "sha256": "9f0ee821327d27e7d8751a4c737e953ea3d59ef8c84f2aae94d2cebbd8192cff",
+      "size": 4499
+    },
+    {
+      "path": "web/module/lf1-ausbildungsbetrieb.html",
+      "sha256": "3f77f4501e114c295261d9261513e7387b0fc5ef574e7ae8ea9e0a66080b0b9b",
+      "size": 10921
+    },
+    {
+      "path": "web/module/lf1-handlungsspielraum.html",
+      "sha256": "266448adeaa636e8c85c11df7bf811a35a1c42d2d65e17f9f92d437fd515cade",
+      "size": 6470
+    },
+    {
+      "path": "web/module/lf1-leitbild.html",
+      "sha256": "f5cc70e84dd008d7119eebd746d4e7018fab4d8d7d1040ec06fb145217a27a4a",
+      "size": 12522
+    },
+    {
+      "path": "web/module/lf1-lernziel.html",
+      "sha256": "98c0405512069283c68cdf1706d6ab5d4598cb4e5592d169e3fd47fb306faa76",
+      "size": 3953
+    },
+    {
+      "path": "web/module/lf1-markt-kundschaft.html",
+      "sha256": "c2b18be70d552c312eae5960800490d948db7395c155cc5600fc6b9e8699aa4b",
+      "size": 8010
+    },
+    {
+      "path": "web/module/lf1-organisation.html",
+      "sha256": "fb58f2eb5ceb6ccd17c1c40524e14642bb025fed1361e64497a72cf8a57a4cfb",
+      "size": 7541
+    },
+    {
+      "path": "web/module/lf1-praesentation.html",
+      "sha256": "58c30cfce702d9f6c49e86705a1da1d4f4d5506a6dbdfd1f81c8448702e79bb8",
+      "size": 7012
+    },
+    {
+      "path": "web/module/lf1-qualitaet.html",
+      "sha256": "ad4f7713c97012dddc294b93093f9ac17c03d22acd211d53dffaf77732d3d53d",
+      "size": 6976
+    },
+    {
+      "path": "web/module/lf1-reflexion.html",
+      "sha256": "6a3602e476244aaa5e8be4e8a9d75c7718c6b787c6be45945111980d0c00f75c",
+      "size": 6584
+    },
+    {
+      "path": "web/module/lf1-weiterbildung.html",
+      "sha256": "46f2c7405bd380a77b7194c71e9030a27e57e7217b4bf6b89442477fecf4c60e",
+      "size": 6959
+    },
+    {
+      "path": "web/module/lf1-wertschoepfung.html",
+      "sha256": "261508c16f0f9946eb866c4736e440ce09aec52ed0d7e148dbaf1cd597a3baa4",
+      "size": 7218
+    },
+    {
+      "path": "web/module/lf2-angebot.html",
+      "sha256": "4a854c56e78465f510a2a5c535a2cbc032b5cbe58d3ac0e8aeceb110ac19a67a",
+      "size": 15624
+    },
+    {
+      "path": "web/module/lf2-angebote.html",
+      "sha256": "f10edf41139868928290e578870187f1203fd9d46250d641a13f725a91f87efb",
+      "size": 18963
+    },
+    {
+      "path": "web/module/lf2-auswertung.html",
+      "sha256": "8db223a427a5e00e6db9e5581cc59d34ae3fe78c792b2e5ffd341bf7c3a7b39f",
+      "size": 8558
+    },
+    {
+      "path": "web/module/lf2-beschaffung.html",
+      "sha256": "59e42464a7cfa8f148904ce3eb3112219a95945513dd88b1367b77af096fff3a",
+      "size": 16948
+    },
+    {
+      "path": "web/module/lf2-einrichten.html",
+      "sha256": "97a77537b3704e951bd90e911cb4fecd008700bb0a1d2842f1f38b2a1221f1ad",
+      "size": 14971
+    },
+    {
+      "path": "web/module/lf2-energie.html",
+      "sha256": "eb2ac09b3a4583251f76370f70c327a6523ca0791ae135a70491e7a53f6c3925",
+      "size": 13844
+    },
+    {
+      "path": "web/module/lf2-kriterien.html",
+      "sha256": "76d7a7f136eaf0181897378f4cda2f026016befbbe60bb30c5e030d8f3d34a86",
+      "size": 6800
+    },
+    {
+      "path": "web/module/lf2-kundenbedarf.html",
+      "sha256": "a4afe68c63dc44228b12fb5f8bde1c98392bcf725e0351e0a136c5fa68e414f5",
+      "size": 6660
+    },
+    {
+      "path": "web/module/lf2-lernziel.html",
+      "sha256": "51ededd5ce120c249458de725cc8259f47000d578a2e331be3a9093fe1b9e51a",
+      "size": 3969
+    },
+    {
+      "path": "web/module/lf2-sichere-auswahl.html",
+      "sha256": "5bfbebbe3a8d08388dcc88d9525aa10c9a4794716f1183c81b0f2b25d5fe3f79",
+      "size": 9257
+    },
+    {
+      "path": "web/module/lf2-technische-daten.html",
+      "sha256": "a1d64e6feed5ece58965bbe35868e9261eadb425922018770967166432f304be",
+      "size": 9846
+    },
+    {
+      "path": "web/module/lf2-uebergabe.html",
+      "sha256": "f2aa3c95f428f98fd8fac1700a361955737d48fd9d0215460d9926b48e2c85e9",
+      "size": 13603
+    },
+    {
+      "path": "web/module/lf2-varianten.html",
+      "sha256": "76451028ea34075d4895b1f6c24e0d098dc2737c60a3856e4017ff7032faedc8",
+      "size": 15354
+    },
+    {
+      "path": "web/module/lf3-abnahme.html",
+      "sha256": "40b8646a9743dc9871b9497ba047dd2404f959c627d64e2d4565a8d8c6c1b126",
+      "size": 24488
+    },
+    {
+      "path": "web/module/lf3-client-anbindung.html",
+      "sha256": "32baad1f9555b299794cbbf4e74afdb2d00b192573f0a25f32b77191b8805817",
+      "size": 7534
+    },
+    {
+      "path": "web/module/lf3-dhcp.html",
+      "sha256": "36d2d2659a654a1fec057725c1191de675fb75d942350262f0501a524ce370e7",
+      "size": 7798
+    },
+    {
+      "path": "web/module/lf3-dns.html",
+      "sha256": "e9e1427273f7092ae0269991363520c7a835461866d234fd2441d13a79cdd66b",
+      "size": 8094
+    },
+    {
+      "path": "web/module/lf3-fehlerbild-protokoll.html",
+      "sha256": "ed2806bbc8921aeafb0a233c221c1eda7ab0e36b18d9a23c721607db7be82962",
+      "size": 8698
+    },
+    {
+      "path": "web/module/lf3-ipv4-konfiguration.html",
+      "sha256": "c9921af77a86cc48990f868965f544f31272c40fe19dc7f54b0f4108acbf7c37",
+      "size": 7724
+    },
+    {
+      "path": "web/module/lf3-lernziel.html",
+      "sha256": "6a40b84a73996a6c8e74a4e38170c426c39a5a65b8c3e2db13a762377d25f74c",
+      "size": 3950
+    },
+    {
+      "path": "web/module/lf3-verbindung-eingrenzen.html",
+      "sha256": "df1f87785e4392fd9269ae36e4a8a5f648dd2ca64372db96203ff0be4869d45e",
+      "size": 8760
+    },
+    {
+      "path": "web/module/lf4-handlungen.html",
+      "sha256": "0f7de42e4f150eb5208911a7991d1c1e8d8b233a9b0aa46699594e318e357d07",
+      "size": 6801
+    },
+    {
+      "path": "web/module/lf4-lernziel.html",
+      "sha256": "f4118fd69f8dd2827f5a3db90d3c4ec620cb175d01f492e0a82fc592703991c9",
+      "size": 3968
+    },
+    {
+      "path": "web/module/lf4-risiken.html",
+      "sha256": "cffd425a89254e5f4ddec082d453cfb6f7fb981cb947d83ac70dace536f61943",
+      "size": 6697
+    },
+    {
+      "path": "web/module/lf4-schutzbedarf.html",
+      "sha256": "f88ad913af19ff299474534a22ae8b5818f4d4833c8d20a0c601a52d7f110016",
+      "size": 6760
+    },
+    {
+      "path": "web/module/lf4-schutzziele.html",
+      "sha256": "d258335089438606d812b88ff2be067ab493909683aecbe7d313be71aac56465",
+      "size": 6743
+    },
+    {
+      "path": "web/module/lf4-vorfall.html",
+      "sha256": "70070395f645bc71dbd428f64621651d9a1e96ca649b4e82456ea501590b1312",
+      "size": 6736
+    },
+    {
+      "path": "web/module/lf4-zugang.html",
+      "sha256": "d4ccf40385aea84dd3309df47bcb28dabf98906de1baa76714e638b3aba284d3",
+      "size": 6745
+    },
+    {
+      "path": "web/module/lf5-ablage.html",
+      "sha256": "a42246591ee35e58e21470d1aea3435209eae2279bc53a4a82c129be6b89eacc",
+      "size": 5971
+    },
+    {
+      "path": "web/module/lf5-ablauf.html",
+      "sha256": "4a9bad00fab3db7b2b9ac07daa4ada9c147c85a1a7eb0a5e78de526f412599a2",
+      "size": 6011
+    },
+    {
+      "path": "web/module/lf5-anweisung.html",
+      "sha256": "058b593c486a3d86becd7206d43e165088df404a9caaadc1323443c498e48ab7",
+      "size": 5915
+    },
+    {
+      "path": "web/module/lf5-doku.html",
+      "sha256": "e01df6c5613da95be445c6e3bb94c849a037fd774d7dde82a5969f7072a4feb4",
+      "size": 6354
+    },
+    {
+      "path": "web/module/lf5-einordnen.html",
+      "sha256": "069a3808cc16ca25a28697e7c2bd0828a7ca129dfab88ef7ae62fd1a05b43f4f",
+      "size": 6598
+    },
+    {
+      "path": "web/module/lf5-format.html",
+      "sha256": "86cfa6099a911b0fd5c131cfc39408f5d1bd8d5ccce7fb7651e8dfc352796b1d",
+      "size": 6586
+    },
+    {
+      "path": "web/module/lf5-lernziel.html",
+      "sha256": "f3985adc46eee1dd4d7cc4ceb3174633b579558d922ab004a36efc29d7b14592",
+      "size": 3960
+    },
+    {
+      "path": "web/module/lf5-prozess.html",
+      "sha256": "7af00f512dd76dcaa3872a7c1b0b45e7940d87cc10eaafb30da8de6c772afd8e",
+      "size": 6243
+    },
+    {
+      "path": "web/module/lf5-testfall.html",
+      "sha256": "d9d3199c4649d11e9c84a4a03b774a3d5635f46680d3ee248e4d61fe5bd5c53a",
+      "size": 6509
+    },
+    {
+      "path": "web/module/lf5-werte.html",
+      "sha256": "2195379ef34f22387926548b89fc8ad62d89e69ae4cfcdf42039a3afce70cdeb",
+      "size": 5784
+    },
+    {
+      "path": "web/module/lf5-wiederholung.html",
+      "sha256": "9d3e4418b5d44111b744fbdcf6f6d0321f41a1c3bfecc3d18ca118e953073e45",
+      "size": 6055
+    },
+    {
+      "path": "web/module/lf6-anfrage.html",
+      "sha256": "dffbdc967ff8ba86d91b50b34a60df5155c45d373e889b3fdc3402ee50f85837",
+      "size": 6264
+    },
+    {
+      "path": "web/module/lf6-fragen.html",
+      "sha256": "8739aaca9e6811b9764894ec4965c89f462d0c198ea37893d89c27bcba391e7d",
+      "size": 7737
+    },
+    {
+      "path": "web/module/lf6-gespraech.html",
+      "sha256": "efeed7c993b0acc9ab5b18aee4bbc7dc15d1766c6c1317dbb21804d7f6e4230f",
+      "size": 6707
+    },
+    {
+      "path": "web/module/lf6-kontakt.html",
+      "sha256": "f3a39bbb4584f642e96d035cc110c2d3467b398e6ce3ac3636c0df724ab4e8ed",
+      "size": 6716
+    },
+    {
+      "path": "web/module/lf6-kontrolle.html",
+      "sha256": "e22040587af919fc68ee80a0375041d73f66313f8ffed8f7a9a1fe419efbe44c",
+      "size": 3872
+    },
+    {
+      "path": "web/module/lf6-level.html",
+      "sha256": "739c3bf4ae89ddc70dfc8856c62754ab9de6b29b15d982619ff91f48dc0e12cd",
+      "size": 6608
+    },
+    {
+      "path": "web/module/lf6-loesung.html",
+      "sha256": "aca6d38186daed8870757ca603c9b919c150ae9e86e912d90697f91a93b3356a",
+      "size": 6598
+    },
+    {
+      "path": "web/module/lf6-notiz.html",
+      "sha256": "e2381e32a0b1b1d4ecb4d4307212a02287ef49e0fdfe8c4f32f8ef485bc3360e",
+      "size": 6376
+    },
+    {
+      "path": "web/module/lf6-qualitaet.html",
+      "sha256": "69a67c80b37976cb560cf74e792deafd224e8e3ffc42f12edb6b10cb6d3471d6",
+      "size": 6493
+    },
+    {
+      "path": "web/module/lf6-sla.html",
+      "sha256": "49e00be3290a4407fae9ec2c2e0b5516b93859c9f16a0f20a0b90f3fb2e5bdd4",
+      "size": 8968
+    },
+    {
+      "path": "web/module/lf6-status.html",
+      "sha256": "d0e35276b8f062e4731a1bd39e15dc303793ea1a96735900d1df34c1ac7bf959",
+      "size": 6488
+    },
+    {
+      "path": "web/module/lf6-ursache.html",
+      "sha256": "74324013c431abf809760b6d749623904fc0da1d19fe9e294ee86652b1fda4eb",
+      "size": 6502
+    },
+    {
+      "path": "web/module/lf7-auswahl.html",
+      "sha256": "cda8d67e3ca761aad5cd1a215735c786d1aa9d142326f5473d5690a69a8cb59c",
+      "size": 6451
+    },
+    {
+      "path": "web/module/lf7-fluesse.html",
+      "sha256": "8a100f3d2f41e2ee0d573365ec5c00c8211652181ed3b5ae90eed6adaa43634b",
+      "size": 6433
+    },
+    {
+      "path": "web/module/lf7-kontrolle.html",
+      "sha256": "e378eecdaec21de7bae31523c12b457c12441c69374e0c758436ef58f633b221",
+      "size": 4608
+    },
+    {
+      "path": "web/module/lf7-pruefung.html",
+      "sha256": "d89805a6794451d2904b70b327a334654dc055a68a6731d8913987b72481b0b4",
+      "size": 6387
+    },
+    {
+      "path": "web/module/lf7-schnittstelle.html",
+      "sha256": "058e3986bc79405974a4fc8ad66752625c293e69a02698bc0aecfb11db580024",
+      "size": 6406
+    },
+    {
+      "path": "web/module/lf7-sicherheit.html",
+      "sha256": "cc1b445ad48e692fdee15dd941ed4d43724f70441924cbf041ba067bafe48332",
+      "size": 6415
+    },
+    {
+      "path": "web/module/lf7-system.html",
+      "sha256": "f4011da0f99b30c65bbe6209554399abe16c6112c473d97081623a411ed28cee",
+      "size": 6359
+    },
+    {
+      "path": "web/module/lf7-unterlage.html",
+      "sha256": "866f6129be5863a38beb0ee1397f20c13e390aada110278e1b995f916181783f",
+      "size": 6452
+    },
+    {
+      "path": "web/module/lf7-zusammenfuehren.html",
+      "sha256": "8dfa1bd092c810abb436d146f8913598efa0c267d91cb8405c0c48945efb35b4",
+      "size": 6383
+    },
+    {
+      "path": "web/module/lf8-aufbereiten.html",
+      "sha256": "1743763c1240454ce75b377b5fdd94bad63916e76327cafcede7fd20e35c2cff",
+      "size": 11008
+    },
+    {
+      "path": "web/module/lf8-auswahl.html",
+      "sha256": "c1505e1aab5a242d5d909a0a0a094f8f087e809bb1b2652b2a905b5007cfeeba",
+      "size": 6369
+    },
+    {
+      "path": "web/module/lf8-kontrolle.html",
+      "sha256": "fa46983f87d2260b54b2f9964587b3b63d8f5e1ae5f312539e46c5f029a8adfc",
+      "size": 4612
+    },
+    {
+      "path": "web/module/lf8-konzept.html",
+      "sha256": "5009292576f6b69020ee61367a49804a7e00faa4ff663a0f9db550a2202764f1",
+      "size": 6374
+    },
+    {
+      "path": "web/module/lf8-quellen.html",
+      "sha256": "6ecba60196912c1d09ee4a5443df339ae1fd5349e8623c090bee2603a4c25ebb",
+      "size": 6335
+    },
+    {
+      "path": "web/module/lf8-recht.html",
+      "sha256": "57bf81f9eeb37b2755a4c33df525f09a3aa06df49e2e5d1338af7e486575e77c",
+      "size": 6339
+    },
+    {
+      "path": "web/module/lf8-reflexion.html",
+      "sha256": "1c325100df2b331bb037640530e895335d7ba1673b772070b283d7185a6c2ca5",
+      "size": 6719
+    },
+    {
+      "path": "web/module/lf8-struktur.html",
+      "sha256": "4cbb9c6fa1ab0c21592f4af6d9e4018cb3af0472a086eb66bb6174ef34df00ab",
+      "size": 6373
+    },
+    {
+      "path": "web/module/lf8-uebergabe.html",
+      "sha256": "ee63c8bc03c6697356e73e8977ee53b0a2df3c44cce50300d69edfae339318f5",
+      "size": 6642
+    },
+    {
+      "path": "web/module/lf9-anforderung.html",
+      "sha256": "783a175c3654937564034ddb3b4d103064934f1cd59a6a3faade104cfa90b037",
+      "size": 6447
+    },
+    {
+      "path": "web/module/lf9-dienste.html",
+      "sha256": "d00771b817dc52211a91d551ac447ea5f06feb85130826b96ba09fff41819233",
+      "size": 6688
+    },
+    {
+      "path": "web/module/lf9-eignung.html",
+      "sha256": "5f25444a94b893d7b46cdd96f8ee5a1e1da5a72f7725be50e876860b68ba1ede",
+      "size": 6788
+    },
+    {
+      "path": "web/module/lf9-infrastruktur.html",
+      "sha256": "c628eb66adfd88c7b7d8c0b8c1b231bf90eee54fdd1653f2d590cc35c5c0a702",
+      "size": 12172
+    },
+    {
+      "path": "web/module/lf9-ist.html",
+      "sha256": "b26919b7b762b2fbc7cbfcf4e82428fd0f6cb6be5026def89a663bf3f8424193",
+      "size": 6440
+    },
+    {
+      "path": "web/module/lf9-kontrolle.html",
+      "sha256": "ae42656e574aae79bdc24e62e045b7498b7d76430473a83b96ab5ff8e45f6608",
+      "size": 4612
+    },
+    {
+      "path": "web/module/lf9-schutz.html",
+      "sha256": "be3192d24254af604815cc21faf8a9d786d078aacd8da862bd66b34c998284db",
+      "size": 6457
+    },
+    {
+      "path": "web/module/lf9-standard.html",
+      "sha256": "920cdc6f4c6ebaed3de46d10f177f25233d0514371c0860656212827f33a7551",
+      "size": 6785
+    },
+    {
+      "path": "web/module/lf9-zukunft.html",
+      "sha256": "2aece347a2ee1e067062f85abf734bde5c4c480179bce4e8d2187454b2c3d23b",
+      "size": 6767
+    },
+    {
+      "path": "web/module/netzmaske.html",
+      "sha256": "3f7921c9baecf69d3a11b70e4de1a36dd790e18931bee2e668c5b938ed578435",
+      "size": 8907
+    },
+    {
+      "path": "web/module/netzwerkgrundlagen.html",
+      "sha256": "f2975113faee8fe60dbc0a80b2f430464d75d4d4f2573eb34d5b1f7d63bf4551",
+      "size": 10003
+    },
+    {
+      "path": "web/module/pc-explorer.html",
+      "sha256": "362b3ae1e5622f09ee5cb09081c5e95ddfed30540603167860d4754b9b7432c3",
+      "size": 6438
+    },
+    {
+      "path": "web/module/raid-labor.html",
+      "sha256": "a0f2961922f79163a28a27881cdd168bb3d95f1313a354ea75e4472483410b30",
+      "size": 8694
+    },
+    {
+      "path": "web/module/subnetting.html",
+      "sha256": "854b01e4c623277e71a228bf7530e057d917f94479f29963d893456b5dd869e5",
+      "size": 8793
+    },
+    {
+      "path": "web/module/windows-werkzeugkiste.html",
+      "sha256": "55227487093a3dd0bdbc046a48b6cb17daf621f09d169475b0d05bf48220168d",
+      "size": 7489
+    },
+    {
+      "path": "web/module/zahlensysteme.html",
+      "sha256": "3519a3cb18409d6f6e4a20384293c5f9788caca6e01b12f593045b9103e5d791",
+      "size": 4463
+    }
+  ]
+}

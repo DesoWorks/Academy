@@ -61,7 +61,11 @@ if (!gotLock) {
     }
     registerProtocol({
       contentRoot: contentRootFrom(app),
-      desktopRoot: path.join(__dirname, "renderer")
+      desktopRoot: path.join(__dirname, "renderer"),
+      resolveModuleFile(id, requestPath) {
+        if (!modules || typeof modules.resolveHostedFile !== "function") return null;
+        return modules.resolveHostedFile(id, requestPath);
+      }
     });
     registerIpc({
       ipcMain: require("electron").ipcMain,

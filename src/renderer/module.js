@@ -28,7 +28,12 @@
       text(title, entry.name + " " + entry.version);
       var meta = document.createElement("p");
       meta.className = "meta";
-      text(meta, entry.publisher + " · " + entry.trust + " · " + entry.state + " · " + entry.sizeBytes + " Bytes");
+      text(meta, entry.publisher + " · Version " + entry.version + " · " + entry.state + " · " + (entry.updateAvailable ? "Aktualisierung verfügbar" : "Keine Aktualisierung") + " · " + entry.sizeBytes + " Bytes");
+      if (entry.description) {
+        var beschreibung = document.createElement("p");
+        text(beschreibung, entry.description);
+        box._beschreibung = beschreibung;
+      }
       var actions = document.createElement("div");
       actions.className = "zeile";
       var open = document.createElement("button");
@@ -51,7 +56,9 @@
         });
       });
       actions.append(open, toggle, remove);
-      box.append(title, meta, actions);
+      box.append(title, meta);
+      if (box._beschreibung) box.appendChild(box._beschreibung);
+      box.appendChild(actions);
       liste.appendChild(box);
     });
   }
@@ -71,6 +78,18 @@
       }
       // Nur das bewusste Öffnen durch den Nutzer merkt sich den letzten Lernbereich.
       shell.writeLastArea(id);
+      view.hidden = false;
+      text(document.getElementById("modul-titel"), response.module.name);
+      if (response.runtime && response.runtime.kind === "hosted-web" && response.runtime.entry) {
+        var frame = document.createElement("iframe");
+        frame.className = "modul-frame";
+        frame.title = response.module.name;
+        frame.setAttribute("sandbox", "allow-scripts allow-forms allow-same-origin");
+        frame.referrerPolicy = "no-referrer";
+        frame.src = "academy://" + response.module.id + "/" + String(response.runtime.entry).replace(/^\/+/, "");
+        inhalt.appendChild(frame);
+        return;
+      }
       view.hidden = false;
       text(document.getElementById("modul-titel"), response.module.name);
       var course = response.course || {};

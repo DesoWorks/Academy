@@ -1,0 +1,53 @@
+{
+  "format": "desoworks.academy.module",
+  "formatVersion": 1,
+  "id": "desoworks.it-systemintegration",
+  "name": "IT-Systemintegration",
+  "description": "Die bestehende IT-Ausbildung als installierbares Lernmodul. Themenübersicht, Lernfelder, Labore und Werkzeuge bleiben erhalten.",
+  "publisher": {
+    "id": "publisher.desoworks",
+    "name": "DesoWorks"
+  },
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "language": "de",
+  "core": ">=0.3.0 <0.4.0",
+  "dependencies": [],
+  "permissions": [
+    "content.read",
+    "progress.write"
+  ],
+  "sizeBytes": 61866,
+  "subject": "IT-Systemintegration",
+  "audience": "Ausbildung",
+  "status": "private",
+  "review": {
+    "state": "private",
+    "signed": false
+  },
+  "trust": "private",
+  "entry": "content/course.json",
+  "files": [
+    "content/course.json",
+    "content/payload-index.json"
+  ],
+  "runtime": {
+    "kind": "hosted-web",
+    "entry": "index.html",
+    "index": "content/payload-index.json"
+  },
+  "optional": {
+    "objectives": [
+      "Die vorhandene IT-Ausbildung in der Academy bearbeiten."
+    ],
+    "prerequisites": [],
+    "difficulty": "ausbildung",
+    "estimatedMinutes": 0,
+    "sources": [
+      "DesoWorks/IT-Ausbildung@b7c60e1"
+    ],
+    "languages": [
+      "de"
+    ]
+  }
+}

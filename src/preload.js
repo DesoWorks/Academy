@@ -57,6 +57,9 @@ contextBridge.exposeInMainWorld("academyDesktop", {
   moduleInstall() {
     return ipcRenderer.invoke("academy:modules-install");
   },
+  moduleInstallCatalog(id) {
+    return ipcRenderer.invoke("academy:modules-install-catalog", String(id || ""));
+  },
   moduleInstallExample() {
     return ipcRenderer.invoke("academy:modules-install-example");
   },

@@ -378,6 +378,54 @@ function registerIpc(options) {
     }
   });
 
+  ipcMain.handle("academy:modules-install-catalog", async (event, id) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules || !dialog || !options.catalogFile) {
+      return { ok: false, code: "unavailable", message: "Der Katalog lässt sich ohne Modulverwaltung nicht installieren." };
+    }
+    let resolved;
+    try {
+      const { resolveBundledPackage } = require("./modules/catalog");
+      resolved = resolveBundledPackage(options.catalogFile, String(id || ""));
+    } catch (error) {
+      return fail(error);
+    }
+    let preview;
+    try {
+      preview = options.modules.preview(resolved.dir);
+    } catch (error) {
+      return fail(error);
+    }
+    if (preview.id !== String(id || "")) {
+      return { ok: false, code: "bad-path", message: "Das Paket gehört nicht zu diesem Katalogeintrag. Es wurde nichts installiert." };
+    }
+    const answer = await dialog.showMessageBox({
+      type: "warning",
+      buttons: ["Installieren", "Abbrechen"],
+      defaultId: 1,
+      cancelId: 1,
+      message: preview.replaces ? "Installiertes Modul ersetzen?" : "Lernangebot installieren?",
+      detail: [
+        preview.name + " " + preview.version,
+        "ID: " + preview.id,
+        "Herausgeber: " + preview.publisher,
+        "Vertrauen: " + preview.trust,
+        "Rechte: " + preview.permissions.join(", "),
+        preview.runtime ? "Laufzeit: " + preview.runtime + ". Kein Node, kein Core-Zugriff." : "Inhaltsmodul.",
+        preview.replaces ? "Ersetzt Version " + preview.replaces + ". Lernstände bleiben an dieser ID." : "Neue Installation.",
+        "Das Paket liegt der Anwendung bei und durchläuft dieselbe Prüfung wie jedes andere Paket."
+      ].join("\n")
+    });
+    if (!answer || answer.response !== 0) {
+      return { ok: false, code: "cancelled", message: "Installation nicht bestätigt. Es wurde nichts kopiert." };
+    }
+    try {
+      return ok({ module: options.modules.installFromDirectory(resolved.dir) });
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
   ipcMain.handle("academy:modules-catalog", (event) => {
     if (!fromApp(event)) return reject(event, false);
     try {

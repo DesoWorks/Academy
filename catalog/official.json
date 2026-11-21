@@ -5,6 +5,17 @@
   "note": "Lokale Katalogdatei. Kein Onlineshop, keine Bewertungen, keine Käufe. Die Datei ist vom Modulmanager unabhängig.",
   "modules": [
     {
+      "id": "desoworks.it-systemintegration",
+      "name": "IT-Systemintegration",
+      "description": "Die bestehende IT-Ausbildung mit Themenübersicht, Lernfeldern, Laboren und Werkzeugen.",
+      "publisher": "DesoWorks",
+      "trust": "private",
+      "distribution": "local",
+      "localPackage": "modules/it-systemintegration",
+      "reviewState": "first-party",
+      "price": null
+    },
+    {
       "id": "example.local.wissen-weitergeben",
       "name": "Wissen weitergeben",
       "publisher": "DesoWorks",

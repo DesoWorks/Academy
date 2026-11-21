@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { Readable } = require("node:stream");
 const { protocol } = require("electron");
-const { CSP, resolveAcademyPath, mimeFor } = require("./protocol-path");
+const { CSP, MODULE_CSP, resolveAcademyPath, mimeFor } = require("./protocol-path");
 
 const BRIDGE = '<script src="/__desktop/bridge.js"></script>';
 
@@ -31,6 +31,24 @@ function injectBridge(html) {
   return BRIDGE + html;
 }
 
+function serveModule(options, url) {
+  const resolve = options.resolveModuleFile;
+  if (typeof resolve !== "function") return new Response("Unbekannter Host", { status: 404 });
+  const id = decodeURIComponent(url.hostname);
+  const file = resolve(id, url.pathname);
+  if (!file) return new Response("Nicht gefunden", { status: 404 });
+  const headers = {
+    "content-type": mimeFor(file),
+    "content-security-policy": MODULE_CSP,
+    "x-content-type-options": "nosniff",
+    "cache-control": "no-store"
+  };
+  if (path.extname(file).toLowerCase() === ".html") {
+    return new Response(fs.readFileSync(file), { headers });
+  }
+  return new Response(Readable.toWeb(fs.createReadStream(file)), { headers });
+}
+
 function registerProtocol(options) {
   const contentRoot = options.contentRoot;
   const desktopRoot = options.desktopRoot;
@@ -41,7 +59,7 @@ function registerProtocol(options) {
     } catch (error) {
       return new Response("Ungültige Adresse", { status: 400 });
     }
-    if (url.hostname !== "app") return new Response("Unbekannter Host", { status: 404 });
+    if (url.hostname !== "app") return serveModule(options, url);
     const pathname = url.pathname;
     try {
       if (pathname === "/__desktop/bridge.js" || pathname.startsWith("/__desktop/")) {

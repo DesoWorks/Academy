@@ -9,6 +9,10 @@ const MIME = {
   ".json": "application/json; charset=utf-8",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
+  ".webp": "image/webp",
   ".ico": "image/x-icon",
   ".txt": "text/plain; charset=utf-8",
   ".md": "text/plain; charset=utf-8",
@@ -25,8 +29,23 @@ const CSP = [
   "connect-src 'self'",
   "object-src 'none'",
   "base-uri 'none'",
+  "frame-src academy:",
   "frame-ancestors 'none'",
   "form-action 'none'"
+].join("; ");
+
+const MODULE_CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "frame-src 'none'",
+  "frame-ancestors academy://app",
+  "form-action 'self'"
 ].join("; ");
 
 function resolveAcademyPath(root, requestPath) {
@@ -59,4 +78,4 @@ function mimeFor(file) {
   return MIME[path.extname(file).toLowerCase()] || "application/octet-stream";
 }
 
-module.exports = { CSP, MIME, resolveAcademyPath, mimeFor };
+module.exports = { CSP, MODULE_CSP, MIME, resolveAcademyPath, mimeFor };

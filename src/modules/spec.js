@@ -9,8 +9,14 @@ const ID_PATTERN = /^[a-z0-9]+(?:[.-][a-z0-9]+){1,12}$/;
 const TRUST = ["private", "community", "reviewed", "official"];
 const TRUST_RANK = { private: 1, community: 2, reviewed: 3, official: 4 };
 const ALLOWED_EXTENSIONS = new Set([".json", ".md", ".png", ".svg", ".txt"]);
+const PAYLOAD_EXTENSIONS = new Set([
+  ".json", ".md", ".png", ".svg", ".txt", ".html", ".css", ".js",
+  ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2"
+]);
 const LIMITS = { maxFiles: 32, maxFileBytes: 524288, maxPackageBytes: 2097152, maxManifestBytes: 65536 };
+const PAYLOAD_LIMITS = { maxFiles: 4000, maxFileBytes: 8388608, maxBytes: 50331648, maxIndexBytes: 524288 };
 const RESERVED_PREFIX = "dev.desoworks.";
+const HOSTED_PUBLISHER = "publisher.desoworks";
 const SIGNED_TRUST = new Set(["reviewed", "official"]);
 
 const PERMISSIONS = {
@@ -81,6 +87,48 @@ function assertRelativeFile(file) {
   return value;
 }
 
+function assertPayloadPath(file) {
+  const value = String(file || "").replace(/\\/g, "/");
+  if (!value.startsWith("web/") || value.length > 240 || value.includes("\0") || value.includes("\\")) {
+    fail("bad-file", "Ein Nutzlastdateipfad ist ungültig.", { file });
+  }
+  if (value.split("/").includes("..") || value.split("/").includes(".")) {
+    fail("bad-file", "Ein Nutzlastdateipfad verlässt das Paket.", { file });
+  }
+  const extension = value.slice(value.lastIndexOf(".")).toLowerCase();
+  if (!PAYLOAD_EXTENSIONS.has(extension)) {
+    fail("bad-file", "Dieser Dateityp darf in der Lernumgebung nicht liegen.", { file });
+  }
+  return value;
+}
+
+function validateRuntime(raw) {
+  if (raw.runtime == null) return;
+  const runtime = raw.runtime;
+  if (!runtime || typeof runtime !== "object" || Array.isArray(runtime)) {
+    fail("invalid-manifest", "Die Modul-Laufzeit ist ungültig.");
+  }
+  if (runtime.kind !== "hosted-web") {
+    fail("invalid-manifest", "Diese Modul-Laufzeit kennt der Core nicht.", { kind: runtime.kind });
+  }
+  if (raw.publisher.id !== HOSTED_PUBLISHER || !raw.id.startsWith("desoworks.")) {
+    fail("runtime-denied", "Eine lokale Web-Lernumgebung ist nur für DesoWorks-Module zugelassen.");
+  }
+  if (raw.trust !== "private") {
+    fail("runtime-denied", "Eine unsignierte Web-Lernumgebung bleibt privat und wird nicht als offiziell behandelt.");
+  }
+  const entry = String(runtime.entry || "");
+  if (!entry || entry.length > 180 || entry.startsWith("/") || entry.includes("\\") || entry.split("/").includes("..")) {
+    fail("invalid-manifest", "Der Einstieg der Lernumgebung ist ungültig.");
+  }
+  if (!entry.endsWith(".html")) fail("invalid-manifest", "Die Lernumgebung startet nur über eine HTML-Seite.");
+  const index = String(runtime.index || "");
+  if (!raw.files.includes(index) || !index.endsWith(".json")) {
+    fail("invalid-manifest", "Der Nutzlastindex fehlt in der Dateiliste.");
+  }
+  assertPayloadPath("web/" + entry);
+}
+
 function validateManifest(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
     fail("invalid-manifest", "Das Modulmanifest ist keine JSON-Datei.");
@@ -131,6 +179,7 @@ function validateManifest(raw) {
   }
   for (const file of raw.files) assertRelativeFile(file);
   if (new Set(raw.files).size !== raw.files.length) fail("invalid-manifest", "Die Dateiliste enthält Doppelungen.");
+  validateRuntime(raw);
   for (const permission of raw.permissions) {
     if (FORBIDDEN_PERMISSIONS.includes(permission)) {
       fail("permission-denied", "Dieses Recht ist für Module gesperrt.", { permission });
@@ -182,6 +231,9 @@ function forkManifest(manifest, override) {
 
 module.exports = {
   LIMITS,
+  PAYLOAD_LIMITS,
+  PAYLOAD_EXTENSIONS,
+  HOSTED_PUBLISHER,
   RESERVED_PREFIX,
   FORMAT,
   FORMAT_VERSION,
@@ -191,6 +243,7 @@ module.exports = {
   ALLOWED_EXTENSIONS,
   satisfies,
   assertRelativeFile,
+  assertPayloadPath,
   validateManifest,
   forkManifest
 };

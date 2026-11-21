@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Werkzeug: Windows-Tastenkombinationen und Systemwerkzeuge lernen, üben und testen. Es wird nichts ausgeführt.">
+  <title>Werkzeug: Windows-Werkzeugkiste</title>
+  <link rel="icon" href="../assets/desoworks/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/desoworks/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../assets/desoworks/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/windows-werkzeugkiste.css">
+</head>
+<body data-page="windows-werkzeugkiste" data-base="../">
+  <a class="skip-link" href="#hauptinhalt">Direkt zum Inhalt springen</a>
+  <header class="kopf">
+    <a class="kopf-logo" href="../index.html" aria-label="DesoWorks – zur Themenübersicht"><img src="../assets/desoworks/logo-orbital-werkstatt.svg" alt=""></a>
+    <div class="kopf-inhalt">
+    <p class="kopf-marke">IT-Ausbildung · Werkzeuge</p>
+    <h1>Windows-Werkzeugkiste</h1>
+    <p class="kopf-dauer">Bedienung, CMD und PowerShell · Diagnose verstehen · kein Zeitdruck</p>
+  </div></header>
+  <main id="hauptinhalt" tabindex="-1">
+    <p><a class="zurueck-link" href="../index.html">Zur Themenübersicht</a></p>
+    <section class="abschnitt" aria-labelledby="ww-titel">
+      <h2 id="ww-titel">Windows bedienen und systematisch untersuchen</h2>
+      <p class="gross">Hier lernst du <strong>Tastenkombinationen</strong> und <strong>Ausführen-Befehle</strong> von Windows kennen. Sie sind zwei verschiedene Dinge: Eine Tastenkombination drückst du auf der Tastatur. Einen Ausführen-Befehl tippst du in den Dialog <em>Ausführen</em> (geöffnet mit Win+R).</p>
+      <div class="hinweis-box"><p class="hinweis-titel">Sicher üben</p><p>Diese Seite führt nichts aus und ändert keine Windows-Einstellung. Alles hier ist nur Lerntext. Du kannst alles beliebig oft wiederholen. Es wird nichts gespeichert.</p></div>
+      <p>Das Diagnose- und Administrationslabor ergänzt die Bediengrundlagen um 18 CMD-/Kommandozeilenprofile und 14 PowerShell-Cmdlets. Du lernst Ausgaben zu lesen, Fehler einzugrenzen und Eingriffe von reiner Diagnose zu unterscheiden.</p>
+      <noscript><p class="hinweis-box">Für Lernkarten, Labor, Übung und Wissenstest braucht diese Seite JavaScript. Bitte schalte JavaScript im Browser ein.</p></noscript>
+      <p id="ww-fehler" class="ww-fehlertext" role="alert" hidden></p>
+    </section>
+    <div id="ww-modus-bereich">
+      <section class="abschnitt" aria-labelledby="ww-modus-titel">
+        <h2 id="ww-modus-titel">Was möchtest du tun?</h2>
+        <p class="klein">Übung und Wissenstest beginnen beim Öffnen von vorn. Im Labor bleiben Filter und Auswahl beim Moduswechsel erhalten.</p>
+        <div class="knopf-reihe" role="group" aria-label="Modus wählen">
+          <button type="button" class="knopf" id="ww-modus-karten" aria-pressed="true" aria-controls="ww-bereich-karten">Lernkarten</button>
+          <button type="button" class="knopf" id="ww-modus-labor" aria-pressed="false" aria-controls="ww-bereich-labor">Diagnose- und Administrationslabor</button>
+          <button type="button" class="knopf" id="ww-modus-uebung" aria-pressed="false" aria-controls="ww-bereich-uebung">Übung</button>
+          <button type="button" class="knopf" id="ww-modus-test" aria-pressed="false" aria-controls="ww-bereich-test">Wissenstest</button>
+        </div>
+        <p id="ww-status" class="klein" role="status" aria-live="polite"></p>
+      </section>
+      <section class="abschnitt" id="ww-bereich-karten" aria-labelledby="ww-karten-titel">
+        <h2 id="ww-karten-titel">Lernkarten</h2>
+        <section aria-labelledby="ww-shortcut-titel">
+          <h3 id="ww-shortcut-titel">Tastenkombinationen</h3>
+          <p class="klein">Du drückst diese Tasten gleichzeitig auf der Tastatur.</p>
+          <div id="ww-liste-shortcut" class="ww-karten"></div>
+        </section>
+        <section aria-labelledby="ww-befehl-titel">
+          <h3 id="ww-befehl-titel">Ausführen-Befehle</h3>
+          <p class="klein">Du öffnest mit Win+R den Dialog Ausführen und tippst den Befehl dort ein.</p>
+          <div id="ww-liste-befehl" class="ww-karten"></div>
+        </section>
+        <section aria-labelledby="ww-allgemein-titel">
+          <h3 id="ww-allgemein-titel">Gut zu wissen</h3>
+          <div id="ww-allgemein"></div>
+        </section>
+      </section>
+      <section class="abschnitt" id="ww-bereich-labor" aria-labelledby="ww-labor-titel" hidden>
+        <h2 id="ww-labor-titel">CMD und PowerShell verstehen</h2>
+        <p id="ww-labor-version"></p>
+        <div class="hinweis-box"><strong>Simulation – keine echte Konsole.</strong> Alle Ausgaben sind erfundene, gekürzte Lernbeispiele. Kein Befehl wird ausgeführt. Rechte und Auswirkungen unterscheiden sich je Aufruf; Reparaturen und Prozessbeenden brauchen einen ausdrücklichen Auftrag.</div>
+        <div class="ww-filter">
+          <label for="ww-labor-suche">Befehl oder Thema suchen<input id="ww-labor-suche" type="search" placeholder="Zum Beispiel DNS, Prozesse oder Get-Disk"></label>
+          <label for="ww-labor-shell">Befehlsumgebung<select id="ww-labor-shell"><option value="">Alle Umgebungen</option><option value="cmd">CMD</option><option value="powershell">PowerShell</option></select></label>
+          <label for="ww-labor-kategorie">Lernbereich<select id="ww-labor-kategorie"><option value="">Alle Lernbereiche</option></select></label>
+          <button type="button" class="knopf" id="ww-labor-reset">Filter zurücksetzen</button>
+        </div>
+        <p id="ww-labor-status" role="status" aria-live="polite"></p>
+        <label for="ww-labor-auswahl">Befehl auswählen<select id="ww-labor-auswahl" aria-controls="ww-labor-detail"></select></label>
+        <div id="ww-labor-detail"></div>
+      </section>
+      <section class="abschnitt" id="ww-bereich-uebung" aria-labelledby="ww-uebung-titel" hidden>
+        <h2 id="ww-uebung-titel">Übung: Alltagssituationen</h2>
+        <p class="klein">Wähle eine Antwort und prüfe sie. Bei einer falschen Antwort kannst du es noch einmal versuchen.</p>
+        <div id="ww-uebung-inhalt"></div>
+      </section>
+      <section class="abschnitt" id="ww-bereich-test" aria-labelledby="ww-test-titel" hidden>
+        <h2 id="ww-test-titel">Wissenstest</h2>
+        <p class="klein">Zu jeder Frage bekommst du sofort eine Rückmeldung. Deine erste Antwort pro Frage zählt. Du kannst den Test danach beliebig oft neu starten.</p>
+        <div id="ww-test-inhalt"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="fuss"><p>Werkzeug · Windows-Werkzeugkiste · Version <span data-version></span> · Läuft lokal in deinem Browser.</p></footer>
+  <script src="../js/module-daten.js"></script><script src="../js/fortschritt.js"></script><script src="../js/navigation.js"></script><script src="../js/glossar-daten.js"></script><script src="../js/anzeige-glossar.js"></script><script src="../js/version.js"></script><script src="../js/windows-werkzeugkiste-daten.js"></script><script src="../js/windows-labor-daten.js"></script><script src="../js/windows-labor.js"></script><script src="../js/windows-werkzeugkiste.js"></script>
+</body>
+</html>
