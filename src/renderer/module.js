@@ -72,11 +72,13 @@
       inhalt.replaceChildren();
       if (!response || !response.ok) {
         document.body.classList.remove("modul-offen");
+        view.hidden = true;
         say((response && response.message) || "Das Modul lässt sich nicht öffnen.", true);
         return;
       }
       if (response.kind !== "module") {
         document.body.classList.remove("modul-offen");
+        view.hidden = true;
         say("Dieser Lernbereich lässt sich nicht öffnen.", true);
         return;
       }

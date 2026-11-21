@@ -1,0 +1,37 @@
+# OPERATION ACADEMY – Architekturbewertung Phase L
+
+**Prüfstand:** `feature/phase-l-module-experience`, `ab80dfb` gegen `aad0187` (Phase K) · **Review:** Terminus, 21.11.2026
+
+**Urteil:** Phase L behebt die Ursache des zu kleinen Modul-Arbeitsbereichs in der Shell; Markentokens und Modultrennung sind tragfähig, aber die IT-spezifischen Host-Regeln sind noch kein allgemeiner Modulvertrag.
+
+## 1. Modul-Laufzeit: Ursache behoben, nicht kaschiert
+
+- **Electron-Fenster:** Die Fensterkonfiguration und die Zuständigkeit für F11 blieben unverändert (`src/window.js`). Weder das Fenster noch die URL-Auflösung des Modulmanagers verursachten die alte 1080-px-Begrenzung oder die Rahmenhöhe von `70vh`: Beide Grenzen saßen im Shell-Layout.
+- **Shell und iframe:** `module.js` setzt den Vollflächenmodus nur für `hosted-web`. Die Flex-Kette in `shell.css` reserviert Platz für den Academy-Kopf und den Modulwechsel und gibt den Rest an den iframe. Sie hebt die Breitenkappe nur in diesem Modus auf; die übrigen Shell-Seiten behalten ihre Lesebreite. `overflow: hidden` ist dabei nicht der eigentliche Fix: Erst das Entfernen der festen Grenzen und die flexible Platzvergabe machen den iframe zum vorgesehenen Scrollbereich für den Lerninhalt. Die globale Navigation bleibt außen, die fachliche innen.
+- **Protokoll und Modul-CSS:** `academy://` ergänzt beim Ausliefern von Modul-HTML zwei Stylesheet-Links. `host.css` blendet den zweiten Markenkopf der IT-Ausbildung aus (im Druck wird das Logo wieder angezeigt) und nimmt `nav.site-nav` den eigenen Scrollbereich. Das ist gezielte Altmodul-Kompatibilität, nicht die Lösung der äußeren Platzvergabe. Fachlich nötige Scrollflächen, feste Breiten einzelner Simulationen und die Gestaltung der Lernseiten bleiben Sache des Moduls. Der Phase-L-Diff ändert keine Paketdatei unter `modules/`; die 102 Lernseiten wurden nicht umgeschrieben.
+
+## 2. Designsystem: gemeinsame Basis, keine gemeinsame Komponentenbibliothek
+
+`design-tokens.css` ist die gemeinsame Quelle im Academy-Repository. `shell.css` importiert sie; Modul-HTML erhält dieselbe Datei über das Protokoll. Die dokumentierte Quelle ist die lokale Website-Produktion (`shared/theme.css`, Dark/Knight, und `deck.css`), nachdem die Webreferenz HTTP 401 geliefert hatte. `#FF5369`, die Schriftstapel und das vorhandene Signet folgen der Marke; `--dw-ok` ist als Academy-Funktionsfarbe gekennzeichnet.
+
+Ein Modul ohne globales CSS erhält Grundfläche, Text und Schrift. Das bewahrt die hellen Bestandsseiten, liefert aber **keine** automatischen Academy-Karten, Buttons oder Dialogstile im iframe: Diese liegen überwiegend in der Shell, und einige ihrer Abstände und Schriftgrößen sind weiterhin lokale Werte. Die zentrale Palette ist damit klarer umgesetzt als die zentralen Komponentenregeln. Auch der native Start-Hintergrund in `src/window.js` steht noch auf `#10141c`; die Capture-Probe nutzt dagegen `#070708`. Die Probe belegt folglich nicht, dass auch die Fensterfläche vor dem Laden zur neuen Palette passt.
+
+## 3. Modul-API und Wartbarkeit
+
+- **Stabile Grenze:** Der Manifestvertrag (`runtime.kind = hosted-web`, relativer HTML-Einstieg, Nutzlastindex) und die Modul-IPC wurden nicht erweitert. Der Manager liefert `kind` und `entry` an die Shell und stellt Paketdateien nur für aktive Module mit passendem Nutzlast-Hash bereit. `hosted-web` bleibt auf private DesoWorks-Pakete aus zugelassenen mitgelieferten Modulordnern beschränkt; datenbasierte Module bleiben im Shell-Renderer. Die Stylesheets sind feste, vom Core ausgelieferte Ressourcen unter `/__academy/`, keine zusätzliche Desktop-API für die Module. Die Modul-Ursprünge bleiben von `academy://app` getrennt.
+- **Erweiterbarkeit:** Die `--dw-*`-Namen und die schwach spezifischen Grundregeln sind als gemeinsamer visueller Vertrag geeignet. Die pauschale Aussage, Modul-CSS gewinne immer, stimmt aber nicht: Die Host-Links kommen am Ende des `<head>`; bei gleicher Spezifität kann die später geladene Host-Regel gewinnen. Zudem treffen `nav.site-nav` und `header.kopf` alle entsprechend benannten Modulelemente, nicht nur die IT-Ausbildung. Diese Selektoren sollten interne Bestandsschutzregeln bleiben, keine Vorgabe für neue Module. Die textbasierte HTML-Injektion ist einfach für reguläre UTF-8-Dokumente mit `</head>`; für ungewöhnliche HTML-Strukturen ist ihr Verhalten kein belastbarer Vertrag.
+- **Wartbarkeit der Shell:** Der Modulmodus blendet Listen und Seitenelemente über ihre DOM-Position relativ zu `#ansicht` aus. Das ist klein, koppelt das Layout aber an die aktuelle Seitenstruktur. Ein konkreter Folgepunkt ist der Wechsel in ein gestörtes Modul: `fillSwitcher` filtert deaktivierte, aber keine `faulted`-Einträge; der Manager weist diese beim Öffnen zurück. `module.js` leert beim Eintreffen der Antwort die laufende Ansicht noch vor der Fehlerbehandlung. Der Fehlerpfad und das Verhalten bei rasch aufeinanderfolgenden Wechseln gehören in die Regressionstests.
+- **Doku-Abweichung:** `MODULE-EXPERIENCE.md` verkürzt die Modul-CSP auf `style-src 'self'`. Tatsächlich enthält `MODULE_CSP` weiterhin `style-src 'self' 'unsafe-inline'` (`src/protocol-path.js`, gegenüber Phase K unverändert). Phase L benötigt für seine beiden Links keine Lockerung. Der neue Test prüft aber nur den Text von `host.css`, nicht die ausgelieferten Header.
+
+## 4. Empfehlung für Phase M
+
+**Den bestehenden Einbettungsvertrag absichern, statt ihn auszubauen.** In der Vorlage klar trennen, was neue Module erwarten dürfen (Tokens, Grundstile, eigener Ursprung und ein Scrollbereich für das Lerndokument) und was nur dem IT-Bestandsmodul dient (Selektoren für Logo und Navigation). Die Altregeln auf diesen Bestand begrenzen und die CSP-Doku am ausgelieferten Header ausrichten. Ein minimales Testmodul ohne globales CSS genügt neben dem IT-Bestand als Gegenprobe; es braucht weder ein neues Produktmodul noch eine neue API.
+
+**Abnahme:** Im produktiven Electron-Fenster bei Mindestgröße (`960×640`), bei `1280×720` und nach dem echten F11-Wechsel samt Rückkehr prüfen: Der Bereich unter dem Kopf ist vollständig nutzbar, nur das Lerndokument scrollt auf Dokumentebene, Tabulator und Fokus erreichen den Lerninhalt, und ein fehlgeschlagener Modulwechsel lässt eine verständliche Meldung sowie einen nutzbaren Rückweg zurück. Die Gegenprobe soll zeigen, dass Grundstile ohne Modul-CSS greifen, fachliche Modulregeln wirksam bleiben und der unveränderte IT-Bestand einschließlich Druckansicht funktioniert. Überläufe in einzelnen Übungen nur dort korrigieren, wo sie nachgewiesen sind; keine Sammeländerung an Lernseiten.
+
+## Beleglage
+
+- Eigene Prüfung: Commit-Diff und betroffene Quellen gelesen; `node --test tests/phase-l-host.test.js` → **3 bestanden, 0 fehlgeschlagen**. Das sind Struktur- und Textprüfungen, kein Laufzeitnachweis für Fokus, Navigation oder Scrollverhalten im Modul.
+- Die eingecheckte `fenster-l-probe.json` mit den zugehörigen Captures belegt den Layoutstand in einem Electron-Testfenster. `scripts/phase-l-capture.js` nutzt ein eigenes `BrowserWindow` und ruft `setFullScreen(true)` direkt auf; der Nachweis ersetzt keinen F11-Test über den produktiven Fenstercode. Die Probe liest zudem nur den äußeren Frame und die Shell aus, nicht die Scrollmaße des Moduldokuments. Kein neuer Desktop-Smoke und kein Release-Test in diesem Review.
+
+**Architekturgrenze, die bleiben soll:** Die Academy-Shell besitzt Fenster, globale Navigation und Platzvergabe; das Modul besitzt in seinem eigenen Ursprung die fachliche Navigation, den Lerninhalt und dessen Scrollen.
