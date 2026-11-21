@@ -57,7 +57,7 @@ Der Katalogdialog wurde in diesem Lauf nicht durchgeklickt. Die Installation sel
 - `main` auf GitHub ist der Core-Stand `2e704e3`. Die Moduländerung liegt auf dem Feature-Branch, nicht als Release und nicht als Merge.
 - Alte Desktop-Lernstände werden nicht automatisch importiert.
 - Die Textvorschau des Cores kürzt Aufgabenblöcke auf 40. Die Lernumgebung selbst enthält 102 HTML-Seiten und 248 Dateien.
-- Hosted-Web ist unsigniert und privat. Es bekommt kein Node und keine Core-Schnittstelle. Ein fremder Herausgeber kann diese Laufzeit nicht verlangen.
+- Hosted-Web ist unsigniert und privat. Es bekommt kein Node und keine Core-Schnittstelle. Ein fremder Herausgeber kann diese Laufzeit nicht verlangen. Nach der Prüfung von RoboCop installiert der Core eine Web-Lernumgebung nur noch aus dem mitgelieferten Modulordner. Der Test `hosted web from outside the bundled modules directory is refused` deckt das ab. RoboCop hat diese Nachbesserung nicht erneut geprüft.
 - Unabhängige Berichte von GLaDOS, RoboCop und Terminus folgen als eigene Dateien, sobald sie den implementierten Stand geprüft haben.
 
 ## Phase K

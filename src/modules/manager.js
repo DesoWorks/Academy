@@ -203,6 +203,7 @@ function createModuleManager(options) {
   const trustedKeys = options.trustedKeys || { official: [], reviewed: [] };
   const registry = openRegistry({ dataDir, now: options.now });
   const packageRoot = path.join(dataDir, "module-packages");
+  const hostedWebRoots = options.hostedWebRoots || [];
   fs.mkdirSync(packageRoot, { recursive: true });
 
   function notice(moduleId, level, message) {
@@ -368,6 +369,17 @@ function createModuleManager(options) {
     installFromDirectory(sourceDir) {
       requireRegistry();
       const pack = readPackage(sourceDir);
+      if (pack.manifest.runtime && pack.manifest.runtime.kind === "hosted-web") {
+        const inside = hostedWebRoots.some((root) => {
+          if (!fs.existsSync(root)) return false;
+          const realRoot = fs.realpathSync(root);
+          const relative = path.relative(realRoot, pack.root);
+          return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
+        });
+        if (!inside) {
+          fail("runtime-denied", "Eine Web-Lernumgebung wird nur aus dem mitgelieferten Modulordner installiert. Ein fremdes Paket wurde nicht übernommen.");
+        }
+      }
       if (!satisfies(coreVersion, pack.manifest.core)) {
         fail("incompatible-core", "Das Modul passt nicht zu dieser Core-Version. Es wurde nicht installiert.", { core: coreVersion, required: pack.manifest.core });
       }

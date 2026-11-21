@@ -40,7 +40,13 @@ if (!gotLock) {
     const storeRef = { current: openDatabase({ dataDir }) };
     let modules = null;
     try {
-      modules = createModuleManager({ dataDir, coreVersion: CORE_VERSION });
+      modules = createModuleManager({
+        dataDir,
+        coreVersion: CORE_VERSION,
+        hostedWebRoots: [app.isPackaged
+          ? path.join(process.resourcesPath, "academy-modules")
+          : path.join(__dirname, "..", "modules")]
+      });
     } catch (error) {
       modules = { available: false, list() { return { platform: null, installed: [], available: false, message: error.message }; }, close() {} };
     }

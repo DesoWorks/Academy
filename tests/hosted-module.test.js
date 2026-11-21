@@ -69,7 +69,7 @@ test("hosted web installs only for the DesoWorks publisher and opens without rep
   const data = tempDir();
   const source = path.join(tempDir(), "pkg");
   writeHosted(source);
-  const modules = createModuleManager({ dataDir: data, coreVersion: CORE_VERSION });
+  const modules = createModuleManager({ dataDir: data, coreVersion: CORE_VERSION, hostedWebRoots: [path.dirname(source)] });
   const installed = modules.installFromDirectory(source);
   assert.equal(installed.id, "desoworks.probe");
   assert.equal(installed.runtime, "hosted-web");
@@ -86,7 +86,7 @@ test("hosted web installs only for the DesoWorks publisher and opens without rep
 test("a foreign publisher cannot ship a hosted web runtime", () => {
   const source = path.join(tempDir(), "fremd");
   writeHosted(source, { publisher: { id: "example.publisher", name: "Fremd" }, id: "example.publisher.fremd" });
-  const modules = createModuleManager({ dataDir: tempDir(), coreVersion: CORE_VERSION });
+  const modules = createModuleManager({ dataDir: tempDir(), coreVersion: CORE_VERSION, hostedWebRoots: [path.dirname(source)] });
   assert.throws(() => modules.installFromDirectory(source), /Web-Lernumgebung|Herausgeber|Laufzeit/);
   modules.close();
 });
@@ -94,8 +94,17 @@ test("a foreign publisher cannot ship a hosted web runtime", () => {
 test("a bad payload hash is refused before install", () => {
   const source = path.join(tempDir(), "kaputt");
   writeHosted(source, { badHash: "a".repeat(64) });
-  const modules = createModuleManager({ dataDir: tempDir(), coreVersion: CORE_VERSION });
+  const modules = createModuleManager({ dataDir: tempDir(), coreVersion: CORE_VERSION, hostedWebRoots: [path.dirname(source)] });
   assert.throws(() => modules.installFromDirectory(source), /stimmt nicht|Integrität/);
+  assert.equal(modules.list().installed.length, 0);
+  modules.close();
+});
+
+test("hosted web from outside the bundled modules directory is refused", () => {
+  const source = path.join(tempDir(), "fremd");
+  writeHosted(source);
+  const modules = createModuleManager({ dataDir: tempDir(), coreVersion: CORE_VERSION, hostedWebRoots: [tempDir()] });
+  assert.throws(() => modules.installFromDirectory(source), /mitgelieferten Modulordner/);
   assert.equal(modules.list().installed.length, 0);
   modules.close();
 });
