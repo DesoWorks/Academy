@@ -47,11 +47,12 @@ function hashFile(file) {
 }
 
 function readPackage(sourceDir) {
-  const root = path.resolve(sourceDir);
+  const root = fs.realpathSync(path.resolve(sourceDir));
   const manifestPath = path.join(root, "academy-module.json");
-  if (!fs.existsSync(manifestPath) || !fs.statSync(manifestPath).isFile()) {
+  if (!fs.existsSync(manifestPath) || !fs.lstatSync(manifestPath).isFile()) {
     fail("invalid-package", "Das Paket enthält kein academy-module.json.");
   }
+  if (fs.statSync(manifestPath).size > 65536) fail("too-large", "Das Manifest ist zu groß.");
   let manifest;
   try {
     manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
@@ -73,11 +74,17 @@ function readPackage(sourceDir) {
       fail("invalid-package", "Eine deklarierte Datei fehlt.", { file: relative });
     }
     if (stat.isSymbolicLink() || !stat.isFile()) fail("bad-file", "Symlinks und Verzeichnisse werden nicht installiert.", { file: relative });
+    const realFile = fs.realpathSync(full);
+    const insideReal = path.relative(root, realFile);
+    if (insideReal.startsWith("..") || path.isAbsolute(insideReal)) {
+      fail("bad-file", "Eine Datei verlässt das Paket über einen Link.", { file: relative });
+    }
+    if (stat.size > 524288) fail("too-large", "Eine Moduldatei ist zu groß.", { file: relative });
     size += stat.size;
     files[relative] = { full, sha256: hashFile(full), size: stat.size };
   }
-  if (manifest.sizeBytes > 0 && manifest.sizeBytes !== size) {
-    fail("integrity", "Die angegebene Installationsgröße stimmt nicht. Das Paket wurde nicht installiert.", { declared: manifest.sizeBytes, measured: size });
+  if (size > 2097152 || manifest.sizeBytes !== size) {
+    fail("integrity", "Die Installationsgröße stimmt nicht oder das Paket ist zu groß. Es wurde nicht installiert.", { declared: manifest.sizeBytes, measured: size });
   }
   return { root, manifest, files, size };
 }
@@ -278,6 +285,21 @@ function createModuleManager(options) {
       if (!registry.available) return [];
       return registry.db.prepare("SELECT id, module_id, level, message, created_at FROM module_notice ORDER BY id DESC LIMIT 20").all();
     },
+    preview(sourceDir) {
+      requireRegistry();
+      const pack = readPackage(sourceDir);
+      const existing = row(pack.manifest.id);
+      return {
+        sourceDir: pack.root,
+        id: pack.manifest.id,
+        name: pack.manifest.name,
+        version: pack.manifest.version,
+        publisher: pack.manifest.publisher.name,
+        trust: pack.manifest.trust,
+        permissions: pack.manifest.permissions.slice(),
+        replaces: existing && existing.state !== "uninstalled" ? existing.version : null
+      };
+    },
     installFromDirectory(sourceDir) {
       requireRegistry();
       const pack = readPackage(sourceDir);
@@ -287,20 +309,36 @@ function createModuleManager(options) {
       verifyTrust(pack.manifest, pack.files);
       dependencyState(pack.manifest);
       const existing = row(pack.manifest.id);
-      if (existing && existing.state !== "uninstalled" && compare(pack.manifest.version, existing.version) < 0) {
-        fail("downgrade-blocked", "Ein älteres Modulpaket ersetzt keine neuere Installation.");
+      if (existing && existing.state !== "uninstalled") {
+        const previous = JSON.parse(existing.manifest_json);
+        if (!previous.publisher || previous.publisher.id !== pack.manifest.publisher.id) {
+          fail("publisher-mismatch", "Ein anderes Modul mit dieser ID ist bereits installiert. Lernstände werden nicht übernommen.");
+        }
+        if (previous.trust !== pack.manifest.trust) {
+          fail("trust-mismatch", "Die Vertrauensstufe eines installierten Moduls wird nicht stillschweigend geändert.");
+        }
+        if (compare(pack.manifest.version, existing.version) < 0) {
+          fail("downgrade-blocked", "Ein älteres Modulpaket ersetzt keine neuere Installation.");
+        }
+      }
+      if (pack.manifest.id === BUNDLED_PLATFORM.id) {
+        fail("reserved-id", "Die gebündelte Plattform kann nicht als Paket installiert werden.");
       }
       const dest = path.join(packageRoot, pack.manifest.id, pack.manifest.version);
-      fs.mkdirSync(dest, { recursive: true });
+      const incoming = dest + ".incoming";
+      fs.rmSync(incoming, { recursive: true, force: true });
+      fs.mkdirSync(incoming, { recursive: true });
       const fileHashes = {};
       for (const [relative, file] of Object.entries(pack.files)) {
-        const target = path.resolve(dest, relative);
-        const inside = path.relative(dest, target);
-        if (inside.startsWith("..") || path.isAbsolute(inside)) fail("bad-file", "Zielpfad verlässt das Modulverzeichnis.");
+        const target = path.resolve(incoming, relative);
+        const inside = path.relative(path.resolve(incoming), target);
+        if (!inside || inside.startsWith("..") || path.isAbsolute(inside)) fail("bad-file", "Zielpfad verlässt das Modulverzeichnis.");
         fs.mkdirSync(path.dirname(target), { recursive: true });
         fs.copyFileSync(file.full, target);
         fileHashes[relative] = file.sha256;
       }
+      if (fs.existsSync(dest)) fs.rmSync(dest, { recursive: true, force: true });
+      fs.renameSync(incoming, dest);
       const stored = Object.assign({}, pack.manifest, { fileHashes, sizeBytes: pack.size });
       const at = (options.now || (() => new Date()))().toISOString();
       registry.db.prepare(`
@@ -337,16 +375,15 @@ function createModuleManager(options) {
       if (!choice || choice.confirm !== true) fail("cancelled", "Ohne Bestätigung wird nichts deinstalliert und nichts gelöscht.");
       const current = row(id);
       if (!current || current.state === "uninstalled") fail("missing-module", "Das Modul ist nicht installiert.");
-      const target = path.resolve(current.install_path);
-      const relative = path.relative(path.resolve(packageRoot), target);
-      if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
-        fail("bad-path", "Der Modulpfad liegt außerhalb des Modulverzeichnisses. Es wurde nichts gelöscht.");
+      const expected = path.resolve(packageRoot, current.id, current.version);
+      if (path.resolve(current.install_path) !== expected) {
+        fail("bad-path", "Der gespeicherte Modulpfad ist nicht der Installationspfad. Es wurde nichts gelöscht.");
       }
-      if (fs.existsSync(target) && fs.lstatSync(target).isSymbolicLink()) {
+      if (fs.existsSync(expected) && fs.lstatSync(expected).isSymbolicLink()) {
         fail("bad-path", "Ein Symlink wird nicht entfernt. Es wurde nichts gelöscht.");
       }
+      if (fs.existsSync(expected)) fs.rmSync(expected, { recursive: true, force: true });
       registry.db.prepare("UPDATE module_install SET state = 'uninstalled', fault_reason = NULL WHERE id = ?").run(id);
-      fs.rmSync(target, { recursive: true, force: true });
       const kept = registry.db.prepare("SELECT COUNT(*) AS count FROM module_kv WHERE module_id = ?").get(id).count;
       notice(id, "info", "Moduldateien entfernt. Lernstände bleiben erhalten (" + kept + ").");
       return { id, state: "uninstalled", progressKept: kept };

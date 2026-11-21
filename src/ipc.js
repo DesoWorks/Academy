@@ -258,13 +258,27 @@ function registerIpc(options) {
     if (picked.canceled || !picked.filePaths || !picked.filePaths[0]) {
       return { ok: false, code: "cancelled", message: "Installation abgebrochen. Es wurde nichts kopiert." };
     }
+    let preview;
+    try {
+      preview = options.modules.preview(picked.filePaths[0]);
+    } catch (error) {
+      return fail(error);
+    }
     const answer = await dialog.showMessageBox({
       type: "warning",
       buttons: ["Installieren", "Abbrechen"],
       defaultId: 1,
       cancelId: 1,
-      message: "Modul aus diesem Ordner installieren?",
-      detail: picked.filePaths[0] + ". Unsignierte Pakete bleiben ungeprüft und erhalten keine erweiterten Rechte."
+      message: preview.replaces ? "Installiertes Modul ersetzen?" : "Modul installieren?",
+      detail: [
+        preview.name + " " + preview.version,
+        "ID: " + preview.id,
+        "Herausgeber: " + preview.publisher,
+        "Vertrauen: " + preview.trust,
+        "Rechte: " + preview.permissions.join(", "),
+        preview.replaces ? "Ersetzt Version " + preview.replaces + ". Lernstände bleiben an dieser ID." : "Neue Installation.",
+        "Unsignierte Pakete bleiben ungeprüft."
+      ].join("\n")
     });
     if (!answer || answer.response !== 0) {
       return { ok: false, code: "cancelled", message: "Installation nicht bestätigt. Es wurde nichts kopiert." };

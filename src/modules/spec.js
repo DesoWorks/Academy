@@ -9,6 +9,8 @@ const ID_PATTERN = /^[a-z0-9]+(?:[.-][a-z0-9]+){1,12}$/;
 const TRUST = ["private", "community", "reviewed", "official"];
 const TRUST_RANK = { private: 1, community: 2, reviewed: 3, official: 4 };
 const ALLOWED_EXTENSIONS = new Set([".json", ".md", ".png", ".svg", ".txt"]);
+const LIMITS = { maxFiles: 32, maxFileBytes: 524288, maxPackageBytes: 2097152, maxManifestBytes: 65536 };
+const RESERVED_PREFIX = "dev.desoworks.";
 const SIGNED_TRUST = new Set(["reviewed", "official"]);
 
 const PERMISSIONS = {
@@ -111,6 +113,13 @@ function validateManifest(raw) {
   if (!Array.isArray(raw.dependencies) || !Array.isArray(raw.permissions) || !Array.isArray(raw.files)) {
     fail("invalid-manifest", "Abhängigkeiten, Rechte oder Dateiliste sind keine Listen.");
   }
+  if (raw.files.length > LIMITS.maxFiles) fail("too-large", "Das Paket enthält zu viele Dateien.");
+  if (raw.id === "dev.desoworks.it-ausbildung" || (raw.id.startsWith(RESERVED_PREFIX) && raw.trust !== "official")) {
+    fail("reserved-id", "Diese Modul-ID ist der gebündelten Plattform oder signierten DesoWorks-Modulen vorbehalten.");
+  }
+  if (raw.publisher.id === "dev.desoworks" && raw.trust !== "official") {
+    fail("reserved-id", "Die Herausgeber-ID dev.desoworks gilt nur für signierte offizielle Module.");
+  }
   if (!Number.isInteger(raw.sizeBytes) || raw.sizeBytes < 0) {
     fail("invalid-manifest", "Die Installationsgröße ist ungültig.");
   }
@@ -172,6 +181,8 @@ function forkManifest(manifest, override) {
 }
 
 module.exports = {
+  LIMITS,
+  RESERVED_PREFIX,
   FORMAT,
   FORMAT_VERSION,
   TRUST,

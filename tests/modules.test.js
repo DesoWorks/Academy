@@ -51,6 +51,10 @@ function course(answer) {
 function writePackage(dir, manifest, body) {
   fs.mkdirSync(path.join(dir, "content"), { recursive: true });
   fs.writeFileSync(path.join(dir, "content", "course.json"), JSON.stringify(body || course()));
+  manifest.sizeBytes = (manifest.files || ["content/course.json"]).reduce((sum, file) => {
+    const full = path.join(dir, file);
+    return sum + (fs.existsSync(full) ? fs.statSync(full).size : 0);
+  }, 0);
   fs.writeFileSync(path.join(dir, "academy-module.json"), JSON.stringify(manifest));
 }
 
@@ -85,7 +89,7 @@ test("Beispielmodul lässt sich installieren, prüfen und isoliert speichern", (
   core.set("it-ausbildung.fortschritt", "unberührt");
   const app = manager(dir);
   const installed = app.installFromDirectory(DEMO);
-  assert.equal(installed.id, "dev.desoworks.demo.wissen-weitergeben");
+  assert.equal(installed.id, "example.local.wissen-weitergeben");
   assert.equal(installed.state, "active");
   const opened = app.open(installed.id);
   assert.equal(JSON.stringify(opened.course).includes("academy-module.json"), false);
@@ -118,7 +122,7 @@ test("fehlerhaftes Modul deaktiviert nur sich selbst", () => {
   const other = path.join(dir, "other-src");
   writePackage(other, baseManifest("example.publisher.stabil"), course("stabil"));
   app.installFromDirectory(other);
-  const victim = app.list().installed.find((entry) => entry.id.startsWith("dev.desoworks"));
+  const victim = app.list().installed.find((entry) => entry.id === "example.local.wissen-weitergeben");
   const installedPath = path.join(dir, "module-packages", victim.id, victim.version, "content", "course.json");
   fs.rmSync(installedPath, { force: true });
   assert.throws(() => app.open(victim.id), (error) => error.code === "module-faulted");
@@ -209,7 +213,7 @@ test("Modulimport überschreibt kein fremdes Modul und eine neuere Moduldatenban
   const dir = tempDir();
   const app = manager(dir);
   app.installFromDirectory(DEMO);
-  const raw = app.exportModule("dev.desoworks.demo.wissen-weitergeben");
+  const raw = app.exportModule("example.local.wissen-weitergeben");
   const other = path.join(dir, "other");
   writePackage(other, baseManifest("example.publisher.ziel"), course("ziel"));
   app.installFromDirectory(other);
@@ -255,7 +259,7 @@ test("Fork behält Herkunft, Tutor und IDE geben nichts frei", () => {
   const dir = tempDir();
   const app = manager(dir);
   app.installFromDirectory(DEMO);
-  const opened = app.open("dev.desoworks.demo.wissen-weitergeben");
+  const opened = app.open("example.local.wissen-weitergeben");
   const source = JSON.parse(fs.readFileSync(path.join(DEMO, "academy-module.json"), "utf8"));
   const fork = forkManifest(source, {
     id: "example.publisher.fork",
@@ -283,7 +287,27 @@ test("Katalogfehler verhindert die lokale Modulnutzung nicht", () => {
   const dir = tempDir();
   const app = manager(dir);
   app.installFromDirectory(DEMO);
-  assert.equal(app.open("dev.desoworks.demo.wissen-weitergeben").kind, "module");
+  assert.equal(app.open("example.local.wissen-weitergeben").kind, "module");
+  app.close();
+});
+
+test("fremde Herausgeber und reservierte IDs werden abgewiesen", () => {
+  const dir = tempDir();
+  const app = manager(dir);
+  app.installFromDirectory(DEMO);
+  const takeover = baseManifest("example.local.wissen-weitergeben");
+  takeover.version = "1.1.0";
+  takeover.publisher = { id: "example.attacker", name: "Fremd" };
+  writePackage(path.join(dir, "takeover"), takeover, course("fremd"));
+  assert.throws(() => app.installFromDirectory(path.join(dir, "takeover")), (error) => error.code === "publisher-mismatch");
+  assert.equal(app.list().installed.find((entry) => entry.id === "example.local.wissen-weitergeben").publisher, "DesoWorks Beispiel");
+  const reserved = baseManifest("dev.desoworks.demo.fake");
+  reserved.publisher = { id: "example.publisher", name: "DesoWorks" };
+  writePackage(path.join(dir, "reserved"), reserved, course());
+  assert.throws(() => app.installFromDirectory(path.join(dir, "reserved")), (error) => error.code === "reserved-id");
+  const bundled = baseManifest("dev.desoworks.it-ausbildung");
+  writePackage(path.join(dir, "bundled"), bundled, course());
+  assert.throws(() => app.installFromDirectory(path.join(dir, "bundled")), (error) => error.code === "reserved-id");
   app.close();
 });
 
@@ -294,9 +318,9 @@ test("Deinstallation löscht nichts außerhalb des Modulverzeichnisses", () => {
   const db = new DatabaseSync(path.join(dir, "modules.sqlite"));
   const outside = path.join(dir, "nicht-anfassen");
   fs.writeFileSync(outside, "bleibt");
-  db.prepare("UPDATE module_install SET install_path = ? WHERE id = ?").run(outside, "dev.desoworks.demo.wissen-weitergeben");
+  db.prepare("UPDATE module_install SET install_path = ? WHERE id = ?").run(outside, "example.local.wissen-weitergeben");
   db.close();
-  assert.throws(() => app.uninstall("dev.desoworks.demo.wissen-weitergeben", { confirm: true }), (error) => error.code === "bad-path");
+  assert.throws(() => app.uninstall("example.local.wissen-weitergeben", { confirm: true }), (error) => error.code === "bad-path");
   assert.equal(fs.readFileSync(outside, "utf8"), "bleibt");
   app.close();
 });
@@ -305,7 +329,7 @@ test("Deinstallation ohne Bestätigung löscht nichts", () => {
   const dir = tempDir();
   const app = manager(dir);
   app.installFromDirectory(DEMO);
-  assert.throws(() => app.uninstall("dev.desoworks.demo.wissen-weitergeben", { confirm: false }), (error) => error.code === "cancelled");
+  assert.throws(() => app.uninstall("example.local.wissen-weitergeben", { confirm: false }), (error) => error.code === "cancelled");
   assert.equal(app.list().installed[0].state, "active");
   app.close();
 });

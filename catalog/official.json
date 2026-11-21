@@ -5,7 +5,7 @@
   "note": "Lokale Katalogdatei. Kein Onlineshop, keine Bewertungen, keine Käufe. Die Datei ist vom Modulmanager unabhängig.",
   "modules": [
     {
-      "id": "dev.desoworks.demo.wissen-weitergeben",
+      "id": "example.local.wissen-weitergeben",
       "name": "Wissen weitergeben",
       "publisher": "DesoWorks",
       "trust": "private",

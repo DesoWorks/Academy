@@ -11,7 +11,7 @@
   "core": ">=0.2.0 <0.3.0",
   "dependencies": [],
   "permissions": ["content.read", "progress.write"],
-  "sizeBytes": 0,
+  "sizeBytes": 1900,
   "subject": "Fachgebiet eintragen",
   "audience": "Selbststudium",
   "status": "private",
@@ -19,7 +19,6 @@
   "trust": "private",
   "entry": "content/course.json",
   "files": [
-    "academy-module.json",
     "content/course.json",
     "content/hinweis.md",
     "locales/de.json",
