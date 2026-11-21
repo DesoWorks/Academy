@@ -27,11 +27,26 @@ contextBridge.exposeInMainWorld("academyDesktop", {
   restore(name) {
     return ipcRenderer.invoke("academy:restore", name);
   },
+  policy(partial) {
+    return ipcRenderer.invoke("academy:policy", partial || null);
+  },
+  importBundle(choice) {
+    return ipcRenderer.invoke("academy:import", choice || {});
+  },
+  exportFile() {
+    return ipcRenderer.invoke("academy:export-file");
+  },
+  pickImport() {
+    return ipcRenderer.invoke("academy:pick-import");
+  },
   checkUpdate() {
     return ipcRenderer.invoke("academy:update-check");
   },
   downloadUpdate() {
     return ipcRenderer.invoke("academy:update-download");
+  },
+  abortUpdate() {
+    return ipcRenderer.invoke("academy:update-abort");
   },
   installUpdate() {
     return ipcRenderer.invoke("academy:update-install");

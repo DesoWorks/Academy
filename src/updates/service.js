@@ -5,7 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { MESSAGES } = require("./messages");
 const { assertAllowedUrl, readSha256Asset, selectRelease, fromGitHubReleases } = require("./feed");
-const { isSafeVersion } = require("./semver");
+const { compare, isSafeVersion } = require("./semver");
 
 function sha256File(file) {
   const hash = crypto.createHash("sha256");
@@ -22,7 +22,9 @@ function createUpdateService(options) {
   const fetchImpl = options.fetch || global.fetch;
   const feedUrl = options.feedUrl || "";
   const extraHosts = options.extraHosts || [];
+  const repository = options.repository;
   fs.mkdirSync(incoming, { recursive: true });
+  let abortController = null;
 
   let state = {
     phase: "idle",
@@ -68,6 +70,45 @@ function createUpdateService(options) {
     return file;
   }
 
+  function abortDownload() {
+    if (abortController) abortController.abort();
+    discardPartial();
+    state.phase = "aborted";
+    state.message = MESSAGES.aborted;
+    state.error = "aborted";
+    state.installerPath = null;
+    state.received = 0;
+    writeState();
+    return Object.assign({}, state);
+  }
+
+  async function writeResponse(response, partial) {
+    if (!response.body || typeof response.body.getReader !== "function") {
+      const bytes = Buffer.from(await response.arrayBuffer());
+      fs.writeFileSync(partial, bytes);
+      state.received = bytes.length;
+      state.total = bytes.length;
+      return;
+    }
+    const reader = response.body.getReader();
+    const chunks = [];
+    let received = 0;
+    const totalHeader = response.headers && typeof response.headers.get === "function"
+      ? Number(response.headers.get("content-length"))
+      : 0;
+    state.total = Number.isFinite(totalHeader) ? totalHeader : 0;
+    while (true) {
+      const next = await reader.read();
+      if (next.done) break;
+      const chunk = Buffer.from(next.value);
+      chunks.push(chunk);
+      received += chunk.length;
+      state.received = received;
+      if (typeof options.onProgress === "function") options.onProgress({ received, total: state.total });
+    }
+    fs.writeFileSync(partial, Buffer.concat(chunks));
+  }
+
   function discardPartial() {
     if (!fs.existsSync(incoming)) return [];
     const removed = [];
@@ -102,13 +143,26 @@ function createUpdateService(options) {
     } else if (
       previous &&
       previous.phase === "ready" &&
+      isSafeVersion(previous.available) &&
+      compare(previous.available, installed) > 0 &&
       previous.installerPath &&
       previous.expectedSha256 &&
       contained(previous.installerPath) &&
       fs.existsSync(previous.installerPath) &&
       sha256File(previous.installerPath) === previous.expectedSha256
     ) {
-      state = previous;
+      state = {
+        phase: "ready",
+        message: MESSAGES.ready,
+        installed,
+        available: previous.available,
+        notes: "",
+        installerPath: previous.installerPath,
+        expectedSha256: previous.expectedSha256,
+        error: null,
+        asset: null,
+        checksumAsset: null
+      };
     } else {
       state.installed = installed;
     }
@@ -134,6 +188,13 @@ function createUpdateService(options) {
       const response = await fetchImpl(feedUrl);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       payload = await response.json();
+      if (!payload || typeof payload !== "object") {
+        state.phase = "failed";
+        state.message = MESSAGES.metadataInvalid;
+        state.error = "metadata-invalid";
+        writeState();
+        return Object.assign({}, state);
+      }
     } catch (error) {
       state.phase = "failed";
       state.message = error.code === "host-rejected" ? MESSAGES.hostRejected : MESSAGES.checkFailed;
@@ -141,9 +202,26 @@ function createUpdateService(options) {
       writeState();
       return Object.assign({}, state);
     }
-    const releases = Array.isArray(payload) ? fromGitHubReleases(payload) : (payload.releases || []);
-    const selected = selectRelease(releases, { channel, installed });
+    const releases = Array.isArray(payload) ? fromGitHubReleases(payload) : payload.releases;
+    if (!Array.isArray(releases)) {
+      state.phase = "failed";
+      state.message = MESSAGES.metadataInvalid;
+      state.error = "metadata-invalid";
+      writeState();
+      return Object.assign({}, state);
+    }
+    let selected;
+    try {
+      selected = selectRelease(releases, { channel, installed, repository, extraHosts });
+    } catch (error) {
+      state.phase = "failed";
+      state.message = MESSAGES.metadataInvalid;
+      state.error = "metadata-invalid";
+      writeState();
+      return Object.assign({}, state);
+    }
     state.phase = selected.action === "available" ? "available" : selected.action;
+    state.error = selected.action === "rejected" ? "metadata-rejected" : null;
     state.message = selected.message;
     state.available = selected.available;
     state.notes = selected.notes || "";
@@ -186,11 +264,19 @@ function createUpdateService(options) {
     try {
       assertAllowedUrl(state.asset.url, extraHosts);
       assertAllowedUrl(state.checksumAsset.url, extraHosts);
-      const fileResponse = await fetchImpl(state.asset.url);
+      const { repositoryPinned } = require("./feed");
+      if (!repositoryPinned(state.asset.url, repository, extraHosts) || !repositoryPinned(state.checksumAsset.url, repository, extraHosts)) {
+        const rejected = new Error(MESSAGES.repoRejected);
+        rejected.code = "host-rejected";
+        throw rejected;
+      }
+      abortController = typeof AbortController === "function" ? new AbortController() : null;
+      const fileResponse = await fetchImpl(state.asset.url, abortController ? { signal: abortController.signal } : undefined);
+      if (fileResponse.url) assertAllowedUrl(fileResponse.url, extraHosts);
       if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
-      const bytes = Buffer.from(await fileResponse.arrayBuffer());
-      fs.writeFileSync(partial, bytes);
-      const checksumResponse = await fetchImpl(state.checksumAsset.url);
+      await writeResponse(fileResponse, partial);
+      const checksumResponse = await fetchImpl(state.checksumAsset.url, abortController ? { signal: abortController.signal } : undefined);
+      if (checksumResponse.url) assertAllowedUrl(checksumResponse.url, extraHosts);
       if (!checksumResponse.ok) throw new Error(`HTTP ${checksumResponse.status}`);
       const expected = readSha256Asset(await checksumResponse.text());
       if (!expected) {
@@ -220,7 +306,15 @@ function createUpdateService(options) {
       writeState();
       return Object.assign({}, state);
     } catch (error) {
-      if (fs.existsSync(partial)) fs.unlinkSync(partial);
+      if (partial && fs.existsSync(partial)) fs.unlinkSync(partial);
+      if (error && (error.name === "AbortError" || error.code === "ABORT_ERR")) {
+        state.phase = "aborted";
+        state.message = MESSAGES.aborted;
+        state.error = "aborted";
+        state.installerPath = null;
+        writeState();
+        return Object.assign({}, state);
+      }
       state.phase = "failed";
       state.message = error.code === "host-rejected" ? MESSAGES.hostRejected : MESSAGES.downloadFailed;
       state.error = error.code || "download-failed";
@@ -236,6 +330,18 @@ function createUpdateService(options) {
     }
     if (state.phase !== "ready" || !state.installerPath || !contained(state.installerPath) || !fs.existsSync(state.installerPath)) {
       return { ok: false, message: "Es liegt kein geprüftes Update im Updateordner bereit." };
+    }
+    let expectedFile;
+    try {
+      expectedFile = installerFile(state.available);
+    } catch (error) {
+      return { ok: false, message: error.message };
+    }
+    if (path.resolve(state.installerPath) !== path.resolve(expectedFile)) {
+      return { ok: false, message: "Der Installer entspricht nicht der geprüften Version. Es wurde nichts gestartet." };
+    }
+    if (!isSafeVersion(state.available) || compare(state.available, installed) <= 0) {
+      return { ok: false, message: "Es wird keine ältere oder gleiche Version installiert. Die Anwendung bleibt unverändert." };
     }
     if (!state.expectedSha256 || sha256File(state.installerPath) !== state.expectedSha256) {
       state.phase = "failed";
@@ -273,6 +379,7 @@ function createUpdateService(options) {
     reconcile,
     check,
     download,
+    abort: abortDownload,
     installPlan,
     status() {
       return Object.assign({}, state);

@@ -60,7 +60,8 @@
   function paint(status) {
     var versions = status && status.versions ? status.versions : {};
     var update = status && status.updates ? status.updates : {};
-    banner.textContent = "Desktop " + (versions.desktop || "?") + " · Kanal " + (versions.channel || "?") + " · " + (update.message || "Bereit");
+    var offline = typeof navigator !== "undefined" && navigator.onLine === false;
+    banner.textContent = "Desktop " + (versions.desktop || "?") + " · Kanal " + (versions.channel || "?") + " · " + (update.message || "Bereit") + (offline ? " · Offline, Lernseiten bleiben lokal." : "");
   }
 
   function mount() {
@@ -92,8 +93,13 @@
       }
       if (action === "backup") {
         api.backup().then(function (result) {
-          banner.textContent = result && result.ok ? "Sicherung angelegt." : "Sicherung fehlgeschlagen.";
+          banner.textContent = result && result.ok ? "Sicherung angelegt." : ((result && result.message) || "Sicherung fehlgeschlagen. Es wurde kein Erfolg gespeichert.");
+        }).catch(function () {
+          banner.textContent = "Sicherung fehlgeschlagen. Es wurde kein Erfolg gespeichert.";
         });
+      }
+      if (action === "verwaltung") {
+        window.location.href = "/__desktop/verwaltung.html";
       }
     });
   }

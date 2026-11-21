@@ -17,9 +17,11 @@ function readChannelFile(file) {
 }
 
 function resolveChannel(env = process.env, channelFile = path.join(__dirname, "..", "channel.json")) {
-  const requested = env.ACADEMY_CHANNEL;
-  if (requested === "stable" || requested === "dev") return requested;
-  return readChannelFile(channelFile);
+  const fileChannel = readChannelFile(channelFile);
+  const requested = env && env.ACADEMY_CHANNEL;
+  if (requested === "dev") return "dev";
+  if (requested === "stable" && fileChannel === "stable") return "stable";
+  return fileChannel;
 }
 
 function contentRootFrom(app) {
@@ -30,7 +32,7 @@ function contentRootFrom(app) {
 }
 
 function dataDirFrom(app, env = process.env) {
-  if (env.ACADEMY_DATA_DIR) return path.resolve(env.ACADEMY_DATA_DIR);
+  if (app && app.isPackaged !== true && env.ACADEMY_DATA_DIR) return path.resolve(env.ACADEMY_DATA_DIR);
   return path.join(app.getPath("appData"), DATA_DIR_NAME);
 }
 

@@ -7,6 +7,8 @@ const path = require("node:path");
 const { resolveChannel, contentRootFrom, dataDirFrom } = require("./config");
 const { openDatabase } = require("./store/database");
 const { createUpdateService } = require("./updates/service");
+const { verifyPublisher } = require("./updates/signature");
+const { PINNED_REPOSITORY } = require("./updates/feed");
 const { declareScheme, registerProtocol } = require("./protocol");
 const { registerIpc } = require("./ipc");
 const { createWindow } = require("./window");
@@ -32,21 +34,30 @@ if (!gotLock) {
   app.whenReady().then(() => {
     session.defaultSession.setPermissionRequestHandler((_webContents, _permission, callback) => callback(false));
     session.defaultSession.setPermissionCheckHandler(() => false);
-    const channel = app.isPackaged ? resolveChannel({}, undefined) : resolveChannel();
+    const channel = resolveChannel(app.isPackaged ? {} : process.env);
     const storeRef = { current: openDatabase({ dataDir }) };
     const updates = createUpdateService({
       dataDir,
       channel,
       installedVersion: app.getVersion(),
-      feedUrl: !app.isPackaged && channel !== "dev" ? (process.env.ACADEMY_UPDATE_FEED || "") : ""
+      feedUrl: channel === "stable" && !app.isPackaged ? (process.env.ACADEMY_UPDATE_FEED || "") : "",
+      repository: PINNED_REPOSITORY,
+      publisherThumbprint: app.isPackaged ? "" : (process.env.ACADEMY_PUBLISHER_THUMBPRINT || ""),
+      verifyPublisher
     });
     updates.reconcile();
+    try {
+      storeRef.current.ensureScheduledBackup();
+    } catch (error) {
+      dialog.showErrorBox("IT-Ausbildung", error && error.message ? error.message : "Die planmäßige Sicherung ist fehlgeschlagen. Sie wird nicht als erfolgreich angezeigt.");
+    }
     registerProtocol({
       contentRoot: contentRootFrom(app),
       desktopRoot: path.join(__dirname, "renderer")
     });
     registerIpc({
       ipcMain: require("electron").ipcMain,
+      dialog,
       storeRef,
       updates,
       channel,
@@ -62,7 +73,11 @@ if (!gotLock) {
       }
     });
     const win = createWindow();
-    if (process.env.ACADEMY_SMOKE === "1") {
+    if (!app.isPackaged && (process.env.ACADEMY_LAB === "seed" || process.env.ACADEMY_LAB === "read")) {
+      const { runLaboratory } = require("./lab-run");
+      runLaboratory(win, app);
+    }
+    if (!app.isPackaged && process.env.ACADEMY_SMOKE === "1") {
       win.webContents.once("did-finish-load", async () => {
         try {
           const value = await win.webContents.executeJavaScript("localStorage.setItem('academy.smoke','gehalten'); localStorage.getItem('academy.smoke');");

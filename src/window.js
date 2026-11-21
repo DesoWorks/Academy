@@ -38,7 +38,13 @@ function createWindow(options) {
       label: "Datei",
       submenu: [
         {
+          label: "Daten und Updates",
+          accelerator: "F9",
+          click: () => win.webContents.send("academy:menu", "verwaltung")
+        },
+        {
           label: "Sicherung anlegen",
+          accelerator: "Ctrl+Shift+S",
           click: () => win.webContents.send("academy:menu", "backup")
         },
         { type: "separator" },
@@ -56,6 +62,14 @@ function createWindow(options) {
     }
   ];
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+  win.webContents.on("context-menu", (_event, params) => {
+    const menu = Menu.buildFromTemplate([
+      { role: "copy", label: "Kopieren", enabled: params.editFlags.canCopy },
+      { role: "paste", label: "Einfügen", enabled: params.editFlags.canPaste },
+      { role: "selectAll", label: "Alles auswählen" }
+    ]);
+    menu.popup({ window: win });
+  });
   win.loadURL("academy://app/index.html");
   return win;
 }

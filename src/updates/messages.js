@@ -14,7 +14,10 @@ const MESSAGES = {
   hostRejected: "Die Updatequelle ist nicht freigegeben. Es wurde nichts heruntergeladen.",
   ready: "Das Update ist geprüft und bereit. Die Installation startet erst nach Bestätigung und beendet dafür die laufende Anwendung.",
   running: "Die Anwendung läuft noch. Zuerst wird die Datenbank gesichert, danach beendet sich das Programm und startet die Installation.",
-  stableOnly: "Nur ein ausdrücklich gebauter Stable-Release darf Updates installieren."
+  stableOnly: "Nur ein ausdrücklich gebauter Stable-Release darf Updates installieren.",
+  metadataInvalid: "Die Update-Metadaten sind ungültig. Es wurde nichts heruntergeladen und nichts installiert.",
+  repoRejected: "Die Updatequelle gehört nicht zum festgelegten DesoWorks-Repository. Es wurde nichts heruntergeladen.",
+  aborted: "Der Download wurde abgebrochen. Die unvollständige Datei wurde verworfen. Lernfortschritte wurden nicht angetastet."
 };
 
 module.exports = { MESSAGES };

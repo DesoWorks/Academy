@@ -1,6 +1,8 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 const { resolveAcademyPath } = require("../src/protocol-path");
@@ -17,7 +19,11 @@ test("Plattformpfade bleiben im Inhaltsverzeichnis", () => {
 
 test("Standardkanal ist dev, Erweiterungen sind abgeschaltet", () => {
   assert.equal(resolveChannel({}), "dev");
-  assert.equal(resolveChannel({ ACADEMY_CHANNEL: "stable" }), "stable");
+  assert.equal(resolveChannel({ ACADEMY_CHANNEL: "stable" }), "dev");
+  const stableFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "academy-ch-")), "channel.json");
+  fs.writeFileSync(stableFile, JSON.stringify({ channel: "stable" }));
+  assert.equal(resolveChannel({ ACADEMY_CHANNEL: "stable" }, stableFile), "stable");
+  assert.equal(resolveChannel({ ACADEMY_CHANNEL: "dev" }, stableFile), "dev");
   const ports = listPorts();
   assert.equal(ports.every((port) => port.enabled === false), true);
   assert.equal(ports.find((port) => port.id === "ide").execution, "isolated-worker-only");

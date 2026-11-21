@@ -3,6 +3,8 @@
 const { compare } = require("./semver");
 const { MESSAGES } = require("./messages");
 
+const PINNED_REPOSITORY = "DesoWorks/IT-Ausbildung";
+
 const DEFAULT_HOSTS = [
   "github.com",
   "api.github.com",
@@ -34,6 +36,49 @@ function readSha256Asset(text) {
   return match ? match[0].toLowerCase() : "";
 }
 
+function pathParts(url) {
+  const parsed = new URL(url);
+  return { parsed, parts: parsed.pathname.split("/").filter(Boolean).map((part) => {
+    try {
+      return decodeURIComponent(part);
+    } catch (error) {
+      return part;
+    }
+  }) };
+}
+
+function sameRepo(left, right) {
+  return String(left || "").toLowerCase() === String(right || "").toLowerCase();
+}
+
+function repositoryPinned(url, repository, extraHosts) {
+  const repo = repository || PINNED_REPOSITORY;
+  const [owner, name] = repo.split("/");
+  let parsed;
+  let parts;
+  try {
+    const split = pathParts(url);
+    parsed = split.parsed;
+    parts = split.parts;
+  } catch (error) {
+    return false;
+  }
+  if (parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost") return true;
+  const extras = new Set(extraHosts || []);
+  if (extras.has(parsed.hostname) && parsed.hostname !== "github.com" && parsed.hostname !== "api.github.com") return true;
+  if (parsed.hostname === "github.com") {
+    return parts.length >= 4 && sameRepo(parts[0], owner) && sameRepo(parts[1], name) && parts[2] === "releases" && parts[3] === "download";
+  }
+  if (parsed.hostname === "api.github.com") {
+    return parts.length >= 4 && parts[0] === "repos" && sameRepo(parts[1], owner) && sameRepo(parts[2], name) && parts[3] === "releases";
+  }
+  return false;
+}
+
+function safeAssetName(name) {
+  return typeof name === "string" && name.length > 0 && name.length < 180 && !/[\\/\u0000]/.test(name);
+}
+
 function pairAssets(assets) {
   const list = assets || [];
   const exe = list.find((asset) => /\.exe$/i.test(asset.name) && !/\.sha256$/i.test(asset.name));
@@ -60,6 +105,8 @@ function fromGitHubReleases(payload) {
 function selectRelease(releases, options) {
   const channel = options.channel;
   const installed = options.installed;
+  const repository = options.repository || PINNED_REPOSITORY;
+  const extraHosts = options.extraHosts || [];
   const { isSafeVersion } = require("./semver");
   const ranked = (releases || [])
     .filter((release) => isSafeVersion(release.version))
@@ -81,7 +128,25 @@ function selectRelease(releases, options) {
     return { action: "current", message: MESSAGES.upToDate, installed, available: null, notes: "" };
   }
   const paired = pairAssets(newer.assets);
-  if (!paired || !paired.checksum) {
+  if (!paired || !paired.exe || !safeAssetName(paired.exe.name) || !paired.exe.url) {
+    return {
+      action: "rejected",
+      message: MESSAGES.metadataInvalid,
+      installed,
+      available: newer.version,
+      notes: newer.notes
+    };
+  }
+  if (!repositoryPinned(paired.exe.url, repository, extraHosts) || (paired.checksum && !repositoryPinned(paired.checksum.url, repository, extraHosts))) {
+    return {
+      action: "rejected",
+      message: MESSAGES.repoRejected,
+      installed,
+      available: newer.version,
+      notes: newer.notes
+    };
+  }
+  if (!paired.checksum) {
     return {
       action: "rejected",
       message: MESSAGES.hashMissing,
@@ -102,8 +167,10 @@ function selectRelease(releases, options) {
 }
 
 module.exports = {
+  PINNED_REPOSITORY,
   DEFAULT_HOSTS,
   assertAllowedUrl,
+  repositoryPinned,
   readSha256Asset,
   pairAssets,
   fromGitHubReleases,
