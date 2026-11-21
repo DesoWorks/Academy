@@ -337,8 +337,16 @@ function createModuleManager(options) {
       if (!choice || choice.confirm !== true) fail("cancelled", "Ohne Bestätigung wird nichts deinstalliert und nichts gelöscht.");
       const current = row(id);
       if (!current || current.state === "uninstalled") fail("missing-module", "Das Modul ist nicht installiert.");
+      const target = path.resolve(current.install_path);
+      const relative = path.relative(path.resolve(packageRoot), target);
+      if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+        fail("bad-path", "Der Modulpfad liegt außerhalb des Modulverzeichnisses. Es wurde nichts gelöscht.");
+      }
+      if (fs.existsSync(target) && fs.lstatSync(target).isSymbolicLink()) {
+        fail("bad-path", "Ein Symlink wird nicht entfernt. Es wurde nichts gelöscht.");
+      }
       registry.db.prepare("UPDATE module_install SET state = 'uninstalled', fault_reason = NULL WHERE id = ?").run(id);
-      fs.rmSync(current.install_path, { recursive: true, force: true });
+      fs.rmSync(target, { recursive: true, force: true });
       const kept = registry.db.prepare("SELECT COUNT(*) AS count FROM module_kv WHERE module_id = ?").get(id).count;
       notice(id, "info", "Moduldateien entfernt. Lernstände bleiben erhalten (" + kept + ").");
       return { id, state: "uninstalled", progressKept: kept };

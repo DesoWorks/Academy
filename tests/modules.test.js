@@ -287,6 +287,20 @@ test("Katalogfehler verhindert die lokale Modulnutzung nicht", () => {
   app.close();
 });
 
+test("Deinstallation löscht nichts außerhalb des Modulverzeichnisses", () => {
+  const dir = tempDir();
+  const app = manager(dir);
+  app.installFromDirectory(DEMO);
+  const db = new DatabaseSync(path.join(dir, "modules.sqlite"));
+  const outside = path.join(dir, "nicht-anfassen");
+  fs.writeFileSync(outside, "bleibt");
+  db.prepare("UPDATE module_install SET install_path = ? WHERE id = ?").run(outside, "dev.desoworks.demo.wissen-weitergeben");
+  db.close();
+  assert.throws(() => app.uninstall("dev.desoworks.demo.wissen-weitergeben", { confirm: true }), (error) => error.code === "bad-path");
+  assert.equal(fs.readFileSync(outside, "utf8"), "bleibt");
+  app.close();
+});
+
 test("Deinstallation ohne Bestätigung löscht nichts", () => {
   const dir = tempDir();
   const app = manager(dir);

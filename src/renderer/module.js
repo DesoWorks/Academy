@@ -87,10 +87,66 @@
             var paragraph = document.createElement("p");
             text(paragraph, block.text || block.prompt || "");
             inhalt.appendChild(paragraph);
-            if (block.id) offen.taskId = block.id;
+            if (!block.id) return;
+            var form = document.createElement("form");
+            var field = document.createElement("input");
+            field.type = "text";
+            field.autocomplete = "off";
+            var button = document.createElement("button");
+            button.type = "submit";
+            text(button, "Prüfen");
+            form.append(field, button);
+            form.addEventListener("submit", function (event) {
+              event.preventDefault();
+              api.moduleCheck(id, block.id, field.value).then(function (response) {
+                var node = document.getElementById("ergebnis");
+                if (!response || !response.ok) {
+                  text(node, (response && response.message) || "Prüfung fehlgeschlagen.");
+                  return;
+                }
+                text(node, response.correct ? "Richtig. Eine Lösung wird hier nicht angezeigt." : ("Noch nicht richtig. " + (response.hint || "")));
+              });
+            });
+            inhalt.appendChild(form);
           });
         });
       });
+      var assessment = course.assessment;
+      if (assessment && assessment.questions) {
+        var heading = document.createElement("h3");
+        text(heading, assessment.title || "Prüfung");
+        inhalt.appendChild(heading);
+        assessment.questions.forEach(function (question) {
+          var paragraph = document.createElement("p");
+          var chosen = "";
+          text(paragraph, question.prompt || "");
+          inhalt.appendChild(paragraph);
+          (question.choices || []).forEach(function (choice, index) {
+            var label = document.createElement("label");
+            var radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = "pruefung-" + assessment.questions.indexOf(question);
+            radio.value = String(index);
+            radio.addEventListener("change", function () { chosen = radio.value; });
+            label.append(radio, document.createTextNode(" " + choice));
+            inhalt.appendChild(label);
+          });
+          var button = document.createElement("button");
+          button.type = "button";
+          text(button, "Prüfung prüfen");
+          button.addEventListener("click", function () {
+            api.moduleCheck(id, question.id, chosen).then(function (response) {
+              var node = document.getElementById("ergebnis");
+              if (!response || !response.ok) {
+                text(node, (response && response.message) || "Prüfung fehlgeschlagen.");
+                return;
+              }
+              text(node, response.correct ? "Richtig. Eine Lösung wird hier nicht angezeigt." : "Noch nicht richtig.");
+            });
+          });
+          inhalt.appendChild(button);
+        });
+      }
     });
   }
 
@@ -123,18 +179,5 @@
       text(node, "Lokaler Katalog, nicht verbunden. Einträge: " + ((response.modules && response.modules.length) || 0) + ".");
     });
   });
-  document.getElementById("antwort-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (!offen || !offen.moduleId) return;
-    api.moduleCheck(offen.moduleId, offen.taskId, document.getElementById("antwort").value).then(function (response) {
-      var node = document.getElementById("ergebnis");
-      if (!response || !response.ok) {
-        text(node, (response && response.message) || "Prüfung fehlgeschlagen.");
-        return;
-      }
-      text(node, response.correct ? "Richtig. Eine Lösung wird hier nicht angezeigt." : ("Noch nicht richtig. " + (response.hint || "")));
-    });
-  });
-
   refresh();
 })();
