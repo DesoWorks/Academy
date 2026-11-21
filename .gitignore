@@ -4,3 +4,18 @@ out/
 *.log
 test-results/
 _secure/
+
+# Lokale Geheimnisse. Niemals committen.
+.env
+.env.*
+!.env.example
+
+# Betriebssystem
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Test- und Paketreste außerhalb von dist/
+coverage/
+*.asar
