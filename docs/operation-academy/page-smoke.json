@@ -1,0 +1,107 @@
+[
+  {
+    "url": "academy://app/home.html",
+    "response": "loaded",
+    "ms": 101,
+    "title": "DesoWorks Academy",
+    "text": "Direkt zum Inhalt springen\n\nDesoWorks Academy\n\nStartseite\nMeine Lernbereiche\nModul-Katalog\nEinstellungen\nDaten und Updat"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/index.html",
+    "response": "loaded",
+    "ms": 258,
+    "title": "IT-Ausbildung – Themenübersicht",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG\n\nThemenübersicht\n\nFachinformatiker/-in für Systemintegration · drei Ausbildung"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf1-lernziel.html",
+    "response": "loaded",
+    "ms": 77,
+    "title": "LF1 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 1\n\nLF1 Lernzielkontrolle\n\n24 Fragen · ohne Zeitdruck\n\nLernplattform"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf2-lernziel.html",
+    "response": "loaded",
+    "ms": 60,
+    "title": "LF2 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 2\n\nLF2 Lernzielkontrolle\n\n24 Fragen · ohne Zeitdruck\n\nLernplattform"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf3-abnahme.html",
+    "response": "loaded",
+    "ms": 62,
+    "title": "Lernfeld 3: Lektionsabnahme · IT-Ausbildung",
+    "text": "Direkt zum Inhalt springen\n\nIT-Ausbildung · Lernfeld 3 · lokale Abnahme\n\nLektionsabnahme\n\nDieselben Kriterien wie bei de"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf4-lernziel.html",
+    "response": "loaded",
+    "ms": 54,
+    "title": "LF4 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 4\n\nLF4 Lernzielkontrolle\n\n24 Fragen · ohne Zeitdruck\n\nLernplattform"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf5-lernziel.html",
+    "response": "loaded",
+    "ms": 53,
+    "title": "LF5 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 5\n\nLF5 Lernzielkontrolle\n\n24 Fragen · ohne Zeitdruck\n\nLernplattform"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf6-kontrolle.html",
+    "response": "loaded",
+    "ms": 55,
+    "title": "LF6 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 6\n\nLF6 Lernzielkontrolle\n\n24 Fragen · ohne Zeitdruck\n\nLernplattform"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf7-kontrolle.html",
+    "response": "loaded",
+    "ms": 52,
+    "title": "LF7 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 7 · 2. AUSBILDUNGSJAHR\n\nLF7 Lernzielkontrolle\n\n24 Fragen · ohne Zei"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf8-kontrolle.html",
+    "response": "loaded",
+    "ms": 49,
+    "title": "LF8 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 8 · 2. AUSBILDUNGSJAHR\n\nLF8 Lernzielkontrolle\n\n24 Fragen · ohne Zei"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/lf9-kontrolle.html",
+    "response": "loaded",
+    "ms": 49,
+    "title": "LF9 Lernzielkontrolle",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · LERNFELD 9 · 2. AUSBILDUNGSJAHR\n\nLF9 Lernzielkontrolle\n\n24 Fragen · ohne Zei"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/windows-werkzeugkiste.html",
+    "response": "loaded",
+    "ms": 130,
+    "title": "Werkzeug: Windows-Werkzeugkiste",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · WERKZEUGE\n\nWindows-Werkzeugkiste\n\nBedienung, CMD und PowerShell · Diagnose v"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/pc-explorer.html",
+    "response": "loaded",
+    "ms": 102,
+    "title": "PC-Explorer: Der Desktop-PC von innen (Entwurf)",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · WERKZEUGE · ENTWURF\n\nPC-Explorer: Der Desktop-PC von innen\n\nBauteile entdeck"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/raid-labor.html",
+    "response": "loaded",
+    "ms": 104,
+    "title": "RAID-Lernlabor · IT-Ausbildung",
+    "text": "Direkt zum Inhalt springen\nRAID-Lernlabor\n\nKapazität verstehen, Daten verteilen, Ausfälle untersuchen\n\nLernplattform\n\nTh"
+  },
+  {
+    "url": "academy://desoworks.it-systemintegration/module/bwl-werkstatt.html",
+    "response": "loaded",
+    "ms": 62,
+    "title": "Werkzeug: BWL-Werkstatt",
+    "text": "Direkt zum Inhalt springen\n\nIT-AUSBILDUNG · WERKZEUGE\n\nBWL-Werkstatt\n\nFreier Rechner und Lernmodus · Angebot, Gewinn, Ra"
+  }
+]

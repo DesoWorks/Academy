@@ -1,13 +1,8 @@
-Icon-Stand von DesoWorks Academy
+Icon-Stand von DesoWorks Academy, geprüft in Phase K am 2026-11-21.
 
-package.json verweist auf build/icon.ico (win.icon, nsis.installerIcon, nsis.uninstallerIcon).
-Diese ICO-Datei existiert noch nicht. Sie konnte hier nicht erzeugt werden.
-Ohne build/icon.ico bricht ein Installer-Build (npm run dist:nsis) ab oder fällt auf das Electron-Standardicon zurück.
-npm start und npm test sind davon nicht betroffen.
+build/icon.ico existiert. Dateigröße 35517 Bytes. ICO-Kopf 00-00-01-00, ein Bild, Breite/Höhe 00 bedeutet 256 Pixel.
+build/icon.png existiert, 35495 Bytes. src/window.js setzt das Fenstericon nur, wenn die PNG-Datei vorhanden ist.
+package.json verweist für EXE, Installer und Deinstaller auf build/icon.ico.
 
-Offene Aufgabe für Rick: build/icon.ico erzeugen (mehrere Größen, mindestens 256x256) aus build/icon.png.
-Das Fenstericon (build/icon.png, 256x256) wird von src/window.js nur gesetzt, wenn die Datei existiert.
-Solange kein endgültiges Icon freigegeben ist, ist das vorhandene PNG ein Entwurf und kein festes Branding.
-
-Quelle des Signets: assets/brand/signet.svg (Kopie aus IT-Ausbildung/assets/desoworks/signet.svg).
-Farben: Hintergrund #10141c, Signet-Strich #142B44, Akzent #20B9D8.
+Das ICO ist eine einzelne 256-Pixel-Variante, kein mehrstufiges Paket mit 16, 32, 48 und 64. Es ist kein signiertes Markenpaket und kein Ersatz für ein fehlendes Herausgeberzertifikat.
+Der Electron-Standard wird nicht verwendet, solange der Builder diese Datei einbindet. Das ist am Testbuild zu prüfen, nicht vorauszusetzen.

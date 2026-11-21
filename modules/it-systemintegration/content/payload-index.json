@@ -294,6 +294,11 @@
       "size": 13197
     },
     {
+      "path": "web/js/lf3-abnahme.js",
+      "sha256": "22883cc78622a036b6960e64a747329fff76cc61f6c6b283af71897cf60a90f4",
+      "size": 15609
+    },
+    {
       "path": "web/js/lf3-client-anbindung.js",
       "sha256": "d8f8b56409038986d85cb8697dde25c51035c9fc0de57132c964638812169e3f",
       "size": 9470
@@ -885,8 +890,8 @@
     },
     {
       "path": "web/module/lf3-abnahme.html",
-      "sha256": "40b8646a9743dc9871b9497ba047dd2404f959c627d64e2d4565a8d8c6c1b126",
-      "size": 24488
+      "sha256": "c70136d253fa8a5c258fdb047b88ac1df8a50a938adff72a39ee70d19a93277e",
+      "size": 8555
     },
     {
       "path": "web/module/lf3-client-anbindung.html",
