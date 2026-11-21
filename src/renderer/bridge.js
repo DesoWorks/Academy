@@ -99,10 +99,14 @@
         });
       }
       if (action === "verwaltung") {
-        window.location.href = "/__desktop/verwaltung.html";
+        window.location.href = "/verwaltung.html";
+      }
+      var pages = { home: "/home.html", areas: "/module.html", catalog: "/catalog.html", settings: "/settings.html", about: "/about.html" };
+      if (Object.prototype.hasOwnProperty.call(pages, action)) {
+        window.location.href = pages[action];
       }
       if (action === "module") {
-        window.location.href = "/__desktop/module.html";
+        window.location.href = "/module.html";
       }
     });
   }

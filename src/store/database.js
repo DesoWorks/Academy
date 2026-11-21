@@ -10,7 +10,8 @@ const DB_FILE = "academy.sqlite";
 const KEY_MAX = 512;
 const VALUE_MAX = 1500000;
 const SETTINGS_KEY = "academy.desktop.settings";
-const EXPORT_FORMAT = "desoworks.it-ausbildung.export";
+const EXPORT_FORMAT = "desoworks.academy.export";
+const LEGACY_EXPORT_FORMAT = "desoworks.it-ausbildung.export";
 const EXPORT_FORMAT_VERSION = 1;
 const DEFAULT_MAX_BACKUPS = 12;
 const DEFAULT_INTERVAL_HOURS = 24;
@@ -444,7 +445,7 @@ function openDatabase(options) {
       return { ok: true, backup, count: Object.keys(normalized.items).length, mode: choice.mode };
     },
     importJson(raw, mode) {
-      return api.importBundle(raw, { mode: mode === "replace" ? "replace" : "merge", confirm: true, allowLegacy: true });
+      return api.importBundle(raw, { mode: mode === "replace" ? "replace" : "merge", confirm: true });
     },
     close() {
       db.close();
@@ -506,8 +507,12 @@ function normalizeImport(parsed, choice) {
       events: []
     };
   }
-  if (parsed.format !== EXPORT_FORMAT) {
-    throw new AcademyStoreError("invalid-import", "Die Datei ist kein Export der IT-Ausbildung. Es wurde nichts geändert.");
+  const legacyFormat = parsed.format === LEGACY_EXPORT_FORMAT;
+  if (legacyFormat && choice.allowLegacy !== true) {
+    throw new AcademyStoreError("legacy-unconfirmed", "Das ist ein Export im älteren Format der IT-Ausbildung. Er wird nicht stillschweigend als Academy-Daten übernommen. Es wurde nichts geändert.");
+  }
+  if (parsed.format !== EXPORT_FORMAT && !legacyFormat) {
+    throw new AcademyStoreError("invalid-import", "Die Datei ist kein Export von DesoWorks Academy. Es wurde nichts geändert.");
   }
   const formatVersion = Number(parsed.formatVersion);
   if (!Number.isInteger(formatVersion) || formatVersion < 1) {
@@ -541,6 +546,7 @@ module.exports = {
   APP_SCHEMA,
   DB_FILE,
   EXPORT_FORMAT,
+  LEGACY_EXPORT_FORMAT,
   EXPORT_FORMAT_VERSION,
   SETTINGS_KEY,
   AcademyStoreError,

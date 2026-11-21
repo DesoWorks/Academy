@@ -61,7 +61,7 @@ function registerProtocol(options) {
       if (/^(?:\.git|desktop|node_modules)(?:\/|$)/i.test(relative)) {
         return new Response("Nicht verfügbar", { status: 403 });
       }
-      const file = resolveAcademyPath(contentRoot, pathname === "/" ? "/index.html" : pathname);
+      const file = resolveAcademyPath(contentRoot, pathname === "/" ? "/home.html" : pathname);
       if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
         return new Response("Nicht gefunden", { status: 404 });
       }

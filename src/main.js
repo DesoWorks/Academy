@@ -23,7 +23,7 @@ if (!gotLock) {
 } else {
   const dataDir = dataDirFrom(app);
   app.setPath("userData", dataDir);
-  app.setAppUserModelId("dev.desoworks.it-ausbildung");
+  app.setAppUserModelId("dev.desoworks.academy");
 
   app.on("second-instance", () => {
     const win = BrowserWindow.getAllWindows()[0];
@@ -57,7 +57,7 @@ if (!gotLock) {
     try {
       storeRef.current.ensureScheduledBackup();
     } catch (error) {
-      dialog.showErrorBox("IT-Ausbildung", error && error.message ? error.message : "Die planmäßige Sicherung ist fehlgeschlagen. Sie wird nicht als erfolgreich angezeigt.");
+      dialog.showErrorBox("DesoWorks Academy", error && error.message ? error.message : "Die planmäßige Sicherung ist fehlgeschlagen. Sie wird nicht als erfolgreich angezeigt.");
     }
     registerProtocol({
       contentRoot: contentRootFrom(app),
@@ -73,9 +73,12 @@ if (!gotLock) {
         desktop: app.getVersion(),
         core: CORE_VERSION,
         channel,
-        web: "siehe js/version.js"
+        name: "DesoWorks Academy"
       },
       modules,
+      exampleModuleDir: app.isPackaged
+        ? path.join(process.resourcesPath, "academy-modules", "wissen-weitergeben")
+        : path.join(__dirname, "..", "modules", "wissen-weitergeben"),
       catalogFile: app.isPackaged
         ? path.join(process.resourcesPath, "academy-catalog", "official.json")
         : path.join(__dirname, "..", "catalog", "official.json"),
@@ -106,7 +109,7 @@ if (!gotLock) {
       if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
   }).catch((error) => {
-    dialog.showErrorBox("IT-Ausbildung", error && error.message ? error.message : "Die Anwendung konnte nicht starten. Die Lerndaten wurden nicht gelöscht.");
+    dialog.showErrorBox("DesoWorks Academy", error && error.message ? error.message : "Die Anwendung konnte nicht starten. Die Lerndaten wurden nicht gelöscht.");
     app.exit(1);
   });
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DesoWorks Academy – Modul-Katalog</title>
+  <link rel="stylesheet" href="/shell.css">
+</head>
+<body data-seite="catalog">
+  <a class="skip-link" href="#hauptinhalt">Direkt zum Inhalt springen</a>
+  <header class="kopf">
+    <div class="kopf-inhalt">
+      <p class="kopf-marke"><img src="/brand/signet.svg" alt="" width="32" height="32"> DesoWorks Academy</p>
+      <nav id="navigation" aria-label="Hauptnavigation"></nav>
+    </div>
+  </header>
+  <main id="hauptinhalt" class="inhalt-seite" tabindex="-1">
+    <h1>Modul-Katalog</h1>
+    <p class="untertitel">Lokaler Katalog. Er ist nicht mit einem Onlinedienst verbunden, es gibt keine Käufe und keine Bewertungen.</p>
+    <p id="lade">Katalog wird gelesen …</p>
+    <div class="karten" id="karten"></div>
+    <section class="bereich">
+      <h2>Eigenes Paket installieren</h2>
+      <p>Ein Modulpaket aus einem Ordner wird vor der Installation geprüft und braucht deine Bestätigung.</p>
+      <div class="zeile"><button type="button" id="ordner">Paketordner installieren</button></div>
+    </section>
+    <p id="meldung" role="status"></p>
+  </main>
+  <script src="/shell.js"></script>
+  <script src="/catalog.js"></script>
+</body>
+</html>

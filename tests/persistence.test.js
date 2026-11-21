@@ -6,7 +6,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 const { DatabaseSync } = require("node:sqlite");
-const { AcademyStoreError, EXPORT_FORMAT, openDatabase } = require("../src/store/database");
+const { AcademyStoreError, EXPORT_FORMAT, LEGACY_EXPORT_FORMAT, openDatabase } = require("../src/store/database");
 
 function tempDir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), "academy-persist-"));
@@ -160,6 +160,41 @@ test("falsche Prüfsumme ändert nichts", () => {
   parsed.items.fortschritt = "fremd";
   assert.throws(
     () => store.importBundle(JSON.stringify(parsed), { mode: "replace", confirm: true }),
+    (error) => error.code === "invalid-import"
+  );
+  assert.equal(store.get("fortschritt"), "bleibt");
+  store.close();
+});
+
+test("Export im alten IT-Ausbildung-Format wird nicht stillschweigend übernommen", () => {
+  const dir = tempDir();
+  const store = openDatabase({ dataDir: dir });
+  store.set("fortschritt", "bleibt");
+  const parsed = JSON.parse(store.exportBundle("0.3.0"));
+  assert.equal(parsed.format, "desoworks.academy.export");
+  const legacy = Object.assign({}, parsed, { format: LEGACY_EXPORT_FORMAT });
+  delete legacy.checksum;
+  const { createHash } = require("node:crypto");
+  function stable(value) {
+    if (Array.isArray(value)) return value.map(stable);
+    if (value && typeof value === "object") {
+      return Object.keys(value).sort().reduce((acc, key) => {
+        acc[key] = stable(value[key]);
+        return acc;
+      }, {});
+    }
+    return value;
+  }
+  legacy.items = { fortschritt: "alt" };
+  legacy.checksum = createHash("sha256").update(JSON.stringify(stable(legacy))).digest("hex");
+  assert.throws(
+    () => store.importBundle(JSON.stringify(legacy), { mode: "replace", confirm: true }),
+    (error) => error.code === "legacy-unconfirmed" && !/Export der IT-Ausbildung/.test(error.message)
+  );
+  assert.equal(store.get("fortschritt"), "bleibt");
+  const foreign = Object.assign({}, parsed, { format: "fremd.export" });
+  assert.throws(
+    () => store.importBundle(JSON.stringify(foreign), { mode: "replace", confirm: true }),
     (error) => error.code === "invalid-import"
   );
   assert.equal(store.get("fortschritt"), "bleibt");

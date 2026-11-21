@@ -1,0 +1,4 @@
+# Modulpakete werden über Größe und SHA-256 geprüft. Deshalb immer LF, unabhängig von core.autocrlf.
+modules/** text eol=lf
+module-template/** text eol=lf
+catalog/** text eol=lf

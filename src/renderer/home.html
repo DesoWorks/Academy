@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DesoWorks Academy</title>
+  <link rel="stylesheet" href="/shell.css">
+</head>
+<body data-seite="home">
+  <a class="skip-link" href="#hauptinhalt">Direkt zum Inhalt springen</a>
+  <header class="kopf">
+    <div class="kopf-inhalt">
+      <p class="kopf-marke"><img src="/brand/signet.svg" alt="" width="32" height="32"> DesoWorks Academy</p>
+      <nav id="navigation" aria-label="Hauptnavigation"></nav>
+    </div>
+  </header>
+  <main id="hauptinhalt" class="inhalt-seite" tabindex="-1">
+    <section class="begruessung">
+      <h1>Willkommen bei DesoWorks Academy.</h1>
+      <p class="untertitel">Entdecke Lernangebote, erweitere dein Wissen und entwickle neue Fähigkeiten.</p>
+    </section>
+
+    <section class="bereich" id="zuletzt-bereich" hidden>
+      <h2>Weitermachen</h2>
+      <p id="zuletzt-text"></p>
+      <div class="zeile">
+        <a class="knopf" id="zuletzt" href="/module.html">Zuletzt geöffneten Lernbereich öffnen</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="bereiche-titel">
+      <h2 id="bereiche-titel">Meine Lernbereiche</h2>
+      <p id="lade">Lernbereiche werden gelesen …</p>
+      <div class="karten" id="karten"></div>
+      <div class="bereich" id="leer" hidden>
+        <p>Noch kein Lernbereich installiert. Im Modul-Katalog findest du Lernangebote, die du bewusst installieren kannst.</p>
+        <div class="zeile"><a class="knopf" href="/catalog.html">Zum Modul-Katalog</a></div>
+      </div>
+      <p id="meldung" role="status"></p>
+    </section>
+
+    <section class="bereich">
+      <h2>Weitere Bereiche</h2>
+      <p>Der KI-Lernassistent und die IDE sind vorgesehen, aber noch nicht verfügbar.</p>
+    </section>
+  </main>
+  <script src="/shell.js"></script>
+  <script src="/home.js"></script>
+</body>
+</html>

@@ -2,13 +2,10 @@
   "use strict";
 
   var api = window.academyDesktop;
+  var shell = window.AcademyShell;
   var meldung = document.getElementById("meldung");
   var liste = document.getElementById("liste");
-  var offen = { moduleId: null, taskId: null };
-
-  function text(node, value) {
-    node.textContent = value == null ? "" : String(value);
-  }
+  var text = shell.text;
 
   function say(value, fehler) {
     text(meldung, value);
@@ -17,10 +14,10 @@
 
   function renderList(result) {
     liste.replaceChildren();
-    var installed = result && result.installed ? result.installed : [];
+    var installed = shell.visibleModules(result);
     if (!installed.length) {
       var leer = document.createElement("p");
-      text(leer, "Noch kein Zusatzmodul installiert. Die bestehenden Lernseiten bleiben über die Themenübersicht erreichbar.");
+      text(leer, "Noch kein Lernbereich installiert. Im Modul-Katalog findest du Lernangebote, die du bewusst installieren kannst.");
       liste.appendChild(leer);
       return;
     }
@@ -30,6 +27,7 @@
       var title = document.createElement("h3");
       text(title, entry.name + " " + entry.version);
       var meta = document.createElement("p");
+      meta.className = "meta";
       text(meta, entry.publisher + " · " + entry.trust + " · " + entry.state + " · " + entry.sizeBytes + " Bytes");
       var actions = document.createElement("div");
       actions.className = "zeile";
@@ -67,11 +65,12 @@
         say((response && response.message) || "Das Modul lässt sich nicht öffnen.", true);
         return;
       }
-      if (response.kind === "bundled") {
-        window.location.href = response.href;
+      if (response.kind !== "module") {
+        say("Dieser Lernbereich lässt sich nicht öffnen.", true);
         return;
       }
-      offen = { moduleId: id, taskId: null };
+      // Nur das bewusste Öffnen durch den Nutzer merkt sich den letzten Lernbereich.
+      shell.writeLastArea(id);
       view.hidden = false;
       text(document.getElementById("modul-titel"), response.module.name);
       var course = response.course || {};
@@ -92,6 +91,7 @@
             var field = document.createElement("input");
             field.type = "text";
             field.autocomplete = "off";
+            field.setAttribute("aria-label", "Antwort");
             var button = document.createElement("button");
             button.type = "submit";
             text(button, "Prüfen");
@@ -154,13 +154,17 @@
     return api.modules().then(function (response) {
       text(document.getElementById("lade"), "");
       if (!response || !response.ok) {
-        say((response && response.message) || "Die Modulverwaltung ist nicht verfügbar. Die Lernseiten bleiben nutzbar.", true);
+        say((response && response.message) || "Die Modulverwaltung ist nicht verfügbar. Der Core bleibt nutzbar.", true);
         return;
       }
-      var platform = response.platform;
-      text(document.getElementById("plattform"), platform.name + " · " + platform.note);
       renderList(response);
     });
+  }
+
+  if (!api || typeof api.modules !== "function") {
+    text(document.getElementById("lade"), "");
+    say("Diese Seite läuft nur in der Desktop-Anwendung.", true);
+    return;
   }
 
   document.getElementById("installieren").addEventListener("click", function () {
@@ -169,15 +173,10 @@
       refresh();
     });
   });
-  document.getElementById("katalog").addEventListener("click", function () {
-    api.moduleCatalog().then(function (response) {
-      var node = document.getElementById("katalog-text");
-      if (!response || !response.ok) {
-        text(node, (response && response.message) || "Katalog nicht erreichbar. Installierte Module bleiben nutzbar.");
-        return;
-      }
-      text(node, "Lokaler Katalog, nicht verbunden. Einträge: " + ((response.modules && response.modules.length) || 0) + ".");
-    });
+
+  refresh().then(function () {
+    // Ein Link von der Startseite oder Lernbereichsliste trägt die Modul-ID im Anker.
+    var wanted = window.location.hash ? decodeURIComponent(window.location.hash.slice(1)) : "";
+    if (wanted) show(wanted);
   });
-  refresh();
 })();

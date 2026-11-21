@@ -3,36 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IT-Ausbildung – Daten und Updates</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/startseite.css">
-  <style>
-    .verwaltung { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
-    .verwaltung section { margin: 20px 0; padding: 16px; border: 1px solid #2d3c56; background: #172033; color: #f4f7fb; }
-    .verwaltung h2 { margin: 0 0 8px; font-size: 1.1rem; }
-    .verwaltung p, .verwaltung li { line-height: 1.45; }
-    .verwaltung .zeile { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .verwaltung button, .verwaltung select { font: inherit; }
-    .verwaltung .fehler { color: #ffb4a8; }
-    .verwaltung .ok { color: #b7f7c8; }
-  </style>
+  <title>DesoWorks Academy – Daten und Updates</title>
+  <link rel="stylesheet" href="/shell.css">
 </head>
-<body>
+<body data-seite="verwaltung">
   <a class="skip-link" href="#hauptinhalt">Direkt zum Inhalt springen</a>
   <header class="kopf">
     <div class="kopf-inhalt">
-      <p class="kopf-marke">IT-Ausbildung</p>
-      <h1>Daten und Updates</h1>
+      <p class="kopf-marke"><img src="/brand/signet.svg" alt="" width="32" height="32"> DesoWorks Academy</p>
+      <nav id="navigation" aria-label="Hauptnavigation"></nav>
     </div>
   </header>
-  <main id="hauptinhalt" class="verwaltung" tabindex="-1">
+  <main id="hauptinhalt" class="inhalt-seite" tabindex="-1">
+    <h1>Daten und Updates</h1>
     <p id="lade">Status wird gelesen …</p>
-    <section>
+    <section class="bereich">
       <h2>Programm</h2>
       <p id="version">–</p>
-      <p id="offline" hidden>Keine Internetverbindung. Die Lernseiten liegen lokal und bleiben nutzbar.</p>
+      <p id="offline" hidden>Keine Internetverbindung. Die Academy und installierte Module bleiben lokal nutzbar.</p>
     </section>
-    <section>
+    <section class="bereich" id="sicherung">
       <h2>Datensicherung</h2>
       <p id="letzte">Letzte Sicherung: noch keine.</p>
       <p id="ort"></p>
@@ -57,19 +47,19 @@
       <label for="sicherungen">Sicherungen</label>
       <select id="sicherungen" size="4"></select>
     </section>
-    <section>
+    <section class="bereich">
       <h2>Export und Import</h2>
       <p>Der Export enthält Lernstände, Einstellungen, Profile und eine Prüfsumme. Ein Import überschreibt nichts ohne Bestätigung.</p>
       <div class="zeile">
         <button type="button" id="export">Exportieren</button>
         <button type="button" id="import">Importieren</button>
-        <select id="import-modus">
+        <select id="import-modus" aria-label="Importmodus">
           <option value="merge">Zusammenführen</option>
           <option value="replace">Ersetzen</option>
         </select>
       </div>
     </section>
-    <section>
+    <section class="bereich">
       <h2>Update</h2>
       <p id="update">–</p>
       <p id="fortschritt"></p>
@@ -80,14 +70,15 @@
         <button type="button" id="installieren">Installation vorbereiten</button>
       </div>
     </section>
-    <section>
+    <section class="bereich">
       <h2>System und Support</h2>
       <p id="system">–</p>
-      <p>Support läuft über den Ausbildungsbetrieb. Lernfortschritte werden nicht automatisch übertragen.</p>
+      <p>Lernfortschritte werden nicht automatisch übertragen.</p>
     </section>
     <p id="meldung" role="status"></p>
-    <p><a href="/__desktop/module.html">Module</a> · <a href="/index.html">Zurück zur Themenübersicht</a></p>
+    <p><a href="/home.html">Startseite</a> · <a href="/module.html">Meine Lernbereiche</a></p>
   </main>
-  <script src="/__desktop/verwaltung.js"></script>
+  <script src="/shell.js"></script>
+  <script src="/verwaltung.js"></script>
 </body>
 </html>

@@ -11,17 +11,9 @@ const { validateManifest, satisfies, assertRelativeFile } = require("./spec");
 
 const EXPORT_FORMAT = "desoworks.academy.module-data";
 const EXPORT_FORMAT_VERSION = 1;
-const BUNDLED_PLATFORM = {
-  id: "dev.desoworks.it-ausbildung",
-  name: "IT-Ausbildung",
-  version: "bundled",
-  trust: "official",
-  state: "bundled",
-  publisher: "DesoWorks",
-  uninstallable: false,
-  updateAvailable: false,
-  note: "Bestehende Plattform. Noch nicht in den Moduldatenbereich migriert."
-};
+// Reservierte Kennung der früheren IT-Plattform. Sie ist kein installiertes Modul
+// und kann nicht als Paket eingeschleust werden.
+const RESERVED_PLATFORM_ID = "dev.desoworks.it-ausbildung";
 
 function fail(code, message, details) {
   throw new ModuleError(code, message, details);
@@ -279,7 +271,7 @@ function createModuleManager(options) {
       const installed = registry.available
         ? registry.db.prepare("SELECT * FROM module_install ORDER BY id").all().map(publicRow)
         : [];
-      return { platform: BUNDLED_PLATFORM, installed, available: registry.available, message: registry.message || null };
+      return { platform: null, installed, available: registry.available, message: registry.message || null };
     },
     notices() {
       if (!registry.available) return [];
@@ -309,10 +301,10 @@ function createModuleManager(options) {
       verifyTrust(pack.manifest, pack.files);
       dependencyState(pack.manifest);
       const existing = row(pack.manifest.id);
-      if (existing && existing.state !== "uninstalled") {
+      if (existing) {
         const previous = JSON.parse(existing.manifest_json);
         if (!previous.publisher || previous.publisher.id !== pack.manifest.publisher.id) {
-          fail("publisher-mismatch", "Ein anderes Modul mit dieser ID ist bereits installiert. Lernstände werden nicht übernommen.");
+          fail("publisher-mismatch", "Ein anderer Herausgeber darf diese Modul-ID nicht übernehmen. Lernstände bleiben beim bisherigen Herausgeber.");
         }
         if (previous.trust !== pack.manifest.trust) {
           fail("trust-mismatch", "Die Vertrauensstufe eines installierten Moduls wird nicht stillschweigend geändert.");
@@ -321,8 +313,8 @@ function createModuleManager(options) {
           fail("downgrade-blocked", "Ein älteres Modulpaket ersetzt keine neuere Installation.");
         }
       }
-      if (pack.manifest.id === BUNDLED_PLATFORM.id) {
-        fail("reserved-id", "Die gebündelte Plattform kann nicht als Paket installiert werden.");
+      if (pack.manifest.id === RESERVED_PLATFORM_ID) {
+        fail("reserved-id", "Diese Kennung ist für die frühere Plattform reserviert und kann nicht als Paket installiert werden.");
       }
       const dest = path.join(packageRoot, pack.manifest.id, pack.manifest.version);
       const incoming = dest + ".incoming";
@@ -390,7 +382,7 @@ function createModuleManager(options) {
     },
     open(id) {
       requireRegistry();
-      if (id === BUNDLED_PLATFORM.id) return { kind: "bundled", href: "/index.html", module: BUNDLED_PLATFORM };
+      if (id === RESERVED_PLATFORM_ID) fail("missing-module", "Das Modul ist nicht installiert.");
       const current = row(id);
       if (!current || current.state === "uninstalled") fail("missing-module", "Das Modul ist nicht installiert.");
       if (current.state === "disabled") fail("module-disabled", "Das Modul ist deaktiviert. Der Core und andere Module bleiben nutzbar.");
@@ -519,7 +511,7 @@ function grade(task, response) {
 
 module.exports = {
   EXPORT_FORMAT,
-  BUNDLED_PLATFORM,
+  RESERVED_PLATFORM_ID,
   createModuleManager,
   readPackage,
   sanitizeCourse

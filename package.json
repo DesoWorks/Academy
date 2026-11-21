@@ -1,9 +1,9 @@
 {
-  "name": "it-ausbildung-desktop",
-  "productName": "IT-Ausbildung",
-  "version": "0.1.0",
+  "name": "desoworks-academy",
+  "productName": "DesoWorks Academy",
+  "version": "0.3.0",
   "private": true,
-  "description": "OPERATION ACADEMY: Windows-Desktop-Hülle für die DesoWorks IT-Ausbildungsplattform",
+  "description": "Eigenständige Academy-Plattform von DesoWorks mit neutralem Core und installierbaren Lernmodulen",
   "author": "DesoWorks",
   "main": "src/main.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "electron-builder": "26.18.0"
   },
   "build": {
-    "appId": "dev.desoworks.it-ausbildung",
-    "productName": "IT-Ausbildung",
+    "appId": "dev.desoworks.academy",
+    "productName": "DesoWorks Academy",
     "copyright": "DesoWorks",
     "asar": true,
     "directories": {
@@ -27,7 +27,8 @@
     "files": [
       "src/**/*",
       "package.json",
-      "channel.json"
+      "channel.json",
+      "build/icon.png"
     ],
     "extraResources": [
       {
@@ -41,20 +42,6 @@
       {
         "from": "module-template",
         "to": "academy-module-template"
-      },
-      {
-        "from": "../",
-        "to": "platform",
-        "filter": [
-          "index.html",
-          "glossar.html",
-          ".nojekyll",
-          "css/**/*",
-          "js/**/*",
-          "module/**/*",
-          "assets/**/*",
-          "start/**/*"
-        ]
       }
     ],
     "win": {
@@ -62,6 +49,7 @@
         "nsis",
         "dir"
       ],
+      "icon": "build/icon.ico",
       "signAndEditExecutable": false
     },
     "nsis": {
@@ -70,9 +58,11 @@
       "allowElevation": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "shortcutName": "IT-Ausbildung",
-      "artifactName": "IT-Ausbildung-Setup-${version}.${ext}",
-      "uninstallDisplayName": "IT-Ausbildung"
+      "shortcutName": "DesoWorks Academy",
+      "artifactName": "DesoWorks-Academy-Setup-${version}.${ext}",
+      "uninstallDisplayName": "DesoWorks Academy",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
     }
   }
 }

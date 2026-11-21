@@ -69,7 +69,7 @@ function baseManifest(id) {
     version: "1.0.0",
     license: "MIT",
     language: "de",
-    core: ">=0.2.0 <0.3.0",
+    core: ">=0.2.0 <0.4.0",
     dependencies: [],
     permissions: ["content.read", "progress.write", "tutor.context"],
     sizeBytes: 0,
@@ -308,6 +308,25 @@ test("fremde Herausgeber und reservierte IDs werden abgewiesen", () => {
   const bundled = baseManifest("dev.desoworks.it-ausbildung");
   writePackage(path.join(dir, "bundled"), bundled, course());
   assert.throws(() => app.installFromDirectory(path.join(dir, "bundled")), (error) => error.code === "reserved-id");
+  app.close();
+});
+
+test("deinstallierte Modul-ID bleibt an den bisherigen Herausgeber gebunden", () => {
+  const dir = tempDir();
+  const app = manager(dir);
+  app.installFromDirectory(DEMO);
+  app.progress("example.local.wissen-weitergeben", { tasks: { "aufgabe-1": { correct: true } }, assessment: {} });
+  const removed = app.uninstall("example.local.wissen-weitergeben", { confirm: true });
+  assert.equal(removed.progressKept > 0, true);
+  const takeover = baseManifest("example.local.wissen-weitergeben");
+  takeover.version = "1.1.0";
+  takeover.publisher = { id: "example.attacker", name: "Fremd" };
+  writePackage(path.join(dir, "takeover-after"), takeover, course("fremd"));
+  assert.throws(() => app.installFromDirectory(path.join(dir, "takeover-after")), (error) => error.code === "publisher-mismatch");
+  assert.equal(app.list().installed.some((entry) => entry.id === "example.local.wissen-weitergeben" && entry.state !== "uninstalled"), false);
+  app.installFromDirectory(DEMO);
+  const kept = app.progress("example.local.wissen-weitergeben");
+  assert.equal(kept.tasks["aufgabe-1"].correct, true);
   app.close();
 });
 

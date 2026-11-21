@@ -1,0 +1,153 @@
+/* DesoWorks Academy: gemeinsame Oberfläche aller Shell-Seiten. */
+:root {
+  --hintergrund: #10141c;
+  --flaeche: #172033;
+  --rahmen: #2d3c56;
+  --text: #f4f7fb;
+  --text-gedaempft: #b4c0d4;
+  --akzent: #20B9D8;
+  --signet: #142B44;
+  --fehler: #ffb4a8;
+  --ok: #b7f7c8;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--hintergrund);
+  color: var(--text);
+  font: 16px/1.5 "Segoe UI", system-ui, sans-serif;
+}
+
+a { color: var(--akzent); }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--akzent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  padding: 8px 12px;
+  background: var(--akzent);
+  color: var(--hintergrund);
+  z-index: 10000;
+}
+.skip-link:focus { top: 8px; }
+
+.kopf {
+  background: var(--signet);
+  border-bottom: 1px solid var(--rahmen);
+}
+.kopf-inhalt {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 16px 0;
+}
+.kopf-marke {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.kopf-marke img { width: 32px; height: 32px; }
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.navigation a {
+  display: block;
+  padding: 8px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+.navigation a:hover { background: var(--flaeche); }
+.navigation a[aria-current="page"] { border-bottom-color: var(--akzent); font-weight: 600; }
+.navigation .vorgesehen { color: var(--text-gedaempft); }
+
+.inhalt-seite {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+.inhalt-seite h1 { margin: 0 0 8px; font-size: 1.8rem; }
+.inhalt-seite h2 { margin: 0 0 8px; font-size: 1.15rem; }
+.untertitel { margin: 0 0 24px; color: var(--text-gedaempft); font-size: 1.1rem; }
+
+.begruessung {
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  background: var(--signet);
+  border: 1px solid var(--rahmen);
+  border-left: 6px solid var(--akzent);
+}
+.begruessung h1 { font-size: 2rem; }
+.begruessung .untertitel { margin-bottom: 0; }
+
+.bereich {
+  margin: 20px 0;
+  padding: 16px;
+  background: var(--flaeche);
+  border: 1px solid var(--rahmen);
+}
+.bereich p, .bereich li { line-height: 1.45; }
+
+.karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.karte {
+  padding: 14px;
+  background: var(--flaeche);
+  border: 1px solid var(--rahmen);
+}
+.karte h3 { margin: 0 0 6px; font-size: 1.05rem; }
+.karte p { margin: 4px 0; }
+.meta { color: var(--text-gedaempft); font-size: 0.92rem; }
+
+.zeile { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+button, .knopf {
+  display: inline-block;
+  padding: 8px 14px;
+  font: inherit;
+  color: var(--text);
+  background: var(--signet);
+  border: 1px solid var(--akzent);
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover, .knopf:hover { background: #1b3b5c; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+select, input[type="text"] {
+  font: inherit;
+  padding: 6px 8px;
+  color: var(--text);
+  background: var(--hintergrund);
+  border: 1px solid var(--rahmen);
+}
+label { display: inline-block; margin: 6px 12px 6px 0; }
+
+.hinweis-vorgesehen {
+  padding: 12px 14px;
+  border: 1px dashed var(--rahmen);
+  color: var(--text-gedaempft);
+}
+
+.modul { margin: 12px 0; padding: 12px; border: 1px solid var(--rahmen); }
+
+.fehler { color: var(--fehler); }
+.ok { color: var(--ok); }

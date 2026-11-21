@@ -15,9 +15,9 @@ function tempDir() {
 
 test("Repository-Pinning lehnt Pfadtricks und fremde Download-Hosts ab", () => {
   const { repositoryPinned } = require("../src/updates/feed");
-  assert.equal(repositoryPinned("https://github.com/Evil/x/releases/download/v1/DesoWorks/IT-Ausbildung/setup.exe"), false);
-  assert.equal(repositoryPinned("https://objects.githubusercontent.com/DesoWorks/IT-Ausbildung/setup.exe"), false);
-  assert.equal(repositoryPinned("https://github.com/DesoWorks/IT-Ausbildung/releases/download/v0.2.0/setup.exe"), true);
+  assert.equal(repositoryPinned("https://github.com/Evil/x/releases/download/v1/DesoWorks/Academy/setup.exe"), false);
+  assert.equal(repositoryPinned("https://objects.githubusercontent.com/DesoWorks/Academy/setup.exe"), false);
+  assert.equal(repositoryPinned("https://github.com/DesoWorks/Academy/releases/download/v0.2.0/setup.exe"), true);
   const selected = selectRelease([
     {
       version: "9.0.0",

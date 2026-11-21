@@ -123,7 +123,7 @@ function registerIpc(options) {
     if (!dialog) return { ok: false, code: "unavailable", message: "Der Export-Dialog ist nicht verfügbar. Es wurde nichts geschrieben." };
     const picked = await dialog.showSaveDialog({
       title: "Ausbildungsdaten exportieren",
-      defaultPath: "it-ausbildung-export.json",
+      defaultPath: "academy-export.json",
       filters: [{ name: "Ausbildungsdaten", extensions: ["json"] }]
     });
     if (picked.canceled || !picked.filePath) {
@@ -180,7 +180,7 @@ function registerIpc(options) {
       return { ok: false, code: "cancelled", message: "Import nicht bestätigt. Es wurde nichts geändert." };
     }
     try {
-      const result = store.importBundle(pendingImport.raw, { mode, confirm: true, allowLegacy: true });
+      const result = store.importBundle(pendingImport.raw, { mode, confirm: true, allowLegacy: Boolean(choice && choice.allowLegacy === true) });
       pendingImport = null;
       return ok(result);
     } catch (error) {
@@ -285,6 +285,43 @@ function registerIpc(options) {
     }
     try {
       return ok({ module: options.modules.installFromDirectory(picked.filePaths[0]) });
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-install-example", async (event) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules || !dialog || !options.exampleModuleDir) {
+      return { ok: false, code: "unavailable", message: "Das Beispielmodul lässt sich ohne Modulverwaltung und Dialog nicht installieren." };
+    }
+    let preview;
+    try {
+      preview = options.modules.preview(options.exampleModuleDir);
+    } catch (error) {
+      return fail(error);
+    }
+    const answer = await dialog.showMessageBox({
+      type: "warning",
+      buttons: ["Installieren", "Abbrechen"],
+      defaultId: 1,
+      cancelId: 1,
+      message: preview.replaces ? "Installiertes Modul ersetzen?" : "Beispielmodul installieren?",
+      detail: [
+        preview.name + " " + preview.version,
+        "ID: " + preview.id,
+        "Herausgeber: " + preview.publisher,
+        "Vertrauen: " + preview.trust,
+        "Rechte: " + preview.permissions.join(", "),
+        preview.replaces ? "Ersetzt Version " + preview.replaces + ". Lernstände bleiben an dieser ID." : "Neue Installation.",
+        "Das Paket liegt der Anwendung bei und durchläuft dieselbe Prüfung wie jedes andere Paket."
+      ].join("\n")
+    });
+    if (!answer || answer.response !== 0) {
+      return { ok: false, code: "cancelled", message: "Installation nicht bestätigt. Es wurde nichts kopiert." };
+    }
+    try {
+      return ok({ module: options.modules.installFromDirectory(options.exampleModuleDir) });
     } catch (error) {
       return fail(error);
     }

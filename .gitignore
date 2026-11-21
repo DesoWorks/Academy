@@ -3,3 +3,4 @@ dist/
 out/
 *.log
 test-results/
+_secure/

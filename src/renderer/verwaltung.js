@@ -109,7 +109,14 @@
         say((picked && picked.message) || "Import abgebrochen. Es wurde nichts geändert.", false);
         return null;
       }
-      return api.importBundle({ mode: document.getElementById("import-modus").value });
+      var mode = document.getElementById("import-modus").value;
+      return api.importBundle({ mode: mode }).then(function (first) {
+        // Ältere IT-Ausbildung-Exporte werden nur nach ausdrücklicher Bestätigung übernommen.
+        if (first && first.code === "legacy-unconfirmed" && window.confirm("Dieser Export stammt aus dem älteren Format der IT-Ausbildung. Trotzdem als Academy-Daten übernehmen?")) {
+          return api.importBundle({ mode: mode, allowLegacy: true });
+        }
+        return first;
+      });
     }).then(function (result) {
       if (!result) return;
       say(result.ok ? "Import abgeschlossen." : (result.message || "Import fehlgeschlagen. Vorhandene Daten bleiben unverändert."), result.ok === true);

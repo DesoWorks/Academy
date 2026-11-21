@@ -3,9 +3,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const APP_ID = "dev.desoworks.it-ausbildung";
-const DATA_DIR_NAME = path.join("DesoWorks", "IT-Ausbildung");
-const WEB_VERSION_FILE = "js/version.js";
+const APP_ID = "dev.desoworks.academy";
+const DATA_DIR_NAME = path.join("DesoWorks", "Academy");
 
 function readChannelFile(file) {
   try {
@@ -24,11 +23,10 @@ function resolveChannel(env = process.env, channelFile = path.join(__dirname, ".
   return fileChannel;
 }
 
-function contentRootFrom(app) {
-  if (app && app.isPackaged) {
-    return path.join(process.resourcesPath, "platform");
-  }
-  return path.resolve(__dirname, "..", "..");
+// Die Shell-Seiten liegen im Renderer. Gepackt und ungepackt ist der Inhaltsstamm derselbe.
+// Der Parent-Ordner und fremde Lernplattformen sind niemals ein Inhaltsstamm.
+function contentRootFrom() {
+  return path.join(__dirname, "renderer");
 }
 
 function dataDirFrom(app, env = process.env) {
@@ -39,7 +37,6 @@ function dataDirFrom(app, env = process.env) {
 module.exports = {
   APP_ID,
   DATA_DIR_NAME,
-  WEB_VERSION_FILE,
   resolveChannel,
   contentRootFrom,
   dataDirFrom,

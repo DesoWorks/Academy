@@ -3,7 +3,7 @@
 const { compare } = require("./semver");
 const { MESSAGES } = require("./messages");
 
-const PINNED_REPOSITORY = "DesoWorks/IT-Ausbildung";
+const PINNED_REPOSITORY = "DesoWorks/Academy";
 
 const DEFAULT_HOSTS = [
   "github.com",
