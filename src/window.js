@@ -38,6 +38,11 @@ function createWindow(options) {
       label: "Datei",
       submenu: [
         {
+          label: "Module",
+          accelerator: "F8",
+          click: () => win.webContents.send("academy:menu", "module")
+        },
+        {
           label: "Daten und Updates",
           accelerator: "F9",
           click: () => win.webContents.send("academy:menu", "verwaltung")

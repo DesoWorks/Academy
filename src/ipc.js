@@ -242,6 +242,101 @@ function registerIpc(options) {
     }
   });
 
+  ipcMain.handle("academy:modules", (event) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules) return { ok: false, code: "unavailable", message: "Die Modulverwaltung ist nicht geladen. Die Lernseiten bleiben nutzbar." };
+    return ok(options.modules.list());
+  });
+
+  ipcMain.handle("academy:modules-install", async (event) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules || !dialog) return { ok: false, code: "unavailable", message: "Ohne Dialog im Hauptprozess wird kein Modul installiert." };
+    const picked = await dialog.showOpenDialog({
+      title: "Modulordner wählen",
+      properties: ["openDirectory"]
+    });
+    if (picked.canceled || !picked.filePaths || !picked.filePaths[0]) {
+      return { ok: false, code: "cancelled", message: "Installation abgebrochen. Es wurde nichts kopiert." };
+    }
+    const answer = await dialog.showMessageBox({
+      type: "warning",
+      buttons: ["Installieren", "Abbrechen"],
+      defaultId: 1,
+      cancelId: 1,
+      message: "Modul aus diesem Ordner installieren?",
+      detail: picked.filePaths[0] + ". Unsignierte Pakete bleiben ungeprüft und erhalten keine erweiterten Rechte."
+    });
+    if (!answer || answer.response !== 0) {
+      return { ok: false, code: "cancelled", message: "Installation nicht bestätigt. Es wurde nichts kopiert." };
+    }
+    try {
+      return ok({ module: options.modules.installFromDirectory(picked.filePaths[0]) });
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-open", (event, id) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules) return { ok: false, code: "unavailable", message: "Die Modulverwaltung ist nicht geladen." };
+    try {
+      return ok(options.modules.open(String(id || "")));
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-state", (event, id, state) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules) return { ok: false, code: "unavailable", message: "Die Modulverwaltung ist nicht geladen." };
+    try {
+      return ok({ module: options.modules.setState(String(id || ""), String(state || "")) });
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-uninstall", async (event, id) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules || !dialog) return { ok: false, code: "unavailable", message: "Ohne Bestätigung im Hauptprozess wird nichts deinstalliert." };
+    const answer = await dialog.showMessageBox({
+      type: "warning",
+      buttons: ["Deinstallieren", "Abbrechen"],
+      defaultId: 1,
+      cancelId: 1,
+      message: "Moduldateien entfernen?",
+      detail: "Lernstände dieses Moduls bleiben liegen."
+    });
+    if (!answer || answer.response !== 0) {
+      return { ok: false, code: "cancelled", message: "Deinstallation nicht bestätigt. Es wurde nichts gelöscht." };
+    }
+    try {
+      return ok(options.modules.uninstall(String(id || ""), { confirm: true }));
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-check", (event, id, taskId, response) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules) return { ok: false, code: "unavailable", message: "Die Modulverwaltung ist nicht geladen." };
+    try {
+      return ok(options.modules.check(String(id || ""), String(taskId || ""), response));
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:modules-catalog", (event) => {
+    if (!fromApp(event)) return reject(event, false);
+    try {
+      const { readCatalog } = require("./modules/catalog");
+      return ok(readCatalog(options.catalogFile || ""));
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
   ipcMain.handle("academy:update-install", (event) => {
     if (!fromApp(event)) return reject(event, false);
     try {

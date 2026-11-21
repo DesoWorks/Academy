@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT-Ausbildung – Module</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/startseite.css">
+  <style>
+    .verwaltung { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+    .verwaltung section { margin: 20px 0; padding: 16px; border: 1px solid #2d3c56; background: #172033; color: #f4f7fb; }
+    .verwaltung h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    .verwaltung p, .verwaltung li { line-height: 1.45; }
+    .verwaltung .zeile { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .verwaltung button, .verwaltung select { font: inherit; }
+    .verwaltung .fehler { color: #ffb4a8; }
+    .verwaltung .ok { color: #b7f7c8; }
+    .modul { margin: 12px 0; padding: 12px; border: 1px solid #31445f; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Direkt zum Inhalt springen</a>
+  <header class="kopf">
+    <div class="kopf-inhalt">
+      <p class="kopf-marke">IT-Ausbildung</p>
+      <h1>Module</h1>
+    </div>
+  </header>
+  <main id="hauptinhalt" class="verwaltung" tabindex="-1">
+    <p id="lade">Module werden gelesen …</p>
+    <section>
+      <h2>Plattform</h2>
+      <p id="plattform">–</p>
+    </section>
+    <section>
+      <h2>Installierte Module</h2>
+      <div id="liste"></div>
+      <div class="zeile">
+        <button type="button" id="installieren">Paketordner installieren</button>
+        <button type="button" id="katalog">Katalog lesen</button>
+      </div>
+      <p id="katalog-text"></p>
+    </section>
+    <section id="ansicht" hidden>
+      <h2 id="modul-titel">Modul</h2>
+      <div id="inhalt"></div>
+      <form id="antwort-form">
+        <label for="antwort">Antwort</label>
+        <input id="antwort" name="antwort" autocomplete="off">
+        <button type="submit">Prüfen</button>
+      </form>
+      <p id="ergebnis" role="status"></p>
+    </section>
+    <p id="meldung" role="status"></p>
+    <p><a href="/__desktop/verwaltung.html">Daten und Updates</a> · <a href="/index.html">Themenübersicht</a></p>
+  </main>
+  <script src="/__desktop/module.js"></script>
+</body>
+</html>

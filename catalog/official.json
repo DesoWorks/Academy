@@ -1,0 +1,18 @@
+{
+  "format": "desoworks.academy.catalog",
+  "formatVersion": 1,
+  "connected": false,
+  "note": "Lokale Katalogdatei. Kein Onlineshop, keine Bewertungen, keine Käufe. Die Datei ist vom Modulmanager unabhängig.",
+  "modules": [
+    {
+      "id": "dev.desoworks.demo.wissen-weitergeben",
+      "name": "Wissen weitergeben",
+      "publisher": "DesoWorks",
+      "trust": "private",
+      "distribution": "manual",
+      "localPackage": "modules/wissen-weitergeben",
+      "reviewState": "sample",
+      "price": null
+    }
+  ]
+}

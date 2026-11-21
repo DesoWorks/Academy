@@ -51,6 +51,27 @@ contextBridge.exposeInMainWorld("academyDesktop", {
   installUpdate() {
     return ipcRenderer.invoke("academy:update-install");
   },
+  modules() {
+    return ipcRenderer.invoke("academy:modules");
+  },
+  moduleInstall() {
+    return ipcRenderer.invoke("academy:modules-install");
+  },
+  moduleOpen(id) {
+    return ipcRenderer.invoke("academy:modules-open", String(id || ""));
+  },
+  moduleSetState(id, state) {
+    return ipcRenderer.invoke("academy:modules-state", String(id || ""), String(state || ""));
+  },
+  moduleUninstall(id) {
+    return ipcRenderer.invoke("academy:modules-uninstall", String(id || ""));
+  },
+  moduleCheck(id, taskId, response) {
+    return ipcRenderer.invoke("academy:modules-check", String(id || ""), String(taskId || ""), String(response == null ? "" : response));
+  },
+  moduleCatalog() {
+    return ipcRenderer.invoke("academy:modules-catalog");
+  },
   onMenu(callback) {
     ipcRenderer.on("academy:menu", (_event, action) => callback(action));
   }

@@ -1,0 +1,34 @@
+{
+  "offer": { "id": "einzelkurs", "kind": "course", "title": "Einzelkurs" },
+  "path": { "id": "beispiel", "title": "Beispielpfad" },
+  "area": { "id": "fachgebiet", "title": "Fachgebiet" },
+  "responsibility": "Herausgeber eintragen. Keine staatliche Qualifikation behaupten, wenn keine Berechtigung vorliegt.",
+  "tutorPolicy": { "revealSolutions": false, "hintBeforeSolution": true, "level": "ausbildung" },
+  "sources": [],
+  "sections": [
+    {
+      "id": "abschnitt-1",
+      "title": "Erster Abschnitt",
+      "lessons": [
+        {
+          "id": "lektion-1",
+          "title": "Erste Lektion",
+          "objectives": ["Lernziel eintragen"],
+          "prerequisites": [],
+          "blocks": [
+            { "type": "text", "text": "Erklärungstext. Kein HTML, keine Skripte." },
+            { "type": "task", "id": "aufgabe-1", "prompt": "Frage eintragen", "hint": "Hinweis eintragen", "answer": "antwort" }
+          ]
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "id": "pruefung-1",
+    "title": "Beispielprüfung",
+    "criteria": ["Kriterium eintragen"],
+    "questions": [
+      { "id": "frage-1", "prompt": "Frage eintragen", "choices": ["richtig", "falsch"], "answer": 0 }
+    ]
+  }
+}

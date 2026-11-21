@@ -31,6 +31,18 @@
     ],
     "extraResources": [
       {
+        "from": "modules",
+        "to": "academy-modules"
+      },
+      {
+        "from": "catalog",
+        "to": "academy-catalog"
+      },
+      {
+        "from": "module-template",
+        "to": "academy-module-template"
+      },
+      {
         "from": "../",
         "to": "platform",
         "filter": [

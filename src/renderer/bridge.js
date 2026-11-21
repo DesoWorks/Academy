@@ -101,6 +101,9 @@
       if (action === "verwaltung") {
         window.location.href = "/__desktop/verwaltung.html";
       }
+      if (action === "module") {
+        window.location.href = "/__desktop/module.html";
+      }
     });
   }
 })();

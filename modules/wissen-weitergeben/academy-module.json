@@ -1,0 +1,30 @@
+{
+  "format": "desoworks.academy.module",
+  "formatVersion": 1,
+  "id": "dev.desoworks.demo.wissen-weitergeben",
+  "name": "Wissen weitergeben",
+  "description": "Kleines Beispielmodul. Es zeigt Manifest, Lektion, Aufgabe und Prüfung, ohne die bestehenden Labore zu ersetzen.",
+  "publisher": { "id": "dev.desoworks", "name": "DesoWorks" },
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "language": "de",
+  "core": ">=0.2.0 <0.3.0",
+  "dependencies": [],
+  "permissions": ["content.read", "progress.write", "tutor.context", "notifications.show"],
+  "sizeBytes": 0,
+  "subject": "Lernplattform",
+  "audience": "Selbststudium",
+  "status": "sample",
+  "review": { "state": "private", "signed": false },
+  "trust": "private",
+  "entry": "content/course.json",
+  "files": ["academy-module.json", "content/course.json", "content/hinweis.md"],
+  "optional": {
+    "objectives": ["Ein Academy-Modul von einem Core unterscheiden."],
+    "prerequisites": [],
+    "difficulty": "einstieg",
+    "estimatedMinutes": 15,
+    "sources": ["DesoWorks, Phase H, Beispielinhalt"],
+    "languages": ["de"]
+  }
+}

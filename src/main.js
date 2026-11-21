@@ -11,6 +11,8 @@ const { verifyPublisher } = require("./updates/signature");
 const { PINNED_REPOSITORY } = require("./updates/feed");
 const { declareScheme, registerProtocol } = require("./protocol");
 const { registerIpc } = require("./ipc");
+const { createModuleManager } = require("./modules/manager");
+const { CORE_VERSION } = require("./core/version");
 const { createWindow } = require("./window");
 
 declareScheme();
@@ -36,6 +38,12 @@ if (!gotLock) {
     session.defaultSession.setPermissionCheckHandler(() => false);
     const channel = resolveChannel(app.isPackaged ? {} : process.env);
     const storeRef = { current: openDatabase({ dataDir }) };
+    let modules = null;
+    try {
+      modules = createModuleManager({ dataDir, coreVersion: CORE_VERSION });
+    } catch (error) {
+      modules = { available: false, list() { return { platform: null, installed: [], available: false, message: error.message }; }, close() {} };
+    }
     const updates = createUpdateService({
       dataDir,
       channel,
@@ -63,9 +71,14 @@ if (!gotLock) {
       channel,
       versions: {
         desktop: app.getVersion(),
+        core: CORE_VERSION,
         channel,
         web: "siehe js/version.js"
       },
+      modules,
+      catalogFile: app.isPackaged
+        ? path.join(process.resourcesPath, "academy-catalog", "official.json")
+        : path.join(__dirname, "..", "catalog", "official.json"),
       onInstall(plan) {
         const child = spawn(plan.command, plan.args, { detached: true, stdio: "ignore" });
         child.unref();

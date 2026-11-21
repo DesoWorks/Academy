@@ -1,0 +1,37 @@
+{
+  "format": "desoworks.academy.module",
+  "formatVersion": 1,
+  "id": "example.publisher.mein-modul",
+  "name": "Mein Modul",
+  "description": "Vorlage. Die ID vor der Veröffentlichung ersetzen.",
+  "publisher": { "id": "example.publisher", "name": "Beispielherausgeber" },
+  "version": "0.1.0",
+  "license": "CC-BY-4.0",
+  "language": "de",
+  "core": ">=0.2.0 <0.3.0",
+  "dependencies": [],
+  "permissions": ["content.read", "progress.write"],
+  "sizeBytes": 0,
+  "subject": "Fachgebiet eintragen",
+  "audience": "Selbststudium",
+  "status": "private",
+  "review": { "state": "private", "signed": false },
+  "trust": "private",
+  "entry": "content/course.json",
+  "files": [
+    "academy-module.json",
+    "content/course.json",
+    "content/hinweis.md",
+    "locales/de.json",
+    "docs/README.md"
+  ],
+  "optional": {
+    "objectives": ["Lernziel eintragen"],
+    "prerequisites": [],
+    "difficulty": "einstieg",
+    "year": null,
+    "estimatedMinutes": 20,
+    "sources": [],
+    "languages": ["de"]
+  }
+}

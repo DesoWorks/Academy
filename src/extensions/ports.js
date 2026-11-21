@@ -7,7 +7,8 @@ const PORTS = {
     enabled: false,
     providers: [],
     contract: [
-      "Kein Provider und kein lokales Modell wird in diesem MVP aufgerufen.",
+      "Der Kontextbuilder liegt in modules/tutor.js und schickt weder Lernstände noch Lösungen.",
+      "Kein Provider und kein lokales Modell wird in Phase H aufgerufen.",
       "Lernfortschritt verlässt das Gerät nicht ohne ausdrückliche spätere Zustimmung.",
       "Der Hilfslehrer darf Lösungen nicht ungefragt vorwegnehmen.",
       "Fachfragen, Erklärungen und schrittweise Hilfe sind spätere Fähigkeiten dieser Schnittstelle, nicht dieser Version."

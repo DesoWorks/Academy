@@ -1,0 +1,39 @@
+{
+  "offer": { "id": "selbststudium", "kind": "self-study", "title": "Selbststudium" },
+  "path": { "id": "wissen-weitergeben", "title": "Wissen weitergeben" },
+  "area": { "id": "plattform", "title": "Plattform" },
+  "responsibility": "DesoWorks, Beispielinhalt. Das ist keine staatliche Qualifikation und kein Berufsabschluss.",
+  "tutorPolicy": { "revealSolutions": false, "hintBeforeSolution": true, "level": "ausbildung" },
+  "sources": [{ "title": "Phase H, Modulstandard", "note": "Beispiel, fachlich nicht geprüft als Lehrplan." }],
+  "sections": [
+    {
+      "id": "abschnitt-1",
+      "title": "Was ein Modul ist",
+      "lessons": [
+        {
+          "id": "lektion-1",
+          "title": "Core und Modul",
+          "objectives": ["Erklären, warum ein Modul den Core nicht ersetzen muss."],
+          "prerequisites": [],
+          "blocks": [
+            { "type": "text", "text": "Der Academy Core startet auch dann, wenn ein Modul fehlt oder beschädigt ist. Ein Modul bringt Lerninhalt mit, nicht die Fensterverwaltung und nicht die Datenbank des Cores." },
+            { "type": "task", "id": "aufgabe-1", "prompt": "Wie heißt die Datei, die ein Modul beschreibt?", "hint": "Sie liegt im Paketwurzelverzeichnis und endet auf .json.", "answer": "academy-module.json" }
+          ]
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "id": "pruefung-1",
+    "title": "Kurze Prüfung",
+    "criteria": ["Die Antwort nennt die Trennung von Core und Modul."],
+    "questions": [
+      {
+        "id": "frage-1",
+        "prompt": "Was bleibt erhalten, wenn die Moduldateien deinstalliert werden?",
+        "choices": ["Die Lernstände des Moduls", "Die Fenster des Betriebssystems", "Der Quellcode des Cores"],
+        "answer": 0
+      }
+    ]
+  }
+}
