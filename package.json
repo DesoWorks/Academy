@@ -1,0 +1,66 @@
+{
+  "name": "it-ausbildung-desktop",
+  "productName": "IT-Ausbildung",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OPERATION ACADEMY: Windows-Desktop-Hülle für die DesoWorks IT-Ausbildungsplattform",
+  "author": "DesoWorks",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/*.test.js",
+    "dist:dir": "electron-builder --win dir",
+    "dist:nsis": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "45.4.1",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "dev.desoworks.it-ausbildung",
+    "productName": "IT-Ausbildung",
+    "copyright": "DesoWorks",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "channel.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../",
+        "to": "platform",
+        "filter": [
+          "index.html",
+          "glossar.html",
+          ".nojekyll",
+          "css/**/*",
+          "js/**/*",
+          "module/**/*",
+          "assets/**/*",
+          "start/**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "dir"
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "IT-Ausbildung",
+      "artifactName": "IT-Ausbildung-Setup-${version}.${ext}",
+      "uninstallDisplayName": "IT-Ausbildung"
+    }
+  }
+}

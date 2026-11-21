@@ -1,0 +1,4 @@
+{
+  "channel": "dev",
+  "note": "Entwicklungsbuild. Produktive Updates werden nicht installiert. Ein Stable-Release ändert diese Datei nur in einem gesondert freigegebenen Release-Lauf."
+}
