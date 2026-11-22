@@ -2,17 +2,38 @@
    Markenwerte stehen nur in design-tokens.css. */
 @import url("design-tokens.css");
 
+/* Shell-Aliase folgen den Academy-Rollen aus design-tokens.css (data-academy-theme am <html>). */
 :root {
-  --hintergrund: var(--dw-canvas);
-  --flaeche: var(--dw-surface);
-  --rahmen: var(--dw-border);
-  --text: var(--dw-text);
-  --text-gedaempft: var(--dw-text-muted);
-  --akzent: var(--dw-accent);
+  --hintergrund: var(--farbe-hintergrund);
+  --flaeche: var(--farbe-flaeche);
+  --rahmen: var(--farbe-rahmen);
+  --text: var(--farbe-text);
+  --text-gedaempft: var(--farbe-text-leise);
+  --akzent: var(--farbe-akzent);
+  /* Kopf, Modulkontext, Hover: Knight behält seine erhöhten Flächen. */
   --signet: var(--dw-surface-raised);
+  --kontext-flaeche: var(--dw-surface);
+  --hover-flaeche: var(--dw-surface-accent);
+  --hover-rahmen: var(--dw-accent-hover);
   --fehler: var(--dw-accent);
   --ok: var(--dw-ok);
 }
+
+/* Hell und Kontrast: nur vorhandene Rollen, kein neues Hex. Mangels eigener Statusrollen
+   tragen Meldungen den Textton und sind zusätzlich fett (nicht allein über Farbe). */
+:root[data-academy-theme="hell"],
+:root[data-academy-theme="kontrast"] {
+  --signet: var(--farbe-flaeche);
+  --kontext-flaeche: var(--farbe-flaeche);
+  --hover-flaeche: color-mix(in srgb, var(--farbe-akzent) 12%, var(--farbe-flaeche));
+  --hover-rahmen: var(--farbe-text);
+  --fehler: var(--farbe-text);
+  --ok: var(--farbe-text);
+}
+:root[data-academy-theme="hell"] .fehler,
+:root[data-academy-theme="kontrast"] .fehler,
+:root[data-academy-theme="hell"] .ok,
+:root[data-academy-theme="kontrast"] .ok { font-weight: 600; }
 
 * { box-sizing: border-box; }
 
@@ -31,7 +52,7 @@ h1, h2, h3, .kopf-marke {
 
 a { color: var(--akzent); }
 a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
-  outline: 3px solid var(--akzent);
+  outline: 3px solid var(--farbe-fokus);
   outline-offset: 2px;
 }
 
@@ -68,7 +89,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   margin: 0 0 8px;
   max-width: 100%;
   padding: 4px 0 0;
-  color: var(--dw-text-muted);
+  color: var(--text-gedaempft);
   font: 13px/1.4 var(--dw-font-display);
 }
 
@@ -146,7 +167,7 @@ button, .knopf {
   cursor: pointer;
 }
 button, .knopf { min-height: var(--dw-control-height); border-radius: var(--dw-radius); }
-button:hover, .knopf:hover { background: var(--dw-surface-accent); border-color: var(--dw-accent-hover); }
+button:hover, .knopf:hover { background: var(--hover-flaeche); border-color: var(--hover-rahmen); }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
 select, input[type="text"] {
   font: inherit;
@@ -164,19 +185,24 @@ label { display: inline-block; margin: 6px 12px 6px 0; }
 }
 
 .modul { margin: 12px 0; padding: 12px; border: 1px solid var(--rahmen); }
-.modul-frame { display: block; width: 100%; height: 100%; min-height: 0; border: 0; background: var(--dw-canvas); }
+.modul-frame { display: block; width: 100%; height: 100%; min-height: 0; border: 0; background: var(--hintergrund); }
 
+/* Bei großer Schrift darf das Fenster scrollen, damit Kopf-Navigation und Modulkontext
+   erreichbar bleiben. Der Frame behält eine Mindesthöhe statt auf 0 zu schrumpfen. */
 body.modul-offen {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 body.modul-offen .kopf { flex: none; }
+.navigation li { min-width: 0; }
+.navigation a { overflow-wrap: anywhere; }
 body.modul-offen .inhalt-seite {
   max-width: none;
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: 16rem;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -200,7 +226,7 @@ body.modul-offen #ansicht > h2 { display: none; }
   align-items: center;
   gap: 8px 12px;
   padding: 6px 16px;
-  background: var(--dw-surface);
+  background: var(--kontext-flaeche);
   border-bottom: 1px solid var(--rahmen);
 }
 .modul-kontext h2 { margin: 0; font-size: 1rem; }
@@ -215,7 +241,7 @@ body.modul-offen .modul-frame {
   flex: 1 1 auto;
   width: 100%;
   height: auto;
-  min-height: 0;
+  min-height: 16rem;
   border: 0;
 }
 body.modul-offen #ergebnis:empty { display: none; }

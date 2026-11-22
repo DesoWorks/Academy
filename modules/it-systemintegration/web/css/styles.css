@@ -159,6 +159,17 @@ button:focus-visible {
 /* Inhaltsbereiche */
 main { max-width: 860px; margin: 0 auto; padding: 1rem; }
 main:focus { outline: none; }
+body:is(
+  [data-page="lf3-client-anbindung"],
+  [data-page="lf3-dhcp"],
+  [data-page="lf3-dns"],
+  [data-page="lf3-fehlerbild-protokoll"],
+  [data-page="lf3-ipv4-konfiguration"],
+  [data-page="lf3-verbindung-eingrenzen"]
+) main#main[tabindex="-1"]:focus {
+  outline: 3px solid var(--farbe-akzent);
+  outline-offset: -3px;
+}
 
 .abschnitt {
   background: var(--farbe-flaeche);

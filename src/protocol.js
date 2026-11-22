@@ -8,6 +8,12 @@ const { CSP, MODULE_CSP, resolveAcademyPath, mimeFor } = require("./protocol-pat
 
 const BRIDGE = '<script src="/__desktop/bridge.js"></script>';
 const HOST_LINKS = '<link rel="stylesheet" href="/__academy/design-tokens.css"><link rel="stylesheet" href="/__academy/host.css">';
+// Darstellungsmodus (Design Harmony 2B): Allowlist, Query-Name und Fallback.
+const THEME_PARAM = "academy-theme";
+const THEMES = Object.freeze(["hell", "dunkel", "kontrast"]);
+const THEME_FALLBACK = "hell";
+const HTML_ROOT = /<html(?=[\s>\/])((?:"[^"]*"|'[^']*'|[^>"'])*)>/i;
+const ATTRIBUTE = /\s+([^\s"'<>\/=]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+))?/g;
 const HOST_ASSETS = {
   "/__academy/design-tokens.css": "design-tokens.css",
   "/__academy/host.css": "host.css"
@@ -42,6 +48,33 @@ function injectHost(html) {
     return source.replace(/<\/head>/i, `${HOST_LINKS}</head>`);
   }
   return HOST_LINKS + source;
+}
+
+// Genau ein Query-Wert aus der Allowlist gilt. Alles andere ergibt hell.
+// Zurückgegeben wird immer ein Literal aus THEMES, nie der Roh-Query.
+function themeFromUrl(url) {
+  let values;
+  try {
+    values = url.searchParams.getAll(THEME_PARAM);
+  } catch (error) {
+    return THEME_FALLBACK;
+  }
+  if (values.length !== 1) return THEME_FALLBACK;
+  const match = THEMES.find((theme) => theme === values[0]);
+  return match || THEME_FALLBACK;
+}
+
+// Setzt genau ein data-academy-theme auf dem vorhandenen <html>. Andere Root-Attribute bleiben.
+// Ohne explizites <html> bleibt das Dokument unverändert (nicht vertragskonform, kein Ersatz).
+function applyTheme(html, theme) {
+  const source = String(html);
+  const literal = THEMES.find((entry) => entry === theme) || THEME_FALLBACK;
+  return source.replace(HTML_ROOT, (whole, attributes) => {
+    const kept = attributes.replace(ATTRIBUTE, (token, name) =>
+      name.toLowerCase() === "data-academy-theme" ? "" : token
+    );
+    return `<html${kept} data-academy-theme="${literal}">`;
+  });
 }
 
 function serveHostAsset(options, url) {
@@ -82,7 +115,8 @@ function serveModule(options, url) {
     "cache-control": "no-store"
   };
   if (path.extname(file).toLowerCase() === ".html") {
-    return new Response(injectHost(fs.readFileSync(file, "utf8")), { headers });
+    const page = injectHost(fs.readFileSync(file, "utf8"));
+    return new Response(applyTheme(page, themeFromUrl(url)), { headers });
   }
   return new Response(Readable.toWeb(fs.createReadStream(file)), { headers });
 }
@@ -138,4 +172,13 @@ function registerProtocol(options) {
   });
 }
 
-module.exports = { declareScheme, registerProtocol, injectBridge, injectHost };
+module.exports = {
+  declareScheme,
+  registerProtocol,
+  injectBridge,
+  injectHost,
+  applyTheme,
+  themeFromUrl,
+  THEMES,
+  THEME_PARAM
+};

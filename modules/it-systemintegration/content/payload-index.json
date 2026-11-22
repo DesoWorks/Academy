@@ -95,8 +95,8 @@
     },
     {
       "path": "web/css/styles.css",
-      "sha256": "c1984ebde7c86e5c43b784cf5c9df940f65142828f4d7ee86309872a2c00ace6",
-      "size": 23991
+      "sha256": "97a47a728bbc8c4d2d1816d8ac8c7dfdcab84c2510515b7a5bbcc2395053d035",
+      "size": 24316
     },
     {
       "path": "web/css/windows-werkzeugkiste.css",
@@ -120,8 +120,8 @@
     },
     {
       "path": "web/js/anzeige-glossar.js",
-      "sha256": "352acde821af192d6022807a94322494c83fa01ec5d06b40accb297581029757",
-      "size": 6869
+      "sha256": "456e729141fbe0310771aee8076a82fd3fc88adc11e9876e5950b1638c2fa51d",
+      "size": 8098
     },
     {
       "path": "web/js/app.js",
@@ -670,8 +670,8 @@
     },
     {
       "path": "web/js/navigation.js",
-      "sha256": "e6b8830a9dfb9debe044bd469b53f35f9d8011bc2e51c20009435216ce68c93e",
-      "size": 10155
+      "sha256": "433b7f055b41b3a6a74e201ebef8d1c2609b066c11668a3809846b282c0ef80a",
+      "size": 13328
     },
     {
       "path": "web/js/netzmaske.js",
@@ -895,28 +895,28 @@
     },
     {
       "path": "web/module/lf3-client-anbindung.html",
-      "sha256": "d0eb2ff1044abe4fed8f0fd6e85ea6e64f2cceae9ae6a6f59fad0eaf3aa5d467",
-      "size": 7427
+      "sha256": "8a6570bdb6df488d3bd915a39211437c4293fad74f51abc19240def645ed8906",
+      "size": 7587
     },
     {
       "path": "web/module/lf3-dhcp.html",
-      "sha256": "7b7cd2d48300bbd08a0afd6f489f0a94ece647ca14c6f3d72dfd7bffdca1aad3",
-      "size": 7689
+      "sha256": "60d5fc99a93f1934f832b41aa17f48842b4adeb7cda6fab98585dafbfe17ce51",
+      "size": 7849
     },
     {
       "path": "web/module/lf3-dns.html",
-      "sha256": "863dead2fa3d9374f7a217a6f18055374ccddec9ba4f87a2d23f81110cab9bf6",
-      "size": 7987
+      "sha256": "a7fb78dd4f0796a80f75f1663a7efdb933f171fcb3eec257ed65032c3d70982d",
+      "size": 8147
     },
     {
       "path": "web/module/lf3-fehlerbild-protokoll.html",
-      "sha256": "ad07a3035fcdb36d34c2ed9cd57d3b1cce008d605814886ee34808557339ba40",
-      "size": 8586
+      "sha256": "63eb1534ea573821deb4c3e9d001ed206b52c033bd8da606aec9d4f898b14ff9",
+      "size": 8746
     },
     {
       "path": "web/module/lf3-ipv4-konfiguration.html",
-      "sha256": "74b3892bfacf6805ebb9dd264e4ade1a89754a72913fda9b74046d6429bfd55f",
-      "size": 7619
+      "sha256": "6cb0ff2b936868ce673b3aa2dc9105eb30f66107254a433d0f6920f316929fc2",
+      "size": 7779
     },
     {
       "path": "web/module/lf3-lernziel.html",
@@ -925,8 +925,8 @@
     },
     {
       "path": "web/module/lf3-verbindung-eingrenzen.html",
-      "sha256": "c548d2b067431f05a7fe21f2d6307bd743d88c557b97d325299bb6f499967b31",
-      "size": 8649
+      "sha256": "303e7aa5ea867ad2f6516ff78fbb841cb3552663c349086cc21289c2af606795",
+      "size": 8809
     },
     {
       "path": "web/module/lf4-handlungen.html",

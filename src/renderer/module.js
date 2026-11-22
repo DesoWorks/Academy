@@ -95,7 +95,10 @@
         frame.title = response.module.name;
         frame.setAttribute("sandbox", "allow-scripts allow-forms allow-same-origin");
         frame.referrerPolicy = "no-referrer";
-        frame.src = "academy://" + response.module.id + "/" + String(response.runtime.entry).replace(/^\/+/, "");
+        // Einziger Transport des Darstellungsmodus: Query-Parameter, vorhandene Query und Fragment bleiben.
+        var frameUrl = new URL("academy://" + response.module.id + "/" + String(response.runtime.entry).replace(/^\/+/, ""));
+        frameUrl.searchParams.set("academy-theme", shell.activeTheme());
+        frame.src = frameUrl.href;
         inhalt.appendChild(frame);
         return;
       }

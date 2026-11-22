@@ -1,0 +1,111 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-2b-live-5e4uAB",
+  "core": "0.3.0",
+  "steps": [
+    {
+      "step": "install",
+      "detail": {
+        "id": "desoworks.it-systemintegration",
+        "version": "1.0.1",
+        "state": "active"
+      }
+    },
+    {
+      "step": "dunkel",
+      "detail": {
+        "measured": {
+          "academyTheme": "dunkel",
+          "aria": "Skizze der Verbindung von Mira-01 über ein Netzwerkkabel und die Netzwerkdose zum Switch und weiter ins fiktive Lernnetz",
+          "background": "rgb(20, 17, 20)",
+          "caseHidden": false,
+          "color": "rgb(247, 244, 245)",
+          "contrast": 17.15,
+          "dataTheme": "dunkel",
+          "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel",
+          "navRect": {
+            "bottom": 219.015625,
+            "h": 44.984375,
+            "w": 269,
+            "x": 18,
+            "y": 174.03125
+          },
+          "navText": "Themenübersicht",
+          "role": "img",
+          "selectDisabled": true,
+          "view": {
+            "h": 544,
+            "w": 1264
+          }
+        },
+        "focus": {
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "MAIN"
+        },
+        "frameUrl": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel"
+      }
+    },
+    {
+      "step": "dunkel-zoom-200",
+      "detail": {
+        "factor": 2
+      }
+    },
+    {
+      "step": "dunkel-zoom-150",
+      "detail": {
+        "factor": 1.5
+      }
+    },
+    {
+      "step": "write-hell",
+      "detail": true
+    },
+    {
+      "step": "hell",
+      "detail": {
+        "measured": {
+          "academyTheme": "hell",
+          "aria": "Skizze der Verbindung von Mira-01 über ein Netzwerkkabel und die Netzwerkdose zum Switch und weiter ins fiktive Lernnetz",
+          "background": "rgb(255, 255, 255)",
+          "caseHidden": false,
+          "color": "rgb(27, 36, 48)",
+          "contrast": 15.65,
+          "dataTheme": "hell",
+          "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=hell",
+          "navRect": {
+            "bottom": 219.015625,
+            "h": 44.984375,
+            "w": 269,
+            "x": 18,
+            "y": 174.03125
+          },
+          "navText": "Themenübersicht",
+          "role": "img",
+          "selectDisabled": true,
+          "view": {
+            "h": 544,
+            "w": 1264
+          }
+        },
+        "focus": {
+          "outline": "none 3px rgb(27, 36, 48)",
+          "tag": "MAIN"
+        },
+        "frameUrl": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=hell"
+      }
+    },
+    {
+      "step": "shell-nav",
+      "detail": {
+        "theme": "hell",
+        "text": "Startseite",
+        "rect": {
+          "y": 68.0625,
+          "h": 43.796875,
+          "bottom": 111.859375
+        },
+        "viewH": 775
+      }
+    }
+  ]
+}

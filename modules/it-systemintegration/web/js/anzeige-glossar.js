@@ -4,6 +4,14 @@
   var KEY = "it-ausbildung.anzeige.v1";
   var defaults = { text: 100, spacing: false, theme: "hell", ruhig: false };
   var TEXT_MIN = 80, TEXT_MAX = 150, TEXT_STEP = 10;
+  var THEMES = ["hell", "dunkel", "kontrast"];
+  /* In der Academy setzt allein die Shell data-academy-theme am <html> (per Protokoll-Handler).
+     Dann ist dieser validierte Wert die einzige Theme-Quelle; sonst gilt das bisherige Standalone-Verhalten. */
+  var inAcademy = document.documentElement.hasAttribute("data-academy-theme");
+  var academyTheme = (function () {
+    var value = document.documentElement.getAttribute("data-academy-theme");
+    return THEMES.indexOf(value) !== -1 ? value : "hell";
+  })();
   var current = load();
   var systemReduceMotion = false;
   function clampText(v) {
@@ -28,7 +36,7 @@
     var scale = current.text / 100;
     if (!isFinite(scale) || scale <= 0) scale = 1;
     document.documentElement.style.setProperty("--text-scale", String(scale));
-    document.documentElement.dataset.theme = current.theme;
+    document.documentElement.dataset.theme = inAcademy ? academyTheme : current.theme;
     document.documentElement.classList.toggle("mehr-abstand", !!current.spacing);
     document.documentElement.classList.toggle("ruhige-ansicht", !!current.ruhig || systemReduceMotion);
   }
@@ -62,9 +70,17 @@
     [["hell", "Hell"], ["dunkel", "Dunkel"], ["kontrast", "Hoher Kontrast"]].forEach(function (item) {
       var option = document.createElement("option"); option.value = item[0]; option.textContent = item[1]; theme.appendChild(option);
     });
-    theme.value = current.theme;
-    theme.addEventListener("change", function () { current.theme = theme.value; save(); });
-    panel.append(themeLabel, theme);
+    if (inAcademy) {
+      theme.value = academyTheme; theme.disabled = true;
+      var themeHelp = document.createElement("p"); themeHelp.id = "farbmodus-hinweis"; themeHelp.className = "klein";
+      themeHelp.textContent = "Darstellung wird in der Academy eingestellt";
+      theme.setAttribute("aria-describedby", "farbmodus-hinweis");
+      panel.append(themeLabel, theme, themeHelp);
+    } else {
+      theme.value = current.theme;
+      theme.addEventListener("change", function () { current.theme = theme.value; save(); });
+      panel.append(themeLabel, theme);
+    }
 
     var calmLabel = document.createElement("label"); calmLabel.className = "bewegung-label";
     var calm = document.createElement("input"); calm.type = "checkbox"; calm.id = "bewegung-reduzieren"; calm.checked = !!current.ruhig;
@@ -81,8 +97,14 @@
 
     var reset = document.createElement("button"); reset.type = "button"; reset.textContent = "Auf Standard zurücksetzen";
     reset.addEventListener("click", function () {
-      current = Object.assign({}, defaults); size.value = "100"; value.textContent = "100%";
-      space.setAttribute("aria-pressed", "false"); calm.checked = false; theme.value = "hell"; save();
+      if (inAcademy) {
+        /* Nur Leseoptionen zurücksetzen; Academy-Darstellung und lokales Feld theme bleiben. */
+        current.text = defaults.text; current.spacing = defaults.spacing; current.ruhig = defaults.ruhig;
+      } else {
+        current = Object.assign({}, defaults); theme.value = "hell";
+      }
+      size.value = "100"; value.textContent = "100%";
+      space.setAttribute("aria-pressed", "false"); calm.checked = false; save();
     });
     panel.appendChild(reset);
     box.appendChild(panel);
@@ -92,7 +114,7 @@
   }
 
   function init() {
-    if (window.matchMedia && window.matchMedia("(prefers-contrast: more)").matches && current.theme === "hell") current.theme = "kontrast";
+    if (!inAcademy && window.matchMedia && window.matchMedia("(prefers-contrast: more)").matches && current.theme === "hell") current.theme = "kontrast";
     var motion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
     systemReduceMotion = !!(motion && motion.matches);
     if (motion && motion.addEventListener) motion.addEventListener("change", function (event) { systemReduceMotion = event.matches; apply(); var note = document.getElementById("bewegung-system-hinweis"); if (note) note.hidden = !systemReduceMotion; });

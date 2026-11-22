@@ -1,0 +1,465 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-2d-keys2-kk3UL4",
+  "method": "Tab via sendInputEvent bis Skip-Link, danach genau ein CDP-keyDown/keyUp. Kein DOM-focus, kein dispatchEvent.",
+  "pages": [
+    {
+      "file": "lf3-client-anbindung.html",
+      "skip": true,
+      "tabs": 12,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst Endgerät, Netzwerkdose, Switch und Testnetz als Baustein"
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "Client"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      }
+    },
+    {
+      "file": "lf3-dhcp.html",
+      "skip": true,
+      "tabs": 1,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst Den Zweck von DHCP in einem einfachen Satz wiedergeben. "
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "DHCP"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      },
+      "shot": {
+        "name": "lf3-dhcp-enter-dunkel.png",
+        "blank": false
+      }
+    },
+    {
+      "file": "lf3-dns.html",
+      "skip": true,
+      "tabs": 1,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst Einen Namen und eine IP-Adresse als zwei verschiedene An"
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "DNS"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      }
+    },
+    {
+      "file": "lf3-fehlerbild-protokoll.html",
+      "skip": true,
+      "tabs": 1,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst Beobachtung, getesteten Schritt und Ergebnis in einem Pr"
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "Befund"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      }
+    },
+    {
+      "file": "lf3-ipv4-konfiguration.html",
+      "skip": true,
+      "tabs": 1,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst In einer vorgegebenen Client-Anzeige IPv4-Adresse, Präfi"
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Lektion 1: Die IPv4-Adresse"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      }
+    },
+    {
+      "file": "lf3-verbindung-eingrenzen.html",
+      "skip": true,
+      "tabs": 1,
+      "before": {
+        "cls": "skip-link",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      },
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "MAIN",
+        "text": "Was du lernst Vorgegebene Beobachtungen lesen und nach ihrer Aussage o"
+      },
+      "enterTrusted": true,
+      "focusinMain": true,
+      "afterTab": {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "Eingrenzung"
+      },
+      "afterShiftTab": {
+        "cls": "schritt-knopf",
+        "id": "",
+        "inMain": false,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "4 · Abschluss"
+      },
+      "parent": {
+        "tag": "IFRAME",
+        "id": "",
+        "cls": "modul-frame"
+      }
+    }
+  ],
+  "themes": [
+    {
+      "theme": "hell",
+      "skip": true,
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(29, 95, 180)",
+        "tag": "MAIN",
+        "text": "Was du lernst Den Zweck von DHCP in einem einfachen Satz wiedergeben. "
+      },
+      "shot": {
+        "name": "lf3-dhcp-enter-hell.png",
+        "blank": false
+      }
+    },
+    {
+      "theme": "kontrast",
+      "skip": true,
+      "afterEnter": {
+        "cls": "",
+        "id": "main",
+        "inMain": true,
+        "offset": "-3px",
+        "outline": "solid 3px rgb(0, 58, 112)",
+        "tag": "MAIN",
+        "text": "Was du lernst Den Zweck von DHCP in einem einfachen Satz wiedergeben. "
+      },
+      "shot": {
+        "name": "lf3-dhcp-enter-kontrast.png",
+        "blank": false
+      }
+    }
+  ],
+  "deeper": {
+    "stops": [
+      {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(181, 213, 255)",
+        "tag": "SUMMARY",
+        "text": "DHCP"
+      },
+      {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "IPv4-Konfiguration eines Clients lesen"
+      },
+      {
+        "cls": "",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "IPv4"
+      },
+      {
+        "cls": "knopf knopf-haupt",
+        "id": "",
+        "inMain": true,
+        "offset": "2px",
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "BUTTON",
+        "text": "Weiter zum Ablauf"
+      }
+    ],
+    "afterStep": {
+      "cls": "knopf knopf-haupt",
+      "id": "",
+      "inMain": true,
+      "offset": "2px",
+      "outline": "solid 3px rgb(255, 83, 105)",
+      "tag": "BUTTON",
+      "text": "Weiter zum Ablauf"
+    },
+    "radio": null,
+    "checked": {
+      "tag": "SUMMARY"
+    },
+    "leftFrame": {
+      "tag": "SELECT",
+      "id": "modul-wechsel",
+      "cls": ""
+    },
+    "shot": {
+      "name": "lf3-dhcp-schritt.png",
+      "blank": false
+    }
+  },
+  "a11y": {
+    "colors": {
+      "dunkel": {
+        "client": 1249,
+        "navClient": 907,
+        "navScroll": 907,
+        "scroll": 1249,
+        "surface": "rgb(20, 17, 20)",
+        "text": "rgb(247, 244, 245)"
+      },
+      "hell": {
+        "client": 1249,
+        "navClient": 907,
+        "navScroll": 907,
+        "scroll": 1249,
+        "surface": "rgb(255, 255, 255)",
+        "text": "rgb(27, 36, 48)"
+      },
+      "kontrast": {
+        "client": 1249,
+        "navClient": 907,
+        "navScroll": 907,
+        "scroll": 1249,
+        "surface": "rgb(255, 255, 255)",
+        "text": "rgb(0, 0, 0)"
+      }
+    },
+    "zoom": {
+      "2": {
+        "innerWidth": 624,
+        "overflow": false,
+        "shell": {
+          "overflow": false,
+          "scroll": 593,
+          "client": 593
+        }
+      },
+      "1.5": {
+        "innerWidth": 843,
+        "overflow": false,
+        "shell": {
+          "overflow": false,
+          "scroll": 811,
+          "client": 811
+        }
+      }
+    },
+    "reflow320": {
+      "innerWidth": 305,
+      "overflow": false,
+      "shell": {
+        "overflow": false,
+        "scroll": 273,
+        "client": 273
+      }
+    },
+    "reading": {
+      "fontSize": "17px",
+      "lineHeight": "32.3px",
+      "scale": "1.5",
+      "selectDisabled": true,
+      "spacing": true,
+      "theme": "dunkel"
+    }
+  },
+  "screenreader": {
+    "running": [],
+    "sampled": false
+  }
+}

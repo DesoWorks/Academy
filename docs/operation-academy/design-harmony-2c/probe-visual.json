@@ -1,0 +1,156 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-2c-visual-DXmKq9",
+  "shots": [
+    {
+      "name": "lf3-dhcp-dunkel.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dhcp-dunkel-200.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dns-dunkel.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dns-dunkel-200.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-verbindung-eingrenzen-dunkel.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-verbindung-eingrenzen-dunkel-200.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-fehlerbild-protokoll-dunkel.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-fehlerbild-protokoll-dunkel-200.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-ipv4-konfiguration-dunkel.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-ipv4-konfiguration-dunkel-200.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dhcp-hell.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dns-hell.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-verbindung-eingrenzen-hell.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-fehlerbild-protokoll-hell.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-ipv4-konfiguration-hell.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dhcp-kontrast.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-dns-kontrast.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-verbindung-eingrenzen-kontrast.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-fehlerbild-protokoll-kontrast.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "lf3-ipv4-konfiguration-kontrast.png",
+      "bytes": 4221760,
+      "blank": false
+    },
+    {
+      "name": "tastatur-nach-enter.png",
+      "bytes": 4221760,
+      "blank": false
+    }
+  ],
+  "keyboard": [
+    {
+      "after": "tabs",
+      "snap": {
+        "className": "skip-link",
+        "id": "",
+        "inView": true,
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      }
+    },
+    {
+      "after": "Return",
+      "snap": {
+        "className": "skip-link",
+        "id": "",
+        "inView": true,
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      }
+    },
+    {
+      "after": "Enter",
+      "snap": {
+        "className": "skip-link",
+        "id": "",
+        "inView": true,
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      }
+    },
+    {
+      "after": "Tab-next",
+      "snap": {
+        "className": "skip-link",
+        "id": "",
+        "inView": true,
+        "outline": "solid 3px rgb(255, 83, 105)",
+        "tag": "A",
+        "text": "Direkt zum Inhalt springen"
+      }
+    }
+  ]
+}

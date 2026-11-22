@@ -35,3 +35,44 @@
   --dw-text-lg: 1.25rem;
   --dw-text-xl: 2rem;
 }
+
+/* Academy-Rollenmatrix (Design Harmony 2B, Vertrag Abschnitt 3).
+   Die Shell und jedes Moduldokument setzen data-academy-theme am eigenen <html>.
+   Dunkel: nur Aliase auf die --dw-* Werte oben, keine wiederholten Knight-Hexwerte.
+   Hell und Kontrast: unveränderte Hexwerte aus dem Modul, keine neuen Farben.
+   Spezifität :root[attr] (0,2,0) schlägt die Legacy-Regeln :root und html[data-theme] (0,1,x)
+   unabhängig von der Dateireihenfolge. forced-colors wird hier nicht überschrieben.
+   Ohne Attribut (nur Shell-Seite vor dem Laden von shell.js) gilt der bisherige Knight-Look. */
+
+:root:not([data-academy-theme]),
+:root[data-academy-theme="dunkel"] {
+  --farbe-hintergrund: var(--dw-canvas);
+  --farbe-flaeche: var(--dw-surface);
+  --farbe-text: var(--dw-text);
+  --farbe-text-leise: var(--dw-text-muted);
+  --farbe-rahmen: var(--dw-border);
+  --farbe-akzent: var(--dw-accent);
+  --farbe-fokus: var(--dw-focus);
+}
+
+/* Quelle: modules/it-systemintegration/web/css/styles.css, :root, Zeilen 5-11 (Stand 2026-11-22). */
+:root[data-academy-theme="hell"] {
+  --farbe-hintergrund: #f4f7fb;
+  --farbe-flaeche: #ffffff;
+  --farbe-text: #1b2430;
+  --farbe-text-leise: #46556a;
+  --farbe-akzent: #1d5fb4;
+  --farbe-rahmen: #c9d4e4;
+  --farbe-fokus: var(--farbe-akzent);
+}
+
+/* Quelle: modules/it-systemintegration/web/css/styles.css, html[data-theme="kontrast"], Zeilen 441-442 (Stand 2026-11-22). */
+:root[data-academy-theme="kontrast"] {
+  --farbe-hintergrund: #fff;
+  --farbe-flaeche: #fff;
+  --farbe-text: #000;
+  --farbe-text-leise: #222;
+  --farbe-akzent: #003a70;
+  --farbe-rahmen: #333;
+  --farbe-fokus: var(--farbe-akzent);
+}

@@ -1,0 +1,33 @@
+{
+  "stops": [
+    "DHCP",
+    "IPv4-Konfiguration eines Clients lesen",
+    "IPv4",
+    "Weiter zum Ablauf"
+  ],
+  "afterSpace": {
+    "caseVisible": true,
+    "id": "main",
+    "outline": "rgb(255, 83, 105) solid 3px"
+  },
+  "second": [
+    "Zurück",
+    "Weiter zur Übung"
+  ],
+  "afterSecond": {
+    "exercise": true,
+    "id": "main",
+    "outline": "rgb(255, 83, 105) solid 3px"
+  },
+  "radio": {
+    "checked": false,
+    "tag": "INPUT",
+    "text": "",
+    "type": "radio",
+    "after": {
+      "checked": true,
+      "tag": "INPUT",
+      "type": "radio"
+    }
+  }
+}

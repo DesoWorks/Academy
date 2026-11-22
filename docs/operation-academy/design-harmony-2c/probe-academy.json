@@ -1,0 +1,1399 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-2c-live-ZNiE5H",
+  "core": "0.3.0",
+  "note": "Temporäres Datenverzeichnis. Die Installation des Commanders wird nicht geöffnet.",
+  "pages": {
+    "lf3-dhcp.html:dunkel": {
+      "academyTheme": "dunkel",
+      "aria": "Vereinfachtes Ablaufbild: Mira-01 fragt im Übungsnetz nach Konfiguration, der DHCP-Dienst antwortet mit Adresse, Präfix, Gateway und DNS-Server",
+      "clientWidth": 1249,
+      "dataTheme": "dunkel",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 19.21,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "dunkel",
+      "spacing": false,
+      "step": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-dhcp.html:dunkel:200": {
+      "factor": 2,
+      "overflowX": false,
+      "scrollWidth": 617,
+      "clientWidth": 617,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-dhcp.html:dunkel:150": {
+      "factor": 1.5,
+      "overflowX": false,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 2.66667px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-dns.html:dunkel": {
+      "academyTheme": "dunkel",
+      "aria": "Vereinfachte Darstellung: Mira-01 fragt den DNS-Server 192.168.10.2 nach wiki.lernnetz.test, die Antwort lautet 192.168.10.40",
+      "clientWidth": 1249,
+      "dataTheme": "dunkel",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=dunkel",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 19.21,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "dunkel",
+      "spacing": false,
+      "step": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-dns.html:dunkel:200": {
+      "factor": 2,
+      "overflowX": false,
+      "scrollWidth": 617,
+      "clientWidth": 617,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-dns.html:dunkel:150": {
+      "factor": 1.5,
+      "overflowX": false,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 2.66667px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-verbindung-eingrenzen.html:dunkel": {
+      "academyTheme": "dunkel",
+      "aria": "Fiktive Beobachtungsliste: Mira-01 hat die Adresse 192.168.10.25, die Testadresse 192.168.10.40 antwortet in der Simulation, der Name wiki.lernnetz.test liefert keine Antwort, der Antwortwert in der Übungstabelle ist noch nicht angesehen",
+      "clientWidth": 1249,
+      "dataTheme": "dunkel",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=dunkel",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 19.21,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "dunkel",
+      "spacing": false,
+      "step": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-verbindung-eingrenzen.html:dunkel:200": {
+      "factor": 2,
+      "overflowX": false,
+      "scrollWidth": 617,
+      "clientWidth": 617,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-verbindung-eingrenzen.html:dunkel:150": {
+      "factor": 1.5,
+      "overflowX": false,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 2.66667px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-fehlerbild-protokoll.html:dunkel": {
+      "academyTheme": "dunkel",
+      "aria": "Fiktive Angaben: Meldung kein Netzwerk. Link-Status aktiv. Simulierte IP-Anzeige 192.168.10.25 mit Präfix 24 und Gateway 192.168.10.1. Namensaufruf wiki.lernnetz.test liefert in der Simulation keine Antwort.",
+      "clientWidth": 1249,
+      "dataTheme": "dunkel",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=dunkel",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 19.21,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "dunkel",
+      "spacing": false,
+      "step": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-fehlerbild-protokoll.html:dunkel:200": {
+      "factor": 2,
+      "overflowX": false,
+      "scrollWidth": 617,
+      "clientWidth": 617,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-fehlerbild-protokoll.html:dunkel:150": {
+      "factor": 1.5,
+      "overflowX": false,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 2.66667px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-ipv4-konfiguration.html:dunkel": {
+      "academyTheme": "dunkel",
+      "aria": "Client-Anzeige von Mira-01: IPv4-Adresse 192.168.10.25, Präfix 24, Netzmaske 255.255.255.0, Gateway 192.168.10.1",
+      "clientWidth": 1249,
+      "dataTheme": "dunkel",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=dunkel",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 19.21,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "dunkel",
+      "spacing": false,
+      "step": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-ipv4-konfiguration.html:dunkel:200": {
+      "factor": 2,
+      "overflowX": false,
+      "scrollWidth": 617,
+      "clientWidth": 617,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 3px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-ipv4-konfiguration.html:dunkel:150": {
+      "factor": 1.5,
+      "overflowX": false,
+      "navInView": false,
+      "surface": {
+        "background": "rgb(20, 17, 20)",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "outline": "none 2.66667px",
+        "tag": "DIV"
+      }
+    },
+    "lf3-dhcp.html:hell": {
+      "academyTheme": "hell",
+      "aria": "Vereinfachtes Ablaufbild: Mira-01 fragt im Übungsnetz nach Konfiguration, der DHCP-Dienst antwortet mit Adresse, Präfix, Gateway und DNS-Server",
+      "clientWidth": 1249,
+      "dataTheme": "hell",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=hell",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 1.34,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "hell",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-dns.html:hell": {
+      "academyTheme": "hell",
+      "aria": "Vereinfachte Darstellung: Mira-01 fragt den DNS-Server 192.168.10.2 nach wiki.lernnetz.test, die Antwort lautet 192.168.10.40",
+      "clientWidth": 1249,
+      "dataTheme": "hell",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=hell",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 1.34,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "hell",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-verbindung-eingrenzen.html:hell": {
+      "academyTheme": "hell",
+      "aria": "Fiktive Beobachtungsliste: Mira-01 hat die Adresse 192.168.10.25, die Testadresse 192.168.10.40 antwortet in der Simulation, der Name wiki.lernnetz.test liefert keine Antwort, der Antwortwert in der Übungstabelle ist noch nicht angesehen",
+      "clientWidth": 1249,
+      "dataTheme": "hell",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=hell",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 1.34,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "hell",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-fehlerbild-protokoll.html:hell": {
+      "academyTheme": "hell",
+      "aria": "Fiktive Angaben: Meldung kein Netzwerk. Link-Status aktiv. Simulierte IP-Anzeige 192.168.10.25 mit Präfix 24 und Gateway 192.168.10.1. Namensaufruf wiki.lernnetz.test liefert in der Simulation keine Antwort.",
+      "clientWidth": 1249,
+      "dataTheme": "hell",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=hell",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 1.34,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "hell",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-ipv4-konfiguration.html:hell": {
+      "academyTheme": "hell",
+      "aria": "Client-Anzeige von Mira-01: IPv4-Adresse 192.168.10.25, Präfix 24, Netzmaske 255.255.255.0, Gateway 192.168.10.1",
+      "clientWidth": 1249,
+      "dataTheme": "hell",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=hell",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 1.34,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "hell",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-dhcp.html:kontrast": {
+      "academyTheme": "kontrast",
+      "aria": "Vereinfachtes Ablaufbild: Mira-01 fragt im Übungsnetz nach Konfiguration, der DHCP-Dienst antwortet mit Adresse, Präfix, Gateway und DNS-Server",
+      "clientWidth": 1249,
+      "dataTheme": "kontrast",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=kontrast",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 1,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "kontrast",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-dns.html:kontrast": {
+      "academyTheme": "kontrast",
+      "aria": "Vereinfachte Darstellung: Mira-01 fragt den DNS-Server 192.168.10.2 nach wiki.lernnetz.test, die Antwort lautet 192.168.10.40",
+      "clientWidth": 1249,
+      "dataTheme": "kontrast",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=kontrast",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 1,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "kontrast",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-verbindung-eingrenzen.html:kontrast": {
+      "academyTheme": "kontrast",
+      "aria": "Fiktive Beobachtungsliste: Mira-01 hat die Adresse 192.168.10.25, die Testadresse 192.168.10.40 antwortet in der Simulation, der Name wiki.lernnetz.test liefert keine Antwort, der Antwortwert in der Übungstabelle ist noch nicht angesehen",
+      "clientWidth": 1249,
+      "dataTheme": "kontrast",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=kontrast",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 1,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "kontrast",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-fehlerbild-protokoll.html:kontrast": {
+      "academyTheme": "kontrast",
+      "aria": "Fiktive Angaben: Meldung kein Netzwerk. Link-Status aktiv. Simulierte IP-Anzeige 192.168.10.25 mit Präfix 24 und Gateway 192.168.10.1. Namensaufruf wiki.lernnetz.test liefert in der Simulation keine Antwort.",
+      "clientWidth": 1249,
+      "dataTheme": "kontrast",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=kontrast",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 1,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "kontrast",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    },
+    "lf3-ipv4-konfiguration.html:kontrast": {
+      "academyTheme": "kontrast",
+      "aria": "Client-Anzeige von Mira-01: IPv4-Adresse 192.168.10.25, Präfix 24, Netzmaske 255.255.255.0, Gateway 192.168.10.1",
+      "clientWidth": 1249,
+      "dataTheme": "kontrast",
+      "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=kontrast",
+      "navInView": true,
+      "navText": "Themenübersicht",
+      "opt": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "LABEL"
+      },
+      "overflowX": false,
+      "result": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 1,
+        "outline": "none 3px",
+        "tag": "SECTION"
+      },
+      "role": "img",
+      "scrollWidth": 1249,
+      "selectDisabled": true,
+      "selectValue": "kontrast",
+      "spacing": false,
+      "step": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "ARTICLE"
+      },
+      "surface": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "outline": "none 3px",
+        "tag": "DIV"
+      },
+      "surfaceInView": false,
+      "textScale": "1",
+      "view": {
+        "h": 544,
+        "w": 1264
+      }
+    }
+  },
+  "keyboard": [
+    {
+      "key": "Tab",
+      "index": 1,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Direkt zum Inhalt springen",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 2,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Startseite",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 3,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Meine Lernbereiche",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 4,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Modul-Katalog",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 5,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Einstellungen",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 6,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Daten und Updates",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 7,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Datensicherung",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 8,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "KI-Lernassistent (vorgesehen)",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 9,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "IDE (vorgesehen)",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 10,
+      "snap": {
+        "shell": {
+          "tag": "A",
+          "id": "",
+          "text": "Über DesoWorks Academy",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 11,
+      "snap": {
+        "shell": {
+          "tag": "SELECT",
+          "id": "modul-wechsel",
+          "text": "Modulwechsel",
+          "outline": "solid 3px rgb(0, 58, 112)"
+        },
+        "inner": {
+          "className": "",
+          "id": "",
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      D"
+        }
+      }
+    },
+    {
+      "key": "Tab",
+      "index": 12,
+      "snap": {
+        "shell": {
+          "tag": "IFRAME",
+          "id": "",
+          "text": "",
+          "outline": "none 3px rgb(0, 0, 0)"
+        },
+        "inner": {
+          "className": "skip-link",
+          "id": "",
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        }
+      }
+    },
+    {
+      "key": "Enter",
+      "snap": {
+        "shell": {
+          "tag": "IFRAME",
+          "id": "",
+          "text": "",
+          "outline": "none 3px rgb(0, 0, 0)"
+        },
+        "inner": {
+          "className": "skip-link",
+          "id": "",
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        }
+      }
+    },
+    {
+      "key": "Tab-after-enter",
+      "snap": {
+        "shell": {
+          "tag": "IFRAME",
+          "id": "",
+          "text": "",
+          "outline": "none 3px rgb(0, 0, 0)"
+        },
+        "inner": {
+          "className": "skip-link",
+          "id": "",
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        }
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step": "install",
+      "detail": {
+        "id": "desoworks.it-systemintegration",
+        "version": "1.0.1",
+        "state": "active"
+      }
+    },
+    {
+      "step": "write-dunkel",
+      "detail": true
+    },
+    {
+      "step": "lf3-dhcp.html:dunkel",
+      "detail": {
+        "contrast": 17.15,
+        "background": "rgb(20, 17, 20)",
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-dns.html:dunkel",
+      "detail": {
+        "contrast": 17.15,
+        "background": "rgb(20, 17, 20)",
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-verbindung-eingrenzen.html:dunkel",
+      "detail": {
+        "contrast": 17.15,
+        "background": "rgb(20, 17, 20)",
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-fehlerbild-protokoll.html:dunkel",
+      "detail": {
+        "contrast": 17.15,
+        "background": "rgb(20, 17, 20)",
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-ipv4-konfiguration.html:dunkel",
+      "detail": {
+        "contrast": 17.15,
+        "background": "rgb(20, 17, 20)",
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "write-hell",
+      "detail": true
+    },
+    {
+      "step": "lf3-dhcp.html:hell",
+      "detail": {
+        "contrast": 15.65,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-dns.html:hell",
+      "detail": {
+        "contrast": 15.65,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-verbindung-eingrenzen.html:hell",
+      "detail": {
+        "contrast": 15.65,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-fehlerbild-protokoll.html:hell",
+      "detail": {
+        "contrast": 15.65,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-ipv4-konfiguration.html:hell",
+      "detail": {
+        "contrast": 15.65,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "write-kontrast",
+      "detail": true
+    },
+    {
+      "step": "lf3-dhcp.html:kontrast",
+      "detail": {
+        "contrast": 21,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-dns.html:kontrast",
+      "detail": {
+        "contrast": 21,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-verbindung-eingrenzen.html:kontrast",
+      "detail": {
+        "contrast": 21,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-fehlerbild-protokoll.html:kontrast",
+      "detail": {
+        "contrast": 21,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "lf3-ipv4-konfiguration.html:kontrast",
+      "detail": {
+        "contrast": 21,
+        "background": "rgb(255, 255, 255)",
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "selectDisabled": true,
+        "overflowX": false
+      }
+    },
+    {
+      "step": "keyboard-stops",
+      "detail": 14
+    },
+    {
+      "step": "controls",
+      "detail": {
+        "method": "input-event und click auf den vorhandenen Regler, kein neuer Kanal",
+        "scale": "1.5",
+        "spacing": true,
+        "stored": "{\"text\":150,\"spacing\":true,\"theme\":\"hell\",\"ruhig\":false}",
+        "text": "150%"
+      }
+    },
+    {
+      "step": "reload",
+      "detail": {
+        "anzeige": "{\"text\":150,\"spacing\":true,\"theme\":\"hell\",\"ruhig\":false}",
+        "dataTheme": "dunkel",
+        "lesson": null,
+        "scale": "1.5",
+        "selectDisabled": true,
+        "spacing": true,
+        "theme": "dunkel"
+      }
+    },
+    {
+      "step": "restart",
+      "detail": {
+        "theme": "kontrast",
+        "progress": {
+          "correct": true
+        }
+      }
+    }
+  ],
+  "reload": {
+    "beforeStore": null,
+    "controls": {
+      "method": "input-event und click auf den vorhandenen Regler, kein neuer Kanal",
+      "scale": "1.5",
+      "spacing": true,
+      "stored": "{\"text\":150,\"spacing\":true,\"theme\":\"hell\",\"ruhig\":false}",
+      "text": "150%"
+    },
+    "reloaded": {
+      "anzeige": "{\"text\":150,\"spacing\":true,\"theme\":\"hell\",\"ruhig\":false}",
+      "dataTheme": "dunkel",
+      "lesson": null,
+      "scale": "1.5",
+      "selectDisabled": true,
+      "spacing": true,
+      "theme": "dunkel"
+    }
+  },
+  "restart": {
+    "theme": "kontrast",
+    "progress": {
+      "correct": true
+    }
+  }
+}

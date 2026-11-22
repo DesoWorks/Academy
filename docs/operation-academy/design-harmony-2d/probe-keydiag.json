@@ -1,0 +1,89 @@
+{
+  "focused": true,
+  "frameUrl": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel#main",
+  "frameKeys": [],
+  "before": {
+    "active": "BODY",
+    "events": []
+  },
+  "afterTabs": {
+    "active": "skip-link",
+    "events": [
+      {
+        "cls": "skip-link",
+        "id": "",
+        "tag": "A",
+        "trusted": true,
+        "type": "focusin"
+      }
+    ]
+  },
+  "afterCdp": {
+    "active": "main",
+    "events": [
+      {
+        "cls": "skip-link",
+        "id": "",
+        "tag": "A",
+        "trusted": true,
+        "type": "focusin"
+      },
+      {
+        "cls": "skip-link",
+        "id": "",
+        "key": "Enter",
+        "tag": "A",
+        "trusted": true,
+        "type": "keydown"
+      },
+      {
+        "cls": "",
+        "id": "main",
+        "tag": "MAIN",
+        "trusted": true,
+        "type": "focusin"
+      }
+    ]
+  },
+  "methods": [
+    {
+      "method": "Target.attachedToTarget",
+      "sessionId": null,
+      "url": ""
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "sessionId": null,
+      "url": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel"
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "sessionId": null,
+      "url": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel#main"
+    }
+  ],
+  "targets": {
+    "targetInfos": [
+      {
+        "attached": true,
+        "browserContextId": "E3E3DFCAB56127A923121AC657458CB5",
+        "canAccessOpener": false,
+        "targetId": "A196CD7E70F59B05125C67F475CFB0B3",
+        "title": "DesoWorks Academy – Meine Lernbereiche",
+        "type": "page",
+        "url": "academy://app/module.html#desoworks.it-systemintegration"
+      },
+      {
+        "attached": true,
+        "browserContextId": "E3E3DFCAB56127A923121AC657458CB5",
+        "canAccessOpener": false,
+        "parentFrameId": "A196CD7E70F59B05125C67F475CFB0B3",
+        "parentId": "A196CD7E70F59B05125C67F475CFB0B3",
+        "targetId": "984C0B4A502F60A4D5E62D3961862CB2",
+        "title": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel#main",
+        "type": "iframe",
+        "url": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel#main"
+      }
+    ]
+  }
+}

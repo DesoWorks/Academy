@@ -1,0 +1,132 @@
+[
+  {
+    "page": "lf3-dhcp.html",
+    "theme": "dunkel",
+    "paint": {
+      "background": "rgb(20, 17, 20)",
+      "color": "rgb(247, 244, 245)",
+      "h": 315,
+      "shown": true,
+      "text": "1. Mira-01 startet ohne fest eingetragene Adresse.\n2. Mira-01 fragt im isolierte",
+      "top": 144
+    },
+    "name": "lf3-dhcp-skizze-dunkel.png"
+  },
+  {
+    "page": "lf3-dns.html",
+    "theme": "dunkel",
+    "paint": {
+      "background": "rgb(20, 17, 20)",
+      "color": "rgb(247, 244, 245)",
+      "h": 193,
+      "shown": true,
+      "text": "1. Mira-01 (192.168.10.25) fragt den DNS-Server 192.168.10.2:\n   „Welcher Antwor",
+      "top": 205
+    },
+    "name": "lf3-dns-skizze-dunkel.png"
+  },
+  {
+    "page": "lf3-verbindung-eingrenzen.html",
+    "theme": "dunkel",
+    "paint": {
+      "background": "rgb(20, 17, 20)",
+      "color": "rgb(247, 244, 245)",
+      "h": 162,
+      "shown": true,
+      "text": "1. Mira-01 zeigt die Adresse 192.168.10.25 an.\n2. Die Testadresse 192.168.10.40 ",
+      "top": 221
+    },
+    "name": "lf3-verbindung-eingrenzen-skizze-dunkel.png"
+  },
+  {
+    "page": "lf3-fehlerbild-protokoll.html",
+    "theme": "dunkel",
+    "paint": {
+      "background": "rgb(20, 17, 20)",
+      "color": "rgb(247, 244, 245)",
+      "h": 162,
+      "shown": true,
+      "text": "Meldung:  „kein Netzwerk“\nLink:     in der Anzeige als aktiv angezeigt\nIP-Anzeig",
+      "top": 220
+    },
+    "name": "lf3-fehlerbild-protokoll-skizze-dunkel.png"
+  },
+  {
+    "page": "lf3-ipv4-konfiguration.html",
+    "theme": "dunkel",
+    "paint": {
+      "background": "rgb(20, 17, 20)",
+      "color": "rgb(247, 244, 245)",
+      "h": 193,
+      "shown": true,
+      "text": "Mira-01 (fiktiv)\nIPv4-Adresse: 192.168.10.25\nPräfix:       /24\nNetzmaske:    255",
+      "top": 206
+    },
+    "name": "lf3-ipv4-konfiguration-skizze-dunkel.png"
+  },
+  {
+    "page": "lf3-dhcp.html",
+    "theme": "hell",
+    "paint": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(27, 36, 48)",
+      "h": 315,
+      "shown": true,
+      "text": "1. Mira-01 startet ohne fest eingetragene Adresse.\n2. Mira-01 fragt im isolierte",
+      "top": 144
+    },
+    "name": "lf3-dhcp-skizze-hell.png"
+  },
+  {
+    "page": "lf3-dns.html",
+    "theme": "hell",
+    "paint": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(27, 36, 48)",
+      "h": 193,
+      "shown": true,
+      "text": "1. Mira-01 (192.168.10.25) fragt den DNS-Server 192.168.10.2:\n   „Welcher Antwor",
+      "top": 205
+    },
+    "name": "lf3-dns-skizze-hell.png"
+  },
+  {
+    "page": "lf3-verbindung-eingrenzen.html",
+    "theme": "hell",
+    "paint": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(27, 36, 48)",
+      "h": 162,
+      "shown": true,
+      "text": "1. Mira-01 zeigt die Adresse 192.168.10.25 an.\n2. Die Testadresse 192.168.10.40 ",
+      "top": 221
+    },
+    "name": "lf3-verbindung-eingrenzen-skizze-hell.png"
+  },
+  {
+    "page": "lf3-fehlerbild-protokoll.html",
+    "theme": "hell",
+    "paint": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(27, 36, 48)",
+      "h": 162,
+      "shown": true,
+      "text": "Meldung:  „kein Netzwerk“\nLink:     in der Anzeige als aktiv angezeigt\nIP-Anzeig",
+      "top": 220
+    },
+    "name": "lf3-fehlerbild-protokoll-skizze-hell.png"
+  },
+  {
+    "page": "lf3-ipv4-konfiguration.html",
+    "theme": "hell",
+    "paint": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(27, 36, 48)",
+      "h": 193,
+      "shown": true,
+      "text": "Mira-01 (fiktiv)\nIPv4-Adresse: 192.168.10.25\nPräfix:       /24\nNetzmaske:    255",
+      "top": 206
+    },
+    "name": "lf3-ipv4-konfiguration-skizze-hell.png"
+  }
+]

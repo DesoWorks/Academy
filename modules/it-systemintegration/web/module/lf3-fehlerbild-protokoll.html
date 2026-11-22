@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="../css/netzwerk.css">
   <style>
     .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:.8rem}
-    .step{border:2px solid var(--rahmen,#bdcde3);border-radius:.75rem;padding:1rem;background:var(--flaeche,#fff)}
+    .step{border:2px solid var(--farbe-rahmen);border-radius:.75rem;padding:1rem;background:var(--farbe-flaeche);color:var(--farbe-text)}
     .opts{display:grid;gap:.65rem}
-    .opt{display:flex;gap:.7rem;padding:.85rem 1rem;border:2px solid var(--rahmen,#bdcde3);border-radius:.75rem;background:var(--flaeche,#fff);line-height:1.5;overflow-wrap:anywhere;cursor:pointer}
-    .opt:focus-within{outline:3px solid var(--fokus,#0754a6)}
+    .opt{display:flex;gap:.7rem;padding:.85rem 1rem;border:2px solid var(--farbe-rahmen);border-radius:.75rem;background:var(--farbe-flaeche);color:var(--farbe-text);line-height:1.5;overflow-wrap:anywhere;cursor:pointer}
+    .opt:focus-within{outline:3px solid var(--farbe-akzent);outline-offset:2px}
+    .opt:has(:checked){border-color:var(--farbe-akzent);font-weight:700}
     .opt input{margin-top:.3rem}
     .result{margin-top:1rem;padding:1rem;border:2px solid var(--primaer,#0754a6);border-radius:.75rem}
     .result[hidden]{display:none}
-    .skizze{padding:1rem;border:2px solid var(--rahmen,#bdcde3);border-radius:.75rem;background:var(--flaeche,#fff);font-family:monospace;white-space:pre-wrap;line-height:1.7}
+    .skizze{padding:1rem;border:2px solid var(--farbe-rahmen);border-radius:.75rem;background:var(--farbe-flaeche);color:var(--farbe-text);font-family:monospace;white-space:pre-wrap;line-height:1.7}
   </style>
 </head>
 <body data-page="lf3-fehlerbild-protokoll" data-base="../">

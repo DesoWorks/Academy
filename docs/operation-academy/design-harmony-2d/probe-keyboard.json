@@ -1,0 +1,1244 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-2d-keys-ySq18b",
+  "delivery": [
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": true,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": true,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Tab",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    },
+    {
+      "key": "Enter",
+      "shift": false,
+      "via": "sendInputEvent",
+      "moved": false,
+      "trusted": false
+    }
+  ],
+  "pages": [
+    {
+      "file": "lf3-client-anbindung.html",
+      "skipReached": true,
+      "tabs": 12,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-client-anbindung-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-client-anbindung-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      Client-Anbi"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-client-anbindung.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    },
+    {
+      "file": "lf3-dhcp.html",
+      "skipReached": true,
+      "tabs": 2,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-dhcp-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-dhcp-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      DHCP: autom"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    },
+    {
+      "file": "lf3-dns.html",
+      "skipReached": true,
+      "tabs": 2,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-dns-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-dns-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      DNS: Namen "
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-dns.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    },
+    {
+      "file": "lf3-fehlerbild-protokoll.html",
+      "skipReached": true,
+      "tabs": 2,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-fehlerbild-protokoll-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-fehlerbild-protokoll-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      Typische Cl"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-fehlerbild-protokoll.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    },
+    {
+      "file": "lf3-ipv4-konfiguration.html",
+      "skipReached": true,
+      "tabs": 2,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-ipv4-konfiguration-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-ipv4-konfiguration-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      IPv4-Konfig"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-ipv4-konfiguration.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    },
+    {
+      "file": "lf3-verbindung-eingrenzen.html",
+      "skipReached": true,
+      "tabs": 2,
+      "beforeEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "shotSkip": {
+        "name": "lf3-verbindung-eingrenzen-skip.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterEnter": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "parentAfterEnter": {
+        "tag": "IFRAME",
+        "id": "",
+        "className": "modul-frame"
+      },
+      "shotMain": {
+        "name": "lf3-verbindung-eingrenzen-nach-enter.png",
+        "bytes": 4221760,
+        "blank": false
+      },
+      "afterNextTab": {
+        "active": {
+          "className": "skip-link",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "solid 3px rgb(255, 83, 105)",
+          "outlineOffset": "2px",
+          "tag": "A",
+          "text": "Direkt zum Inhalt springen"
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      },
+      "afterShiftTab": {
+        "active": {
+          "className": "",
+          "id": "",
+          "inMain": false,
+          "inView": true,
+          "outline": "none 3px rgb(247, 244, 245)",
+          "outlineOffset": "0px",
+          "tag": "BODY",
+          "text": "Direkt zum Inhalt springen\n  \n    \n    \n      IT-Ausbildung · Lernfeld 3\n      Verbindung "
+        },
+        "hash": "",
+        "href": "academy://desoworks.it-systemintegration/module/lf3-verbindung-eingrenzen.html?academy-theme=dunkel",
+        "lastEvents": [
+          {
+            "className": "skip-link",
+            "id": "",
+            "key": null,
+            "tag": "A",
+            "trusted": true,
+            "type": "focusin"
+          }
+        ],
+        "trustedKeys": []
+      }
+    }
+  ],
+  "a11y": [
+    {
+      "theme": "dunkel",
+      "zoom": 1,
+      "colors": {
+        "body": "rgb(7, 7, 8)",
+        "clientWidth": 1249,
+        "navBg": "rgb(20, 17, 20)",
+        "navClient": 305,
+        "navScroll": 305,
+        "navText": "rgb(247, 244, 245)",
+        "scrollWidth": 1249,
+        "surface": "rgb(20, 17, 20)",
+        "text": "rgb(247, 244, 245)"
+      },
+      "contrast": 17.15
+    },
+    {
+      "theme": "hell",
+      "zoom": 1,
+      "colors": {
+        "body": "rgb(244, 247, 251)",
+        "clientWidth": 1249,
+        "navBg": "rgb(255, 255, 255)",
+        "navClient": 305,
+        "navScroll": 305,
+        "navText": "rgb(27, 36, 48)",
+        "scrollWidth": 1249,
+        "surface": "rgb(255, 255, 255)",
+        "text": "rgb(27, 36, 48)"
+      },
+      "contrast": 15.65
+    },
+    {
+      "theme": "kontrast",
+      "zoom": 1,
+      "colors": {
+        "body": "rgb(255, 255, 255)",
+        "clientWidth": 1249,
+        "navBg": "rgb(255, 255, 255)",
+        "navClient": 305,
+        "navScroll": 305,
+        "navText": "rgb(0, 0, 0)",
+        "scrollWidth": 1249,
+        "surface": "rgb(255, 255, 255)",
+        "text": "rgb(0, 0, 0)"
+      },
+      "contrast": 21
+    },
+    {
+      "theme": "dunkel",
+      "zoom": 1.5,
+      "box": {
+        "clientWidth": 833,
+        "innerWidth": 843,
+        "overflowX": false,
+        "scrollWidth": 833
+      }
+    },
+    {
+      "theme": "dunkel",
+      "zoom": 2,
+      "box": {
+        "clientWidth": 617,
+        "innerWidth": 624,
+        "overflowX": false,
+        "scrollWidth": 617
+      }
+    }
+  ],
+  "errors": [],
+  "step": {
+    "active": {
+      "className": "skip-link",
+      "id": "",
+      "inMain": false,
+      "inView": true,
+      "outline": "solid 3px rgb(255, 83, 105)",
+      "outlineOffset": "2px",
+      "tag": "A",
+      "text": "Direkt zum Inhalt springen"
+    },
+    "hash": "",
+    "href": "academy://desoworks.it-systemintegration/module/lf3-dhcp.html?academy-theme=dunkel",
+    "lastEvents": [
+      {
+        "className": "skip-link",
+        "id": "",
+        "key": null,
+        "tag": "A",
+        "trusted": true,
+        "type": "focusin"
+      }
+    ],
+    "trustedKeys": []
+  },
+  "stepShot": {
+    "name": "lf3-dhcp-schritt-fokus.png",
+    "bytes": 4221760,
+    "blank": false
+  },
+  "reflow320": {
+    "clientWidth": 290,
+    "innerWidth": 305,
+    "navOverflow": false,
+    "overflowX": false,
+    "scrollWidth": 290
+  },
+  "reflowShot": {
+    "name": "lf3-dhcp-reflow-320.png",
+    "bytes": 896000,
+    "blank": false
+  },
+  "reading": {
+    "fontSize": "27px",
+    "lineHeight": "51.3px",
+    "selectDisabled": true,
+    "spacing": true,
+    "textScale": "1.5",
+    "theme": "dunkel"
+  },
+  "screenreader": {
+    "running": [],
+    "sampled": false
+  }
+}

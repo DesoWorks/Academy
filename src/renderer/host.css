@@ -5,8 +5,8 @@
    Scrollen gehört dem Modulrahmen, nicht einer zweiten Shell-Leiste. */
 
 :where(body) {
-  background: var(--dw-canvas);
-  color: var(--dw-text);
+  background: var(--farbe-hintergrund, var(--dw-canvas));
+  color: var(--farbe-text, var(--dw-text));
   font-family: var(--dw-font-text);
   font-size: var(--dw-text-md);
   line-height: 1.55;

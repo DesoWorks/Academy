@@ -60,6 +60,55 @@
     return Boolean(result && result.ok === true);
   }
 
+  // Darstellungsmodus: die Shell ist der einzige Eigentümer (Design Harmony 2B).
+  var THEME_KEY = "academy.theme";
+  var THEMES = ["hell", "dunkel", "kontrast"];
+  var THEME_FALLBACK = "hell";
+
+  function validTheme(value) {
+    return typeof value === "string" && THEMES.indexOf(value) !== -1 ? value : null;
+  }
+
+  // Liest nur. Fehlend, ungültig oder Lesefehler ergibt hell; der Speicher wird nicht überschrieben.
+  function readTheme() {
+    try {
+      var api = window.academyDesktop;
+      if (!api || typeof api.storageLoadAll !== "function") return THEME_FALLBACK;
+      var snapshot = api.storageLoadAll();
+      if (!snapshot || snapshot.ok !== true || !snapshot.items) return THEME_FALLBACK;
+      return validTheme(snapshot.items[THEME_KEY]) || THEME_FALLBACK;
+    } catch (error) {
+      return THEME_FALLBACK;
+    }
+  }
+
+  function applyTheme(value) {
+    var theme = validTheme(value) || THEME_FALLBACK;
+    document.documentElement.setAttribute("data-academy-theme", theme);
+    return theme;
+  }
+
+  // Der aktuell wirksame Wert dieser Shell-Seite (Root-Attribut, validiert).
+  function activeTheme() {
+    return validTheme(document.documentElement.getAttribute("data-academy-theme")) || THEME_FALLBACK;
+  }
+
+  // Speichert nur erlaubte Werte. Erst bei ok:true wird der Wert wirksam.
+  function writeTheme(value) {
+    var theme = validTheme(value);
+    var api = window.academyDesktop;
+    if (!theme || !api || typeof api.storageSet !== "function") return false;
+    var result;
+    try {
+      result = api.storageSet(THEME_KEY, theme);
+    } catch (error) {
+      return false;
+    }
+    if (!result || result.ok !== true) return false;
+    applyTheme(theme);
+    return true;
+  }
+
   function visibleModules(response) {
     var installed = response && response.installed ? response.installed : [];
     return installed.filter(function (entry) { return entry && entry.state !== "uninstalled"; });
@@ -109,9 +158,18 @@
     el: el,
     readLastArea: readLastArea,
     writeLastArea: writeLastArea,
+    THEME_KEY: THEME_KEY,
+    THEMES: THEMES,
+    readTheme: readTheme,
+    applyTheme: applyTheme,
+    activeTheme: activeTheme,
+    writeTheme: writeTheme,
     visibleModules: visibleModules,
     moduleCard: moduleCard
   };
+
+  // Jede Shell-Seite setzt ihr Root-Attribut vor dem Aufbau, auch bevor ein Modul-iframe entsteht.
+  applyTheme(readTheme());
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", buildNavigation);
   else buildNavigation();

@@ -5,6 +5,33 @@
   var shell = window.AcademyShell;
   var meldung = document.getElementById("meldung");
 
+  // Darstellung: speichert sofort, wirksam erst nach erfolgreichem Speichern.
+  var THEME_TITEL = { hell: "Hell", dunkel: "Dunkel", kontrast: "Hoher Kontrast" };
+  var darstellung = document.querySelectorAll("input[name=darstellung]");
+  var darstellungInfo = document.getElementById("darstellung-info");
+
+  function zeigeDarstellung() {
+    var aktiv = shell.activeTheme();
+    Array.prototype.forEach.call(darstellung, function (radio) { radio.checked = radio.value === aktiv; });
+    return aktiv;
+  }
+
+  zeigeDarstellung();
+  shell.text(darstellungInfo, "Aktuell: " + THEME_TITEL[shell.activeTheme()] + ".");
+  Array.prototype.forEach.call(darstellung, function (radio) {
+    radio.addEventListener("change", function () {
+      if (shell.writeTheme(radio.value)) {
+        zeigeDarstellung();
+        shell.text(darstellungInfo, "Darstellung gespeichert: " + THEME_TITEL[radio.value] + ".");
+        darstellungInfo.className = "meta";
+      } else {
+        zeigeDarstellung();
+        shell.text(darstellungInfo, "Die Darstellung konnte nicht gespeichert werden. Es gilt weiter: " + THEME_TITEL[shell.activeTheme()] + ".");
+        darstellungInfo.className = "fehler";
+      }
+    });
+  });
+
   if (!api || typeof api.status !== "function") {
     shell.text(document.getElementById("version"), "Diese Seite läuft nur in der Desktop-Anwendung.");
     return;

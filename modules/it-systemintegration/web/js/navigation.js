@@ -164,4 +164,67 @@
   window.addEventListener("load", function () {
     if (!userTouched && savedTarget > 0 && nav.scrollTop !== savedTarget) { nav.scrollTop = savedTarget; keepActiveVisible(); }
   });
+
+  /* Darstellungsmodus der Academy (Design Harmony 2B, Vertrag Abschnitt 2 Punkt 2).
+     Nur in der Academy (data-academy-theme am <html>) wird der validierte Root-Wert an interne
+     HTML-Ziele dieses Moduls weitergegeben. Kein Nachrichtenkanal, kein Skript im Host, keine externen Ziele. */
+  var THEME_PARAM = "academy-theme";
+  var THEMES = ["hell", "dunkel", "kontrast"];
+  var rootTheme = (function () {
+    var root = document.documentElement;
+    if (!root.hasAttribute("data-academy-theme")) return null;
+    var value = root.getAttribute("data-academy-theme");
+    return THEMES.indexOf(value) !== -1 ? value : "hell";
+  })();
+
+  function withTheme(href) {
+    if (!rootTheme || href == null) return null;
+    var url, here;
+    try { url = new URL(href, document.baseURI); here = new URL(location.href); } catch (e) { return null; }
+    /* Nur academy: mit gleichem Host (Modul-ID); kein Vergleich von origin-Strings. */
+    if (url.protocol !== "academy:" || here.protocol !== "academy:" || url.hostname !== here.hostname) return null;
+    /* Assets und Downloads bleiben unberührt: nur Seiten ohne Dateiendung oder HTML. */
+    if (/\.[A-Za-z0-9]+$/.test(url.pathname) && !/\.html?$/i.test(url.pathname)) return null;
+    /* Reiner Sprung im selben Dokument. */
+    var sameSearch = function (a, b) {
+      var x = new URLSearchParams(a), y = new URLSearchParams(b);
+      x.delete(THEME_PARAM); y.delete(THEME_PARAM);
+      return x.toString() === y.toString();
+    };
+    if (url.hash && url.pathname === here.pathname && sameSearch(url.search, here.search)) return null;
+    url.searchParams.set(THEME_PARAM, rootTheme);
+    return url.href;
+  }
+
+  function rewriteLink(a) {
+    if (!a || a.hasAttribute("download") || !a.hasAttribute("href")) return;
+    var next = withTheme(a.getAttribute("href"));
+    if (next && a.href !== next) a.setAttribute("href", next);
+  }
+
+  if (rootTheme) {
+    document.querySelectorAll("a[href]").forEach(rewriteLink);
+    /* Dynamisch erzeugte Links: unmittelbar vor der Navigation (Klick, Mittelklick, Tastatur). */
+    ["click", "auxclick"].forEach(function (name) {
+      document.addEventListener(name, function (event) {
+        var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+        rewriteLink(link);
+      }, true);
+    });
+    /* Formulare, die ein HTML-Dokument laden: Ziel mit Theme; GET trägt es als Feld. */
+    document.addEventListener("submit", function (event) {
+      var form = event.target;
+      if (!form || !form.hasAttribute || !form.hasAttribute("action")) return;
+      var next = withTheme(form.getAttribute("action"));
+      if (!next) return;
+      if (String(form.method).toLowerCase() === "get") {
+        var field = form.querySelector('input[type="hidden"][name="' + THEME_PARAM + '"]');
+        if (!field) { field = document.createElement("input"); field.type = "hidden"; field.name = THEME_PARAM; form.appendChild(field); }
+        field.value = rootTheme;
+        var target = new URL(next); target.search = ""; form.setAttribute("action", target.href);
+      } else {
+        form.setAttribute("action", next);
+      }
+    }, true);
+  }
 })();
