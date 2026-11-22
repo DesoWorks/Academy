@@ -484,6 +484,7 @@ function registerIpc(options) {
     try {
       fs.rmSync(dest, { recursive: true, force: true });
       extractZip(prepared.zipPath, dest);
+      require("./updates/module-manifest").assertManifestMatches(dest, prepared);
       const installed = options.modules.installFromDirectory(dest);
       return ok({ module: installed, kind: "module", rollback: snapshot });
     } catch (error) {

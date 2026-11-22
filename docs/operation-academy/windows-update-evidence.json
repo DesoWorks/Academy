@@ -1,0 +1,102 @@
+{
+  "continued": "2026-11-22T08:32:01.097Z",
+  "steps": [
+    {
+      "step": "core-already",
+      "detail": {
+        "version": "0.3.1-dev.2"
+      }
+    },
+    {
+      "step": "module-update",
+      "detail": {
+        "entry": {
+          "id": "desoworks.it-systemintegration",
+          "action": "available",
+          "message": "Ein Modulupdate ist verfügbar. Der Academy-Core wird dafür nicht neu installiert.",
+          "installed": "1.0.1",
+          "available": "1.0.2",
+          "notes": "Modul 1.0.2 getrennt vom Core",
+          "commit": "7876297",
+          "publishedAt": "2026-11-22T08:32:02.054Z",
+          "size": 11925259,
+          "asset": {
+            "name": "desoworks.it-systemintegration-1.0.2.zip",
+            "url": "http://127.0.0.1:47321/dev/desoworks.it-systemintegration-1.0.2.zip",
+            "size": 11925259
+          },
+          "checksumAsset": {
+            "name": "desoworks.it-systemintegration-1.0.2.zip.sha256",
+            "url": "http://127.0.0.1:47321/dev/desoworks.it-systemintegration-1.0.2.zip.sha256",
+            "size": 107
+          },
+          "prerelease": true,
+          "kind": "module"
+        },
+        "downloaded": "Das Modulpaket ist geprüft. Die Installation ersetzt nur dieses Modul und lässt den Core stehen.",
+        "installed": true,
+        "module": {
+          "id": "desoworks.it-systemintegration",
+          "name": "IT-Systemintegration",
+          "description": "Die bestehende IT-Ausbildung als installierbares Lernmodul. Themenübersicht, Lernfelder, Labore und Werkzeuge bleiben erhalten.",
+          "version": "1.0.2",
+          "trust": "private",
+          "state": "active",
+          "publisher": "DesoWorks",
+          "permissions": [
+            "content.read",
+            "progress.write"
+          ],
+          "sizeBytes": 13522551,
+          "payloadBytes": 13460530,
+          "runtime": "hosted-web",
+          "subject": "IT-Systemintegration",
+          "audience": "Ausbildung",
+          "license": "UNLICENSED",
+          "language": "de",
+          "core": ">=0.3.0 <0.4.0",
+          "compatible": true,
+          "updateAvailable": false,
+          "uninstallable": true,
+          "faultReason": null,
+          "signature": "absent"
+        }
+      }
+    },
+    {
+      "step": "after-module",
+      "detail": {
+        "version": "1.0.2",
+        "progress": {
+          "correct": true
+        },
+        "marker": "gehalten",
+        "core": "0.3.1-dev.2"
+      }
+    },
+    {
+      "step": "failed-call-closed",
+      "detail": {
+        "message": "CDP-Verbindung getrennt",
+        "version": "0.3.1-dev.2"
+      }
+    },
+    {
+      "step": "version-after-fail",
+      "detail": {
+        "version": "0.3.1-dev.2"
+      }
+    },
+    {
+      "step": "recovered",
+      "detail": {
+        "phase": "interrupted",
+        "message": "Eine frühere Installation wurde nicht abgeschlossen. Die Lerndaten sind weiterhin im Datenverzeichnis. Die Prüfung kann wiederholt werden.",
+        "desktop": "0.3.1-dev.2",
+        "channel": "dev",
+        "marker": "gehalten"
+      }
+    }
+  ],
+  "error": "Error: Command failed: powershell.exe -NoProfile -NonInteractive -Command Get-NetTCPConnection -LocalPort 47321 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }\n    at genericNodeError (node:internal/errors:999:15)\n    at wrappedFn (node:internal/errors:544:14)\n    at checkExecSyncError (node:child_process:990:11)\n    at execFileSync (node:child_process:1026:15)\n    at main (D:\\Desoworks\\Workspace\\Academy\\scripts\\phase-m-windows-continue.js:137:3)"
+}
