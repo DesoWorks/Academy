@@ -19,3 +19,12 @@ Desktop.ini
 # Test- und Paketreste außerhalb von dist/
 coverage/
 *.asar
+
+# Phase N: Schluessel, Zertifikate und lokale Datenbanken gehoeren nie ins Repository.
+*.pem
+*.pfx
+*.p12
+*.key
+*.sqlite
+*.db
+.npmrc

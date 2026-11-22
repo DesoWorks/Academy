@@ -1,6 +1,8 @@
 "use strict";
 
 const { listPorts } = require("./extensions/ports");
+const { CHANNELS, switchConsequences } = require("./updates/channels");
+const { PREFERENCE_KEY, isChannelName, readPreference } = require("./updates/channel-preference");
 
 function fromApp(event) {
   const url = event && event.senderFrame && event.senderFrame.url;
@@ -431,6 +433,55 @@ function registerIpc(options) {
     try {
       const { readCatalog } = require("./modules/catalog");
       return ok(readCatalog(options.catalogFile || ""));
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:update-channel", (event) => {
+    if (!fromApp(event)) return reject(event, false);
+    return ok({
+      preferred: readPreference(store),
+      installed: {
+        version: versions && versions.desktop,
+        channel: versions && versions.channel
+      },
+      options: Object.keys(CHANNELS).map((id) => ({ id, title: CHANNELS[id].title }))
+    });
+  });
+
+  // Der Wechsel aendert nur die gespeicherte Quelle. Er installiert nichts und beruehrt keine Module.
+  ipcMain.handle("academy:update-channel-set", async (event, target) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!isChannelName(target)) {
+      return { ok: false, code: "unknown-channel", message: "Dieser Updatekanal ist nicht bekannt. Die Auswahl bleibt unverändert." };
+    }
+    const current = readPreference(store);
+    const plan = switchConsequences(current, target);
+    if (!plan.changes) return ok({ preferred: current, plan });
+    const phase = updates.status().phase;
+    if (phase === "downloading" || phase === "verifying" || phase === "installing") {
+      return { ok: false, code: "update-running", message: "Ein Update läuft gerade. Der Kanal wird erst nach Abbruch oder Ende gewechselt." };
+    }
+    if (plan.requiresOptIn) {
+      if (!dialog || typeof dialog.showMessageBox !== "function") {
+        return { ok: false, code: "unavailable", message: "Ohne Bestätigung im Hauptprozess wird der Kanal nicht gewechselt." };
+      }
+      const answer = await dialog.showMessageBox({
+        type: "warning",
+        buttons: ["Kanal wechseln", "Abbrechen"],
+        defaultId: 1,
+        cancelId: 1,
+        message: "Auf " + CHANNELS[target].label + " wechseln?",
+        detail: plan.messages.join("\n")
+      });
+      if (!answer || answer.response !== 0) {
+        return { ok: false, code: "cancelled", message: "Wechsel nicht bestätigt. Der bisherige Kanal bleibt." };
+      }
+    }
+    try {
+      store.set(PREFERENCE_KEY, target);
+      return ok({ preferred: target, plan });
     } catch (error) {
       return fail(error);
     }

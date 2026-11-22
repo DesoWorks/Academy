@@ -163,3 +163,69 @@ Im Arbeitsbaum existiert kein `.github/`-Ordner und keine Pipeline. Für die Git
 - Die Historienangaben und die GitHub-Angaben stammen von Rick. Ich habe sie nicht nachgemessen.
 - Die GitHub-Kontoeinstellungen (2FA, Branch-Schutz, Secret Scanning, Deploy-Keys, Webhooks, Collaborators) habe ich nicht gesehen.
 - Die Muster der Historiensuche waren eng (siehe H-1). Auf `*.sqlite`, `dist/` und `.exe` in der Historie wurde nicht gesucht (H-2).
+
+
+## 8. Nachtrag 22.11.2026: Antwort auf die Nachforderung H-2 und Abnahmekriterien
+
+**Herkunft:** Die folgenden Daten stammen von Rick. Ich habe keinen der Befehle selbst ausgeführt und die Ausgaben nicht reproduziert. Kein Eintrag der Abschnitte 1 bis 7 wurde gelöscht oder geändert. Die Empfehlung bleibt: **Public STOPPEN.**
+
+### 8.1 H-2 (Rick-Befund, geschlossen für Installer und Datenbanken)
+Rick meldet nach meiner Nachforderung:
+- `git ls-files` auf `exe`, `sqlite`, `asar`, `pem`, `pfx`, `p12`, `key`, `env` und `dist/*`: keine Datei.
+- `git log --all --diff-filter=A --name-only`: keine dieser Endungen und kein `dist/` in der Historie.
+- `git count-objects`: 507 lose Objekte, 1 Pack, kein Garbage.
+
+Bewertung (auf Grundlage von Ricks Angaben): H-2 gilt für Installer, Datenbanken, Schlüssel- und Zertifikatsendungen als **geschlossen, als Rick-Befund markiert**. F-1 (Benutzerdatenprofil in `dist/`) war danach nie versioniert, F-2 (Installer) ebenfalls nicht. Grenzen: Die Prüfung beruht auf Dateinamen und Endungen. Cookies und `Local State` haben keine eigene Endung und liegen unter `dist/`, das ebenfalls leer gemeldet ist. Binärinhalte wurden nicht gescannt. Das Pack wurde nicht auf nicht erreichbare Objekte untersucht, die Objektzahl allein belegt keine Sauberkeit, passt aber zu einer kleinen Historie.
+
+### 8.2 Gründe für STOPPEN, die weiter bestehen
+1. **Personenbezüge in den Berichten** (F-4, F-5, F-6, H-3: Windows-Benutzername, Vorname in Lerninhalten, Autorenkennung mit E-Mail-Adresse).
+2. **Persönliches User-Konto** als Eigentümer (H-4): kein Vier-Augen-Prinzip, kein Organisationsschutz.
+3. **Interne Dokumente** (F-3, F-6): Sicherheitsberichte mit offenen Schwachstellen und lokaler Struktur.
+4. **Fehlendes Zertifikat** (4.5): Stable ohne Echtheitsanker, DEV/BETA ohne signiertes Manifest.
+5. Fehlende ausdrückliche Freigabe des Commanders. Phase K bis N sind nicht auf origin (H-6).
+
+Ich bereinige nichts und schreibe keine Historie um. Entscheidungen zu den Punkten 1 bis 3 liegen beim Commander, Änderungen führt Jarvis nach Auftrag aus.
+
+### 8.3 Abnahmekriterien für die laufende Implementierung
+Jedes Kriterium ist mit Beleg nachzuweisen. Ich prüfe nach Fertigmeldung unabhängig nach. Bis dahin gilt keines als erfüllt.
+
+**A-1 Kein Token im Quelltext**
+- Mustersuche über Arbeitsbaum, `.github/` und neue Commits (Präfixe `ghp_`, `github_pat_`, `gho_`, `ghs_`, `AKIA`, `xox`, `sk_live_`, `sk-ant-`, `BEGIN … PRIVATE KEY`, `Authorization`, `Bearer`): 0 Treffer.
+- `src/` enthält keinen `Authorization`-Header, keine Token-Variable, keine Zugangsdaten. Neue Umgebungsvariablen nur ohne Geheimnisse und im Bericht aufgelistet.
+- Gepackter Build (`app.asar`) enthält nach Entpacken keinen Treffer des gleichen Musters.
+- `.gitignore` enthält `*.pem`, `*.pfx`, `*.p12`, `*.key`, `*.sqlite`, `*.db`, `.npmrc` (F-8). Der private Signaturschlüssel liegt nicht im Repository.
+
+**A-2 Kein Abruf von GitHub „Latest“**
+- Kein Zugriff auf `/releases/latest`, `releases/latest/download` oder die Auswahl „neuestes Release“ in Client, Skripten und Workflows (Mustersuche `latest` auf URLs und API-Pfade: 0 Treffer, `latest.yml` aus dem alten Builder-Weg ausgenommen, wenn nicht ausgewertet).
+- Der Client holt pro Kanal ein festes, kanalbezogenes Manifest (Tag oder Feed je Kanal) und wählt die Version selbst nach SemVer und Kanal.
+- Test: ein Feed, der unter „latest“ eine Version eines anderen Kanals liefert, hat keinen Einfluss.
+
+**A-3 Kanalfremde Pakete werden abgelehnt**
+- Manifest und Paket tragen die Kanalkennung. Der Client lehnt ab: Stable-Client mit `-dev.N` oder `-beta.N`, BETA-Client mit `-dev.N` und Stable, DEV-Client mit `-beta.N`, falsches Kanalfeld im Manifest, Kanalname nur im Dateinamen.
+- Der Kanal kommt aus dem gepackten Build (`channel.json`) oder der ausdrücklichen Benutzerauswahl, nie aus dem Manifest.
+- Ablehnungen sind getestet (negative Tests je Kanalpaar) und protokolliert, ohne Pfade mit Benutzernamen.
+- Kanalwechsel zu geringerer Vertrauensstufe nur durch ausdrückliche Benutzeraktion mit Warnung. Rückkehr zu Stable löst kein Downgrade aus.
+
+**A-4 Workflows schreiben keine Secrets**
+- Keine Ausgabe von Secrets in Logs, Artefakten, Release-Notes, Manifesten, Caches (`echo`, `set -x`, `env`-Dumps, `::debug::` geprüft). Kein Secret wird in Dateien geschrieben, die als Artefakt oder Release-Asset hochgeladen werden.
+- `permissions:` auf Workflow-Ebene `contents: read`, `contents: write` nur im Release-Job. Kein `pull_request_target` mit Checkout fremden Codes. Kein Secret für Fork-Pull-Requests.
+- Actions auf Commit-SHA gepinnt. `npm ci` mit `package-lock.json`, keine Nachlade-Skripte aus dem Netz.
+- Der Ed25519-Signaturschlüssel liegt nicht als GitHub-Secret mit Zugriff durch normale Branches. Falls für Automatik nötig, nur an eine geschützte Umgebung mit Genehmigung gebunden.
+
+**A-5 STABLE startet nicht durch einen Push**
+- Der Stable-Workflow reagiert nicht auf `push` auf Branches (auch nicht `main`). Auslöser nur: ein geschütztes Tag `v*` ohne Prerelease-Anteil oder ein manueller `workflow_dispatch` mit Genehmigung einer geschützten Umgebung (`environment` mit Reviewer).
+- Tag-Schutzregel für `v*` aktiv, Release-Erstellung nur durch den Workflow oder berechtigte Person. DEV und BETA werden über eigene Auslöser (`-dev.N`, `-beta.N` Tags) gestartet und können nie ein Stable-Release erzeugen.
+- Stable-Build bricht ab, solange `publisherThumbprint` leer ist oder die Authenticode-Prüfung fehlschlägt.
+- Test: ein Push auf `main` und ein `-dev`-Tag starten keinen Stable-Job (Workflow-Datei und Trockenlauf belegen das).
+
+**A-6 Ergänzend (aus Abschnitt 4, nicht gestrichen)**
+- Signiertes Manifest mit Kanal, Nummer, Ablauf, Größe, SHA-256. Rollback-Zähler je Kanal.
+- Gepackter Release-Build ohne Loopback- oder `extraHosts`-Ausnahme für BETA und Stable. GitHub-Redirects nur zu festen Asset-Hosts.
+- Phase-M-Befunde S-2 bis S-7 behoben, S-1 durch eigenen Testlauf bestätigt.
+- Der Commit, der Pipeline und Client zusammenführt, geht zur Nachprüfung an mich, bevor ein Push von Phase K bis N oder eine Sichtbarkeitsänderung erwogen wird.
+
+### 8.4 Grenzen des Nachtrags
+- Alle Daten aus 8.1 stammen von Rick, nicht von meiner eigenen git-Ausführung.
+- Ich habe in diesem Nachtrag keine Dateien außer diesem Bericht geschrieben und keinen Code geändert, nichts committet oder gepusht.
+- Die Kriterien sind Anforderungen. Es gibt noch keine Pipeline und keinen BETA-Kanal im Code. Erfüllung ist offen.
+- Die Entscheidung über eine Veröffentlichung liegt beim Commander.

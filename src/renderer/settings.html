@@ -20,8 +20,18 @@
     <section class="bereich">
       <h2>Programm</h2>
       <p id="version">Wird gelesen …</p>
-      <p id="kanal">Aktualisierungskanal: wird gelesen …</p>
-      <p class="meta">Der Kanal wird nur angezeigt. Er lässt sich hier nicht ändern.</p>
+      <p id="kanal">Installierter Build: wird gelesen …</p>
+    </section>
+    <section class="bereich">
+      <h2>Updatekanal</h2>
+      <p class="meta">Der gewählte Kanal bestimmt nur, woher Updates kommen. Er installiert nichts und ändert keine Module. Ohne Wahl gilt STABLE.</p>
+      <fieldset id="kanalwahl">
+        <legend>Updatequelle</legend>
+        <p><label><input type="radio" name="updatekanal" value="dev"> DEV – Aktuelle Entwicklung</label></p>
+        <p><label><input type="radio" name="updatekanal" value="beta"> BETA – Vorabversionen</label></p>
+        <p><label><input type="radio" name="updatekanal" value="stable"> STABLE – Freigegebene Versionen</label></p>
+      </fieldset>
+      <p id="kanalwahl-info" class="meta">Gewählter Kanal: wird gelesen …</p>
     </section>
     <section class="bereich">
       <h2>Datenschutz</h2>

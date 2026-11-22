@@ -9,7 +9,8 @@ const { openDatabase } = require("./store/database");
 const { createUpdateService } = require("./updates/service");
 const { verifyPublisher } = require("./updates/signature");
 const { PINNED_REPOSITORY } = require("./updates/feed");
-const { DEV_FEED_URL, devFeedKeyFile } = require("./updates/dev-feed");
+const { devFeedKeyFile } = require("./updates/dev-feed");
+const { PREFERENCE_KEY } = require("./updates/channel-preference");
 const { declareScheme, registerProtocol } = require("./protocol");
 const { registerIpc } = require("./ipc");
 const { createModuleManager } = require("./modules/manager");
@@ -71,9 +72,12 @@ if (!gotLock) {
       dataDir,
       channel,
       installedVersion: app.getVersion(),
-      feedUrl: channel === "dev"
-        ? (app.isPackaged ? DEV_FEED_URL : (process.env.ACADEMY_UPDATE_FEED || ""))
-        : (!app.isPackaged ? (process.env.ACADEMY_UPDATE_FEED || "") : ""),
+      // Nur eine ausdruecklich gesetzte Feed-Adresse ersetzt die GitHub-Quelle. Kein stiller Loopback-Fallback.
+      feedUrl: process.env.ACADEMY_UPDATE_FEED || "",
+      // Rohwert der gespeicherten Kanalwahl: ein fremder Wert wird im Service abgelehnt, nicht ersetzt.
+      channelPreference() {
+        return storeRef.current.get(PREFERENCE_KEY);
+      },
       devFeedKey: readDevKey,
       coreVersion: CORE_VERSION,
       installedModules() {

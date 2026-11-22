@@ -1,0 +1,160 @@
+# Academy STABLE: nur per manuellem Start und nur vom Branch main.
+# Bricht ab, wenn die ausdrueckliche Freigabe oder das Herausgeberzertifikat fehlt.
+# Das Environment "stable-release" muss im Repository mit Pflichtpruefern angelegt sein.
+# Kein persoenlicher Token. Secrets werden nie ausgegeben.
+name: Academy STABLE
+
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: "Freigabe des Commanders: genau FREIGEGEBEN eintragen"
+        required: true
+        type: string
+      approval_reference:
+        description: "Verweis auf die schriftliche Freigabe (Datum und Quelle)"
+        required: true
+        type: string
+
+concurrency:
+  group: academy-stable
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    env:
+      APPROVAL: ${{ inputs.approval }}
+      APPROVAL_REFERENCE: ${{ inputs.approval_reference }}
+      PUBLISHER_CERT: ${{ secrets.ACADEMY_PUBLISHER_PFX_BASE64 }}
+      PUBLISHER_CERT_PASSWORD: ${{ secrets.ACADEMY_PUBLISHER_PFX_PASSWORD }}
+      PUBLISHER_THUMBPRINT: ${{ secrets.ACADEMY_PUBLISHER_THUMBPRINT }}
+      SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
+    steps:
+      - name: Voraussetzungen pruefen
+        shell: bash
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "STABLE darf nur aus dem Branch main gebaut werden." >&2
+            exit 1
+          fi
+          if [ "$APPROVAL" != "FREIGEGEBEN" ] || [ -z "$APPROVAL_REFERENCE" ]; then
+            echo "Die ausdrueckliche Freigabe fehlt. Es wird nichts gebaut." >&2
+            exit 1
+          fi
+          if [ -z "$PUBLISHER_CERT" ] || [ -z "$PUBLISHER_CERT_PASSWORD" ] || [ -z "$PUBLISHER_THUMBPRINT" ]; then
+            echo "Das Herausgeberzertifikat fehlt. Ein Stable-Release wird nicht gebaut." >&2
+            exit 1
+          fi
+          if [ -z "$SIGNING_KEY" ]; then
+            echo "Der Manifest-Signaturschluessel fehlt. Es wird nichts veroeffentlicht." >&2
+            exit 1
+          fi
+
+  test:
+    needs: guard
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  build:
+    needs: test
+    runs-on: windows-latest
+    environment: stable-release
+    permissions:
+      contents: read
+    env:
+      ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
+      CSC_LINK: ${{ secrets.ACADEMY_PUBLISHER_PFX_BASE64 }}
+      CSC_KEY_PASSWORD: ${{ secrets.ACADEMY_PUBLISHER_PFX_PASSWORD }}
+      PUBLISHER_THUMBPRINT: ${{ secrets.ACADEMY_PUBLISHER_THUMBPRINT }}
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+      version: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Version und Tag bestimmen
+        id: meta
+        shell: bash
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if ! echo "$version" | grep -Eq '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'; then
+            echo "Stable braucht eine reine MAJOR.MINOR.PATCH-Version." >&2
+            exit 1
+          fi
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "tag=stable/v${version}" >> "$GITHUB_OUTPUT"
+      - name: Buildinformation und Stable-Kanal schreiben
+        shell: bash
+        run: |
+          node -e "const fs=require('fs');fs.writeFileSync('build/build-info.json', JSON.stringify({commit: process.env.GITHUB_SHA, builtAt: new Date().toISOString()}, null, 2));fs.writeFileSync('channel.json', JSON.stringify({channel:'stable'}, null, 2)+'\n')"
+      - name: Signierten Windows-Installer bauen
+        shell: bash
+        run: npx electron-builder --win nsis -c.win.signExecutable=true
+      - name: Authenticode-Signatur pruefen
+        shell: pwsh
+        run: |
+          $file = Get-ChildItem dist -Filter *.exe | Select-Object -First 1
+          $sig = Get-AuthenticodeSignature $file.FullName
+          if ($sig.Status -ne 'Valid' -or $sig.SignerCertificate.Thumbprint -ne $env:PUBLISHER_THUMBPRINT) {
+            Write-Error 'Die Authenticode-Signatur ist nicht die erwartete. Abbruch.'
+            exit 1
+          }
+      - name: Manifest erzeugen und signieren
+        shell: bash
+        run: |
+          installer=$(ls dist/*.exe | head -n 1)
+          node scripts/make-release-manifest.js channel=stable branch=main signature=signed \
+            version="${{ steps.meta.outputs.version }}" tag="${{ steps.meta.outputs.tag }}" \
+            commit="${GITHUB_SHA}" installer="$installer" out=dist/release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-stable-release
+          path: dist/release/*
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: stable-release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: academy-stable-release
+          path: release
+      - name: Als Entwurf anlegen, pruefen, dann sichtbar machen
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.build.outputs.tag }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Dieser Tag existiert bereits. Tags werden nie ueberschrieben." >&2
+            exit 1
+          fi
+          gh release create "$TAG" release/* --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" --title "Academy $TAG" --draft --notes "Freigegebene Version aus dem Branch main."
+          for name in manifest.json manifest.json.sig; do
+            gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fx "$name"
+          done
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --prerelease=false

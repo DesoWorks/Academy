@@ -7,6 +7,21 @@ const { MESSAGES } = require("./messages");
 const { assertAllowedUrl, readSha256Asset, selectRelease, selectModuleUpdates, fromGitHubReleases } = require("./feed");
 const { isLoopbackUrl, DEV_FEED_HEADER } = require("./dev-feed");
 const { compare, isSafeVersion } = require("./semver");
+const { isChannelName } = require("./channel-preference");
+const { selectCandidate } = require("./channels");
+const github = require("./github-feed");
+
+const GITHUB_ASSET_PREFIX = `${github.SOURCE_URL}/assets/`;
+// Grund einer Ablehnung, der nicht zum gewaehlten Kanal oder zur Plattform gehoert und daher keine Warnung ist.
+const CHANNEL_AVAILABLE = {
+  dev: MESSAGES.devAvailable,
+  beta: "Eine neuere Beta-Version ist verfügbar. Es wird noch nichts installiert.",
+  stable: MESSAGES.available
+};
+function safeName(name) {
+  return typeof name === "string" && name.length > 0 && name.length < 180 && !/[\\/\u0000]/.test(name);
+}
+const FOREIGN_REASONS = new Set(["wrong-channel", "other-package", "draft", "tag-invalid", "wrong-platform"]);
 
 function sha256File(file) {
   const hash = crypto.createHash("sha256");
@@ -18,10 +33,28 @@ function createUpdateService(options) {
   const dataDir = path.resolve(options.dataDir);
   const incoming = path.join(dataDir, "updates", "incoming");
   const stateFile = path.join(dataDir, "updates", "state.json");
-  const channel = options.channel === "stable" ? "stable" : "dev";
+  const explicitFeed = options.feedUrl || "";
+  const hasPreference = typeof options.channelPreference === "function";
+
+  // Zulaessig sind nur dev, beta und stable. Ein fremder Wert ergibt null und wird abgelehnt, nie ersetzt.
+  // Mit ausdruecklicher Feed-Adresse gilt der Kanal des Builds. Ohne sie steuert die gespeicherte Wahl.
+  // Ohne gespeicherte Wahl gilt stable.
+  function resolveChannel() {
+    if (explicitFeed || !hasPreference) return isChannelName(options.channel) ? options.channel : null;
+    let raw = "";
+    try {
+      raw = options.channelPreference();
+    } catch (error) {
+      raw = "";
+    }
+    const text = String(raw == null ? "" : raw).trim().toLowerCase();
+    if (text === "") return "stable";
+    return isChannelName(text) ? text : null;
+  }
+  let channel = resolveChannel();
   const installed = options.installedVersion;
   const fetchImpl = options.fetch || global.fetch;
-  const feedUrl = options.feedUrl || "";
+  const feedUrl = explicitFeed;
   const extraHosts = options.extraHosts || [];
   const repository = options.repository;
   fs.mkdirSync(incoming, { recursive: true });
@@ -33,10 +66,24 @@ function createUpdateService(options) {
     return String(options.devFeedKey || "").trim();
   }
 
+  // Das Token kommt vom Aufrufer (Option) oder aus ACADEMY_UPDATE_TOKEN. Es ist nirgends eingebettet
+  // und wird weder gespeichert noch in Zustand oder Meldungen geschrieben.
+  function githubToken() {
+    const given = typeof options.githubToken === "function" ? options.githubToken() : options.githubToken;
+    return github.resolveToken(given, options.env);
+  }
+
   async function fetchFeed(url, init) {
     const headers = Object.assign({}, init && init.headers);
     const key = currentKey();
     if (key && isLoopbackUrl(url)) headers[DEV_FEED_HEADER] = key;
+    // Das Token geht nur an die feste Asset-Adresse der GitHub-API, nie an eine andere Quelle.
+    if (typeof url === "string" && url.startsWith(GITHUB_ASSET_PREFIX)) {
+      headers.Accept = "application/octet-stream";
+      headers["User-Agent"] = "DesoWorks-Academy-Updater";
+      const token = githubToken();
+      if (token) headers.Authorization = `Bearer ${token}`;
+    }
     return fetchImpl(url, Object.assign({}, init, { headers }));
   }
 
@@ -136,6 +183,7 @@ function createUpdateService(options) {
   }
 
   function reconcile() {
+    channel = resolveChannel();
     const previous = readState();
     const partials = discardPartial();
     if (previous && previous.phase === "installing") {
@@ -157,6 +205,7 @@ function createUpdateService(options) {
     } else if (
       previous &&
       previous.phase === "ready" &&
+      (!previous.channel || previous.channel === channel) &&
       isSafeVersion(previous.available) &&
       compare(previous.available, installed) > 0 &&
       previous.installerPath &&
@@ -178,6 +227,7 @@ function createUpdateService(options) {
         checksumAsset: null
       };
       state.prerelease = previous.prerelease === true;
+      state.channel = channel;
       state.kind = previous.kind || "core";
       state.commit = previous.commit || "";
       state.publishedAt = previous.publishedAt || "";
@@ -190,18 +240,87 @@ function createUpdateService(options) {
     return Object.assign({}, state);
   }
 
+  function stop(phase, message, code) {
+    state.phase = phase;
+    state.message = message;
+    state.error = code;
+    state.available = null;
+    state.asset = null;
+    state.checksumAsset = null;
+    state.manifestSha256 = "";
+    state.installerPath = null;
+    writeState();
+    return Object.assign({}, state);
+  }
+
+  // Feste GitHub-Quelle: Kanal aus der gespeicherten Wahl, Token nur vom Aufrufer oder aus der Umgebung.
+  // Bei fehlendem Token, gesperrter oder unerreichbarer Quelle bleibt alles unveraendert.
+  async function checkGithub() {
+    const token = githubToken();
+    if (!token) return stop("blocked", MESSAGES.githubNoToken, "no-token");
+    const fetched = await github.fetchReleases({ fetch: fetchImpl, token });
+    if (!fetched.ok) {
+      return fetched.state === "locked"
+        ? stop("failed", MESSAGES.githubLocked, "source-locked")
+        : stop("failed", MESSAGES.githubUnreachable, "source-unreachable");
+    }
+    await github.attachManifests(fetched.releases, channel, { fetch: fetchImpl, token });
+    const verdict = selectCandidate({
+      channel,
+      installedVersion: installed,
+      releases: fetched.releases,
+      allowDowngrade: false,
+      platform: options.platform
+    });
+    state.channel = channel;
+    state.checkedAt = new Date().toISOString();
+    state.kind = "core";
+    state.moduleUpdates = [];
+    state.prerelease = false;
+    state.commit = "";
+    state.publishedAt = "";
+    state.size = 0;
+    state.notes = "";
+    if (verdict.action === "blocked") return stop("failed", MESSAGES.metadataInvalid, "metadata-invalid");
+    if (verdict.action !== "available") {
+      const suspicious = (verdict.rejected || []).some((entry) => !FOREIGN_REASONS.has(entry.reason));
+      return suspicious
+        ? stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected")
+        : stop("current", MESSAGES.upToDate, null);
+    }
+    const release = verdict.release;
+    const manifest = release.manifest;
+    const sha = String(manifest.sha256 || "").trim().toLowerCase();
+    const exes = (release.assets || []).filter((asset) => /\.exe$/i.test(asset.name));
+    const exe = exes.length === 1 ? exes[0] : null;
+    if (!/^[a-f0-9]{64}$/.test(sha)) return stop("rejected", MESSAGES.hashMissing, "metadata-rejected");
+    if (!exe || !safeName(exe.name) || typeof exe.apiUrl !== "string" || !exe.apiUrl.startsWith(GITHUB_ASSET_PREFIX)) {
+      return stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected");
+    }
+    state.phase = "available";
+    state.error = null;
+    state.message = CHANNEL_AVAILABLE[channel] || MESSAGES.available;
+    state.available = verdict.version;
+    state.notes = release.notes || "";
+    state.asset = { name: exe.name, url: exe.apiUrl, size: exe.size || 0 };
+    state.checksumAsset = { name: "manifest.json", url: exe.apiUrl, fromManifest: true };
+    state.manifestSha256 = sha;
+    state.prerelease = release.prerelease === true;
+    state.commit = release.commit || "";
+    state.publishedAt = release.publishedAt || "";
+    state.size = exe.size || 0;
+    writeState();
+    return Object.assign({}, state);
+  }
+
   async function check() {
+    channel = resolveChannel();
     state.phase = "checking";
     state.error = null;
     state.installed = installed;
     writeState();
-    if (!feedUrl) {
-      state.phase = channel === "dev" ? "blocked" : "idle";
-      state.message = channel === "dev" ? MESSAGES.devFeedDown : MESSAGES.noFeed;
-      state.available = null;
-      writeState();
-      return Object.assign({}, state);
-    }
+    if (channel === null) return stop("blocked", MESSAGES.channelRejected, "unknown-channel");
+    if (!feedUrl) return checkGithub();
     if (isLoopbackUrl(feedUrl) && !currentKey()) {
       state.phase = "failed";
       state.message = MESSAGES.devFeedUnauthorized;
@@ -276,7 +395,16 @@ function createUpdateService(options) {
     return Object.assign({}, state);
   }
 
+  // Ein vorbereitetes Paket gehoert nur zum Kanal, in dem es geprueft wurde.
+  function foreignPackage() {
+    channel = resolveChannel();
+    return channel === null || (state.channel && state.channel !== channel);
+  }
+
   async function download() {
+    if (foreignPackage()) {
+      return stop("blocked", channel === null ? MESSAGES.channelRejected : MESSAGES.channelSwitched, channel === null ? "unknown-channel" : "channel-switched");
+    }
     if (channel !== "stable" && state.prerelease !== true) {
       state.phase = "blocked";
       state.message = MESSAGES.devChannel;
@@ -320,10 +448,15 @@ function createUpdateService(options) {
       if (fileResponse.url) assertAllowedUrl(fileResponse.url, extraHosts);
       if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
       await writeResponse(fileResponse, partial);
-      const checksumResponse = await fetchFeed(state.checksumAsset.url, abortController ? { signal: abortController.signal } : undefined);
-      if (checksumResponse.url) assertAllowedUrl(checksumResponse.url, extraHosts);
-      if (!checksumResponse.ok) throw new Error(`HTTP ${checksumResponse.status}`);
-      const expected = readSha256Asset(await checksumResponse.text());
+      let expected;
+      if (state.checksumAsset.fromManifest === true) {
+        expected = /^[a-f0-9]{64}$/.test(String(state.manifestSha256 || "")) ? state.manifestSha256 : "";
+      } else {
+        const checksumResponse = await fetchFeed(state.checksumAsset.url, abortController ? { signal: abortController.signal } : undefined);
+        if (checksumResponse.url) assertAllowedUrl(checksumResponse.url, extraHosts);
+        if (!checksumResponse.ok) throw new Error(`HTTP ${checksumResponse.status}`);
+        expected = readSha256Asset(await checksumResponse.text());
+      }
       if (!expected) {
         fs.unlinkSync(partial);
         state.phase = "failed";
@@ -347,6 +480,7 @@ function createUpdateService(options) {
       state.phase = "ready";
       state.message = state.prerelease === true ? MESSAGES.devReady : MESSAGES.ready;
       state.installerPath = finalPath;
+      state.channel = channel;
       state.expectedSha256 = actual;
       writeState();
       return Object.assign({}, state);
@@ -370,6 +504,9 @@ function createUpdateService(options) {
   }
 
   function installPlan(backupPath) {
+    if (foreignPackage()) {
+      return { ok: false, message: channel === null ? MESSAGES.channelRejected : MESSAGES.channelSwitched };
+    }
     if (channel !== "stable" && state.prerelease !== true) {
       return { ok: false, message: MESSAGES.stableOnly };
     }
@@ -482,7 +619,9 @@ function createUpdateService(options) {
   }
 
   return {
-    channel,
+    get channel() {
+      return channel;
+    },
     reconcile,
     check,
     download,

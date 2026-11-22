@@ -1,0 +1,118 @@
+# Academy BETA: nur per manuellem Start (workflow_dispatch) und nur vom Branch beta.
+# Kein persoenlicher Token. Secrets werden nie ausgegeben.
+name: Academy BETA
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: academy-beta
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Nur vom Branch beta
+        shell: bash
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/beta" ]; then
+            echo "BETA darf nur aus dem Branch beta gebaut werden." >&2
+            exit 1
+          fi
+
+  test:
+    needs: guard
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  build:
+    needs: test
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    env:
+      ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+      version: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Version und Tag bestimmen
+        id: meta
+        shell: bash
+        run: |
+          base=$(node -p "require('./package.json').version")
+          if ! echo "$base" | grep -Eq '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'; then
+            echo "package.json enthaelt keine reine MAJOR.MINOR.PATCH-Version." >&2
+            exit 1
+          fi
+          version="${base}-beta.${GITHUB_RUN_NUMBER}"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "tag=beta/v${version}" >> "$GITHUB_OUTPUT"
+      - name: Buildinformation schreiben
+        shell: bash
+        run: |
+          node -e "require('fs').writeFileSync('build/build-info.json', JSON.stringify({commit: process.env.GITHUB_SHA, builtAt: new Date().toISOString()}, null, 2))"
+      - name: Windows-Installer bauen
+        shell: bash
+        run: npx electron-builder --win nsis -c.extraMetadata.version="${{ steps.meta.outputs.version }}"
+      - name: Manifest erzeugen und signieren
+        shell: bash
+        run: |
+          installer=$(ls dist/*.exe | head -n 1)
+          node scripts/make-release-manifest.js channel=beta branch=beta signature=unsigned \
+            version="${{ steps.meta.outputs.version }}" tag="${{ steps.meta.outputs.tag }}" \
+            commit="${GITHUB_SHA}" installer="$installer" out=dist/release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-beta-release
+          path: dist/release/*
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: academy-beta-release
+          path: release
+      - name: Als Entwurf anlegen, pruefen, dann sichtbar machen
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.build.outputs.tag }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Dieser Tag existiert bereits. Tags werden nie ueberschrieben." >&2
+            exit 1
+          fi
+          gh release create "$TAG" release/* --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" --title "Academy $TAG" --prerelease --draft \
+            --notes "BETA-Vorabversion aus dem Branch beta."
+          for name in manifest.json manifest.json.sig; do
+            gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fx "$name"
+          done
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --prerelease
