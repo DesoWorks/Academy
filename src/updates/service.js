@@ -4,7 +4,8 @@ const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 const { MESSAGES } = require("./messages");
-const { assertAllowedUrl, readSha256Asset, selectRelease, fromGitHubReleases } = require("./feed");
+const { assertAllowedUrl, readSha256Asset, selectRelease, selectModuleUpdates, fromGitHubReleases } = require("./feed");
+const { isLoopbackUrl, DEV_FEED_HEADER } = require("./dev-feed");
 const { compare, isSafeVersion } = require("./semver");
 
 function sha256File(file) {
@@ -25,6 +26,19 @@ function createUpdateService(options) {
   const repository = options.repository;
   fs.mkdirSync(incoming, { recursive: true });
   let abortController = null;
+  const moduleIncoming = path.join(dataDir, "updates", "modules", "incoming");
+
+  function currentKey() {
+    if (typeof options.devFeedKey === "function") return String(options.devFeedKey() || "").trim();
+    return String(options.devFeedKey || "").trim();
+  }
+
+  async function fetchFeed(url, init) {
+    const headers = Object.assign({}, init && init.headers);
+    const key = currentKey();
+    if (key && isLoopbackUrl(url)) headers[DEV_FEED_HEADER] = key;
+    return fetchImpl(url, Object.assign({}, init, { headers }));
+  }
 
   let state = {
     phase: "idle",
@@ -163,6 +177,12 @@ function createUpdateService(options) {
         asset: null,
         checksumAsset: null
       };
+      state.prerelease = previous.prerelease === true;
+      state.kind = previous.kind || "core";
+      state.commit = previous.commit || "";
+      state.publishedAt = previous.publishedAt || "";
+      state.size = previous.size || 0;
+      if (state.prerelease) state.message = MESSAGES.devReady;
     } else {
       state.installed = installed;
     }
@@ -177,7 +197,15 @@ function createUpdateService(options) {
     writeState();
     if (!feedUrl) {
       state.phase = channel === "dev" ? "blocked" : "idle";
-      state.message = channel === "dev" ? MESSAGES.devChannel : MESSAGES.noFeed;
+      state.message = channel === "dev" ? MESSAGES.devFeedDown : MESSAGES.noFeed;
+      state.available = null;
+      writeState();
+      return Object.assign({}, state);
+    }
+    if (isLoopbackUrl(feedUrl) && !currentKey()) {
+      state.phase = "failed";
+      state.message = MESSAGES.devFeedUnauthorized;
+      state.error = "dev-feed-unauthorized";
       state.available = null;
       writeState();
       return Object.assign({}, state);
@@ -185,7 +213,7 @@ function createUpdateService(options) {
     let payload;
     try {
       assertAllowedUrl(feedUrl, extraHosts);
-      const response = await fetchImpl(feedUrl);
+      const response = await fetchFeed(feedUrl);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       payload = await response.json();
       if (!payload || typeof payload !== "object") {
@@ -197,7 +225,11 @@ function createUpdateService(options) {
       }
     } catch (error) {
       state.phase = "failed";
-      state.message = error.code === "host-rejected" ? MESSAGES.hostRejected : MESSAGES.checkFailed;
+      state.message = error.code === "host-rejected"
+        ? MESSAGES.hostRejected
+        : (channel === "dev" && /ECONNREFUSED|fetch failed|ENOTFOUND/i.test(String(error.message || error.cause || "")))
+          ? MESSAGES.devFeedDown
+          : (/HTTP 401/.test(String(error.message || "")) ? MESSAGES.devFeedUnauthorized : MESSAGES.checkFailed);
       state.error = error.code || "check-failed";
       writeState();
       return Object.assign({}, state);
@@ -227,12 +259,25 @@ function createUpdateService(options) {
     state.notes = selected.notes || "";
     state.asset = selected.asset || null;
     state.checksumAsset = selected.checksumAsset || null;
+    state.prerelease = selected.prerelease === true;
+    state.commit = selected.commit || "";
+    state.publishedAt = selected.publishedAt || "";
+    state.size = selected.size || 0;
+    state.kind = "core";
+    state.checkedAt = new Date().toISOString();
+    const installedModules = typeof options.installedModules === "function" ? options.installedModules() : (options.installedModules || []);
+    state.moduleUpdates = selectModuleUpdates(payload.modules, installedModules, {
+      channel,
+      coreVersion: options.coreVersion,
+      repository,
+      extraHosts
+    });
     writeState();
     return Object.assign({}, state);
   }
 
   async function download() {
-    if (channel !== "stable") {
+    if (channel !== "stable" && state.prerelease !== true) {
       state.phase = "blocked";
       state.message = MESSAGES.devChannel;
       writeState();
@@ -271,11 +316,11 @@ function createUpdateService(options) {
         throw rejected;
       }
       abortController = typeof AbortController === "function" ? new AbortController() : null;
-      const fileResponse = await fetchImpl(state.asset.url, abortController ? { signal: abortController.signal } : undefined);
+      const fileResponse = await fetchFeed(state.asset.url, abortController ? { signal: abortController.signal } : undefined);
       if (fileResponse.url) assertAllowedUrl(fileResponse.url, extraHosts);
       if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
       await writeResponse(fileResponse, partial);
-      const checksumResponse = await fetchImpl(state.checksumAsset.url, abortController ? { signal: abortController.signal } : undefined);
+      const checksumResponse = await fetchFeed(state.checksumAsset.url, abortController ? { signal: abortController.signal } : undefined);
       if (checksumResponse.url) assertAllowedUrl(checksumResponse.url, extraHosts);
       if (!checksumResponse.ok) throw new Error(`HTTP ${checksumResponse.status}`);
       const expected = readSha256Asset(await checksumResponse.text());
@@ -300,7 +345,7 @@ function createUpdateService(options) {
       }
       fs.renameSync(partial, finalPath);
       state.phase = "ready";
-      state.message = MESSAGES.ready;
+      state.message = state.prerelease === true ? MESSAGES.devReady : MESSAGES.ready;
       state.installerPath = finalPath;
       state.expectedSha256 = actual;
       writeState();
@@ -325,7 +370,7 @@ function createUpdateService(options) {
   }
 
   function installPlan(backupPath) {
-    if (channel !== "stable") {
+    if (channel !== "stable" && state.prerelease !== true) {
       return { ok: false, message: MESSAGES.stableOnly };
     }
     if (state.phase !== "ready" || !state.installerPath || !contained(state.installerPath) || !fs.existsSync(state.installerPath)) {
@@ -353,25 +398,87 @@ function createUpdateService(options) {
     if (!backupPath || !fs.existsSync(backupPath)) {
       return { ok: false, message: "Vor der Installation fehlt eine Sicherung der Lerndaten. Es wurde nichts gestartet." };
     }
-    const thumbprint = options.publisherThumbprint || "";
-    if (!thumbprint || typeof options.verifyPublisher !== "function") {
-      return { ok: false, message: "Für eine Stable-Installation fehlt die erwartete Herausgebersignatur. Es wurde nichts gestartet." };
-    }
-    const signature = options.verifyPublisher(state.installerPath, thumbprint);
-    if (!signature || signature.ok !== true) {
-      return { ok: false, message: "Die Signatur des Updates ist nicht die erwartete. Es wurde nichts gestartet." };
+    if (channel === "stable") {
+      const thumbprint = options.publisherThumbprint || "";
+      if (!thumbprint || typeof options.verifyPublisher !== "function") {
+        return { ok: false, message: "Für eine Stable-Installation fehlt die erwartete Herausgebersignatur. Es wurde nichts gestartet." };
+      }
+      const signature = options.verifyPublisher(state.installerPath, thumbprint);
+      if (!signature || signature.ok !== true) {
+        return { ok: false, message: "Die Signatur des Updates ist nicht die erwartete. Es wurde nichts gestartet." };
+      }
     }
     state.phase = "installing";
-    state.message = MESSAGES.running;
+    state.message = channel === "stable" ? MESSAGES.running : MESSAGES.devRunning;
     writeState();
     return {
       ok: true,
-      message: MESSAGES.running,
+      message: state.message,
       command: state.installerPath,
-      args: [],
+      args: ["/S"],
       quitFirst: true,
       backupPath
     };
+  }
+
+  async function downloadModule(id) {
+    const entry = (state.moduleUpdates || []).find((item) => item.id === id && item.action === "available" && item.prerelease === true);
+    if (channel !== "dev" || !entry) {
+      state.moduleMessage = MESSAGES.moduleFailed;
+      writeState();
+      return Object.assign({}, state);
+    }
+    fs.mkdirSync(moduleIncoming, { recursive: true });
+    const zipPath = path.join(moduleIncoming, `${entry.id}-${entry.available}.zip`);
+    const relative = path.relative(moduleIncoming, path.resolve(zipPath));
+    if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+      state.moduleMessage = MESSAGES.moduleFailed;
+      writeState();
+      return Object.assign({}, state);
+    }
+    const partial = `${zipPath}.partial`;
+    try {
+      assertAllowedUrl(entry.asset.url, extraHosts);
+      assertAllowedUrl(entry.checksumAsset.url, extraHosts);
+      const { repositoryPinned } = require("./feed");
+      if (!repositoryPinned(entry.asset.url, repository, extraHosts) || !repositoryPinned(entry.checksumAsset.url, repository, extraHosts)) {
+        const rejected = new Error(MESSAGES.repoRejected);
+        rejected.code = "host-rejected";
+        throw rejected;
+      }
+      const fileResponse = await fetchFeed(entry.asset.url);
+      if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
+      await writeResponse(fileResponse, partial);
+      const checksumResponse = await fetchFeed(entry.checksumAsset.url);
+      if (!checksumResponse.ok) throw new Error(`HTTP ${checksumResponse.status}`);
+      const expected = readSha256Asset(await checksumResponse.text());
+      const actual = sha256File(partial);
+      if (!expected || actual !== expected) {
+        fs.unlinkSync(partial);
+        state.moduleMessage = MESSAGES.hashMismatch;
+        state.preparedModule = null;
+        writeState();
+        return Object.assign({}, state);
+      }
+      if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
+      fs.renameSync(partial, zipPath);
+      state.preparedModule = {
+        id: entry.id,
+        version: entry.available,
+        zipPath,
+        expectedSha256: actual,
+        kind: "module"
+      };
+      state.moduleMessage = MESSAGES.moduleReady;
+      writeState();
+      return Object.assign({}, state);
+    } catch (error) {
+      if (fs.existsSync(partial)) fs.unlinkSync(partial);
+      state.moduleMessage = error.code === "host-rejected" ? MESSAGES.hostRejected : MESSAGES.moduleFailed;
+      state.preparedModule = null;
+      writeState();
+      return Object.assign({}, state);
+    }
   }
 
   return {
@@ -379,6 +486,7 @@ function createUpdateService(options) {
     reconcile,
     check,
     download,
+    downloadModule,
     abort: abortDownload,
     installPlan,
     status() {

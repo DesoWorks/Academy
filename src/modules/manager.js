@@ -340,6 +340,11 @@ function createModuleManager(options) {
     close() {
       registry.close();
     },
+    installPath(id) {
+      requireRegistry();
+      const current = row(id);
+      return current ? current.install_path : "";
+    },
     list() {
       const installed = registry.available
         ? registry.db.prepare("SELECT * FROM module_install ORDER BY id").all().map(publicRow)

@@ -28,7 +28,8 @@
       "src/**/*",
       "package.json",
       "channel.json",
-      "build/icon.png"
+      "build/icon.png",
+      "build/build-info.json"
     ],
     "extraResources": [
       {

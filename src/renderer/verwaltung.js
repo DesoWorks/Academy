@@ -31,7 +31,11 @@
       return;
     }
     var versions = result.versions || {};
-    document.getElementById("version").textContent = "Version " + (versions.desktop || "?") + " · Kanal " + (versions.channel || "?") + " · Schema " + result.schemaVersion;
+    document.getElementById("version").textContent = (versions.name || "DesoWorks Academy")
+      + " · Version " + (versions.desktop || "?")
+      + " · Kanal " + (versions.channel || "?")
+      + " · Commit " + (versions.commit || "nicht im Build hinterlegt")
+      + " · Schema " + result.schemaVersion;
     var last = result.lastBackup;
     document.getElementById("letzte").textContent = last
       ? ("Letzte Sicherung: " + stamp(last.mtimeMs) + (last.intact ? " · intakt" : " · nicht intakt, nicht als Erfolg werten"))
@@ -42,6 +46,25 @@
     document.getElementById("begrenzen").value = String(policy.maxBackups || 12);
     var update = result.updates || {};
     document.getElementById("update").textContent = update.message || "Keine Updateprüfung gelaufen.";
+    var meta = [];
+    if (update.checkedAt) meta.push("Letzte Prüfung: " + update.checkedAt);
+    if (update.available) meta.push("Core " + update.installed + " → " + update.available + (update.prerelease ? " · DEV-Prerelease" : " · Core"));
+    if (update.commit) meta.push("Commit " + update.commit);
+    if (update.publishedAt) meta.push("Veröffentlicht " + update.publishedAt);
+    if (update.size) meta.push("Download " + update.size + " Bytes");
+    document.getElementById("update-meta").textContent = meta.join(" · ");
+    document.getElementById("update-notes").textContent = update.notes || "";
+    var modules = update.moduleUpdates || [];
+    var moduleNode = document.getElementById("modul-update");
+    moduleNode.dataset.moduleId = modules.length ? modules[0].id : "";
+    moduleNode.textContent = modules.length
+      ? modules.map(function (entry) {
+          return "Modul " + entry.id + ": " + entry.installed + " → " + entry.available + " · " + (entry.message || entry.action) + (entry.size ? " · " + entry.size + " Bytes" : "");
+        }).join(" ")
+      : (update.moduleMessage || "Kein Modulupdate gemeldet.");
+    if (update.moduleMessage && modules.length) {
+      moduleNode.textContent += " · " + update.moduleMessage;
+    }
     if (update.received) {
       document.getElementById("fortschritt").textContent = update.total
         ? ("Download " + update.received + " / " + update.total + " Bytes")
@@ -152,6 +175,43 @@
     api.installUpdate().then(function (result) {
       say(result && result.ok ? "Installation wurde vorbereitet. Die Anwendung beendet sich dafür." : ((result && result.message) || "Installation nicht gestartet."), result && result.ok);
     });
+  });
+
+  document.getElementById("modul-laden").addEventListener("click", function () {
+    var moduleId = document.getElementById("modul-update").dataset.moduleId;
+    if (!moduleId) {
+      say("Kein Modulupdate zum Herunterladen.", false);
+      return;
+    }
+    api.downloadModuleUpdate(moduleId).then(function (result) {
+      var state = result && result.state;
+      say(state && state.moduleMessage ? state.moduleMessage : "Moduldownload ohne Ergebnis.", state && state.preparedModule);
+      refresh();
+    });
+  });
+
+  document.getElementById("modul-installieren").addEventListener("click", function () {
+    var moduleId = document.getElementById("modul-update").dataset.moduleId;
+    if (!moduleId) {
+      say("Kein Modulupdate zum Installieren.", false);
+      return;
+    }
+    api.installModuleUpdate(moduleId).then(function (result) {
+      say(result && result.ok ? "Modulupdate installiert. Der Core bleibt unverändert." : ((result && result.message) || "Modulupdate nicht installiert."), result && result.ok);
+      refresh();
+    });
+  });
+
+  var startBox = document.getElementById("beim-start");
+  try {
+    var stored = api.storageLoadAll();
+    startBox.checked = stored && stored.items && stored.items["academy.updateCheckOnStart"] === "1";
+  } catch (error) {
+    startBox.checked = false;
+  }
+  startBox.addEventListener("change", function () {
+    api.storageSet("academy.updateCheckOnStart", startBox.checked ? "1" : "0");
+    say(startBox.checked ? "Prüfung beim Start ist an. Es wird nicht automatisch heruntergeladen." : "Prüfung beim Start ist aus.", true);
   });
 
   window.addEventListener("offline", function () { document.getElementById("offline").hidden = false; });

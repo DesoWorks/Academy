@@ -448,6 +448,54 @@ function registerIpc(options) {
       return fail(error);
     }
   });
+
+  ipcMain.handle("academy:module-update-download", async (event, id) => {
+    if (!fromApp(event)) return reject(event, false);
+    try {
+      return ok({ state: await updates.downloadModule(String(id || "")) });
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+  ipcMain.handle("academy:module-update-install", (event, id) => {
+    if (!fromApp(event)) return reject(event, false);
+    if (!options.modules || typeof options.modules.installFromDirectory !== "function") {
+      return { ok: false, code: "unavailable", message: "Die Modulverwaltung ist nicht geladen. Der Core wurde nicht angetastet." };
+    }
+    const crypto = require("node:crypto");
+    const path = require("node:path");
+    const { extractZip } = require("./updates/zip");
+    const prepared = updates.status().preparedModule;
+    if (!prepared || prepared.kind !== "module" || prepared.id !== String(id || "")) {
+      return { ok: false, code: "not-ready", message: "Es liegt kein geprüftes Modulpaket bereit. Der Core wurde nicht neu installiert." };
+    }
+    const actual = crypto.createHash("sha256").update(fs.readFileSync(prepared.zipPath)).digest("hex");
+    if (actual !== prepared.expectedSha256) {
+      return { ok: false, code: "hash-mismatch", message: "Die Integritätsprüfung des Modulpakets ist fehlgeschlagen. Es wurde nichts installiert." };
+    }
+    const dataDir = path.dirname(store.path);
+    const dest = path.join(dataDir, "updates", "modules", "verified", prepared.id, prepared.version);
+    const previous = typeof options.modules.installPath === "function" ? options.modules.installPath(prepared.id) : "";
+    const snapshot = previous && fs.existsSync(previous)
+      ? path.join(dataDir, "updates", "modules", "rollback", prepared.id, String(Date.now()))
+      : "";
+    if (snapshot) fs.cpSync(previous, snapshot, { recursive: true });
+    try {
+      fs.rmSync(dest, { recursive: true, force: true });
+      extractZip(prepared.zipPath, dest);
+      const installed = options.modules.installFromDirectory(dest);
+      return ok({ module: installed, kind: "module", rollback: snapshot });
+    } catch (error) {
+      fs.rmSync(dest, { recursive: true, force: true });
+      return {
+        ok: false,
+        code: error.code || "module-update-failed",
+        message: (error.message || "Das Modulupdate ist fehlgeschlagen.") + " Die bisherige Modulversion bleibt. Der Academy-Core wurde nicht neu installiert.",
+        rollback: snapshot
+      };
+    }
+  });
 }
 
 module.exports = { registerIpc };

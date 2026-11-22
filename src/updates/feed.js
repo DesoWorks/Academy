@@ -25,7 +25,7 @@ function assertAllowedUrl(url, extraHosts) {
   const hosts = new Set(DEFAULT_HOSTS.concat(extraHosts || []));
   const local = parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost";
   if (parsed.protocol === "https:" && hosts.has(parsed.hostname)) return parsed;
-  if (parsed.protocol === "http:" && local && hosts.has(parsed.hostname)) return parsed;
+  if (parsed.protocol === "http:" && local) return parsed;
   const failure = new Error(MESSAGES.hostRejected);
   failure.code = "host-rejected";
   throw failure;
@@ -94,12 +94,66 @@ function fromGitHubReleases(payload) {
       version: String(release.tag_name || "").replace(/^v/, ""),
       prerelease: Boolean(release.prerelease),
       notes: release.body || "",
+      commit: release.target_commitish || "",
+      publishedAt: release.published_at || "",
       assets: (release.assets || []).map((asset) => ({
         name: asset.name,
         url: asset.browser_download_url,
         size: asset.size || 0
       }))
     }));
+}
+
+function releaseMeta(release) {
+  return {
+    commit: typeof release.commit === "string" ? release.commit.slice(0, 80) : "",
+    publishedAt: typeof release.publishedAt === "string" ? release.publishedAt.slice(0, 40) : "",
+    prerelease: release.prerelease === true
+  };
+}
+
+function acceptInstaller(release, installed, repository, extraHosts, message) {
+  const paired = pairAssets(release.assets);
+  if (!paired || !paired.exe || !safeAssetName(paired.exe.name) || !paired.exe.url) {
+    return {
+      action: "rejected",
+      message: MESSAGES.metadataInvalid,
+      installed,
+      available: release.version,
+      notes: release.notes || "",
+      prerelease: release.prerelease === true
+    };
+  }
+  if (!repositoryPinned(paired.exe.url, repository, extraHosts) || (paired.checksum && !repositoryPinned(paired.checksum.url, repository, extraHosts))) {
+    return {
+      action: "rejected",
+      message: MESSAGES.repoRejected,
+      installed,
+      available: release.version,
+      notes: release.notes || "",
+      prerelease: release.prerelease === true
+    };
+  }
+  if (!paired.checksum) {
+    return {
+      action: "rejected",
+      message: MESSAGES.hashMissing,
+      installed,
+      available: release.version,
+      notes: release.notes || "",
+      prerelease: release.prerelease === true
+    };
+  }
+  return Object.assign({
+    action: "available",
+    message,
+    installed,
+    available: release.version,
+    notes: release.notes || "",
+    size: paired.exe.size || 0,
+    asset: paired.exe,
+    checksumAsset: paired.checksum
+  }, releaseMeta(release));
 }
 
 function selectRelease(releases, options) {
@@ -109,61 +163,104 @@ function selectRelease(releases, options) {
   const extraHosts = options.extraHosts || [];
   const { isSafeVersion } = require("./semver");
   const ranked = (releases || [])
-    .filter((release) => isSafeVersion(release.version))
-    .filter((release) => release && release.version)
-    .filter((release) => channel === "stable" ? !release.prerelease : true)
+    .filter((release) => release && isSafeVersion(release.version))
+    .filter((release) => channel === "stable" ? release.prerelease !== true : true)
     .slice()
     .sort((a, b) => compare(b.version, a.version));
-  const newer = ranked.find((release) => compare(release.version, installed) > 0);
   if (channel !== "stable") {
-    return {
-      action: "blocked",
-      message: MESSAGES.devChannel,
-      installed,
-      available: newer ? newer.version : null,
-      notes: newer ? newer.notes : ""
-    };
+    const newerPre = ranked.filter((release) => release.prerelease === true).find((release) => compare(release.version, installed) > 0);
+    const newerStable = ranked.filter((release) => release.prerelease !== true).find((release) => compare(release.version, installed) > 0);
+    if (!newerPre) {
+      return {
+        action: newerStable ? "blocked" : "current",
+        message: newerStable ? MESSAGES.devChannel : MESSAGES.upToDate,
+        installed,
+        available: newerStable ? newerStable.version : null,
+        notes: newerStable ? (newerStable.notes || "") : "",
+        prerelease: false
+      };
+    }
+    return acceptInstaller(newerPre, installed, repository, extraHosts, MESSAGES.devAvailable);
   }
+  const newer = ranked.find((release) => compare(release.version, installed) > 0);
   if (!newer) {
-    return { action: "current", message: MESSAGES.upToDate, installed, available: null, notes: "" };
+    return { action: "current", message: MESSAGES.upToDate, installed, available: null, notes: "", prerelease: false };
   }
-  const paired = pairAssets(newer.assets);
-  if (!paired || !paired.exe || !safeAssetName(paired.exe.name) || !paired.exe.url) {
-    return {
-      action: "rejected",
-      message: MESSAGES.metadataInvalid,
-      installed,
-      available: newer.version,
-      notes: newer.notes
-    };
+  return acceptInstaller(newer, installed, repository, extraHosts, MESSAGES.available);
+}
+
+function safeModuleId(id) {
+  return typeof id === "string" && /^[a-z0-9]+(?:[.-][a-z0-9]+)+$/.test(id) && id.length < 80;
+}
+
+function selectModuleUpdates(entries, installed, options) {
+  const channel = options.channel === "stable" ? "stable" : "dev";
+  const coreVersion = options.coreVersion || "0.0.0";
+  const repository = options.repository || PINNED_REPOSITORY;
+  const extraHosts = options.extraHosts || [];
+  const { isSafeVersion } = require("./semver");
+  const { satisfies } = require("../modules/spec");
+  const list = Array.isArray(installed) ? installed : [];
+  if (channel === "stable") return [];
+  const updates = [];
+  for (const entry of entries || []) {
+    if (!entry || entry.prerelease !== true || !safeModuleId(entry.id) || !isSafeVersion(entry.version)) continue;
+    const current = list.find((item) => item && item.id === entry.id);
+    if (!current) continue;
+    if (compare(entry.version, current.version) <= 0) continue;
+    if (entry.core && !satisfies(coreVersion, entry.core)) {
+      updates.push({
+        id: entry.id,
+        action: "rejected",
+        message: "Das Modulpaket passt nicht zu dieser Core-Version. Es wird nicht installiert.",
+        installed: current.version,
+        available: entry.version,
+        kind: "module"
+      });
+      continue;
+    }
+    const assets = entry.assets || [];
+    const zip = assets.find((asset) => asset && /\.zip$/i.test(asset.name) && !/\.sha256$/i.test(asset.name));
+    const checksum = zip ? assets.find((asset) => asset && asset.name === `${zip.name}.sha256`) : null;
+    if (!zip || !safeAssetName(zip.name) || !zip.url || !checksum || !checksum.url) {
+      updates.push({
+        id: entry.id,
+        action: "rejected",
+        message: MESSAGES.hashMissing,
+        installed: current.version,
+        available: entry.version,
+        kind: "module"
+      });
+      continue;
+    }
+    if (!repositoryPinned(zip.url, repository, extraHosts) || !repositoryPinned(checksum.url, repository, extraHosts)) {
+      updates.push({
+        id: entry.id,
+        action: "rejected",
+        message: MESSAGES.repoRejected,
+        installed: current.version,
+        available: entry.version,
+        kind: "module"
+      });
+      continue;
+    }
+    updates.push({
+      id: entry.id,
+      action: "available",
+      message: MESSAGES.moduleAvailable,
+      installed: current.version,
+      available: entry.version,
+      notes: entry.notes || "",
+      commit: typeof entry.commit === "string" ? entry.commit.slice(0, 80) : "",
+      publishedAt: typeof entry.publishedAt === "string" ? entry.publishedAt.slice(0, 40) : "",
+      size: zip.size || 0,
+      asset: zip,
+      checksumAsset: checksum,
+      prerelease: true,
+      kind: "module"
+    });
   }
-  if (!repositoryPinned(paired.exe.url, repository, extraHosts) || (paired.checksum && !repositoryPinned(paired.checksum.url, repository, extraHosts))) {
-    return {
-      action: "rejected",
-      message: MESSAGES.repoRejected,
-      installed,
-      available: newer.version,
-      notes: newer.notes
-    };
-  }
-  if (!paired.checksum) {
-    return {
-      action: "rejected",
-      message: MESSAGES.hashMissing,
-      installed,
-      available: newer.version,
-      notes: newer.notes
-    };
-  }
-  return {
-    action: "available",
-    message: MESSAGES.available,
-    installed,
-    available: newer.version,
-    notes: newer.notes,
-    asset: paired.exe,
-    checksumAsset: paired.checksum
-  };
+  return updates;
 }
 
 module.exports = {
@@ -174,5 +271,6 @@ module.exports = {
   readSha256Asset,
   pairAssets,
   fromGitHubReleases,
-  selectRelease
+  selectRelease,
+  selectModuleUpdates
 };

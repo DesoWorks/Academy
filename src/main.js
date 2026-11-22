@@ -9,6 +9,7 @@ const { openDatabase } = require("./store/database");
 const { createUpdateService } = require("./updates/service");
 const { verifyPublisher } = require("./updates/signature");
 const { PINNED_REPOSITORY } = require("./updates/feed");
+const { DEV_FEED_URL, devFeedKeyFile } = require("./updates/dev-feed");
 const { declareScheme, registerProtocol } = require("./protocol");
 const { registerIpc } = require("./ipc");
 const { createModuleManager } = require("./modules/manager");
@@ -37,6 +38,21 @@ if (!gotLock) {
     session.defaultSession.setPermissionRequestHandler((_webContents, _permission, callback) => callback(false));
     session.defaultSession.setPermissionCheckHandler(() => false);
     const channel = resolveChannel(app.isPackaged ? {} : process.env);
+    function readDevKey() {
+      try {
+        return fs.readFileSync(devFeedKeyFile(dataDir), "utf8").trim();
+      } catch (error) {
+        return "";
+      }
+    }
+    function readBuildInfo() {
+      try {
+        return JSON.parse(fs.readFileSync(path.join(__dirname, "..", "build", "build-info.json"), "utf8"));
+      } catch (error) {
+        return {};
+      }
+    }
+    const buildInfo = readBuildInfo();
     const storeRef = { current: openDatabase({ dataDir }) };
     let modules = null;
     try {
@@ -45,7 +61,8 @@ if (!gotLock) {
         coreVersion: CORE_VERSION,
         hostedWebRoots: [app.isPackaged
           ? path.join(process.resourcesPath, "academy-modules")
-          : path.join(__dirname, "..", "modules")]
+          : path.join(__dirname, "..", "modules"),
+          path.join(dataDir, "updates", "modules", "verified")]
       });
     } catch (error) {
       modules = { available: false, list() { return { platform: null, installed: [], available: false, message: error.message }; }, close() {} };
@@ -54,12 +71,30 @@ if (!gotLock) {
       dataDir,
       channel,
       installedVersion: app.getVersion(),
-      feedUrl: channel === "stable" && !app.isPackaged ? (process.env.ACADEMY_UPDATE_FEED || "") : "",
+      feedUrl: channel === "dev"
+        ? (app.isPackaged ? DEV_FEED_URL : (process.env.ACADEMY_UPDATE_FEED || ""))
+        : (!app.isPackaged ? (process.env.ACADEMY_UPDATE_FEED || "") : ""),
+      devFeedKey: readDevKey,
+      coreVersion: CORE_VERSION,
+      installedModules() {
+        try {
+          return modules && modules.available ? modules.list().installed.map((item) => ({ id: item.id, version: item.version })) : [];
+        } catch (error) {
+          return [];
+        }
+      },
       repository: PINNED_REPOSITORY,
       publisherThumbprint: app.isPackaged ? "" : (process.env.ACADEMY_PUBLISHER_THUMBPRINT || ""),
       verifyPublisher
     });
     updates.reconcile();
+    try {
+      if (storeRef.current.all()["academy.updateCheckOnStart"] === "1") {
+        updates.check().catch(() => {});
+      }
+    } catch (error) {
+      // Eine fehlgeschlagene Startprüfung darf den Start nicht abbrechen.
+    }
     try {
       storeRef.current.ensureScheduledBackup();
     } catch (error) {
@@ -83,6 +118,8 @@ if (!gotLock) {
         desktop: app.getVersion(),
         core: CORE_VERSION,
         channel,
+        commit: buildInfo.commit || "",
+        builtAt: buildInfo.builtAt || "",
         name: "DesoWorks Academy"
       },
       modules,
