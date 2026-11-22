@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "web/assets/desoworks-02-terminal.svg",
-      "sha256": "0194849974ce2f8e12aa61224797c22dcd7977d88ee538b15e67b3f3f1a9d942",
-      "size": 1034
+      "sha256": "cc47666fa9e6deea0b0ec96b28a3da396d05384f4c1a305bec461141dc5eae63",
+      "size": 1026
     },
     {
       "path": "web/assets/desoworks/favicon-32.png",
@@ -25,8 +25,8 @@
     },
     {
       "path": "web/assets/desoworks/logo-orbital-werkstatt.svg",
-      "sha256": "317c93b76fa050d5c14ce5c25e814285f99a11e61d43cce4111754593a3c14c7",
-      "size": 1744
+      "sha256": "bf41617193cb3b57fc2bc03c559696c1e467c316a3d7dcf3a5b87dacf18fb210",
+      "size": 1737
     },
     {
       "path": "web/assets/desoworks/signet.svg",
@@ -50,248 +50,248 @@
     },
     {
       "path": "web/css/bwl-werkstatt.css",
-      "sha256": "c0ed3c5e623fb192571bd724d31f6eeb79340b6ce81e897352d2b2132ca73e22",
-      "size": 5216
+      "sha256": "4c4006696f2c808386dfa5dcc0b1cf80cb9ffb0b29b128915b1c0b71828668e1",
+      "size": 5139
     },
     {
       "path": "web/css/einheiten.css",
-      "sha256": "d2f0c309190a4a58fe8ed236044781cab5167415484d46316ddc7c595c13de16",
-      "size": 2045
+      "sha256": "1f4851988721efce01808258523753e2bfc6f95527792530f3161cd41d28a19a",
+      "size": 2019
     },
     {
       "path": "web/css/ipv4-rechner.css",
-      "sha256": "7e5b08691206a1864a1f5358a41c784cc125c6add07b52fae127a6b87d601eaa",
-      "size": 2606
+      "sha256": "e049d35e111947e412f2c7ff65cc857c32300db536803524400a8428a84ebc89",
+      "size": 2578
     },
     {
       "path": "web/css/lf89-praxis.css",
-      "sha256": "135002c525e376e570c87cdfa2e4a3fd43f558f7aff98ea54ea98e4f25c98efa",
-      "size": 1717
+      "sha256": "d426ff96bcaf81b06c7c8102e65544e7d0c6d31ce37eacc17ba7be1323563370",
+      "size": 1697
     },
     {
       "path": "web/css/netzwerk.css",
-      "sha256": "120a474866ba700ca6a846cd61c21dd792df0ce80fe17f5c6de32a5db41007b8",
-      "size": 5471
+      "sha256": "095f5325efef070d1b9250fa64b391ebcb40d0319f9294e1cd8437e2224d6210",
+      "size": 5378
     },
     {
       "path": "web/css/pc-explorer.css",
-      "sha256": "ea339f3380baea10779a39fbc57f6073004cecf76cea3b8df42caf5b1c26f0d3",
-      "size": 17884
+      "sha256": "c8226f10a98de2b848d64a3bf5a8ba2051b68c0e00b34a7562d34e7ef6a6f6bc",
+      "size": 17630
     },
     {
       "path": "web/css/raid-labor.css",
-      "sha256": "961c68f97b12fedc7a4ab304de204cd61a413572a75b89dc67fa3f03a824b32c",
-      "size": 2683
+      "sha256": "5e558f01617d14bc0260d23689d9432e11c5e30af05c93d2cf0d8df33713714c",
+      "size": 2653
     },
     {
       "path": "web/css/raid-rack.css",
-      "sha256": "4d072ced8bb785b5749e2cf408774e1568bbede0a884bb6607d146931a864c4c",
-      "size": 5977
+      "sha256": "cbe79edfcdb0e051610cde70ee7b63f2060682678995039069c299ef4a092fb2",
+      "size": 5914
     },
     {
       "path": "web/css/startseite.css",
-      "sha256": "e1486753cedb2bf2edf2ebc4942dcf20de849988115c9e0af33e2d6ee6e25992",
-      "size": 6366
+      "sha256": "2896ef2f81bc109a45a007c7fcb660465cc79a39fd85a0222f17a01bcee9d7dc",
+      "size": 6251
     },
     {
       "path": "web/css/styles.css",
-      "sha256": "087e2931c1a97172f3a3344b4172322f19f79a86a76e7dcab2b3f5677c42c5dd",
-      "size": 24577
+      "sha256": "c1984ebde7c86e5c43b784cf5c9df940f65142828f4d7ee86309872a2c00ace6",
+      "size": 23991
     },
     {
       "path": "web/css/windows-werkzeugkiste.css",
-      "sha256": "a3f2672ff31386ed2310a55026d55a2b200b5878a1796de98c7fc22505a41413",
-      "size": 4078
+      "sha256": "9be62ba0ad46da39ee3c2441e1bb08afb46865cf827d6942086854ef1d4263d7",
+      "size": 4041
     },
     {
       "path": "web/css/zahlensysteme.css",
-      "sha256": "df3b060ea5232426a662dcbf058e32b897fc1e06efb7f582555cc4d3fd5dfc25",
-      "size": 2431
+      "sha256": "d1a0de8b11995972f6e85508ee86b3974b55dd98c5483247455440a59c0f34be",
+      "size": 2402
     },
     {
       "path": "web/glossar.html",
-      "sha256": "a5bd9b08f3d62607e156999ad71c16cb1fac44ff1aa0b2b3fc6dbb93e1edadc1",
-      "size": 2392
+      "sha256": "20d38d421cb6815e74aa40c2ff2c1349a6cbe26af207aa6eb8309d05f8beb696",
+      "size": 2348
     },
     {
       "path": "web/index.html",
-      "sha256": "d1fd5f10018492fa91d8473c1ac738cd90470b9ac92a99365323cafa05c28183",
-      "size": 2365
+      "sha256": "4b713931c409da250ffb7c345365b942b32db4ce934e0d451a82f73454af8131",
+      "size": 2309
     },
     {
       "path": "web/js/anzeige-glossar.js",
-      "sha256": "6fa9311675678511c6daa3cf71c873b7de22c274035b415b1ef35297ec7613d5",
-      "size": 6993
+      "sha256": "352acde821af192d6022807a94322494c83fa01ec5d06b40accb297581029757",
+      "size": 6869
     },
     {
       "path": "web/js/app.js",
-      "sha256": "486b5ffb1b063ff5c932868b3eb2e004321bb74a523642659a40e3426b1a3629",
-      "size": 23825
+      "sha256": "c4f892253cdfaddb208996596479f9175770c139880e0837c7d6976e7e8190f5",
+      "size": 23289
     },
     {
       "path": "web/js/bwl-werkstatt.js",
-      "sha256": "1e7a692d3cf3871577cab35d7c98f755b7ed3ac362f0c84abcb68ab1f2a5c0b7",
-      "size": 39332
+      "sha256": "e618bfb5d417250a22b176fd879a81d7e1ce0448c97924eec46dadd1515bad64",
+      "size": 38531
     },
     {
       "path": "web/js/einheiten.js",
-      "sha256": "7756765b5e73971ebd67e752ac601210f7ba744fb7c418b3e9eabd361e2ac635",
-      "size": 9291
+      "sha256": "d7f4826957d43dd655ae65d6dfb5c39dfc8c2d7181a2b6519782151afe1855a3",
+      "size": 9123
     },
     {
       "path": "web/js/fortschritt.js",
-      "sha256": "63141583a6dbbe02b931bc1ad665c84e297d129212a8c2696d86adc5ffad91be",
-      "size": 31583
+      "sha256": "d8fa801678a9029f7864088eb48c8e179ac4c20ae76e1c1ca7e90f4377745040",
+      "size": 31079
     },
     {
       "path": "web/js/glossar-daten.js",
-      "sha256": "ab630a23449095a6a4ddae3fc232c178ec1b2226d91604b268be84a49a3fc31b",
-      "size": 20964
+      "sha256": "f7516fcfb323d86926ef2b7ca72e98f2967aa24d121c126e8d4c6cb990068c2b",
+      "size": 20853
     },
     {
       "path": "web/js/glossar-seite.js",
-      "sha256": "4cc2433fba5ba72ce29d4f58e84f7a8175fd4f2b72f80f8ece80078e46f15dd2",
-      "size": 1921
+      "sha256": "6ca65ad9bf39eba49f5b89e8a29c4bbde9176ea9eb2453b74bee885c44dc0722",
+      "size": 1890
     },
     {
       "path": "web/js/ipv4-rechner.js",
-      "sha256": "2dd682f37fa166cc9d649f6dad227adeff726c980db9d893e1c6256ff46b1322",
-      "size": 8329
+      "sha256": "3aabf262be7d101d80df0d8d7b6888823dc36f26537654f204628898301e0644",
+      "size": 8257
     },
     {
       "path": "web/js/lernziel-reset.js",
-      "sha256": "5d079d04c0f8e8c52bbb17171e283b1cf86a013a9cb9edb479eb90ad1097c611",
-      "size": 3867
+      "sha256": "a5151847f4d149c182f7bb534290942294e106c9771b8e8938fd20d1cd95c0ba",
+      "size": 3779
     },
     {
       "path": "web/js/lf1-ausbildungsbetrieb.js",
-      "sha256": "925c1c3827be8781b422f6f3f1fcd947096ff18ab2cb58016be7595aa9b23ba0",
-      "size": 7863
+      "sha256": "8c0c10bf606330ae6ac8f02fae50ad3d5fb45ca997c3e789d95b00a95a61199f",
+      "size": 7813
     },
     {
       "path": "web/js/lf1-handlungsspielraum.js",
-      "sha256": "310bb147715d022596943c6522195627815535afa5a22500eaa9bde3ef1a1710",
-      "size": 7342
+      "sha256": "d72e6836c408f799f05f3144d15ea051c61937cd9b95b20c1cef11b3f012d913",
+      "size": 7340
     },
     {
       "path": "web/js/lf1-leitbild.js",
-      "sha256": "5e0c24b8275d387fbd67b1c12e01ef36b09d4c52ffe1a9a9cb1c1fb24ee811d3",
-      "size": 14878
+      "sha256": "aa1d3ea4ea3a952a0897fbec10213d7173c17b53c6afa3e4ad4fdfa1dfd64f43",
+      "size": 14577
     },
     {
       "path": "web/js/lf1-lernziel-rest.js",
-      "sha256": "23b3aec9ff3e79ce88a2bf71906ea1fd5ba0617ddce4a6fe54ffeb72ef4b2402",
-      "size": 10676
+      "sha256": "8be83a78504bfc2dbfadc56ce1246672273b51c6741fef581e20080f0889ad5e",
+      "size": 10506
     },
     {
       "path": "web/js/lf1-lernziel.js",
-      "sha256": "032f2f8638fcd1fbbc61a7bcb0a6ec44f6a29e38b89d1a812068d1757c457b3d",
-      "size": 10250
+      "sha256": "27d7922e8c43b5fe47904d8860a76fbb94c0aaa458d27c804ad766b87e7fe3a6",
+      "size": 10216
     },
     {
       "path": "web/js/lf1-markt-kundschaft.js",
-      "sha256": "ca4d392aa494cbe9eae9c1e8ea5e538414720cbc36b6cc8253e2d7ef60807d46",
-      "size": 9177
+      "sha256": "bf0fc29eaa11874a1ec9c99b6174f29a0043232f2287f2c5f38f07466752431e",
+      "size": 9135
     },
     {
       "path": "web/js/lf1-organisation.js",
-      "sha256": "7c34141c10bf22441ded51da1b3ae7f4d7a0c639ec4c0134c08638b75c7d762f",
-      "size": 7593
+      "sha256": "2b4ad7be14ab4101d907348b729e43c6e5e55cf077fbe3975f779734b1d06d05",
+      "size": 7591
     },
     {
       "path": "web/js/lf1-praesentation.js",
-      "sha256": "c44047504ff4573e94a55d2eb1e77678a7aa39785707b462bcf3cee672a621f9",
-      "size": 3303
+      "sha256": "0c7a344d751fb58f09959e6a62b967a2d99d0e575a4109ee207e3b62d126322d",
+      "size": 3301
     },
     {
       "path": "web/js/lf1-qualitaet.js",
-      "sha256": "a6a119a76b600440b7c59454a2e9429c2822a402a46a90bfca7027432c60c01d",
-      "size": 3204
+      "sha256": "7949c29c7febf2b6fcf4055f3c719aa7831ff27e0667aa67b9f0a09f8ed28bd0",
+      "size": 3202
     },
     {
       "path": "web/js/lf1-reflexion.js",
-      "sha256": "1f158978ad7931cbbfc2f9043e084b7dce52e70180c5e79394fea222218139d6",
-      "size": 3213
+      "sha256": "defabeaa630a373d46fbd7f994bcbed8dedf5cff21a101acded42efd15f27d28",
+      "size": 3211
     },
     {
       "path": "web/js/lf1-weiterbildung.js",
-      "sha256": "6c64ff727a42e827342a1968207f31e5da56f548defb9954d791618fb67a7d84",
-      "size": 3261
+      "sha256": "8a801b6e515389d51685063ec460cff421b461ea15a2dc5b0a98b08b155a68b2",
+      "size": 3259
     },
     {
       "path": "web/js/lf1-wertschoepfung.js",
-      "sha256": "d219625db4f361e964d3fe3592a6d5bafb13e3e1352917e280aa12f829e7e2b0",
-      "size": 3509
+      "sha256": "f8129d3036c1cff8d49e25e5ae22831e205af7ea70f8b6df6b55005fa8eb7d85",
+      "size": 3507
     },
     {
       "path": "web/js/lf2-angebot.js",
-      "sha256": "3aa67f2fcc5226f2fa7ba717da878f4afd0e7c89445c522063b83194968a9148",
-      "size": 13748
+      "sha256": "91e7a166b6f572a5e484aafa56eabe696627495da566a9d65ca5572ad9c2c34e",
+      "size": 13534
     },
     {
       "path": "web/js/lf2-angebote.js",
-      "sha256": "fc9c0696c5b1e482c8dbd4f390176bc7b318324a4bc426abcbbf46301fa408a9",
-      "size": 14167
+      "sha256": "0011c394b9656137d2c49a90276e9af28d32bcf5a8a4137b0933a03b48e3bc90",
+      "size": 13942
     },
     {
       "path": "web/js/lf2-auswertung.js",
-      "sha256": "f4fbe27f998308136836359d06ae02d8a41c1f315ca22923f956e312255fa8b9",
-      "size": 9750
+      "sha256": "5cda6b384bf287812203ea524c83a83aede34242ab674d0db07340afb7f68811",
+      "size": 9698
     },
     {
       "path": "web/js/lf2-beschaffung.js",
-      "sha256": "9b13716683b8cd8855ae02470b3f7be3a1aaaf798b84d6da0aaf2c4f56d01aec",
-      "size": 14746
+      "sha256": "79b2e1a3e93bb94fa1360122254083c13aba08473915208b5709df2c0c1a8b97",
+      "size": 14531
     },
     {
       "path": "web/js/lf2-einrichten.js",
-      "sha256": "4b82b46aca5edef3bc8735390ec31a498ed58680bbb0c34c10cc788c4941cfb8",
-      "size": 14476
+      "sha256": "47aa19a69071b287b50b75ade322e43233df665eccf4845697c4757cbc0f8546",
+      "size": 14274
     },
     {
       "path": "web/js/lf2-energie.js",
-      "sha256": "4aed93bb5b305513a7b3ebd386d3177f518f4f176db79d9048417c43a44288b1",
-      "size": 11663
+      "sha256": "31339cca81a92f62050f9e5fc845614d775a06b27c2638e83824b85c10348cb2",
+      "size": 11468
     },
     {
       "path": "web/js/lf2-kriterien.js",
-      "sha256": "f7ef251d010b8b614339cc5d9001a4c48b7785c7ac469a433afa214e578f9dbe",
-      "size": 9858
+      "sha256": "79b6442c13bb619d5fdb97b5c5027410d9f836d456a43fb308e1810b6cbdf640",
+      "size": 9692
     },
     {
       "path": "web/js/lf2-kundenbedarf.js",
-      "sha256": "61951b72eb71337ec205cc876f25a7b13aa5e6aecd9652fa78320ca3a1de60cd",
-      "size": 8113
+      "sha256": "ac504716f9831fec2f04aaa0d5cb9b7691c4da5d39126cc260a066ec30cff9da",
+      "size": 8111
     },
     {
       "path": "web/js/lf2-lernziel-rest.js",
-      "sha256": "aac1b15fb1b9becef7a098028845fce1053191a321940c7b82b4d685bf35a1ec",
-      "size": 7318
+      "sha256": "2b4ccc1024ff9869e993bb3e8d56878d9b2a28bc1814a299dac546dcd15c89bd",
+      "size": 7160
     },
     {
       "path": "web/js/lf2-lernziel.js",
-      "sha256": "81880ef7a733e54314ea4c1ba0a23118a800c6ce36c0d3af292442e30a131f77",
-      "size": 12526
+      "sha256": "c1b4fcef8d6403bf46caa36f89a7a31b9c1736e68f26bdd4d4651f2ece30ac6d",
+      "size": 12492
     },
     {
       "path": "web/js/lf2-sichere-auswahl.js",
-      "sha256": "754ca534c7cb97711866b64d050df54236178c09469091a0446da67bf9f2dbcc",
-      "size": 10546
+      "sha256": "21d74db6c574c91f34d0e6f4935a9e2ecca52f73ed317bc840ab32e7ce4b00da",
+      "size": 10377
     },
     {
       "path": "web/js/lf2-technische-daten.js",
-      "sha256": "f20f1ceac1f8380dc99bb6ae69eb13644b13439ce5f6d3547cad2e8b02640191",
-      "size": 10395
+      "sha256": "e8760c0caa8e8052681f4b3e712762fca9fc628640f017bb90c26ebad38dd04a",
+      "size": 10226
     },
     {
       "path": "web/js/lf2-uebergabe.js",
-      "sha256": "691b7970dd67bd842c787980280669710a501056b2e7883579cd7b52bb25315a",
-      "size": 14669
+      "sha256": "2ff2ba82b888c7a3484904cc474011ccfebb3a3d1776849ea9f67bc80404390f",
+      "size": 14460
     },
     {
       "path": "web/js/lf2-varianten.js",
-      "sha256": "fdb5c1df3c8c8f7d7f9d2fc6e3a9b10497fe33663beeb0b4d7cf916950d41b5e",
-      "size": 13197
+      "sha256": "662d942e20066955aca0af69f62e52cef1e87c534fab79258fe9a590c319e2af",
+      "size": 12998
     },
     {
       "path": "web/js/lf3-abnahme.js",
@@ -300,953 +300,953 @@
     },
     {
       "path": "web/js/lf3-client-anbindung.js",
-      "sha256": "d8f8b56409038986d85cb8697dde25c51035c9fc0de57132c964638812169e3f",
-      "size": 9470
+      "sha256": "f17e923000014cbab8c866f71ac83a45c484228d4714ceae253e008728af65f1",
+      "size": 9373
     },
     {
       "path": "web/js/lf3-dhcp.js",
-      "sha256": "1994d147b7c3d8ed29df7248da91a43938fed2b65049771266811bfb7bed0b27",
-      "size": 9305
+      "sha256": "32d9ced9664ce309f11cf47a7220c78f9b6ff5c07f68a339f831ca588554e1c7",
+      "size": 9210
     },
     {
       "path": "web/js/lf3-dns.js",
-      "sha256": "e040ea0a38fb83f4157f38f37eeff983e7aafe4d2cdfc8009ee32b995566197e",
-      "size": 9273
+      "sha256": "2488e5998d611b36d89126dc624b83228b0695581d8582a26098950bddd693db",
+      "size": 9178
     },
     {
       "path": "web/js/lf3-fehlerbild-protokoll.js",
-      "sha256": "c8b71de3c1cbab753d316f4cf7bc70bc293e19e539a997c89cce1af136814c8f",
-      "size": 9795
+      "sha256": "a6f64fb221e71f6b0a553ccde7ad807ee241f7d2528d643d74fa3a5f1dc7cdd5",
+      "size": 9700
     },
     {
       "path": "web/js/lf3-ipv4-konfiguration.js",
-      "sha256": "bf8902aa138c364045ed2128c932355c90e48e9f1f083082344d22b6b9f3f303",
-      "size": 9379
+      "sha256": "775e8675fb67e7f9e73f19f5054d5396f03ab9a6bffd6c5aeca3a98fda0c3f72",
+      "size": 9282
     },
     {
       "path": "web/js/lf3-lernziel-rest.js",
-      "sha256": "f6a67f8fade4fa2b63833388a8bd2ccb3f896925a6e98b4b5f83bcfc42304252",
-      "size": 7318
+      "sha256": "04a8284fa103156b8f402d785f5cb5e8b4dea51940ec56ef115d68739a491d89",
+      "size": 7160
     },
     {
       "path": "web/js/lf3-lernziel.js",
-      "sha256": "c86f2cd172e4a06c2e8d4c28a67c9b62eff44dc6227981c7e059d22abaad1047",
-      "size": 9597
+      "sha256": "11cd4a8e1b3b7ef55d37b3db916c94dcd92961d2e889e554f9b95c08a292d138",
+      "size": 9563
     },
     {
       "path": "web/js/lf3-verbindung-eingrenzen.js",
-      "sha256": "31b5e155572a4946dfc31aa03e82edf2489fa092abfafa54a802d8f6aa8ac5b9",
-      "size": 10013
+      "sha256": "90148bfe9b3590a58dbf52febbc8d7b89e2bcf13979ed0a666ccd6e9eb7ad263",
+      "size": 9918
     },
     {
       "path": "web/js/lf4-handlungen.js",
-      "sha256": "1faa057aa17e1000de330a6265a04a9cc3c3fb1083a80bee2bc0c06c9b5a69f9",
-      "size": 10239
+      "sha256": "99ea3ea08178ea796a74d7e08f9ae79bbb0c072667890b8b11ae0d0e82445114",
+      "size": 10146
     },
     {
       "path": "web/js/lf4-lernziel-rest.js",
-      "sha256": "5ed29881e8e54c53c80c646f8c28bc0387cc092bc3a59811f3fd59a24862066a",
-      "size": 7318
+      "sha256": "589ccdc39985bf1fe600f411d3609b0c09359a230d02dc10ebacf68f70ae966c",
+      "size": 7160
     },
     {
       "path": "web/js/lf4-lernziel.js",
-      "sha256": "5dd8450cd6c872e6e6e4d02d82f7e06ed1968f6aad76d17568b6f5c9554dd991",
-      "size": 11067
+      "sha256": "713212186b3bb6fe36c8eccc5e8cb96ef3eb0a65ccbdd4522f61ab63e74e3265",
+      "size": 11033
     },
     {
       "path": "web/js/lf4-risiken.js",
-      "sha256": "dd1de334629a13723156a3bb193e21dc6f786d00c7f739cecf5c829df132ed95",
-      "size": 9850
+      "sha256": "8eeaeba6788d6e3b9218a86f2417131fbb29e9ca264ea61227e980a9647d2fd6",
+      "size": 9756
     },
     {
       "path": "web/js/lf4-schutzbedarf.js",
-      "sha256": "e3364b3d5bd202d98ec518b93989b178b19b046ffe4f09f947ec374e886ba0ba",
-      "size": 10014
+      "sha256": "e920a19ed3819860aa27b8d10e694cb57f86c705e5056d2ee91bad384691dd7b",
+      "size": 9921
     },
     {
       "path": "web/js/lf4-schutzziele.js",
-      "sha256": "68a6de28fe349ff5d7b34bc0736e5563183ccc67731b488c17ee2e078f73deff",
-      "size": 9834
+      "sha256": "1ee18bb921d452878cd1921214b347578a5e45aaed00e9aeba57cba76ff89724",
+      "size": 9740
     },
     {
       "path": "web/js/lf4-vorfall.js",
-      "sha256": "c548136c8bfa778b87ea3a4a5c60cb25c24437ec873fff75d4968100dd63091d",
-      "size": 10247
+      "sha256": "d1e308772ade36c05c1ea5a760927a29f2cd0af1a61762d0faccad1b850f43db",
+      "size": 10154
     },
     {
       "path": "web/js/lf4-zugang.js",
-      "sha256": "daaa4eeed2ff0f85e0492bc3d128603a4d98d782362aff4d4b9242858a7dff64",
-      "size": 10074
+      "sha256": "21be3f0be5c5f68d2e8c76f5a12d25c64c2fb9bdf605e05816a9c92c2bc702f7",
+      "size": 9981
     },
     {
       "path": "web/js/lf5-ablage.js",
-      "sha256": "2671e5f9750149e504b00cdecf0623fc9969795cca153bdb51450467504ccfb5",
-      "size": 10438
+      "sha256": "5e6b8e09bc9586c1feb3dd26c78f6858399c8feb2de918ae6180ccd9d25f3b77",
+      "size": 10327
     },
     {
       "path": "web/js/lf5-ablauf.js",
-      "sha256": "fe4facd837daf2c369bc056dc38dd2ac3f49d1a5e5c90798c78992c7431e501e",
-      "size": 10494
+      "sha256": "7330b3c57f402b7e1b9fa9cab7119d8a7ea5b9327443aa9744bbb3fe2a8d20be",
+      "size": 10383
     },
     {
       "path": "web/js/lf5-anweisung.js",
-      "sha256": "9ef05610b2fb734c247bb2b75c1f3afd4841eb68f7ba9001dc6584c17467ff6c",
-      "size": 10557
+      "sha256": "698b735a414f0ba3f350f5ebee2bdf6681f804ee9625a5f2c9f10c96c8aa68e3",
+      "size": 10446
     },
     {
       "path": "web/js/lf5-doku.js",
-      "sha256": "0af77a6f1779e97a77e769fe42dcabc7754a4dc9ace237e4dc1686bd5b26dac3",
-      "size": 10312
+      "sha256": "4e37647cf906045904cca2ad28853cdf57522fc1ff3ed788f1581f283cf60037",
+      "size": 10201
     },
     {
       "path": "web/js/lf5-einordnen.js",
-      "sha256": "54fd76794a5d7646b8cd67b0bbd13a6e5d401bfea3f4ea1afa34b3d0972eaec7",
-      "size": 10655
+      "sha256": "174f90bc5e173ea83976fc2d9c710417895ac18edbb22536adef85b245e945d7",
+      "size": 10544
     },
     {
       "path": "web/js/lf5-format.js",
-      "sha256": "e2f6bd3c61248ac7d4c04251c22b2f802cc077006b465f2b3c7bae4d5773855f",
-      "size": 10755
+      "sha256": "25aa3468dfe8af1ab371e918b093d868147c91888342a861f078ee150b03b6f7",
+      "size": 10644
     },
     {
       "path": "web/js/lf5-lernziel-rest.js",
-      "sha256": "791cb3b24cabefc9331584e9c536550afc109a5541c795c575b3d9bc06db085b",
-      "size": 8092
+      "sha256": "288ae99115346bc228f5249edba2caa44d93fb8ab2ffa774ac918050aaffb50e",
+      "size": 7917
     },
     {
       "path": "web/js/lf5-lernziel.js",
-      "sha256": "9820f5b18ff7568120613429b135d55d0238fa2afdd034f75262333e2a531bec",
-      "size": 10435
+      "sha256": "5e18a1d3b92e6077bf162ba11716fe909e567f609f2f12601c7cbc02316fec2e",
+      "size": 10401
     },
     {
       "path": "web/js/lf5-prozess.js",
-      "sha256": "02b62a0572ab72eea8b00a8dbccab0ebb3b12cb490c2acf77af952fa49fae4c4",
-      "size": 10456
+      "sha256": "f0f516cccf89e0820e65a5bbc48da331e12c631cf37702d012ee96ef0d53fbc6",
+      "size": 10345
     },
     {
       "path": "web/js/lf5-testfall.js",
-      "sha256": "9453185ce95342b53ee1818a7b927be455d0b5b4fe5800f6c1759ead29e21b67",
-      "size": 10608
+      "sha256": "f951e67b1405def46386115864ca9e68db76bb3edaa09f6632672cafa50c8819",
+      "size": 10497
     },
     {
       "path": "web/js/lf5-werte.js",
-      "sha256": "a156e51ec4a8fc3c4b1ace7505d10a1640f79525e24644d9255cff38d0623011",
-      "size": 10371
+      "sha256": "1f32c3fdd74727b3f537f3ad37797807ef34ce29560c5bc65e722e60368c010d",
+      "size": 10260
     },
     {
       "path": "web/js/lf5-wiederholung.js",
-      "sha256": "49dd4aa27208f1da4648b59a47074a16627bbdb5d141dd4bf665d92400c84f49",
-      "size": 10411
+      "sha256": "f4f19a38a723d98ec0e5574e5f0ded11e02a0186c4298dafdaad34ad5f2f8ff0",
+      "size": 10300
     },
     {
       "path": "web/js/lf6-anfrage.js",
-      "sha256": "3274c5aec088ed75feb1a9f8a5f028774d7d2e27246c32c00a95f15c5f95805c",
-      "size": 11215
+      "sha256": "e5f744b0e618b625e93a60843cc038f10859dcf3aa5c7b117757fe0f0a0d3da8",
+      "size": 11095
     },
     {
       "path": "web/js/lf6-fragen.js",
-      "sha256": "d123b19afbb00c1f502c8a7481bee31b987176f04b9dcfc060ba7ad644a0ba33",
-      "size": 11443
+      "sha256": "495c8d3d3d3c70c9d47b7979382549f6c00a294bd86eb54479b41f1d9512d36b",
+      "size": 11323
     },
     {
       "path": "web/js/lf6-gespraech.js",
-      "sha256": "8ad43456760837fd1c76c776bf61c8d68b184071cef72708a499f994bebb44d2",
-      "size": 11044
+      "sha256": "4cf653992b6038db32e10b07c5c89c5a326838bf535b53904f30b950ed654735",
+      "size": 10919
     },
     {
       "path": "web/js/lf6-kontakt.js",
-      "sha256": "87c8d66019d0a691026e21fdc5a0ecfe57aab107d88150287f140212989cfc94",
-      "size": 11511
+      "sha256": "3a6334401a866319b5d9c014a48ae196629781374dd3810ed550463c82e009b1",
+      "size": 11386
     },
     {
       "path": "web/js/lf6-kontrolle-rest.js",
-      "sha256": "9b8d09b910505490373e9c2b42be09b93751f2a33cfb005681c32a142f196c03",
-      "size": 8094
+      "sha256": "31b88be6bf9759543b73b1557bea2f6e6a18997969ec7346ff70ff526012b693",
+      "size": 7919
     },
     {
       "path": "web/js/lf6-kontrolle.js",
-      "sha256": "e171fa42a2baa0a247daaf0ef3b8a3d3de1f9061a71b3a3dfcd9d95a53618009",
-      "size": 12315
+      "sha256": "28252d1a06e1db0a9ad2df5f08f1e789f0e73269fa7cb21324698a4aa44d6ae5",
+      "size": 12281
     },
     {
       "path": "web/js/lf6-level.js",
-      "sha256": "a7b37cdd3ed4930e75a2676441458702dad77346b70ddd885826f4efc794c0c4",
-      "size": 10880
+      "sha256": "06c5f982aab9d7f19319f86510d20f92ec8c9a21898c715c7081a95d45f2294c",
+      "size": 10758
     },
     {
       "path": "web/js/lf6-loesung.js",
-      "sha256": "3b092f93e24e1a7b8ac094c77a6116ef7bb4ee318a189492038163b2069bd779",
-      "size": 11286
+      "sha256": "05dad83a14b62e08bfaa078016e48a3caeed7f30a8b04eeab526e9490a2cda31",
+      "size": 11161
     },
     {
       "path": "web/js/lf6-notiz.js",
-      "sha256": "fd01a02f9cbc4556ce5769a4a24f538750ddf84543f2dbdbead377f06a2e9182",
-      "size": 10855
+      "sha256": "b95652cb5e41f54b787075c3227034ccf3e00b8d6d7f636349b90496075aa244",
+      "size": 10733
     },
     {
       "path": "web/js/lf6-qualitaet.js",
-      "sha256": "5a24c6fb2450c5f8406988dcbbff4317e3dc610dcc9df574ae89a250952ee278",
-      "size": 11138
+      "sha256": "b7aba28642111ebdc612ac94aaa149afdb5473ef5855dd56d0e7fa2fc5bc1fb6",
+      "size": 11013
     },
     {
       "path": "web/js/lf6-sla.js",
-      "sha256": "8502cb4e51d5d0fe006bb86720aa53a11b6ea1f16a53d40904de67098adf1f90",
-      "size": 11269
+      "sha256": "041d0e5c2549d772dce3181604d11c40fc30e75fce9475c896273b68e67b5389",
+      "size": 11146
     },
     {
       "path": "web/js/lf6-status.js",
-      "sha256": "1d097947b6bcd1c9901249c5c05b413ae3ebf70691617c839745340d955c20ba",
-      "size": 11405
+      "sha256": "f0cd7bf40b60acd2ae43dde191677feacee6a35a41bfce391e25d0e5a436c9d6",
+      "size": 11280
     },
     {
       "path": "web/js/lf6-ursache.js",
-      "sha256": "7b21f3a7e9aafb9c06c9da42bc0fb11428c15231791e0501577be4e2970d1692",
-      "size": 11371
+      "sha256": "486c3660da2b740a374c3757e518e6c2de09eb8897cfa365819e8c9814fce8ca",
+      "size": 11246
     },
     {
       "path": "web/js/lf7-auswahl.js",
-      "sha256": "b1c693b15d06130c5bfb6068e53883451e68cc50a2d16092b31ec93ee05baf25",
-      "size": 5406
+      "sha256": "422d8ad3f2010e9ec4fcf1ef383b9364cab0d3d7e7a0d43d43967635ced3a7b9",
+      "size": 5371
     },
     {
       "path": "web/js/lf7-fluesse.js",
-      "sha256": "ff3595f85fdc7eb38732855e454ca3d0ac6f6c97203b2cf641b0e8a31c2c8b61",
-      "size": 5065
+      "sha256": "8d8122129bd3db7d2d7ecf625b406a1c3a763cad8e6e565bfcb0160c8c3ee1a7",
+      "size": 5030
     },
     {
       "path": "web/js/lf7-kontrolle.js",
-      "sha256": "53e8de2a714a20e1e016821da8d6492fbb5ca8ba477f6b23d61ffc8502a4decf",
-      "size": 18242
+      "sha256": "96d1bf5acdcde2541f4636453011a2e2aadc3bec4d049d6c5a62fc290432c995",
+      "size": 18116
     },
     {
       "path": "web/js/lf7-lektion.js",
-      "sha256": "6d77c81a3683ba9d4a70b4c16379b51366c3b735520232a7ba80ac353a89d3fb",
-      "size": 7387
+      "sha256": "b05b34d47cb9aa13288404e4447f1ed7a80f21d71000d9abb70b5f7f2fd7548f",
+      "size": 7293
     },
     {
       "path": "web/js/lf7-pruefung.js",
-      "sha256": "c672089d8b43f02e0aa1831fc90a22d7400028a3ccc64695cdcb8d3926e7da34",
-      "size": 5658
+      "sha256": "2bd584ab7331d1ee6bf9b646d806899f64b5b70fd7fa9cc9cd742130d045d582",
+      "size": 5622
     },
     {
       "path": "web/js/lf7-schnittstelle.js",
-      "sha256": "fa00af4896ea112e9d4b92f9072cb1ba2eb8a35ed695d5b19796fe45be87829d",
-      "size": 5138
+      "sha256": "3760b2a367f01937b798fcb94d7f951f1e3792fc078852229a7abeb0e608f8c3",
+      "size": 5103
     },
     {
       "path": "web/js/lf7-sicherheit.js",
-      "sha256": "280d596533b7be8afa0012629fd3581781ee167db11adb040f9653b6d8cc6cf0",
-      "size": 5497
+      "sha256": "9131ca7bb5c74752956b8fb469949b54b5181e70037162e85875a09097c659fe",
+      "size": 5462
     },
     {
       "path": "web/js/lf7-system.js",
-      "sha256": "45ee93821db280096b8af304a7bad7a2f155e9394d0b99102410f8d4a4fd2f04",
-      "size": 4768
+      "sha256": "41083bc63fde521a0608a5d04816e1558e36e3435b3fc11b4d987fb63c07298d",
+      "size": 4732
     },
     {
       "path": "web/js/lf7-unterlage.js",
-      "sha256": "65a5455676c29c275b003db39f2e7c43ab085e7bcd992587dc002436bbcf507a",
-      "size": 5160
-    },
-    {
-      "path": "web/js/lf7-zusammenfuehren.js",
-      "sha256": "236938b9519d95f6d59e9078673ce2ca0f7b18614f08381678703ea49429171f",
+      "sha256": "6185f623368193aaeaa4fce4e818fd01a9f9da9cc2331afe3b732702ab5e0692",
       "size": 5125
     },
     {
+      "path": "web/js/lf7-zusammenfuehren.js",
+      "sha256": "db685a8adf4a62b16171e82f882d55bd05dac77cf27c930e72c3b666c6ac7407",
+      "size": 5090
+    },
+    {
       "path": "web/js/lf8-aufbereiten.js",
-      "sha256": "c74ece7b5109774422ee6a7cac2e333fafb5774b6c9ac1adfabc98915de75b9d",
-      "size": 5313
+      "sha256": "b65507466d2da30e709f4b58e389b06e6bbf09f8302cd278ff6b596457d6b5f4",
+      "size": 5275
     },
     {
       "path": "web/js/lf8-auswahl.js",
-      "sha256": "f73917dea6667b207cfaaf1abc05b6c33d8f0cab1585d68b972bc5fed5765123",
-      "size": 4181
+      "sha256": "06396f494e390adda31d73eeab44189ac9511422ea731caee82f3994911dca4a",
+      "size": 4144
     },
     {
       "path": "web/js/lf8-kontrolle.js",
-      "sha256": "9299ef6a1f2c7113cf340e67664bc9936fb0e3e49fd0a834cdc0de2eececafda",
-      "size": 16630
+      "sha256": "1f42a84cbb95bd165ffd5e1c782b9f655350559d5ac1d100b5f7b143918bb26a",
+      "size": 16494
     },
     {
       "path": "web/js/lf8-konzept.js",
-      "sha256": "434750d2c403ca67423a6b88eb1012242b8a638c8b0f10427ea7982bb74ec6ba",
-      "size": 4293
+      "sha256": "2e470b64412720eacd2a9933d630492acecb7923d456f3bb53f73225a4c0fc7c",
+      "size": 4256
     },
     {
       "path": "web/js/lf8-lektion.js",
-      "sha256": "b0d1eb2faa65563fa1b7eb48c5ec25ba22ccfea78171df170f29ef5299733ffb",
-      "size": 8046
+      "sha256": "3bebcef4dfc4657803095f132e951c19fd5eae8b8c95304b0f68325652e97da7",
+      "size": 7942
     },
     {
       "path": "web/js/lf8-praxis.js",
-      "sha256": "0967392298605e72a4a1b9c81e38053ae351bb4b02c7a222fde9dc38994c0df3",
-      "size": 8437
+      "sha256": "06712ec874bb30a3773a673ca4f34c266335a80b70c9e9da53f36b34336b2862",
+      "size": 8330
     },
     {
       "path": "web/js/lf8-quellen.js",
-      "sha256": "fe48716bc14470fbef77a18a47db961978e3f0003e564480ee64965b49ba425e",
-      "size": 4251
+      "sha256": "2e392eba7284fb093fb2abb3e2fdd29d1bd9715cbb4f3bec30f8618b374aed54",
+      "size": 4214
     },
     {
       "path": "web/js/lf8-recht.js",
-      "sha256": "4e4d0c89b940d7aad70b0e5433d540ce6025be79f09fd8e01e069982f6c1779e",
-      "size": 5055
+      "sha256": "21a76d4eb73f1b904a09ca1423eacc6cd17772852618bb50410d70de146939cc",
+      "size": 5018
     },
     {
       "path": "web/js/lf8-reflexion.js",
-      "sha256": "53a581990fce0f97aafcdaad8d66db47f0e8bf2c9831e3eaf9f41f7f022d1550",
-      "size": 4515
+      "sha256": "76a953a2ed8765cd48fdc5631baab3ce5355b0fb3c86faddf9c5cbc1c47fad56",
+      "size": 4478
     },
     {
       "path": "web/js/lf8-struktur.js",
-      "sha256": "fe578b486007965c429991243669a114480dcbb4d00fd5ed6dcbce93bf69120f",
-      "size": 4184
+      "sha256": "bcd2f2511d379c26d355f4bf92b4569a605e4c608edf49e332d18f7081792dbc",
+      "size": 4147
     },
     {
       "path": "web/js/lf8-uebergabe.js",
-      "sha256": "311bf471d9e6e896f3677b132d1651af252045014aa77749a21b24d1ed190cf7",
-      "size": 4386
+      "sha256": "c43289da801a24c3907280def48b0a3dff60be80c530b5f7930a383ef03f93c9",
+      "size": 4349
     },
     {
       "path": "web/js/lf9-anforderung.js",
-      "sha256": "0d886f209c8ba949eb4ee57407fdd78d0137ce29305901527785436292fa1fed",
-      "size": 4546
+      "sha256": "4a46d35fa2f8627938105ac660723f6f0916ad7bcbe0de29355a2811d1b9f491",
+      "size": 4509
     },
     {
       "path": "web/js/lf9-dienste.js",
-      "sha256": "a2cc0d9706ebb895493fce61f1fbd6c4301b44288006d5eef2d2ad79c8be1dae",
-      "size": 4729
+      "sha256": "5c45ba0f6b548f1ebf57973c37d368caa967fa0850760592decf19272651d9df",
+      "size": 4691
     },
     {
       "path": "web/js/lf9-eignung.js",
-      "sha256": "5cdc87093714b9e45525b790bec0c7fd2d3301042e0fb34ffb056d8208eda7b0",
-      "size": 4601
+      "sha256": "548dc7dab68d484cf8bcd3889a97bc6f1bacb59bce56f248b4e47399dc797b2f",
+      "size": 4564
     },
     {
       "path": "web/js/lf9-infrastruktur.js",
-      "sha256": "58916c3a22b19a74dde4239272c74a3e3ae85cb1bc10bd493f25618b0ee4848e",
-      "size": 4514
+      "sha256": "e1f17ca8cfd4df2165069618ce0d812df4067a4ef3292b8c766958bdf9e09d4f",
+      "size": 4477
     },
     {
       "path": "web/js/lf9-ist.js",
-      "sha256": "b009c73240f2b7184f461049ad7aaf8a796e606ea3451a34f23a6428b8604bbe",
-      "size": 4285
+      "sha256": "a89c9cba893197d3339476004e1fa2a91dcb437ae80f4d8cfcb4518b05c618ab",
+      "size": 4248
     },
     {
       "path": "web/js/lf9-kontrolle.js",
-      "sha256": "0af0ce8e9c2c67c7281557ea8389d9ef0b937045f4cd59d05f0bbc2ee9b553b0",
-      "size": 17325
+      "sha256": "0a6bf0f3b43d5f6aa902ebf557be7cdb6d52b6ab3c3a0866701f3c568e609b70",
+      "size": 17189
     },
     {
       "path": "web/js/lf9-lektion.js",
-      "sha256": "26921dc6535b443f5d0bcc860d31fd9ab85b1cb5feee57a9159849cfb45e30fd",
-      "size": 8046
+      "sha256": "11397afbe3bc2ac3773ac3b342b356f1c2605dbdfd75b52c8bdedf1982c3f5e5",
+      "size": 7942
     },
     {
       "path": "web/js/lf9-praxis.js",
-      "sha256": "134739fd9b26c49c224a8c2f5b21e918d8eb274b7a535babe58b6a9aa9fb3af4",
-      "size": 9042
+      "sha256": "1d8931e6806b6958dc01f0cef03bef10db4673aed0900ae405f5d7a581bd5b41",
+      "size": 8944
     },
     {
       "path": "web/js/lf9-schutz.js",
-      "sha256": "1e625f95bea601592d96a4bda78b44c3ce4582236e9dd644e8117242162733d6",
-      "size": 4929
+      "sha256": "92bc118a2459c1cc902f64b1fd7f87a8c1d3a7be0c665dad154667cf06f9b8b6",
+      "size": 4892
     },
     {
       "path": "web/js/lf9-standard.js",
-      "sha256": "6ef1624ec23754bfce6c1f4fb663e8635319f4fcd3b0a32d4263529928078b7b",
-      "size": 4783
+      "sha256": "6f50d0ac9ba188490b2e320e781f79e4313a67f3e91c8f96799b8d3a142aecfb",
+      "size": 4746
     },
     {
       "path": "web/js/lf9-zukunft.js",
-      "sha256": "aadeae1ceddf632a5427d62283606181d1cb6889c25e9304daa052bb219bb037",
-      "size": 4585
+      "sha256": "4adc9f0b54567ebadf6b75288776cdc15b82a32b6ca3f9b811a00427d2a20848",
+      "size": 4548
     },
     {
       "path": "web/js/module-daten.js",
-      "sha256": "ccb97df5619292cfaa7d7edd90f60b64bd87b7ed232d0e56e0ba5f80d3ed3f60",
-      "size": 30983
+      "sha256": "dcada04ac5920e27ebb2378b54e1707d08c8951607bdce1179ae2a6aaed8e285",
+      "size": 30814
     },
     {
       "path": "web/js/navigation.js",
-      "sha256": "991e24096c041bf0d5c99c0ba39fbc85d85fa7dc0ac1c58e642f4a4fa8f21764",
-      "size": 10322
+      "sha256": "e6b8830a9dfb9debe044bd469b53f35f9d8011bc2e51c20009435216ce68c93e",
+      "size": 10155
     },
     {
       "path": "web/js/netzmaske.js",
-      "sha256": "e395081af501225f62b8b8e46ae6566df57dd6d7e6641462fb4b14ac12fb804c",
-      "size": 7904
+      "sha256": "dcee1529b45754e62a2b763f7c15d6ae96b3ce1d6a3378f349e241e9d07df9ce",
+      "size": 7813
     },
     {
       "path": "web/js/netzwerk-lektion1.js",
-      "sha256": "868f991e41a2e85d831cdad843a7366328e667101fba5faf2161892abd14da96",
-      "size": 15345
+      "sha256": "894a5a308319a4cad74e842137f067e8ba93cf6a66dbba9dcc385bb77e5e8a7a",
+      "size": 15002
     },
     {
       "path": "web/js/pc-explorer.js",
-      "sha256": "1b8235eb31e79f3d8263ed26b573106b2c80e60839d21bd69601705dc0666276",
-      "size": 118622
+      "sha256": "12e5770638d8aa9176b78e20a42bc8e8e5c8d9a3b6c8ce9bdc178a5783619d4b",
+      "size": 117254
     },
     {
       "path": "web/js/raid-kern.js",
-      "sha256": "36b0337591722760aac55f229eb19e7e5aa51bc98fbb943d9e74ce2110510f06",
-      "size": 4656
+      "sha256": "624fe74aedd24bee1f8d55945a1f5200a9a4492b1722e3db425f0f37fde0d547",
+      "size": 4599
     },
     {
       "path": "web/js/raid-labor.js",
-      "sha256": "c5aba4058bc1a558ff2546d28aa80ee3002576b24e864c5bdd92306e44b5b9b0",
-      "size": 7285
+      "sha256": "3a53b743352c0612b59c86bb516df5e6c7867af6aed25f9f9f2180eab8f215e6",
+      "size": 7190
     },
     {
       "path": "web/js/raid-rack-modell.js",
-      "sha256": "01ed662e4710f71e5c2fcc973039c5ee06b194d89658007ec0839ddf674e1433",
-      "size": 5031
+      "sha256": "b4851d3adaea82751c1100670805815270ddc8906d335980e502beea6b6afd77",
+      "size": 4939
     },
     {
       "path": "web/js/raid-rack.js",
-      "sha256": "b90d3ffabbc2a10bf41136cf49142fa2d3d168c5576dc3b657ec64c264b3d9f7",
-      "size": 14030
+      "sha256": "b4959ef70636dfc609432a16db1e9384984b5259b52e238946fa024f97cd6c46",
+      "size": 13925
     },
     {
       "path": "web/js/startseite.js",
-      "sha256": "0147674ee16d6c33d1edaeaf89ebf7aa613aad30b3c0a29b00b2cfb5186c3921",
-      "size": 8514
+      "sha256": "518f00470aaf3bee80a846044b70806e8a0abcd2ac7f9aea37943da31209d06b",
+      "size": 8350
     },
     {
       "path": "web/js/subnetting.js",
-      "sha256": "d1ff38cdef7ff6a4c267c0bea2a1cb9409751da09d7fe1bdd617f62733e9cbbb",
-      "size": 7535
+      "sha256": "3c9d98ceb2f9c634074803f3de5b96eb33d540e923faff4a8fc734e0c7c1cd6d",
+      "size": 7469
     },
     {
       "path": "web/js/version.js",
-      "sha256": "b21dec0a4ba0d731f1544d196386c9d080e0cb32a4ab078681e5943ad5a28d8d",
-      "size": 536
+      "sha256": "df6fc623b8f869c34ae22404f95b51405900d6182a98b6d2a5c2e8e86004d502",
+      "size": 519
     },
     {
       "path": "web/js/windows-labor-daten.js",
-      "sha256": "78f93efce075629da1621849cf9d690dfb3991684752ea4ce20b0a55d6a62b47",
-      "size": 96952
+      "sha256": "f17a7add7bfff556c20a9609b409b0b3443992194d069717c71d9df349d09ad7",
+      "size": 96369
     },
     {
       "path": "web/js/windows-labor.js",
-      "sha256": "ec742d2de58311d03ac0d16db0c7de62fbe54a44848e6056acbc272bff98d3e5",
-      "size": 7844
+      "sha256": "0b7c1853c479cd3645a8ff0be7e0271c2b31160fb171199db1a22ec187bdc42a",
+      "size": 7742
     },
     {
       "path": "web/js/windows-werkzeugkiste-daten.js",
-      "sha256": "e34288272481b08b18ba09e1819a5ef197f04c184689f0c39951723f1048005b",
-      "size": 22254
+      "sha256": "4f9881bfa3904de4113e3f2ae6432d5f550771e1bc9a783ab866c20daa45e001",
+      "size": 22007
     },
     {
       "path": "web/js/windows-werkzeugkiste.js",
-      "sha256": "b89d22bd5de8e5a646ff22274070e27f5e7ed53a8d301c6ccc2cdc9283faed8c",
-      "size": 18525
+      "sha256": "61b531f24f3d7c8d7805b010ae30c5b8111125129cbd8b3495bcdb65fca89b54",
+      "size": 18127
     },
     {
       "path": "web/js/zahlensysteme.js",
-      "sha256": "99fed1d516c5b83b664e229587dc06a513953c37bf5bd4fa81dbc15f4ba7e017",
-      "size": 11633
+      "sha256": "41781907bcc066f16efd3a96099b9bffc9443994e0f99917317a5b64c518a174",
+      "size": 11431
     },
     {
       "path": "web/module/bwl-werkstatt.html",
-      "sha256": "d53e0ad521de7e60075b737b33c88aa315c13e84fad65f375fee3cd78a34f3e9",
-      "size": 17045
+      "sha256": "2152f09b09f48117b0dd25b3144848c63d2c7ad5779d1056c1153ac54fcafe3c",
+      "size": 16871
     },
     {
       "path": "web/module/computer-grundlagen.html",
-      "sha256": "598491994277b4acd9cc82e766a848113d15c32aa23b6a7586621c6b40faf1f8",
-      "size": 8326
+      "sha256": "7f40433dce7ec15fee993ccd2df99275eede43bdb18db2d18bd219632e5789ad",
+      "size": 8169
     },
     {
       "path": "web/module/einheiten.html",
-      "sha256": "c143a39a0893d9fd065202a2b29172b3a82b4c9d31a95e302ea8a037c21c7e7d",
-      "size": 4430
+      "sha256": "acc8b9e87034acd2d06d2c3eb171deb4bfae431c6315ed8108972ff65c7bc8ff",
+      "size": 4372
     },
     {
       "path": "web/module/ipv4-rechner.html",
-      "sha256": "9f0ee821327d27e7d8751a4c737e953ea3d59ef8c84f2aae94d2cebbd8192cff",
-      "size": 4499
+      "sha256": "374a7272b70529c5638b6203c4e855a1bfa93693e75fef4ecf8e734295a21057",
+      "size": 4480
     },
     {
       "path": "web/module/lf1-ausbildungsbetrieb.html",
-      "sha256": "3f77f4501e114c295261d9261513e7387b0fc5ef574e7ae8ea9e0a66080b0b9b",
-      "size": 10921
+      "sha256": "cb26e80148e0e3fb606d1541783b341972deecd901a6de842020ba3bfbdf330e",
+      "size": 10814
     },
     {
       "path": "web/module/lf1-handlungsspielraum.html",
-      "sha256": "266448adeaa636e8c85c11df7bf811a35a1c42d2d65e17f9f92d437fd515cade",
-      "size": 6470
+      "sha256": "c6f85fe186faacd127c41e53882fae48c9cfb92095e40836c5c2002feda65277",
+      "size": 6468
     },
     {
       "path": "web/module/lf1-leitbild.html",
-      "sha256": "f5cc70e84dd008d7119eebd746d4e7018fab4d8d7d1040ec06fb145217a27a4a",
-      "size": 12522
+      "sha256": "59847690c52941b8490f135535a678f93f2225db83373e017c5155e20955cff0",
+      "size": 12391
     },
     {
       "path": "web/module/lf1-lernziel.html",
-      "sha256": "98c0405512069283c68cdf1706d6ab5d4598cb4e5592d169e3fd47fb306faa76",
-      "size": 3953
+      "sha256": "8165c4e0702433161c7e2c674c842d4874cbe5abbac837b01c15adfed97e8965",
+      "size": 3909
     },
     {
       "path": "web/module/lf1-markt-kundschaft.html",
-      "sha256": "c2b18be70d552c312eae5960800490d948db7395c155cc5600fc6b9e8699aa4b",
-      "size": 8010
+      "sha256": "e0cff87796ba5efc6b04b846e746623b5cc9908d4e6333b215849d62451d2157",
+      "size": 7990
     },
     {
       "path": "web/module/lf1-organisation.html",
-      "sha256": "fb58f2eb5ceb6ccd17c1c40524e14642bb025fed1361e64497a72cf8a57a4cfb",
-      "size": 7541
+      "sha256": "6ae54311890b5f90536ab0475b587c207a5677f369874c8c42300af8f66ac609",
+      "size": 7539
     },
     {
       "path": "web/module/lf1-praesentation.html",
-      "sha256": "58c30cfce702d9f6c49e86705a1da1d4f4d5506a6dbdfd1f81c8448702e79bb8",
-      "size": 7012
+      "sha256": "3c4d8c4d768987d04705c91b8f5e3ce138c85c8b265b68b3ed1a90d1cc8b532b",
+      "size": 7010
     },
     {
       "path": "web/module/lf1-qualitaet.html",
-      "sha256": "ad4f7713c97012dddc294b93093f9ac17c03d22acd211d53dffaf77732d3d53d",
-      "size": 6976
+      "sha256": "04edac4eed92416da3b36de38b55134ac4288c792cd8f276459a0eb5ea6e0c05",
+      "size": 6974
     },
     {
       "path": "web/module/lf1-reflexion.html",
-      "sha256": "6a3602e476244aaa5e8be4e8a9d75c7718c6b787c6be45945111980d0c00f75c",
-      "size": 6584
+      "sha256": "f3e7c2ed1f36894adb1efcfb31320e75a5e6273912b4ac5c503a124e7f569e5f",
+      "size": 6582
     },
     {
       "path": "web/module/lf1-weiterbildung.html",
-      "sha256": "46f2c7405bd380a77b7194c71e9030a27e57e7217b4bf6b89442477fecf4c60e",
-      "size": 6959
+      "sha256": "8403efec98005a5e322dfb96048cfbbc4d6d5918ab0d19ce23e281054ccd2703",
+      "size": 6957
     },
     {
       "path": "web/module/lf1-wertschoepfung.html",
-      "sha256": "261508c16f0f9946eb866c4736e440ce09aec52ed0d7e148dbaf1cd597a3baa4",
-      "size": 7218
+      "sha256": "27b4281d37afccf6d7481f683a53f460d1e9efa65524b7067ec63cd77d51c73e",
+      "size": 7212
     },
     {
       "path": "web/module/lf2-angebot.html",
-      "sha256": "4a854c56e78465f510a2a5c535a2cbc032b5cbe58d3ac0e8aeceb110ac19a67a",
-      "size": 15624
+      "sha256": "2bad33f7447639d9c587e0e3d10c727d0ec5f5c3c2ef633f070cb25dd8a8d31f",
+      "size": 15558
     },
     {
       "path": "web/module/lf2-angebote.html",
-      "sha256": "f10edf41139868928290e578870187f1203fd9d46250d641a13f725a91f87efb",
-      "size": 18963
+      "sha256": "b355fb22b72f4c5d1fd243c1a5ea9eb7658294ba226445263973a3dbc940d731",
+      "size": 18879
     },
     {
       "path": "web/module/lf2-auswertung.html",
-      "sha256": "8db223a427a5e00e6db9e5581cc59d34ae3fe78c792b2e5ffd341bf7c3a7b39f",
-      "size": 8558
+      "sha256": "b0e1a0fb10430ec34714a237492ebec133c5f77a7b6a5a0fa4a0d36e64402b65",
+      "size": 8552
     },
     {
       "path": "web/module/lf2-beschaffung.html",
-      "sha256": "59e42464a7cfa8f148904ce3eb3112219a95945513dd88b1367b77af096fff3a",
-      "size": 16948
+      "sha256": "9a3bf82449b9368730eb75af8a118d8331dfc4b61d0f7c92b5d476c12845b631",
+      "size": 16880
     },
     {
       "path": "web/module/lf2-einrichten.html",
-      "sha256": "97a77537b3704e951bd90e911cb4fecd008700bb0a1d2842f1f38b2a1221f1ad",
-      "size": 14971
+      "sha256": "f447fba2daca1c8835f783c0cc329f8423a786d3085c005cf5ac4838230b2b7d",
+      "size": 14914
     },
     {
       "path": "web/module/lf2-energie.html",
-      "sha256": "eb2ac09b3a4583251f76370f70c327a6523ca0791ae135a70491e7a53f6c3925",
-      "size": 13844
+      "sha256": "ea051daa09b95aec31c2f622439bc470dfcc1ef11d192427ca417c2afe02b8a5",
+      "size": 13787
     },
     {
       "path": "web/module/lf2-kriterien.html",
-      "sha256": "76d7a7f136eaf0181897378f4cda2f026016befbbe60bb30c5e030d8f3d34a86",
-      "size": 6800
+      "sha256": "88efc77f776fa398895812a311bbe1309ef8f026a92d1aa924f182c739281b86",
+      "size": 6798
     },
     {
       "path": "web/module/lf2-kundenbedarf.html",
-      "sha256": "a4afe68c63dc44228b12fb5f8bde1c98392bcf725e0351e0a136c5fa68e414f5",
-      "size": 6660
+      "sha256": "328a3d9144a8eb4798a925d4e2e2f438745c9e86e80dc7da37cd204d235e6b0e",
+      "size": 6658
     },
     {
       "path": "web/module/lf2-lernziel.html",
-      "sha256": "51ededd5ce120c249458de725cc8259f47000d578a2e331be3a9093fe1b9e51a",
-      "size": 3969
+      "sha256": "dd849e72ba8049c774fa7531f0ec3aa00bb7ab149f798ec926490cced2f413ee",
+      "size": 3925
     },
     {
       "path": "web/module/lf2-sichere-auswahl.html",
-      "sha256": "5bfbebbe3a8d08388dcc88d9525aa10c9a4794716f1183c81b0f2b25d5fe3f79",
-      "size": 9257
+      "sha256": "df2b1ef1d85ae69e80a4b60ed9fe6cb6c8ae4d50fd406ca3f726d40d0fe3b188",
+      "size": 9255
     },
     {
       "path": "web/module/lf2-technische-daten.html",
-      "sha256": "a1d64e6feed5ece58965bbe35868e9261eadb425922018770967166432f304be",
-      "size": 9846
+      "sha256": "2ecb487a4be4ffc3f197d1af1206d973a45551512db38e4d5e73cc73169e6ca2",
+      "size": 9844
     },
     {
       "path": "web/module/lf2-uebergabe.html",
-      "sha256": "f2aa3c95f428f98fd8fac1700a361955737d48fd9d0215460d9926b48e2c85e9",
-      "size": 13603
+      "sha256": "1b72954e41716c2d52a3e905352199f5436705e399f23538508ead8162cb8fa7",
+      "size": 13549
     },
     {
       "path": "web/module/lf2-varianten.html",
-      "sha256": "76451028ea34075d4895b1f6c24e0d098dc2737c60a3856e4017ff7032faedc8",
-      "size": 15354
+      "sha256": "e0e7aaa425658ff1c4530594d75bb0be98e6cbdcc2ccfa1fb975c18cc29942b1",
+      "size": 15286
     },
     {
       "path": "web/module/lf3-abnahme.html",
-      "sha256": "c70136d253fa8a5c258fdb047b88ac1df8a50a938adff72a39ee70d19a93277e",
-      "size": 8555
+      "sha256": "135bf484d7e412487fdf8876b6675eeb3c0b31153af7546b40852c82d004a4c3",
+      "size": 8333
     },
     {
       "path": "web/module/lf3-client-anbindung.html",
-      "sha256": "32baad1f9555b299794cbbf4e74afdb2d00b192573f0a25f32b77191b8805817",
-      "size": 7534
+      "sha256": "d0eb2ff1044abe4fed8f0fd6e85ea6e64f2cceae9ae6a6f59fad0eaf3aa5d467",
+      "size": 7427
     },
     {
       "path": "web/module/lf3-dhcp.html",
-      "sha256": "36d2d2659a654a1fec057725c1191de675fb75d942350262f0501a524ce370e7",
-      "size": 7798
+      "sha256": "7b7cd2d48300bbd08a0afd6f489f0a94ece647ca14c6f3d72dfd7bffdca1aad3",
+      "size": 7689
     },
     {
       "path": "web/module/lf3-dns.html",
-      "sha256": "e9e1427273f7092ae0269991363520c7a835461866d234fd2441d13a79cdd66b",
-      "size": 8094
+      "sha256": "863dead2fa3d9374f7a217a6f18055374ccddec9ba4f87a2d23f81110cab9bf6",
+      "size": 7987
     },
     {
       "path": "web/module/lf3-fehlerbild-protokoll.html",
-      "sha256": "ed2806bbc8921aeafb0a233c221c1eda7ab0e36b18d9a23c721607db7be82962",
-      "size": 8698
+      "sha256": "ad07a3035fcdb36d34c2ed9cd57d3b1cce008d605814886ee34808557339ba40",
+      "size": 8586
     },
     {
       "path": "web/module/lf3-ipv4-konfiguration.html",
-      "sha256": "c9921af77a86cc48990f868965f544f31272c40fe19dc7f54b0f4108acbf7c37",
-      "size": 7724
+      "sha256": "74b3892bfacf6805ebb9dd264e4ade1a89754a72913fda9b74046d6429bfd55f",
+      "size": 7619
     },
     {
       "path": "web/module/lf3-lernziel.html",
-      "sha256": "6a40b84a73996a6c8e74a4e38170c426c39a5a65b8c3e2db13a762377d25f74c",
-      "size": 3950
+      "sha256": "d51d881cc6b6b5d08b14fc4705b0854ca12142f168cd2acb603d9f31634ab063",
+      "size": 3906
     },
     {
       "path": "web/module/lf3-verbindung-eingrenzen.html",
-      "sha256": "df1f87785e4392fd9269ae36e4a8a5f648dd2ca64372db96203ff0be4869d45e",
-      "size": 8760
+      "sha256": "c548d2b067431f05a7fe21f2d6307bd743d88c557b97d325299bb6f499967b31",
+      "size": 8649
     },
     {
       "path": "web/module/lf4-handlungen.html",
-      "sha256": "0f7de42e4f150eb5208911a7991d1c1e8d8b233a9b0aa46699594e318e357d07",
-      "size": 6801
-    },
-    {
-      "path": "web/module/lf4-lernziel.html",
-      "sha256": "f4118fd69f8dd2827f5a3db90d3c4ec620cb175d01f492e0a82fc592703991c9",
-      "size": 3968
-    },
-    {
-      "path": "web/module/lf4-risiken.html",
-      "sha256": "cffd425a89254e5f4ddec082d453cfb6f7fb981cb947d83ac70dace536f61943",
-      "size": 6697
-    },
-    {
-      "path": "web/module/lf4-schutzbedarf.html",
-      "sha256": "f88ad913af19ff299474534a22ae8b5818f4d4833c8d20a0c601a52d7f110016",
-      "size": 6760
-    },
-    {
-      "path": "web/module/lf4-schutzziele.html",
-      "sha256": "d258335089438606d812b88ff2be067ab493909683aecbe7d313be71aac56465",
-      "size": 6743
-    },
-    {
-      "path": "web/module/lf4-vorfall.html",
-      "sha256": "70070395f645bc71dbd428f64621651d9a1e96ca649b4e82456ea501590b1312",
-      "size": 6736
-    },
-    {
-      "path": "web/module/lf4-zugang.html",
-      "sha256": "d4ccf40385aea84dd3309df47bcb28dabf98906de1baa76714e638b3aba284d3",
-      "size": 6745
-    },
-    {
-      "path": "web/module/lf5-ablage.html",
-      "sha256": "a42246591ee35e58e21470d1aea3435209eae2279bc53a4a82c129be6b89eacc",
-      "size": 5971
-    },
-    {
-      "path": "web/module/lf5-ablauf.html",
-      "sha256": "4a9bad00fab3db7b2b9ac07daa4ada9c147c85a1a7eb0a5e78de526f412599a2",
-      "size": 6011
-    },
-    {
-      "path": "web/module/lf5-anweisung.html",
-      "sha256": "058b593c486a3d86becd7206d43e165088df404a9caaadc1323443c498e48ab7",
-      "size": 5915
-    },
-    {
-      "path": "web/module/lf5-doku.html",
-      "sha256": "e01df6c5613da95be445c6e3bb94c849a037fd774d7dde82a5969f7072a4feb4",
-      "size": 6354
-    },
-    {
-      "path": "web/module/lf5-einordnen.html",
-      "sha256": "069a3808cc16ca25a28697e7c2bd0828a7ca129dfab88ef7ae62fd1a05b43f4f",
-      "size": 6598
-    },
-    {
-      "path": "web/module/lf5-format.html",
-      "sha256": "86cfa6099a911b0fd5c131cfc39408f5d1bd8d5ccce7fb7651e8dfc352796b1d",
-      "size": 6586
-    },
-    {
-      "path": "web/module/lf5-lernziel.html",
-      "sha256": "f3985adc46eee1dd4d7cc4ceb3174633b579558d922ab004a36efc29d7b14592",
-      "size": 3960
-    },
-    {
-      "path": "web/module/lf5-prozess.html",
-      "sha256": "7af00f512dd76dcaa3872a7c1b0b45e7940d87cc10eaafb30da8de6c772afd8e",
-      "size": 6243
-    },
-    {
-      "path": "web/module/lf5-testfall.html",
-      "sha256": "d9d3199c4649d11e9c84a4a03b774a3d5635f46680d3ee248e4d61fe5bd5c53a",
-      "size": 6509
-    },
-    {
-      "path": "web/module/lf5-werte.html",
-      "sha256": "2195379ef34f22387926548b89fc8ad62d89e69ae4cfcdf42039a3afce70cdeb",
-      "size": 5784
-    },
-    {
-      "path": "web/module/lf5-wiederholung.html",
-      "sha256": "9d3e4418b5d44111b744fbdcf6f6d0321f41a1c3bfecc3d18ca118e953073e45",
-      "size": 6055
-    },
-    {
-      "path": "web/module/lf6-anfrage.html",
-      "sha256": "dffbdc967ff8ba86d91b50b34a60df5155c45d373e889b3fdc3402ee50f85837",
-      "size": 6264
-    },
-    {
-      "path": "web/module/lf6-fragen.html",
-      "sha256": "8739aaca9e6811b9764894ec4965c89f462d0c198ea37893d89c27bcba391e7d",
-      "size": 7737
-    },
-    {
-      "path": "web/module/lf6-gespraech.html",
-      "sha256": "efeed7c993b0acc9ab5b18aee4bbc7dc15d1766c6c1317dbb21804d7f6e4230f",
+      "sha256": "1e17aac887fd66bca64a690e5dcc38cb6a7a1d9ebe60f120fffc17d0bb15e28e",
       "size": 6707
     },
     {
-      "path": "web/module/lf6-kontakt.html",
-      "sha256": "f3a39bbb4584f642e96d035cc110c2d3467b398e6ce3ac3636c0df724ab4e8ed",
-      "size": 6716
+      "path": "web/module/lf4-lernziel.html",
+      "sha256": "3a6aa4c014bd271f6923bb8e8ff492dcaf3815e2a42626a6c2e453461378cf84",
+      "size": 3924
     },
     {
-      "path": "web/module/lf6-kontrolle.html",
-      "sha256": "e22040587af919fc68ee80a0375041d73f66313f8ffed8f7a9a1fe419efbe44c",
-      "size": 3872
+      "path": "web/module/lf4-risiken.html",
+      "sha256": "273e2bac8c1aa12a3bbcb1795577ec26d091f8ab3b566f3ef0d79be010e88727",
+      "size": 6603
     },
     {
-      "path": "web/module/lf6-level.html",
-      "sha256": "739c3bf4ae89ddc70dfc8856c62754ab9de6b29b15d982619ff91f48dc0e12cd",
-      "size": 6608
+      "path": "web/module/lf4-schutzbedarf.html",
+      "sha256": "53bda59b18eb6c9674adba5f0296a3c492d13b40a718e84486877b8cca37c3ba",
+      "size": 6666
     },
     {
-      "path": "web/module/lf6-loesung.html",
-      "sha256": "aca6d38186daed8870757ca603c9b919c150ae9e86e912d90697f91a93b3356a",
-      "size": 6598
+      "path": "web/module/lf4-schutzziele.html",
+      "sha256": "6ef1c7b9fb8883826793794deb52e1a6d7f3a00b6cb008f761e1619b939aeac7",
+      "size": 6649
     },
     {
-      "path": "web/module/lf6-notiz.html",
-      "sha256": "e2381e32a0b1b1d4ecb4d4307212a02287ef49e0fdfe8c4f32f8ef485bc3360e",
-      "size": 6376
-    },
-    {
-      "path": "web/module/lf6-qualitaet.html",
-      "sha256": "69a67c80b37976cb560cf74e792deafd224e8e3ffc42f12edb6b10cb6d3471d6",
-      "size": 6493
-    },
-    {
-      "path": "web/module/lf6-sla.html",
-      "sha256": "49e00be3290a4407fae9ec2c2e0b5516b93859c9f16a0f20a0b90f3fb2e5bdd4",
-      "size": 8968
-    },
-    {
-      "path": "web/module/lf6-status.html",
-      "sha256": "d0e35276b8f062e4731a1bd39e15dc303793ea1a96735900d1df34c1ac7bf959",
-      "size": 6488
-    },
-    {
-      "path": "web/module/lf6-ursache.html",
-      "sha256": "74324013c431abf809760b6d749623904fc0da1d19fe9e294ee86652b1fda4eb",
-      "size": 6502
-    },
-    {
-      "path": "web/module/lf7-auswahl.html",
-      "sha256": "cda8d67e3ca761aad5cd1a215735c786d1aa9d142326f5473d5690a69a8cb59c",
-      "size": 6451
-    },
-    {
-      "path": "web/module/lf7-fluesse.html",
-      "sha256": "8a100f3d2f41e2ee0d573365ec5c00c8211652181ed3b5ae90eed6adaa43634b",
-      "size": 6433
-    },
-    {
-      "path": "web/module/lf7-kontrolle.html",
-      "sha256": "e378eecdaec21de7bae31523c12b457c12441c69374e0c758436ef58f633b221",
-      "size": 4608
-    },
-    {
-      "path": "web/module/lf7-pruefung.html",
-      "sha256": "d89805a6794451d2904b70b327a334654dc055a68a6731d8913987b72481b0b4",
-      "size": 6387
-    },
-    {
-      "path": "web/module/lf7-schnittstelle.html",
-      "sha256": "058e3986bc79405974a4fc8ad66752625c293e69a02698bc0aecfb11db580024",
-      "size": 6406
-    },
-    {
-      "path": "web/module/lf7-sicherheit.html",
-      "sha256": "cc1b445ad48e692fdee15dd941ed4d43724f70441924cbf041ba067bafe48332",
-      "size": 6415
-    },
-    {
-      "path": "web/module/lf7-system.html",
-      "sha256": "f4011da0f99b30c65bbe6209554399abe16c6112c473d97081623a411ed28cee",
-      "size": 6359
-    },
-    {
-      "path": "web/module/lf7-unterlage.html",
-      "sha256": "866f6129be5863a38beb0ee1397f20c13e390aada110278e1b995f916181783f",
-      "size": 6452
-    },
-    {
-      "path": "web/module/lf7-zusammenfuehren.html",
-      "sha256": "8dfa1bd092c810abb436d146f8913598efa0c267d91cb8405c0c48945efb35b4",
-      "size": 6383
-    },
-    {
-      "path": "web/module/lf8-aufbereiten.html",
-      "sha256": "1743763c1240454ce75b377b5fdd94bad63916e76327cafcede7fd20e35c2cff",
-      "size": 11008
-    },
-    {
-      "path": "web/module/lf8-auswahl.html",
-      "sha256": "c1505e1aab5a242d5d909a0a0a094f8f087e809bb1b2652b2a905b5007cfeeba",
-      "size": 6369
-    },
-    {
-      "path": "web/module/lf8-kontrolle.html",
-      "sha256": "fa46983f87d2260b54b2f9964587b3b63d8f5e1ae5f312539e46c5f029a8adfc",
-      "size": 4612
-    },
-    {
-      "path": "web/module/lf8-konzept.html",
-      "sha256": "5009292576f6b69020ee61367a49804a7e00faa4ff663a0f9db550a2202764f1",
-      "size": 6374
-    },
-    {
-      "path": "web/module/lf8-quellen.html",
-      "sha256": "6ecba60196912c1d09ee4a5443df339ae1fd5349e8623c090bee2603a4c25ebb",
-      "size": 6335
-    },
-    {
-      "path": "web/module/lf8-recht.html",
-      "sha256": "57bf81f9eeb37b2755a4c33df525f09a3aa06df49e2e5d1338af7e486575e77c",
-      "size": 6339
-    },
-    {
-      "path": "web/module/lf8-reflexion.html",
-      "sha256": "1c325100df2b331bb037640530e895335d7ba1673b772070b283d7185a6c2ca5",
-      "size": 6719
-    },
-    {
-      "path": "web/module/lf8-struktur.html",
-      "sha256": "4cbb9c6fa1ab0c21592f4af6d9e4018cb3af0472a086eb66bb6174ef34df00ab",
-      "size": 6373
-    },
-    {
-      "path": "web/module/lf8-uebergabe.html",
-      "sha256": "ee63c8bc03c6697356e73e8977ee53b0a2df3c44cce50300d69edfae339318f5",
+      "path": "web/module/lf4-vorfall.html",
+      "sha256": "a9d241bf3313469dddecdf7b7e185014f65aa1eca37e88742410afaa49d4ab51",
       "size": 6642
     },
     {
+      "path": "web/module/lf4-zugang.html",
+      "sha256": "0f2a8d06d12f83f6ea76126ff2574d8a08831fe204c109fb1de909bd8b1b14b1",
+      "size": 6651
+    },
+    {
+      "path": "web/module/lf5-ablage.html",
+      "sha256": "879ee309301cd666b79bf696fcb529ea247927f9134d1a2d14013206ac7e6922",
+      "size": 5878
+    },
+    {
+      "path": "web/module/lf5-ablauf.html",
+      "sha256": "8bf02f884e37b4bbfa93910080057aa71336a76a8210801361455113bf77dae0",
+      "size": 5918
+    },
+    {
+      "path": "web/module/lf5-anweisung.html",
+      "sha256": "4767c0485741a9a3c31da547ba7e776969317a772ccb827fecd6a032a1fc05ab",
+      "size": 5823
+    },
+    {
+      "path": "web/module/lf5-doku.html",
+      "sha256": "1ff13d00045f191c7a52746934a6332fcb6679dd2519069d184338c3151ef505",
+      "size": 6252
+    },
+    {
+      "path": "web/module/lf5-einordnen.html",
+      "sha256": "3a2d438562f96579e44fda56aea01ace6e2cc6c3e1b8ae054f7a987e98ad6328",
+      "size": 6495
+    },
+    {
+      "path": "web/module/lf5-format.html",
+      "sha256": "8a25ae627eb926561facbfe2095c83e633307fadf84d9dd67bc804a210beff72",
+      "size": 6484
+    },
+    {
+      "path": "web/module/lf5-lernziel.html",
+      "sha256": "d9e2ea7c9a366c83cde975962816484b3ab482b26b0907fb5839b8ffda1ecc34",
+      "size": 3916
+    },
+    {
+      "path": "web/module/lf5-prozess.html",
+      "sha256": "18bcc503b50744008be960f110116961f2780182cb932f2e8719d93ad2e9bda8",
+      "size": 6142
+    },
+    {
+      "path": "web/module/lf5-testfall.html",
+      "sha256": "a1be7894daeaccc01da857190981e1592fee3d9a378df5f052202d7c4c3523dd",
+      "size": 6407
+    },
+    {
+      "path": "web/module/lf5-werte.html",
+      "sha256": "20a16ba97e00dc76ec84b564f9a6db1b6a897cfcd8869bfdf88d7ae8ac8476a2",
+      "size": 5691
+    },
+    {
+      "path": "web/module/lf5-wiederholung.html",
+      "sha256": "e777d12325aa95158c36c002d50294ff3c56a4d4dbb0b6fa8d7a96330c45a979",
+      "size": 5962
+    },
+    {
+      "path": "web/module/lf6-anfrage.html",
+      "sha256": "55d718a2b7267584becbcb72f1b64e3ea879c613d85751cf69668e0b0b3f9708",
+      "size": 6168
+    },
+    {
+      "path": "web/module/lf6-fragen.html",
+      "sha256": "a817877b51e3cad3ca7cd73fcc8fc86b88185ab2b048d2b2af3fcd322fd7d65e",
+      "size": 7633
+    },
+    {
+      "path": "web/module/lf6-gespraech.html",
+      "sha256": "aff11b623d711271a5d3070e89c11dbff571378a3ee0bd8e07ffc17cc62f7949",
+      "size": 6606
+    },
+    {
+      "path": "web/module/lf6-kontakt.html",
+      "sha256": "4b5d89d517847d2a38e916ddd4a1978f9dc457566ef805b071a9473715c76674",
+      "size": 6615
+    },
+    {
+      "path": "web/module/lf6-kontrolle.html",
+      "sha256": "6777dc22d4aa29981a4a452d265003d684c0e58635eade380add61c19f8652ba",
+      "size": 3828
+    },
+    {
+      "path": "web/module/lf6-level.html",
+      "sha256": "3478151481d7a1f6dde8b32e29b9791b4ec7879a50074c7978f978bcdff58927",
+      "size": 6507
+    },
+    {
+      "path": "web/module/lf6-loesung.html",
+      "sha256": "b7ba7a2dfb30d6e8fb4c4d312bdbc931b39d7d38d276d31a27d5ac86203ef425",
+      "size": 6497
+    },
+    {
+      "path": "web/module/lf6-notiz.html",
+      "sha256": "6fe7b8ee02dc46135f348f7c5d7b6641bb6ef9cba9544236ce67b5b91ba7a2fa",
+      "size": 6275
+    },
+    {
+      "path": "web/module/lf6-qualitaet.html",
+      "sha256": "7aa8460fbc5496192ef5b576e4c116395dfb969800e0c4ea1063c4094aa677db",
+      "size": 6392
+    },
+    {
+      "path": "web/module/lf6-sla.html",
+      "sha256": "9a14f5e945cabb7821943fd898eda1876b188cda75a347a4ffed4669323a8149",
+      "size": 8863
+    },
+    {
+      "path": "web/module/lf6-status.html",
+      "sha256": "fb897aca64f184b1c5733d636a568a87a40db5d014c5b6bccdfe68299b68fff1",
+      "size": 6387
+    },
+    {
+      "path": "web/module/lf6-ursache.html",
+      "sha256": "68ddf5b202545f419a716a084384ae653429035dafd635b472a8abdc425dc133",
+      "size": 6401
+    },
+    {
+      "path": "web/module/lf7-auswahl.html",
+      "sha256": "059d9d44a97665adb149bdc776a9a45cf92e2144998ad2d7e0890f417782c3b5",
+      "size": 6369
+    },
+    {
+      "path": "web/module/lf7-fluesse.html",
+      "sha256": "7ce12e17344d48e8dcdb66c96ac2c973e1bcc12345fd56d8ad26ad5d6cce7be3",
+      "size": 6351
+    },
+    {
+      "path": "web/module/lf7-kontrolle.html",
+      "sha256": "949736c0eb42a1748d9ba77b0c78ac6c619ac9dfadc799f41c3e5024bd981227",
+      "size": 4559
+    },
+    {
+      "path": "web/module/lf7-pruefung.html",
+      "sha256": "a4106a936ec467c8fbbdcafdefda2ef5d8a58e8924c5d490facfe8086b840c0f",
+      "size": 6305
+    },
+    {
+      "path": "web/module/lf7-schnittstelle.html",
+      "sha256": "d797a88d79e96e93f6ea0b44d02404c2ac3b138adbffff273b47e2aa131bd1cc",
+      "size": 6324
+    },
+    {
+      "path": "web/module/lf7-sicherheit.html",
+      "sha256": "a91528ba40ead3ee35ab13a85ae4bbb4c7ed0b21ce7c40caecb8e46f6be42f4b",
+      "size": 6333
+    },
+    {
+      "path": "web/module/lf7-system.html",
+      "sha256": "00608993b972bc4b8d9d7b297dcf2830aa985732d82909fb60193916d3b163de",
+      "size": 6277
+    },
+    {
+      "path": "web/module/lf7-unterlage.html",
+      "sha256": "48be02a38aa458df7e9503ac1e31795c216bce3315bc63fd9885523603ba2203",
+      "size": 6370
+    },
+    {
+      "path": "web/module/lf7-zusammenfuehren.html",
+      "sha256": "d90c6104add438b8e76d747488ced785137193a2ca7b0573a9ed9e7edfeb08bd",
+      "size": 6301
+    },
+    {
+      "path": "web/module/lf8-aufbereiten.html",
+      "sha256": "b49e5fdb6180880729e3eee5aee9d5da13764500ee0af3e8b9f88460b2ad677d",
+      "size": 10901
+    },
+    {
+      "path": "web/module/lf8-auswahl.html",
+      "sha256": "b8a207fbca00b46fd0648416919aeeab285f3bd2e6e1bdc7cf72099157dbee54",
+      "size": 6286
+    },
+    {
+      "path": "web/module/lf8-kontrolle.html",
+      "sha256": "326c211ad680fa5f7964cc355c6a5fb1f3dd4704e6aed96866b2d526705ba996",
+      "size": 4563
+    },
+    {
+      "path": "web/module/lf8-konzept.html",
+      "sha256": "d339e63eb5ab94f9baeb73286bc5d35417bfed2abdc85a8055b4438c8bc562c7",
+      "size": 6291
+    },
+    {
+      "path": "web/module/lf8-quellen.html",
+      "sha256": "bc7361be12394954c4c149d5cc00a9a6f342af6f762782c5e70a81ce1d909150",
+      "size": 6252
+    },
+    {
+      "path": "web/module/lf8-recht.html",
+      "sha256": "592322f318a0b6cb2911786a489ea68b14abad2f905b4251b50897b60791ecd2",
+      "size": 6256
+    },
+    {
+      "path": "web/module/lf8-reflexion.html",
+      "sha256": "62a4b3dcf7e8fb90fa631cd87c80a82d9aa47be5e0efba2d57f2f78959e029ec",
+      "size": 6635
+    },
+    {
+      "path": "web/module/lf8-struktur.html",
+      "sha256": "a01350a6ed0c846ea5723f6f553d2fa99db9ee1db37542c1a0055250def081c2",
+      "size": 6290
+    },
+    {
+      "path": "web/module/lf8-uebergabe.html",
+      "sha256": "38a22f10abcba9ae3eee87d906293ab5da126e694f79f677359eded7441eb7a2",
+      "size": 6558
+    },
+    {
       "path": "web/module/lf9-anforderung.html",
-      "sha256": "783a175c3654937564034ddb3b4d103064934f1cd59a6a3faade104cfa90b037",
-      "size": 6447
+      "sha256": "6f82fe8f18b8e384e4aad15ad8e7bd1f5d20f3cdcd683c3d0fbe6d59d889cef2",
+      "size": 6364
     },
     {
       "path": "web/module/lf9-dienste.html",
-      "sha256": "d00771b817dc52211a91d551ac447ea5f06feb85130826b96ba09fff41819233",
-      "size": 6688
+      "sha256": "f16222fda0c38f08888d39c2da77c4c02b2da01b0800f7910acd764394df6396",
+      "size": 6604
     },
     {
       "path": "web/module/lf9-eignung.html",
-      "sha256": "5f25444a94b893d7b46cdd96f8ee5a1e1da5a72f7725be50e876860b68ba1ede",
-      "size": 6788
+      "sha256": "980200d76380c32ebfbe80bd95f196b00f2835a3692f8cf653edcf0ff45f993f",
+      "size": 6704
     },
     {
       "path": "web/module/lf9-infrastruktur.html",
-      "sha256": "c628eb66adfd88c7b7d8c0b8c1b231bf90eee54fdd1653f2d590cc35c5c0a702",
-      "size": 12172
+      "sha256": "c08f47a4749863f32347a63cbaa0887230b35459acb7fee4c8c989ae83032ae2",
+      "size": 12059
     },
     {
       "path": "web/module/lf9-ist.html",
-      "sha256": "b26919b7b762b2fbc7cbfcf4e82428fd0f6cb6be5026def89a663bf3f8424193",
-      "size": 6440
+      "sha256": "3d4c1346d8219c7771eec79c6a3649477265391a19384fd52126ee839ed2055a",
+      "size": 6357
     },
     {
       "path": "web/module/lf9-kontrolle.html",
-      "sha256": "ae42656e574aae79bdc24e62e045b7498b7d76430473a83b96ab5ff8e45f6608",
-      "size": 4612
+      "sha256": "dff5a2cec84bdf81685524fab1073d9bf12aaa305fdebb6e7b11f7f78c2c34c6",
+      "size": 4563
     },
     {
       "path": "web/module/lf9-schutz.html",
-      "sha256": "be3192d24254af604815cc21faf8a9d786d078aacd8da862bd66b34c998284db",
-      "size": 6457
+      "sha256": "d509784701cd716cbe57d18409c688426f5b59b0f774b4a53ffde5b7a78b1c7d",
+      "size": 6374
     },
     {
       "path": "web/module/lf9-standard.html",
-      "sha256": "920cdc6f4c6ebaed3de46d10f177f25233d0514371c0860656212827f33a7551",
-      "size": 6785
+      "sha256": "468ae567d3866eb1e15de0542be39a7891dae983eadf4f430fc81e8fce655d8c",
+      "size": 6701
     },
     {
       "path": "web/module/lf9-zukunft.html",
-      "sha256": "2aece347a2ee1e067062f85abf734bde5c4c480179bce4e8d2187454b2c3d23b",
-      "size": 6767
+      "sha256": "9a30ac3d858ef71648072934b23923efc2c8293d1e70097c00d2f77e6c781de7",
+      "size": 6683
     },
     {
       "path": "web/module/netzmaske.html",
-      "sha256": "3f7921c9baecf69d3a11b70e4de1a36dd790e18931bee2e668c5b938ed578435",
-      "size": 8907
+      "sha256": "c623edcc98e8f11a51c11e951361b342ed2afb9df877db1f27c0a749c610364b",
+      "size": 8816
     },
     {
       "path": "web/module/netzwerkgrundlagen.html",
-      "sha256": "f2975113faee8fe60dbc0a80b2f430464d75d4d4f2573eb34d5b1f7d63bf4551",
-      "size": 10003
+      "sha256": "39e4b68dd7851f120ed858303a17a09091ce76c84bcacaf2f914f1d4722f77ba",
+      "size": 9828
     },
     {
       "path": "web/module/pc-explorer.html",
-      "sha256": "362b3ae1e5622f09ee5cb09081c5e95ddfed30540603167860d4754b9b7432c3",
-      "size": 6438
+      "sha256": "244881953be0107c4253b9398bd4bf55cb1809a053506c31d67c2f77abe2fd05",
+      "size": 6362
     },
     {
       "path": "web/module/raid-labor.html",
-      "sha256": "a0f2961922f79163a28a27881cdd168bb3d95f1313a354ea75e4472483410b30",
-      "size": 8694
+      "sha256": "3ad345e049f26b6727b953c249960503bc9f14e562f2318cb5522474f1b125e8",
+      "size": 8634
     },
     {
       "path": "web/module/subnetting.html",
-      "sha256": "854b01e4c623277e71a228bf7530e057d917f94479f29963d893456b5dd869e5",
-      "size": 8793
+      "sha256": "05be4acb449412e03cf9b875c4e8bd789477fec3981be4d8aaf08931278ada06",
+      "size": 8754
     },
     {
       "path": "web/module/windows-werkzeugkiste.html",
-      "sha256": "55227487093a3dd0bdbc046a48b6cb17daf621f09d169475b0d05bf48220168d",
-      "size": 7489
+      "sha256": "7f13cb48216051b190ef24fba6758db9e9693173ed64ac11949d6c78c9a878e2",
+      "size": 7398
     },
     {
       "path": "web/module/zahlensysteme.html",
-      "sha256": "3519a3cb18409d6f6e4a20384293c5f9788caca6e01b12f593045b9103e5d791",
-      "size": 4463
+      "sha256": "b0723117b0bf0408a0a72edd9051e6576ab545e1919b79977fc575e3c5505e98",
+      "size": 4410
     }
   ]
 }

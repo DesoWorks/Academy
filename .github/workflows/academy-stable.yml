@@ -74,11 +74,6 @@ jobs:
     environment: stable-release
     permissions:
       contents: read
-    env:
-      ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
-      CSC_LINK: ${{ secrets.ACADEMY_PUBLISHER_PFX_BASE64 }}
-      CSC_KEY_PASSWORD: ${{ secrets.ACADEMY_PUBLISHER_PFX_PASSWORD }}
-      PUBLISHER_THUMBPRINT: ${{ secrets.ACADEMY_PUBLISHER_THUMBPRINT }}
     outputs:
       tag: ${{ steps.meta.outputs.tag }}
       version: ${{ steps.meta.outputs.version }}
@@ -108,9 +103,14 @@ jobs:
           node -e "const fs=require('fs');fs.writeFileSync('build/build-info.json', JSON.stringify({commit: process.env.GITHUB_SHA, builtAt: new Date().toISOString()}, null, 2));fs.writeFileSync('channel.json', JSON.stringify({channel:'stable'}, null, 2)+'\n')"
       - name: Signierten Windows-Installer bauen
         shell: bash
+        env:
+          CSC_LINK: ${{ secrets.ACADEMY_PUBLISHER_PFX_BASE64 }}
+          CSC_KEY_PASSWORD: ${{ secrets.ACADEMY_PUBLISHER_PFX_PASSWORD }}
         run: npx electron-builder --win nsis -c.win.signExecutable=true
       - name: Authenticode-Signatur pruefen
         shell: pwsh
+        env:
+          PUBLISHER_THUMBPRINT: ${{ secrets.ACADEMY_PUBLISHER_THUMBPRINT }}
         run: |
           $file = Get-ChildItem dist -Filter *.exe | Select-Object -First 1
           $sig = Get-AuthenticodeSignature $file.FullName
@@ -120,6 +120,8 @@ jobs:
           }
       - name: Manifest erzeugen und signieren
         shell: bash
+        env:
+          ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
         run: |
           installer=$(ls dist/*.exe | head -n 1)
           node scripts/make-release-manifest.js channel=stable branch=main signature=signed \

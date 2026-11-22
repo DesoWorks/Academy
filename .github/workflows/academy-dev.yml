@@ -35,8 +35,6 @@ jobs:
     if: github.ref == 'refs/heads/dev'
     permissions:
       contents: read
-    env:
-      ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
     outputs:
       tag: ${{ steps.meta.outputs.tag }}
       version: ${{ steps.meta.outputs.version }}
@@ -70,6 +68,8 @@ jobs:
         run: npx electron-builder --win nsis -c.extraMetadata.version="${{ steps.meta.outputs.version }}"
       - name: Manifest erzeugen und signieren
         shell: bash
+        env:
+          ACADEMY_MANIFEST_SIGNING_KEY: ${{ secrets.ACADEMY_MANIFEST_SIGNING_KEY }}
         run: |
           if [ -z "$ACADEMY_MANIFEST_SIGNING_KEY" ]; then
             echo "Das Secret ACADEMY_MANIFEST_SIGNING_KEY fehlt. Es wird kein unsigniertes DEV-Manifest veroeffentlicht." >&2
