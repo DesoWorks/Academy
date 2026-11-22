@@ -8,10 +8,16 @@ const { assertAllowedUrl, readSha256Asset, selectRelease, selectModuleUpdates, f
 const { isLoopbackUrl, DEV_FEED_HEADER } = require("./dev-feed");
 const { compare, isSafeVersion } = require("./semver");
 const { isChannelName } = require("./channel-preference");
-const { selectCandidate } = require("./channels");
+const { selectCandidate, parseReleaseTag } = require("./channels");
+const { verifyManifest } = require("./manifest-sign");
 const github = require("./github-feed");
 
-const GITHUB_ASSET_PREFIX = `${github.SOURCE_URL}/assets/`;
+// Fehlergruende, die auf eine fehlende oder ungueltige Signatur hindeuten.
+const SIGNATURE_REASONS = new Set([
+  "bytes-invalid", "signature-missing", "signature-unreadable", "signature-invalid-format", "key-missing",
+  "key-invalid", "key-not-ed25519", "signature-mismatch", "verify-failed"
+]);
+
 // Grund einer Ablehnung, der nicht zum gewaehlten Kanal oder zur Plattform gehoert und daher keine Warnung ist.
 const CHANNEL_AVAILABLE = {
   dev: MESSAGES.devAvailable,
@@ -60,13 +66,59 @@ function createUpdateService(options) {
   fs.mkdirSync(incoming, { recursive: true });
   let abortController = null;
   const moduleIncoming = path.join(dataDir, "updates", "modules", "incoming");
+  // Rohbytes und Signatur des zuletzt geprueften Manifests (nur im Speicher). Download und Installation
+  // pruefen sie erneut mit verifyManifest und brechen bei ok !== true ab.
+  let pending = null;
+
+  function hostError() {
+    const rejected = new Error(MESSAGES.hostRejected);
+    rejected.code = "host-rejected";
+    return rejected;
+  }
+
+  function pendingManifestOk() {
+    if (!pending || pending.version !== state.available || channel === null) return false;
+    if (verifyManifest(pending.raw, pending.signature, options.updatePublicKey).ok !== true) return false;
+    try {
+      const manifest = JSON.parse(Buffer.from(pending.raw).toString("utf8"));
+      return manifest.channel === channel && manifest.version === state.available && manifest.sha256 === state.manifestSha256;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // Das beim Download abgelegte Manifest wird vor Wiederaufnahme und Installation erneut geprueft.
+  function storedManifestOk(version, sha) {
+    if (!isSafeVersion(version) || !sha || channel === null) return false;
+    try {
+      const raw = fs.readFileSync(path.join(incoming, `${version}.manifest.json`));
+      const signature = fs.readFileSync(path.join(incoming, `${version}.manifest.json.sig`), "utf8");
+      if (verifyManifest(raw, signature, options.updatePublicKey).ok !== true) return false;
+      const manifest = JSON.parse(raw.toString("utf8"));
+      return manifest.channel === channel && manifest.version === version && manifest.sha256 === sha;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function newerUnverifiedReason(releases) {
+    if (!isSafeVersion(installed)) return null;
+    for (const entry of releases) {
+      if (entry.draft || entry.manifestVerified === true || !entry.manifestReason) continue;
+      const parsed = parseReleaseTag(entry.tag);
+      if (!parsed || parsed.module || parsed.channel !== channel || compare(parsed.version, installed) <= 0) continue;
+      return entry.manifestReason;
+    }
+    return null;
+  }
 
   function currentKey() {
     if (typeof options.devFeedKey === "function") return String(options.devFeedKey() || "").trim();
     return String(options.devFeedKey || "").trim();
   }
 
-  // Das Token kommt vom Aufrufer (Option) oder aus ACADEMY_UPDATE_TOKEN. Es ist nirgends eingebettet
+  // Optionales Token (Option oder ACADEMY_UPDATE_TOKEN), nur fuer die Releaseliste der GitHub-API.
+  // Die Quelle ist oeffentlich: ohne Token wird normal abgerufen. Es ist nirgends eingebettet
   // und wird weder gespeichert noch in Zustand oder Meldungen geschrieben.
   function githubToken() {
     const given = typeof options.githubToken === "function" ? options.githubToken() : options.githubToken;
@@ -77,12 +129,10 @@ function createUpdateService(options) {
     const headers = Object.assign({}, init && init.headers);
     const key = currentKey();
     if (key && isLoopbackUrl(url)) headers[DEV_FEED_HEADER] = key;
-    // Das Token geht nur an die feste Asset-Adresse der GitHub-API, nie an eine andere Quelle.
-    if (typeof url === "string" && url.startsWith(GITHUB_ASSET_PREFIX)) {
+    // Downloads von github.com/DesoWorks/Academy/releases/download sind oeffentlich und bekommen nie ein Token.
+    if (typeof url === "string" && url.startsWith(github.DOWNLOAD_PREFIX)) {
       headers.Accept = "application/octet-stream";
       headers["User-Agent"] = "DesoWorks-Academy-Updater";
-      const token = githubToken();
-      if (token) headers.Authorization = `Bearer ${token}`;
     }
     return fetchImpl(url, Object.assign({}, init, { headers }));
   }
@@ -212,7 +262,8 @@ function createUpdateService(options) {
       previous.expectedSha256 &&
       contained(previous.installerPath) &&
       fs.existsSync(previous.installerPath) &&
-      sha256File(previous.installerPath) === previous.expectedSha256
+      sha256File(previous.installerPath) === previous.expectedSha256 &&
+      (explicitFeed || storedManifestOk(previous.available, previous.expectedSha256))
     ) {
       state = {
         phase: "ready",
@@ -253,18 +304,30 @@ function createUpdateService(options) {
     return Object.assign({}, state);
   }
 
-  // Feste GitHub-Quelle: Kanal aus der gespeicherten Wahl, Token nur vom Aufrufer oder aus der Umgebung.
-  // Bei fehlendem Token, gesperrter oder unerreichbarer Quelle bleibt alles unveraendert.
+  // Feste oeffentliche GitHub-Quelle: Kanal aus der gespeicherten Wahl. Ein Token ist optional.
+  // Bei 401/403/404 oder unerreichbarer Quelle bleibt alles unveraendert.
   async function checkGithub() {
     const token = githubToken();
-    if (!token) return stop("blocked", MESSAGES.githubNoToken, "no-token");
     const fetched = await github.fetchReleases({ fetch: fetchImpl, token });
     if (!fetched.ok) {
       return fetched.state === "locked"
         ? stop("failed", MESSAGES.githubLocked, "source-locked")
         : stop("failed", MESSAGES.githubUnreachable, "source-unreachable");
     }
-    await github.attachManifests(fetched.releases, channel, { fetch: fetchImpl, token });
+    pending = null;
+    await github.attachManifests(fetched.releases, channel, { fetch: fetchImpl, token, publicKey: options.updatePublicKey });
+    // Nur signaturgepruefte Manifeste zaehlen. Der Service prueft die exakten Bytes selbst noch einmal;
+    // bei ok !== true faellt das Release aus der Kandidatenliste.
+    for (const entry of fetched.releases) {
+      if (entry.manifestVerified === true) {
+        const again = verifyManifest(entry.manifestRaw, entry.manifestSignature, options.updatePublicKey);
+        if (again.ok !== true) {
+          entry.manifestVerified = false;
+          entry.manifestReason = again.reason;
+        }
+      }
+      if (entry.manifestVerified !== true) entry.manifest = null;
+    }
     const verdict = selectCandidate({
       channel,
       installedVersion: installed,
@@ -283,6 +346,12 @@ function createUpdateService(options) {
     state.notes = "";
     if (verdict.action === "blocked") return stop("failed", MESSAGES.metadataInvalid, "metadata-invalid");
     if (verdict.action !== "available") {
+      const badReason = newerUnverifiedReason(fetched.releases);
+      if (badReason) {
+        return SIGNATURE_REASONS.has(badReason)
+          ? stop("rejected", MESSAGES.signatureInvalid, "signature-invalid")
+          : stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected");
+      }
       const suspicious = (verdict.rejected || []).some((entry) => !FOREIGN_REASONS.has(entry.reason));
       return suspicious
         ? stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected")
@@ -294,16 +363,25 @@ function createUpdateService(options) {
     const exes = (release.assets || []).filter((asset) => /\.exe$/i.test(asset.name));
     const exe = exes.length === 1 ? exes[0] : null;
     if (!/^[a-f0-9]{64}$/.test(sha)) return stop("rejected", MESSAGES.hashMissing, "metadata-rejected");
-    if (!exe || !safeName(exe.name) || typeof exe.apiUrl !== "string" || !exe.apiUrl.startsWith(GITHUB_ASSET_PREFIX)) {
+    if (!exe || !safeName(exe.name) || release.manifestVerified !== true || !github.isDownloadUrl(exe.url, release.tag, exe.name)) {
       return stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected");
     }
+    // Das Paket muss genau das sein, was das signierte Manifest beschreibt.
+    const described = manifest.package || {};
+    if (github.validateManifest(manifest, release.tag, { strict: true }) !== null) {
+      return stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected");
+    }
+    if (described.name !== exe.name || (exe.size && described.size && exe.size !== described.size)) {
+      return stop("rejected", MESSAGES.metadataInvalid, "metadata-rejected");
+    }
+    pending = { version: verdict.version, tag: release.tag, raw: release.manifestRaw, signature: release.manifestSignature };
     state.phase = "available";
     state.error = null;
     state.message = CHANNEL_AVAILABLE[channel] || MESSAGES.available;
     state.available = verdict.version;
     state.notes = release.notes || "";
-    state.asset = { name: exe.name, url: exe.apiUrl, size: exe.size || 0 };
-    state.checksumAsset = { name: "manifest.json", url: exe.apiUrl, fromManifest: true };
+    state.asset = { name: exe.name, url: exe.url, size: exe.size || 0 };
+    state.checksumAsset = { name: "manifest.json", url: exe.url, fromManifest: true };
     state.manifestSha256 = sha;
     state.prerelease = release.prerelease === true;
     state.commit = release.commit || "";
@@ -418,6 +496,12 @@ function createUpdateService(options) {
       writeState();
       return Object.assign({}, state);
     }
+    if (isSafeVersion(state.available) && compare(state.available, installed) <= 0) {
+      return stop("blocked", MESSAGES.downgradeRejected, "downgrade-rejected");
+    }
+    if (!feedUrl && !pendingManifestOk()) {
+      return stop("failed", MESSAGES.signatureInvalid, "signature-invalid");
+    }
     let partial;
     let finalPath;
     try {
@@ -435,6 +519,7 @@ function createUpdateService(options) {
     state.error = null;
     writeState();
     try {
+      if (!feedUrl && !(typeof state.asset.url === "string" && state.asset.url.startsWith(github.DOWNLOAD_PREFIX))) throw hostError();
       assertAllowedUrl(state.asset.url, extraHosts);
       assertAllowedUrl(state.checksumAsset.url, extraHosts);
       const { repositoryPinned } = require("./feed");
@@ -445,7 +530,11 @@ function createUpdateService(options) {
       }
       abortController = typeof AbortController === "function" ? new AbortController() : null;
       const fileResponse = await fetchFeed(state.asset.url, abortController ? { signal: abortController.signal } : undefined);
-      if (fileResponse.url) assertAllowedUrl(fileResponse.url, extraHosts);
+      if (fileResponse.url) {
+        // Weiterleitungen weg von GitHub (auch auf http oder Loopback) werden im GitHub-Pfad abgewiesen.
+        if (!feedUrl && !github.isAllowedFinalUrl(fileResponse.url)) throw hostError();
+        assertAllowedUrl(fileResponse.url, extraHosts);
+      }
       if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
       await writeResponse(fileResponse, partial);
       let expected;
@@ -475,6 +564,10 @@ function createUpdateService(options) {
         state.error = "hash-mismatch";
         writeState();
         return Object.assign({}, state);
+      }
+      if (!feedUrl) {
+        fs.writeFileSync(path.join(incoming, `${state.available}.manifest.json`), pending.raw);
+        fs.writeFileSync(path.join(incoming, `${state.available}.manifest.json.sig`), `${pending.signature}\n`);
       }
       fs.renameSync(partial, finalPath);
       state.phase = "ready";
@@ -531,6 +624,9 @@ function createUpdateService(options) {
       state.installerPath = null;
       writeState();
       return { ok: false, message: MESSAGES.hashMismatch };
+    }
+    if (!feedUrl && !storedManifestOk(state.available, state.expectedSha256)) {
+      return { ok: false, message: MESSAGES.signatureInvalid };
     }
     if (!backupPath || !fs.existsSync(backupPath)) {
       return { ok: false, message: "Vor der Installation fehlt eine Sicherung der Lerndaten. Es wurde nichts gestartet." };

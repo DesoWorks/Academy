@@ -1,16 +1,21 @@
 "use strict";
 
-// Phase N: feste GitHub-Quelle fuer Updates. Kein Fallback auf den Loopback-Feed,
-// kein eingebautes Token. Ein Token kommt hoechstens vom Aufrufer (Nutzereinstellung)
-// oder aus der Umgebungsvariable ACADEMY_UPDATE_TOKEN und wird nie protokolliert.
+// Phase N/N.1: feste, oeffentliche GitHub-Quelle fuer Updates. Kein Fallback auf den Loopback-Feed,
+// kein eingebautes Token. Die Releaseliste und alle Dateien sind oeffentlich lesbar; ein Token ist nie
+// Pflicht. Ein optionales Token (Aufrufer oder ACADEMY_UPDATE_TOKEN) geht nur an die Releaseliste der
+// GitHub-API (hoeheres Ratenlimit), nie an Downloads, und wird nie protokolliert.
+// Manifeste und Installationspaket kommen von browser_download_url (github.com/.../releases/download/...).
+// Ein Manifest zaehlt nur nach erfolgreicher Ed25519-Pruefung von manifest.json.sig.
 
 const { parseReleaseTag, selectCandidate } = require("./channels");
+const { verifyManifest } = require("./manifest-sign");
 
 const SOURCE_URL = "https://api.github.com/repos/DesoWorks/Academy/releases";
-const ASSET_PREFIX = "https://api.github.com/repos/DesoWorks/Academy/releases/assets/";
+const DOWNLOAD_PREFIX = "https://github.com/DesoWorks/Academy/releases/download/";
 const MANIFEST_ASSET = "manifest.json";
 const MANIFEST_SIGNATURE_ASSET = "manifest.json.sig";
 const MANIFEST_MAX_BYTES = 256 * 1024;
+const SIGNATURE_MAX_BYTES = 1024;
 
 // Der Abruf wird beim Laden festgehalten. Spaetere Aenderungen an global.fetch wirken nicht mehr.
 const defaultFetch = typeof global.fetch === "function" ? global.fetch : null;
@@ -90,37 +95,141 @@ async function fetchReleases(options) {
   return { ok: true, state: "ready", errorCode: null, status: response.status, releases: normalizeReleases(payload) };
 }
 
-// Liest manifest.json eines Releases ueber die API-Asset-Adresse der festen Quelle.
-// Die Signatur (manifest.json.sig) wird hier NICHT geprueft: manifestVerified bleibt false.
-async function fetchManifest(release, options) {
-  const config = options || {};
-  const fetchImpl = config.fetch || defaultFetch;
-  const asset = (release.assets || []).find((item) => item.name === MANIFEST_ASSET);
-  if (!asset || typeof asset.apiUrl !== "string" || !asset.apiUrl.startsWith(ASSET_PREFIX)) return null;
-  if (asset.size > MANIFEST_MAX_BYTES) return null;
-  if (typeof fetchImpl !== "function") return null;
+// Ein Asset ist nur dann zulaessig, wenn browser_download_url exakt auf
+// https://github.com/DesoWorks/Academy/releases/download/<Tag>/<Name> zeigt.
+function isDownloadUrl(url, tag, name) {
+  if (typeof url !== "string" || !url.startsWith(DOWNLOAD_PREFIX) || !tag || !name) return false;
+  let parsed;
   try {
-    const response = await fetchImpl(asset.apiUrl, {
-      headers: buildHeaders(resolveToken(config.token, config.env), "application/octet-stream"),
+    parsed = new URL(url);
+  } catch (error) {
+    return false;
+  }
+  if (parsed.protocol !== "https:" || parsed.hostname !== "github.com" || parsed.username || parsed.password || parsed.search || parsed.hash) {
+    return false;
+  }
+  let pathname;
+  try {
+    pathname = decodeURIComponent(parsed.pathname);
+  } catch (error) {
+    return false;
+  }
+  return pathname === `/DesoWorks/Academy/releases/download/${tag}/${name}`;
+}
+
+// Hosts, auf die GitHub Release-Downloads weiterleitet. Alles andere (auch http) wird abgewiesen.
+const REDIRECT_HOSTS = new Set([
+  "github.com",
+  "objects.githubusercontent.com",
+  "release-assets.githubusercontent.com",
+  "github-releases.githubusercontent.com"
+]);
+
+function isAllowedFinalUrl(url) {
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch (error) {
+    return false;
+  }
+  return parsed.protocol === "https:" && REDIRECT_HOSTS.has(parsed.hostname) && !parsed.username && !parsed.password;
+}
+
+const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+
+// Strenge Inhaltspruefung eines bereits signaturgeprueften Manifests gegen den Release-Tag.
+// Liefert null (gueltig) oder den Ablehnungsgrund.
+// Ohne strict (Feed-Ebene): Produkt, Kanal, Version, SHA-256 und Paketart.
+// Mit strict (Installationspfad im Service): zusaetzlich releaseTag und ein sicherer Installername.
+function validateManifest(manifest, tag, options) {
+  const strict = !!(options && options.strict === true);
+  const parsed = parseReleaseTag(tag);
+  if (!parsed || parsed.module) return "tag-invalid";
+  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) return "manifest-invalid";
+  if (manifest.product !== "desoworks-academy") return "manifest-invalid";
+  if (manifest.channel !== parsed.channel) return "channel-conflict";
+  if (manifest.version !== parsed.version) return "version-conflict";
+  if (typeof manifest.sha256 !== "string" || !SHA256_PATTERN.test(manifest.sha256)) return "hash-invalid";
+  const pkg = manifest.package;
+  const kind = typeof pkg === "string" ? pkg : (pkg && typeof pkg === "object" ? pkg.kind : undefined);
+  if (kind !== "core") return "package-conflict";
+  if (strict) {
+    if (manifest.releaseTag !== tag) return "tag-conflict";
+    if (!pkg || typeof pkg !== "object" || typeof pkg.name !== "string" || !/^[^\\/\u0000]{1,175}\.exe$/i.test(pkg.name)) return "package-invalid";
+  }
+  return null;
+}
+
+function assetOf(release, name) {
+  return (release.assets || []).find((item) => item.name === name) || null;
+}
+
+async function fetchAssetBytes(release, asset, maxBytes, config) {
+  const fetchImpl = config.fetch || defaultFetch;
+  if (!asset || !isDownloadUrl(asset.url, release.tag, asset.name)) return null;
+  if (asset.size > maxBytes || typeof fetchImpl !== "function") return null;
+  try {
+    // Bewusst ohne Token: Downloads sind oeffentlich.
+    const response = await fetchImpl(asset.url, {
+      headers: buildHeaders("", "application/octet-stream"),
       signal: config.signal
     });
     if (!response.ok) return null;
-    const text = await response.text();
-    if (text.length > MANIFEST_MAX_BYTES) return null;
-    const manifest = JSON.parse(text);
-    return manifest && typeof manifest === "object" && !Array.isArray(manifest) ? manifest : null;
+    // Eine Weiterleitung weg von GitHub verwirft das Ergebnis.
+    if (response.url && !isAllowedFinalUrl(response.url)) return null;
+    const bytes = Buffer.from(await response.arrayBuffer());
+    return bytes.length > 0 && bytes.length <= maxBytes ? bytes : null;
   } catch (error) {
     return null;
   }
 }
 
+// Laedt manifest.json und manifest.json.sig (beide ueber browser_download_url) und prueft die Signatur
+// ueber die exakten Bytes. Liefert { manifest, reason }: manifest ist nur bei gueltiger Signatur gesetzt.
+async function fetchVerifiedManifest(release, options) {
+  const config = options || {};
+  const manifestAsset = assetOf(release, MANIFEST_ASSET);
+  const signatureAsset = assetOf(release, MANIFEST_SIGNATURE_ASSET);
+  if (!manifestAsset) return { manifest: null, reason: "manifest-missing" };
+  if (!signatureAsset) return { manifest: null, reason: "signature-missing" };
+  const raw = await fetchAssetBytes(release, manifestAsset, MANIFEST_MAX_BYTES, config);
+  if (!raw) return { manifest: null, reason: "manifest-unreadable" };
+  const sig = await fetchAssetBytes(release, signatureAsset, SIGNATURE_MAX_BYTES, config);
+  if (!sig) return { manifest: null, reason: "signature-unreadable" };
+  const verdict = verifyManifest(raw, sig.toString("utf8"), config.publicKey);
+  if (!verdict || verdict.ok !== true) return { manifest: null, reason: (verdict && verdict.reason) || "verify-failed" };
+  try {
+    const manifest = JSON.parse(raw.toString("utf8"));
+    const problem = validateManifest(manifest, release.tag);
+    if (problem) return { manifest: null, reason: problem };
+    return { manifest, reason: null, raw, signature: sig.toString("utf8").trim() };
+  } catch (error) {
+    return { manifest: null, reason: "manifest-invalid" };
+  }
+}
+
+// Nur ein signaturgepruefte Manifest wird zurueckgegeben, sonst null.
+async function fetchManifest(release, options) {
+  return (await fetchVerifiedManifest(release, options)).manifest;
+}
+
 // Haengt Manifeste nur an Releases, deren Tag zum gewaehlten Kanal gehoert (spart Abrufe).
+// manifestVerified wird nur nach erfolgreicher Signaturpruefung true. Sonst bleibt manifest null,
+// und das Release faellt aus der Kandidatenliste (selectCandidate lehnt es als manifest-missing ab).
 async function attachManifests(releases, channel, options) {
   for (const release of releases) {
+    release.manifest = null;
+    release.manifestVerified = false;
     if (release.draft) continue;
     const parsed = parseReleaseTag(release.tag);
     if (!parsed || parsed.channel !== channel) continue;
-    release.manifest = await fetchManifest(release, options);
+    const result = await fetchVerifiedManifest(release, options);
+    release.manifest = result.manifest;
+    release.manifestVerified = result.manifest !== null;
+    release.manifestReason = result.reason;
+    // Die geprueften Rohbytes bleiben erhalten, damit der Service sie vor Download und Installation erneut pruefen kann.
+    release.manifestRaw = result.manifest !== null ? result.raw : null;
+    release.manifestSignature = result.manifest !== null ? result.signature : null;
   }
   return releases;
 }
@@ -135,6 +244,7 @@ async function fetchCandidates(options) {
   if (!result.ok) return [];
   await attachManifests(result.releases, config.channel, config);
   return result.releases.filter((release) => {
+    if (release.manifestVerified !== true) return false;
     const verdict = selectCandidate({
       channel: config.channel,
       installedVersion: "0.0.0",
@@ -148,13 +258,18 @@ async function fetchCandidates(options) {
 
 module.exports = {
   SOURCE_URL,
+  DOWNLOAD_PREFIX,
   MANIFEST_ASSET,
   MANIFEST_SIGNATURE_ASSET,
+  isDownloadUrl,
+  isAllowedFinalUrl,
+  validateManifest,
   resolveToken,
   buildHeaders,
   normalizeReleases,
   fetchReleases,
   fetchManifest,
+  fetchVerifiedManifest,
   attachManifests,
   fetchCandidates
 };

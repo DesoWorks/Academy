@@ -30,8 +30,10 @@ const MESSAGES = {
   channelRejected: "Der gewählte Updatekanal ist nicht bekannt. Zulässig sind DEV, BETA und STABLE. Es wurde nichts heruntergeladen und nichts installiert.",
   channelSwitched: "Der Updatekanal wurde gewechselt. Das bisher vorbereitete Paket gehört nicht mehr zum gewählten Kanal und wird nicht verwendet. Bitte die Updateprüfung neu starten.",
   githubUnreachable: "GitHub ist nicht erreichbar. Die Anwendung und die Lernfortschritte bleiben unverändert. Die Prüfung kann wiederholt werden.",
-  githubLocked: "GitHub hat den Zugriff auf die Updatequelle verweigert. Das Zugriffstoken ist ungültig oder hat keine Leseberechtigung für das private Repository. Die Anwendung bleibt unverändert.",
-  githubNoToken: "Für das private Repository liegt kein Zugriffstoken vor. Es wurde nichts heruntergeladen. Die Anwendung bleibt unverändert."
+  githubLocked: "GitHub hat den Zugriff auf die Updatequelle verweigert oder die Quelle wurde nicht gefunden. Die Anwendung bleibt unverändert. Die Prüfung kann später wiederholt werden.",
+  signatureInvalid: "Die Signatur der Update-Beschreibung fehlt oder ist ungültig. Das Update wird nicht verwendet. Die Anwendung und die Lernfortschritte bleiben unverändert.",
+  downgradeRejected: "Die angebotene Version ist nicht neuer als die installierte. Es wird kein Downgrade ausgeführt. Die Anwendung bleibt unverändert.",
+  githubNoToken: "Für diese Quelle wird ein Zugriffstoken verlangt. Es wurde nichts heruntergeladen. Die Anwendung bleibt unverändert."
 };
 
 module.exports = { MESSAGES };

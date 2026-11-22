@@ -21,7 +21,10 @@ coverage/
 *.asar
 
 # Phase N: Schluessel, Zertifikate und lokale Datenbanken gehoeren nie ins Repository.
+# Der oeffentliche Manifest-Pruefschluessel ist kein Geheimnis und bleibt versioniert.
 *.pem
+!src/updates/update-public-key.pem
+keys/
 *.pfx
 *.p12
 *.key

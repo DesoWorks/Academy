@@ -79,10 +79,20 @@ jobs:
       - name: Manifest erzeugen und signieren
         shell: bash
         run: |
+          if [ -z "$ACADEMY_MANIFEST_SIGNING_KEY" ]; then
+            echo "Das Secret ACADEMY_MANIFEST_SIGNING_KEY fehlt. Es wird kein unsigniertes BETA-Manifest veroeffentlicht." >&2
+            exit 1
+          fi
           installer=$(ls dist/*.exe | head -n 1)
+          # signature=unsigned beschreibt nur den Authenticode-Status des Installers (signatureStatus).
+          # Das Manifest selbst wird vom Skript immer mit Ed25519 signiert und bricht sonst ab.
           node scripts/make-release-manifest.js channel=beta branch=beta signature=unsigned \
             version="${{ steps.meta.outputs.version }}" tag="${{ steps.meta.outputs.tag }}" \
             commit="${GITHUB_SHA}" installer="$installer" out=dist/release
+      - name: Manifest-Signatur gegen den oeffentlichen Schluessel pruefen
+        shell: bash
+        run: |
+          node -e "const fs=require('fs');const {verifyManifest}=require('./src/updates/manifest-sign');const r=verifyManifest(fs.readFileSync('dist/release/manifest.json'),fs.readFileSync('dist/release/manifest.json.sig','utf8'));if(r.ok!==true){console.error('Manifest-Signatur ungueltig: '+r.reason);process.exit(1)}console.log('Manifest-Signatur gueltig.')"
       - uses: actions/upload-artifact@v4
         with:
           name: academy-beta-release

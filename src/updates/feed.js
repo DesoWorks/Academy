@@ -263,9 +263,21 @@ function selectModuleUpdates(entries, installed, options) {
   return updates;
 }
 
+// Entscheidet, welche Feed-Adresse der Updatedienst bekommt. Ein gepackter Build ignoriert
+// ACADEMY_UPDATE_FEED vollstaendig und benutzt nur den signierten GitHub-Weg (leere Adresse).
+// Nur ein ungepackter Lauf darf die Variable fuer Tests nutzen. Ohne Electron aufrufbar.
+function resolveFeedUrl(options) {
+  const opts = options || {};
+  if (opts.isPackaged) return "";
+  const env = opts.env || {};
+  const value = env.ACADEMY_UPDATE_FEED;
+  return typeof value === "string" ? value.trim() : "";
+}
+
 module.exports = {
   PINNED_REPOSITORY,
   DEFAULT_HOSTS,
+  resolveFeedUrl,
   assertAllowedUrl,
   repositoryPinned,
   readSha256Asset,
