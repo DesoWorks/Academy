@@ -1,0 +1,76 @@
+{
+  "core": "0.3.0",
+  "temp": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV",
+  "profileUntouched": true,
+  "profileMarker": "C:\\Users\\Denni\\AppData\\Roaming\\DesoWorks\\Academy\\module-packages\\desoworks.it-systemintegration\\1.0.2\\web\\js\\anzeige-glossar.js",
+  "legacyHadContract": false,
+  "seedVersion": "1.0.2",
+  "before": {
+    "version": "1.0.2",
+    "compatible": false,
+    "compatibilityReason": "Das Modul deklariert keinen Theme-Vertrag und übernimmt den Darstellungsmodus der Academy nicht.",
+    "updateAvailable": true,
+    "availableVersion": "1.0.3",
+    "canUpdate": true,
+    "signature": "absent"
+  },
+  "failures": {
+    "sameVersionCode": "same-version-different-content",
+    "incompatibleCode": "incompatible-theme",
+    "version": "1.0.2",
+    "markerUnchanged": true,
+    "progressUnchanged": true,
+    "pathUnchanged": true
+  },
+  "package": {
+    "bundledDir": "D:\\Desoworks\\Workspace\\Academy\\modules\\it-systemintegration",
+    "bundledVersion": "1.0.3",
+    "themeContract": 1,
+    "trust": "private",
+    "signed": false,
+    "signatureField": null,
+    "zipPath": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV\\desoworks.it-systemintegration-1.0.3.zip",
+    "zipBytes": 11924920,
+    "zipSha256": "bce122626fffddf3fc9526ee394794c68bc405045248899310e2179fc31ebd7a",
+    "hashRejected": true,
+    "manifestMatch": "match",
+    "mismatchCode": "manifest-mismatch"
+  },
+  "after": {
+    "version": "1.0.3",
+    "compatible": true,
+    "updateAvailable": false,
+    "canUpdate": false,
+    "themeContract": 1,
+    "signature": "absent",
+    "installPath": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV\\data\\module-packages\\desoworks.it-systemintegration\\1.0.3",
+    "progress": {
+      "tasks": {
+        "lf3-dhcp": {
+          "correct": true,
+          "at": "2026-11-22T08:00:00.000Z",
+          "status": "abgeschlossen"
+        },
+        "lf3-skizze": {
+          "correct": false,
+          "at": "2026-11-22T08:05:00.000Z",
+          "status": "begonnen",
+          "answer": "unvollstaendig"
+        }
+      },
+      "assessment": {
+        "q1": {
+          "correct": true,
+          "at": "2026-11-22T08:10:00.000Z"
+        },
+        "q2": {
+          "correct": false,
+          "at": "2026-11-22T08:12:00.000Z",
+          "answer": "offen"
+        }
+      }
+    },
+    "progressKept": true,
+    "adoptsAcademyTheme": true
+  }
+}

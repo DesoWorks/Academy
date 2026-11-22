@@ -52,6 +52,13 @@
   --farbe-text-leise: var(--dw-text-muted);
   --farbe-rahmen: var(--dw-border);
   --farbe-akzent: var(--dw-accent);
+  --farbe-akzent-dunkel: var(--dw-accent);
+  --farbe-hover-flaeche: var(--dw-surface-raised);
+  --farbe-aktiv-tekst: var(--dw-on-accent);
+  --farbe-kontroll-flaeche: var(--dw-surface-raised);
+  --farbe-kontroll-text: var(--dw-text);
+  --farbe-geplant-flaeche: var(--dw-surface);
+  --farbe-geplant-tekst: var(--dw-text-muted);
   --farbe-fokus: var(--dw-focus);
 }
 
@@ -62,6 +69,13 @@
   --farbe-text: #1b2430;
   --farbe-text-leise: #46556a;
   --farbe-akzent: #1d5fb4;
+  --farbe-akzent-dunkel: #164a8c;
+  --farbe-hover-flaeche: #eef4fc;
+  --farbe-aktiv-tekst: #ffffff;
+  --farbe-kontroll-flaeche: #ffffff;
+  --farbe-kontroll-text: #18283a;
+  --farbe-geplant-flaeche: #eceff3;
+  --farbe-geplant-tekst: #4d5866;
   --farbe-rahmen: #c9d4e4;
   --farbe-fokus: var(--farbe-akzent);
 }
@@ -73,6 +87,13 @@
   --farbe-text: #000;
   --farbe-text-leise: #222;
   --farbe-akzent: #003a70;
+  --farbe-akzent-dunkel: #00284d;
+  --farbe-hover-flaeche: #e6e6e6;
+  --farbe-aktiv-tekst: #fff;
+  --farbe-kontroll-flaeche: #fff;
+  --farbe-kontroll-text: #000;
+  --farbe-geplant-flaeche: #fff;
+  --farbe-geplant-tekst: #111;
   --farbe-rahmen: #333;
   --farbe-fokus: var(--farbe-akzent);
 }

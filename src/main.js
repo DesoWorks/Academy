@@ -14,6 +14,7 @@ const { PREFERENCE_KEY } = require("./updates/channel-preference");
 const { declareScheme, registerProtocol } = require("./protocol");
 const { registerIpc } = require("./ipc");
 const { createModuleManager } = require("./modules/manager");
+const { catalogPath } = require("./modules/catalog");
 const { CORE_VERSION } = require("./core/version");
 const { createWindow } = require("./window");
 
@@ -55,11 +56,16 @@ if (!gotLock) {
     }
     const buildInfo = readBuildInfo();
     const storeRef = { current: openDatabase({ dataDir }) };
+    // Eine Katalogdatei für Modulmanager und IPC. Entwicklung nutzt catalogPath, gepackt liegt sie in den Resources.
+    const catalogFile = app.isPackaged
+      ? path.join(process.resourcesPath, "academy-catalog", "official.json")
+      : catalogPath(path.join(__dirname, "renderer"));
     let modules = null;
     try {
       modules = createModuleManager({
         dataDir,
         coreVersion: CORE_VERSION,
+        catalogFile,
         hostedWebRoots: [app.isPackaged
           ? path.join(process.resourcesPath, "academy-modules")
           : path.join(__dirname, "..", "modules"),
@@ -131,9 +137,7 @@ if (!gotLock) {
       exampleModuleDir: app.isPackaged
         ? path.join(process.resourcesPath, "academy-modules", "wissen-weitergeben")
         : path.join(__dirname, "..", "modules", "wissen-weitergeben"),
-      catalogFile: app.isPackaged
-        ? path.join(process.resourcesPath, "academy-catalog", "official.json")
-        : path.join(__dirname, "..", "catalog", "official.json"),
+      catalogFile,
       onInstall(plan) {
         const child = spawn(plan.command, plan.args, { detached: true, stdio: "ignore" });
         child.unref();

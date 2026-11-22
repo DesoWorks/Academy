@@ -46,7 +46,7 @@ function writeHosted(dir, options) {
     name: "Probe",
     description: "Hosted-Web-Probe",
     publisher: settings.publisher || { id: "publisher.desoworks", name: "DesoWorks" },
-    version: "1.0.0",
+    version: settings.version || "1.0.0",
     license: "MIT",
     language: "de",
     core: ">=0.3.0 <0.4.0",
@@ -60,7 +60,10 @@ function writeHosted(dir, options) {
     trust: "private",
     entry: "content/course.json",
     files,
-    runtime: { kind: "hosted-web", entry: "index.html", index: "content/payload-index.json" }
+    runtime: Object.assign(
+      { kind: "hosted-web", entry: "index.html", index: "content/payload-index.json" },
+      settings.themeContract === null ? {} : { themeContract: settings.themeContract === undefined ? 1 : settings.themeContract }
+    )
   };
   fs.writeFileSync(path.join(dir, "academy-module.json"), JSON.stringify(manifest));
 }

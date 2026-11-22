@@ -5,9 +5,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { compare } = require("../updates/semver");
 const { ModuleError } = require("./errors");
+const { resolveBundledPackage } = require("./catalog");
 const { openRegistry } = require("./registry");
 const { verifyPackage } = require("./signature");
-const { validateManifest, satisfies, assertRelativeFile, assertPayloadPath, PAYLOAD_LIMITS } = require("./spec");
+const { validateManifest, satisfies, assertRelativeFile, assertPayloadPath, PAYLOAD_LIMITS, THEME_CONTRACT_SUPPORTED } = require("./spec");
 
 const EXPORT_FORMAT = "desoworks.academy.module-data";
 const EXPORT_FORMAT_VERSION = 1;
@@ -32,6 +33,27 @@ function stable(value) {
 
 function checksumOf(body) {
   return crypto.createHash("sha256").update(JSON.stringify(stable(body))).digest("hex");
+}
+
+// Prefix, an dem list() eine fehlgeschlagene Aktualisierung unter den Hinweisen erkennt.
+const UPDATE_FAILED_PREFIX = "Aktualisierung fehlgeschlagen: ";
+
+// Vergleichsform des Manifests ohne die beim Installieren abgeleiteten Felder.
+function manifestIdentity(manifest) {
+  const copy = Object.assign({}, manifest);
+  delete copy.fileHashes;
+  delete copy.payloadHashes;
+  delete copy.payloadBytes;
+  return checksumOf(copy);
+}
+
+// Gleiche Schlüssel mit gleichen Prüfsummen. Fehlt eine Seite, gilt das als verschieden.
+function sameHashes(a, b) {
+  if (!a || !b || typeof a !== "object" || typeof b !== "object") return false;
+  const left = Object.keys(a).sort();
+  const right = Object.keys(b).sort();
+  if (left.length !== right.length) return false;
+  return left.every((key, index) => key === right[index] && a[key] === b[key]);
 }
 
 function hashFile(file) {
@@ -227,8 +249,24 @@ function createModuleManager(options) {
     return registry.db.prepare("SELECT * FROM module_install WHERE id = ?").get(id) || null;
   }
 
+  function compatibilityOf(manifest) {
+    const hosted = !!(manifest.runtime && manifest.runtime.kind === "hosted-web");
+    const themeContract = hosted && Number.isInteger(manifest.runtime.themeContract) ? manifest.runtime.themeContract : null;
+    if (!satisfies(coreVersion, manifest.core)) {
+      return { compatible: false, compatibilityReason: "Das Modul passt nicht zur Core-Version " + coreVersion + " (benötigt " + manifest.core + ").", themeContract };
+    }
+    if (hosted && themeContract == null) {
+      return { compatible: false, compatibilityReason: "Das Modul deklariert keinen Theme-Vertrag und übernimmt den Darstellungsmodus der Academy nicht.", themeContract };
+    }
+    if (hosted && themeContract !== THEME_CONTRACT_SUPPORTED) {
+      return { compatible: false, compatibilityReason: "Theme-Vertrag " + themeContract + " wird von diesem Core nicht unterstützt.", themeContract };
+    }
+    return { compatible: true, compatibilityReason: null, themeContract };
+  }
+
   function publicRow(entry) {
     const manifest = JSON.parse(entry.manifest_json);
+    const compat = compatibilityOf(manifest);
     return {
       id: entry.id,
       name: manifest.name,
@@ -246,12 +284,82 @@ function createModuleManager(options) {
       license: manifest.license,
       language: manifest.language,
       core: manifest.core,
-      compatible: satisfies(coreVersion, manifest.core),
-      updateAvailable: false,
+      compatible: compat.compatible,
+      compatibilityReason: compat.compatibilityReason,
+      themeContract: compat.themeContract,
+      availableVersion: null,
+      updateAvailable: null,
+      canUpdate: false,
+      lastUpdateError: null,
       uninstallable: entry.state !== "bundled",
       faultReason: entry.fault_reason || null,
       signature: manifest.signature ? "present" : "absent"
     };
+  }
+
+  // Letzte Aktualisierungsmeldung dieses Moduls. Der Installationszustand bleibt davon unberührt.
+  // Nur Meldungen mit dem festen Präfix zählen: eine normale Warnung wie "ohne Signatur installiert"
+  // ist kein Update-Fehler. Eine spätere erfolgreiche Installation überschreibt die Meldung.
+  function latestUpdateError(id) {
+    if (!registry.available) return null;
+    const last = registry.db.prepare("SELECT level, message FROM module_notice WHERE module_id = ? ORDER BY id DESC LIMIT 1").get(id);
+    if (!last || last.level !== "warn" || !String(last.message).startsWith(UPDATE_FAILED_PREFIX)) return null;
+    return String(last.message).slice(UPDATE_FAILED_PREFIX.length);
+  }
+
+  // Liefert die Version des lokal mitgelieferten Katalogpakets, wenn sie neuer und kompatibel ist.
+  // Liest nur das Manifest, installiert nichts und nutzt ausschließlich den vorhandenen Katalogweg.
+  function availableUpdate(item) {
+    const stored = row(item.id);
+    if (!stored || stored.state === "uninstalled") return null;
+    let resolved;
+    try {
+      resolved = resolveBundledPackage(options.catalogFile, item.id);
+    } catch (error) {
+      return null;
+    }
+    let manifest;
+    try {
+      const file = path.join(resolved.dir, "academy-module.json");
+      if (fs.statSync(file).size > 65536) return null;
+      manifest = JSON.parse(fs.readFileSync(file, "utf8"));
+      validateManifest(manifest);
+    } catch (error) {
+      return null;
+    }
+    const previous = JSON.parse(stored.manifest_json);
+    if (manifest.id !== item.id) return null;
+    if (!previous.publisher || previous.publisher.id !== manifest.publisher.id || previous.trust !== manifest.trust) return null;
+    if (compare(manifest.version, stored.version) <= 0) return null;
+    if (!compatibilityOf(manifest).compatible) return null;
+    return manifest.version;
+  }
+
+  // Ergänzt eine öffentliche Zeile um Update-Angaben. Ohne catalogFile bleiben availableVersion
+  // und updateAvailable null (nicht geprüft). Mit catalogFile gilt true oder false.
+  function annotate(item) {
+    item.lastUpdateError = latestUpdateError(item.id);
+    if (!options.catalogFile) return item;
+    const version = availableUpdate(item);
+    item.availableVersion = version;
+    item.updateAvailable = version !== null;
+    item.canUpdate = version !== null;
+    return item;
+  }
+
+  // Hält einen fehlgeschlagenen Installationsversuch als Hinweis fest. Es werden weder
+  // Installationszeile noch Lernstand oder Dateien angefasst.
+  function recordUpdateFailure(sourceDir, error) {
+    if (!registry.available) return;
+    try {
+      const manifest = JSON.parse(fs.readFileSync(path.join(path.resolve(sourceDir), "academy-module.json"), "utf8"));
+      const found = manifest && typeof manifest.id === "string" ? row(manifest.id) : null;
+      if (!found || found.state === "uninstalled") return;
+      const reason = error instanceof ModuleError && error.message ? error.message : "Unerwarteter Fehler beim Installieren.";
+      notice(manifest.id, "warn", UPDATE_FAILED_PREFIX + reason);
+    } catch (ignored) {
+      // Ohne lesbares Manifest gibt es keine Modulzuordnung. Der ursprüngliche Fehler bleibt maßgeblich.
+    }
   }
 
   function verifyTrust(manifest, files) {
@@ -347,7 +455,7 @@ function createModuleManager(options) {
     },
     list() {
       const installed = registry.available
-        ? registry.db.prepare("SELECT * FROM module_install ORDER BY id").all().map(publicRow)
+        ? registry.db.prepare("SELECT * FROM module_install ORDER BY id").all().map((entry) => annotate(publicRow(entry)))
         : [];
       return { platform: null, installed, available: registry.available, message: registry.message || null };
     },
@@ -388,6 +496,12 @@ function createModuleManager(options) {
       if (!satisfies(coreVersion, pack.manifest.core)) {
         fail("incompatible-core", "Das Modul passt nicht zu dieser Core-Version. Es wurde nicht installiert.", { core: coreVersion, required: pack.manifest.core });
       }
+      if (pack.manifest.runtime && pack.manifest.runtime.kind === "hosted-web") {
+        const themeCompat = compatibilityOf(pack.manifest);
+        if (!themeCompat.compatible) {
+          fail("incompatible-theme", "Die Web-Lernumgebung unterstützt den Theme-Vertrag nicht. Sie wurde nicht installiert. " + themeCompat.compatibilityReason, { themeContract: themeCompat.themeContract });
+        }
+      }
       verifyTrust(pack.manifest, pack.files);
       dependencyState(pack.manifest);
       const existing = row(pack.manifest.id);
@@ -401,6 +515,23 @@ function createModuleManager(options) {
         }
         if (compare(pack.manifest.version, existing.version) < 0) {
           fail("downgrade-blocked", "Ein älteres Modulpaket ersetzt keine neuere Installation.");
+        }
+        // Gleiche Version: nur dasselbe Paket darf weiterlaufen. Das geschieht vor jeder Dateioperation,
+        // damit ein abweichendes Paket weder Dateien löscht noch Installationszeile oder Lernstand berührt.
+        if (existing.state !== "uninstalled" && compare(pack.manifest.version, existing.version) === 0) {
+          const incomingFiles = {};
+          for (const [relative, file] of Object.entries(pack.files)) incomingFiles[relative] = file.sha256;
+          const incomingPayload = {};
+          for (const [relative, file] of Object.entries(pack.payload.files)) incomingPayload[relative] = file.sha256;
+          const identical = sameHashes(incomingFiles, previous.fileHashes)
+            && sameHashes(incomingPayload, previous.payloadHashes || {})
+            && manifestIdentity(pack.manifest) === manifestIdentity(previous);
+          if (!identical) {
+            fail("same-version-different-content", "Ein Paket mit gleicher Versionsnummer, aber anderem Inhalt ersetzt keine Installation. Die Version muss erhöht werden. Es wurde nichts verändert.", { version: existing.version });
+          }
+          // Identisches Paket, funktionierender Zustand: nichts ersetzen. Bei "faulted" bleibt der
+          // bisherige Kopierweg als Reparatur offen, weil die Hashes zum installierten Stand passen.
+          if (existing.state === "active" || existing.state === "disabled") return publicRow(existing);
         }
       }
       if (pack.manifest.id === RESERVED_PLATFORM_ID) {
@@ -488,6 +619,13 @@ function createModuleManager(options) {
       if (!current || current.state === "uninstalled") fail("missing-module", "Das Modul ist nicht installiert.");
       if (current.state === "disabled") fail("module-disabled", "Das Modul ist deaktiviert. Der Core und andere Module bleiben nutzbar.");
       if (current.state === "faulted") fail("module-faulted", current.fault_reason || "Das Modul ist deaktiviert.");
+      {
+        const manifestNow = JSON.parse(current.manifest_json);
+        if (manifestNow.runtime && manifestNow.runtime.kind === "hosted-web") {
+          const compat = compatibilityOf(manifestNow);
+          if (!compat.compatible) fail("module-incompatible", compat.compatibilityReason);
+        }
+      }
       const loaded = readCourse(current);
       const progress = api.progress(id);
       return {
@@ -504,6 +642,7 @@ function createModuleManager(options) {
       if (!current || current.state !== "active") return null;
       const manifest = JSON.parse(current.manifest_json);
       if (!manifest.runtime || manifest.runtime.kind !== "hosted-web") return null;
+      if (!compatibilityOf(manifest).compatible) return null;
       const relativeUrl = String(requestPath || "").replace(/^\/+/, "");
       if (!relativeUrl || relativeUrl.includes("\0") || relativeUrl.includes("\\") || relativeUrl.split("/").includes("..")) return null;
       const relative = "web/" + relativeUrl;
@@ -602,6 +741,19 @@ function createModuleManager(options) {
         fail("import-failed", "Der Import wurde abgebrochen und der vorherige Stand wiederhergestellt.");
       }
       return { id, mode: choice.mode };
+    }
+  };
+
+  // Jeder fehlgeschlagene Installationsversuch eines bereits installierten Moduls wird als Hinweis
+  // festgehalten, damit die Academy "Aktualisierung fehlgeschlagen" zeigen kann. Der Fehler wird
+  // unverändert weitergegeben, und der Installationszustand bleibt, wie er war.
+  const installPackage = api.installFromDirectory;
+  api.installFromDirectory = function installFromDirectory(sourceDir) {
+    try {
+      return installPackage(sourceDir);
+    } catch (error) {
+      recordUpdateFailure(sourceDir, error);
+      throw error;
     }
   };
 

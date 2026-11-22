@@ -1,0 +1,37 @@
+{
+  "source": "extracted-installer",
+  "catalogFile": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-catalog\\official.json",
+  "bundledDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-modules\\it-systemintegration",
+  "core": "0.3.0",
+  "temp": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-AFSsDj",
+  "profileUntouched": true,
+  "seedVersion": "1.0.2",
+  "bundledVersion": "1.0.3",
+  "bundledContract": 1,
+  "before": {
+    "version": "1.0.2",
+    "compatible": false,
+    "compatibilityReason": "Das Modul deklariert keinen Theme-Vertrag und übernimmt den Darstellungsmodus der Academy nicht.",
+    "updateAvailable": true,
+    "availableVersion": "1.0.3",
+    "canUpdate": true
+  },
+  "failures": {
+    "sameVersionCode": "same-version-different-content",
+    "incompatibleCode": "incompatible-theme",
+    "version": "1.0.2",
+    "markerUnchanged": true,
+    "progressUnchanged": true,
+    "pathUnchanged": true
+  },
+  "after": {
+    "version": "1.0.3",
+    "listed": "1.0.3",
+    "compatible": true,
+    "themeContract": 1,
+    "progressKept": true,
+    "completed": "abgeschlossen",
+    "started": "begonnen",
+    "adoptsAcademyTheme": true
+  }
+}

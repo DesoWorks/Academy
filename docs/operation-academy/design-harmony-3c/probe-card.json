@@ -1,0 +1,10 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-card-5mEwzg",
+  "core": "0.3.0",
+  "card": {
+    "text": "IT-Systemintegration 1.0.2\n\nDie bestehende IT-Ausbildung als installierbares Lernmodul. Themenübersicht, Lernfelder, Labore und Werkzeuge bleiben erhalten.\n\nHerausgeber: DesoWorks\n\nInstalliert: 1.0.2 · Verfügbar: 1.0.3\n\nInkompatibel, Aktualisierung erforderlich: Das Modul deklariert keinen Theme-Vertrag und übernimmt den Darstellungsmodus der Academy nicht.\n\nAktualisieren",
+    "button": "Aktualisieren",
+    "open": null
+  },
+  "ok": true
+}

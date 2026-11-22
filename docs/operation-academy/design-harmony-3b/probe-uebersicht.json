@@ -1,0 +1,1111 @@
+{
+  "dataDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-uebersicht-d2NUE5",
+  "core": "0.3.0",
+  "note": "Temporäres Datenverzeichnis. Die Installation des Commanders wird nicht geöffnet.",
+  "themes": {
+    "dunkel": {
+      "academyTheme": "dunkel",
+      "body": {
+        "background": [
+          7,
+          7,
+          8
+        ],
+        "backgroundSource": "BODY",
+        "className": "",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 18.42,
+        "fontWeight": "400",
+        "outline": "none 3px rgb(247, 244, 245)",
+        "text": "Direkt zum Inhalt springen\n\n  \n    \n    \n      IT-Ausbildung\n      Themenübersic"
+      },
+      "current": {
+        "background": [
+          255,
+          83,
+          105
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(22, 6, 10)",
+        "contrast": 6.29,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 6, 10)",
+        "text": "Themenübersicht"
+      },
+      "dataTheme": "dunkel",
+      "done": null,
+      "entry": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(255, 83, 105)",
+        "contrast": 5.98,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 83, 105)",
+        "text": "▸ Jetzt lernen"
+      },
+      "jetzt": [
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        }
+      ],
+      "lesson": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "overview-lesson-link unterthema-link",
+        "className": "modul-status",
+        "color": "rgb(255, 83, 105)",
+        "contrast": 5.98,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 83, 105)",
+        "text": "▸ Jetzt lernen"
+      },
+      "nav": {
+        "background": [
+          255,
+          83,
+          105
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(22, 6, 10)",
+        "contrast": 6.29,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 6, 10)",
+        "text": "Themenübersicht"
+      },
+      "planned": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "overview-lesson planned",
+        "className": "modul-status",
+        "color": "rgb(196, 184, 189)",
+        "contrast": 9.77,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(196, 184, 189)",
+        "text": "◷ In Kürze"
+      },
+      "statusCount": 99,
+      "summary": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "overview-year",
+        "className": "overview-field-summary",
+        "color": "rgb(247, 244, 245)",
+        "contrast": 17.15,
+        "fontWeight": "700",
+        "outline": "none 3px rgb(247, 244, 245)",
+        "text": "Lernfeld 1 · Ausbildungsbetrieb und berufliche Rolle11 verfügbar · 0 abgeschloss"
+      },
+      "tokens": {
+        "aktiv": "#16060A",
+        "akzent": "#FF5369",
+        "akzentDunkel": "#FF5369",
+        "flaeche": "#141114",
+        "hintergrund": "#070708",
+        "hover": "#24171C",
+        "text": "#F7F4F5"
+      },
+      "url": "academy://desoworks.it-systemintegration/index.html?academy-theme=dunkel",
+      "hover": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(255, 83, 105)",
+        "contrast": 5.98,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 83, 105)",
+        "text": "▸ Jetzt lernen"
+      },
+      "focus": {
+        "background": [
+          20,
+          17,
+          20
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(255, 83, 105)",
+        "contrast": 5.98,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 83, 105)",
+        "text": "▸ Jetzt lernen"
+      },
+      "pointer": {
+        "hit": {
+          "background": "rgb(20, 17, 20)",
+          "color": "rgb(247, 244, 245)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(255, 83, 105) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      },
+      "zoom": {
+        "clientWidth": 823,
+        "factor": 1.5,
+        "linkVisible": true,
+        "mainWidth": 823,
+        "scrollWidth": 823
+      }
+    },
+    "hell": {
+      "academyTheme": "hell",
+      "body": {
+        "background": [
+          244,
+          247,
+          251
+        ],
+        "backgroundSource": "BODY",
+        "className": "",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 14.57,
+        "fontWeight": "400",
+        "outline": "none 3px rgb(27, 36, 48)",
+        "text": "Direkt zum Inhalt springen\n\n  \n    \n    \n      IT-Ausbildung\n      Themenübersic"
+      },
+      "current": {
+        "background": [
+          29,
+          95,
+          180
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(255, 255, 255)",
+        "contrast": 6.27,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 255, 255)",
+        "text": "Themenübersicht"
+      },
+      "dataTheme": "hell",
+      "done": null,
+      "entry": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(22, 74, 140)",
+        "contrast": 8.78,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 74, 140)",
+        "text": "▸ Jetzt lernen"
+      },
+      "jetzt": [
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        }
+      ],
+      "lesson": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "overview-lesson-link unterthema-link",
+        "className": "modul-status",
+        "color": "rgb(22, 74, 140)",
+        "contrast": 8.78,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 74, 140)",
+        "text": "▸ Jetzt lernen"
+      },
+      "nav": {
+        "background": [
+          29,
+          95,
+          180
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(255, 255, 255)",
+        "contrast": 6.27,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 255, 255)",
+        "text": "Themenübersicht"
+      },
+      "planned": {
+        "background": [
+          236,
+          239,
+          243
+        ],
+        "backgroundSource": "overview-lesson planned",
+        "className": "modul-status",
+        "color": "rgb(77, 88, 102)",
+        "contrast": 6.27,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(77, 88, 102)",
+        "text": "◷ In Kürze"
+      },
+      "statusCount": 99,
+      "summary": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "overview-year",
+        "className": "overview-field-summary",
+        "color": "rgb(27, 36, 48)",
+        "contrast": 15.65,
+        "fontWeight": "700",
+        "outline": "none 3px rgb(27, 36, 48)",
+        "text": "Lernfeld 1 · Ausbildungsbetrieb und berufliche Rolle11 verfügbar · 0 abgeschloss"
+      },
+      "tokens": {
+        "aktiv": "#ffffff",
+        "akzent": "#1d5fb4",
+        "akzentDunkel": "#164a8c",
+        "flaeche": "#ffffff",
+        "hintergrund": "#f4f7fb",
+        "hover": "#eef4fc",
+        "text": "#1b2430"
+      },
+      "url": "academy://desoworks.it-systemintegration/index.html?academy-theme=hell",
+      "hover": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(22, 74, 140)",
+        "contrast": 8.78,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 74, 140)",
+        "text": "▸ Jetzt lernen"
+      },
+      "focus": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(22, 74, 140)",
+        "contrast": 8.78,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(22, 74, 140)",
+        "text": "▸ Jetzt lernen"
+      },
+      "pointer": {
+        "hit": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(27, 36, 48)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(22, 74, 140) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      },
+      "zoom": {
+        "clientWidth": 617,
+        "factor": 2,
+        "linkVisible": true,
+        "mainWidth": 617,
+        "scrollWidth": 617
+      }
+    },
+    "kontrast": {
+      "academyTheme": "kontrast",
+      "body": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "BODY",
+        "className": "",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "fontWeight": "400",
+        "outline": "none 3px rgb(0, 0, 0)",
+        "text": "Direkt zum Inhalt springen\n\n  \n    \n    \n      IT-Ausbildung\n      Themenübersic"
+      },
+      "current": {
+        "background": [
+          0,
+          58,
+          112
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(255, 255, 255)",
+        "contrast": 11.42,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 255, 255)",
+        "text": "Themenübersicht"
+      },
+      "dataTheme": "kontrast",
+      "done": null,
+      "entry": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(0, 40, 77)",
+        "contrast": 14.89,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(0, 40, 77)",
+        "text": "▸ Jetzt lernen"
+      },
+      "jetzt": [
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        }
+      ],
+      "lesson": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "overview-lesson-link unterthema-link",
+        "className": "modul-status",
+        "color": "rgb(0, 40, 77)",
+        "contrast": 14.89,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(0, 40, 77)",
+        "text": "▸ Jetzt lernen"
+      },
+      "nav": {
+        "background": [
+          0,
+          58,
+          112
+        ],
+        "backgroundSource": "A",
+        "className": "",
+        "color": "rgb(255, 255, 255)",
+        "contrast": 11.42,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(255, 255, 255)",
+        "text": "Themenübersicht"
+      },
+      "planned": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "overview-lesson planned",
+        "className": "modul-status",
+        "color": "rgb(17, 17, 17)",
+        "contrast": 18.88,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(17, 17, 17)",
+        "text": "◷ In Kürze"
+      },
+      "statusCount": 99,
+      "summary": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "overview-year",
+        "className": "overview-field-summary",
+        "color": "rgb(0, 0, 0)",
+        "contrast": 21,
+        "fontWeight": "700",
+        "outline": "none 3px rgb(0, 0, 0)",
+        "text": "Lernfeld 1 · Ausbildungsbetrieb und berufliche Rolle11 verfügbar · 0 abgeschloss"
+      },
+      "tokens": {
+        "aktiv": "#fff",
+        "akzent": "#003a70",
+        "akzentDunkel": "#00284d",
+        "flaeche": "#fff",
+        "hintergrund": "#fff",
+        "hover": "#e6e6e6",
+        "text": "#000"
+      },
+      "url": "academy://desoworks.it-systemintegration/index.html?academy-theme=kontrast",
+      "hover": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(0, 40, 77)",
+        "contrast": 14.89,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(0, 40, 77)",
+        "text": "▸ Jetzt lernen"
+      },
+      "focus": {
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "backgroundSource": "modul-inhalt",
+        "className": "modul-status",
+        "color": "rgb(0, 40, 77)",
+        "contrast": 14.89,
+        "fontWeight": "600",
+        "outline": "none 3px rgb(0, 40, 77)",
+        "text": "▸ Jetzt lernen"
+      },
+      "pointer": {
+        "hit": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(0, 40, 77) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      },
+      "zoom": {
+        "clientWidth": 617,
+        "factor": 2,
+        "linkVisible": true,
+        "mainWidth": 617,
+        "scrollWidth": 617
+      }
+    }
+  },
+  "steps": [
+    {
+      "step": "install",
+      "detail": {
+        "id": "desoworks.it-systemintegration",
+        "version": "1.0.3",
+        "state": "active"
+      }
+    },
+    {
+      "step": "write-dunkel",
+      "detail": true
+    },
+    {
+      "step": "dunkel-pointer",
+      "detail": {
+        "hit": {
+          "background": "rgb(20, 17, 20)",
+          "color": "rgb(247, 244, 245)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(255, 83, 105) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      }
+    },
+    {
+      "step": "dunkel",
+      "detail": {
+        "academyTheme": "dunkel",
+        "dataTheme": "dunkel",
+        "tokens": {
+          "aktiv": "#16060A",
+          "akzent": "#FF5369",
+          "akzentDunkel": "#FF5369",
+          "flaeche": "#141114",
+          "hintergrund": "#070708",
+          "hover": "#24171C",
+          "text": "#F7F4F5"
+        },
+        "entry": {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        "lesson": {
+          "background": [
+            20,
+            17,
+            20
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(255, 83, 105)",
+          "contrast": 5.98,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(255, 83, 105)",
+          "text": "▸ Jetzt lernen"
+        },
+        "body": 18.42
+      }
+    },
+    {
+      "step": "dunkel-zoom",
+      "detail": {
+        "clientWidth": 823,
+        "factor": 1.5,
+        "linkVisible": true,
+        "mainWidth": 823,
+        "scrollWidth": 823
+      }
+    },
+    {
+      "step": "write-hell",
+      "detail": true
+    },
+    {
+      "step": "hell-pointer",
+      "detail": {
+        "hit": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(27, 36, 48)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(22, 74, 140) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      }
+    },
+    {
+      "step": "hell",
+      "detail": {
+        "academyTheme": "hell",
+        "dataTheme": "hell",
+        "tokens": {
+          "aktiv": "#ffffff",
+          "akzent": "#1d5fb4",
+          "akzentDunkel": "#164a8c",
+          "flaeche": "#ffffff",
+          "hintergrund": "#f4f7fb",
+          "hover": "#eef4fc",
+          "text": "#1b2430"
+        },
+        "entry": {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        "lesson": {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(22, 74, 140)",
+          "contrast": 8.78,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(22, 74, 140)",
+          "text": "▸ Jetzt lernen"
+        },
+        "body": 14.57
+      }
+    },
+    {
+      "step": "hell-zoom",
+      "detail": {
+        "clientWidth": 617,
+        "factor": 2,
+        "linkVisible": true,
+        "mainWidth": 617,
+        "scrollWidth": 617
+      }
+    },
+    {
+      "step": "write-kontrast",
+      "detail": true
+    },
+    {
+      "step": "kontrast-pointer",
+      "detail": {
+        "hit": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "hovered": false,
+          "forceError": "Cannot read properties of undefined (reading 'nodeId')"
+        },
+        "focusHit": {
+          "active": true,
+          "outline": "rgb(0, 40, 77) solid 3px",
+          "visible": true
+        },
+        "x": 404,
+        "y": 503
+      }
+    },
+    {
+      "step": "kontrast",
+      "detail": {
+        "academyTheme": "kontrast",
+        "dataTheme": "kontrast",
+        "tokens": {
+          "aktiv": "#fff",
+          "akzent": "#003a70",
+          "akzentDunkel": "#00284d",
+          "flaeche": "#fff",
+          "hintergrund": "#fff",
+          "hover": "#e6e6e6",
+          "text": "#000"
+        },
+        "entry": {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "modul-inhalt",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        "lesson": {
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "backgroundSource": "overview-lesson-link unterthema-link",
+          "className": "modul-status",
+          "color": "rgb(0, 40, 77)",
+          "contrast": 14.89,
+          "fontWeight": "600",
+          "outline": "none 3px rgb(0, 40, 77)",
+          "text": "▸ Jetzt lernen"
+        },
+        "body": 21
+      }
+    },
+    {
+      "step": "kontrast-zoom",
+      "detail": {
+        "clientWidth": 617,
+        "factor": 2,
+        "linkVisible": true,
+        "mainWidth": 617,
+        "scrollWidth": 617
+      }
+    },
+    {
+      "step": "keyboard",
+      "detail": {
+        "tabs": [
+          "skip-link",
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "vorgesehen"
+        ],
+        "note": "Tab-Ereignisse an das Academy-Fenster, nicht an den iframe-Inhalt, sofern der Frame den Fokus nicht hat."
+      }
+    }
+  ],
+  "keyboard": {
+    "tabs": [
+      "skip-link",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "vorgesehen"
+    ],
+    "note": "Tab-Ereignisse an das Academy-Fenster, nicht an den iframe-Inhalt, sofern der Frame den Fokus nicht hat."
+  }
+}

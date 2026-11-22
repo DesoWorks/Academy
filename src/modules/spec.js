@@ -18,6 +18,7 @@ const PAYLOAD_LIMITS = { maxFiles: 4000, maxFileBytes: 8388608, maxBytes: 503316
 const RESERVED_PREFIX = "dev.desoworks.";
 const HOSTED_PUBLISHER = "publisher.desoworks";
 const SIGNED_TRUST = new Set(["reviewed", "official"]);
+const THEME_CONTRACT_SUPPORTED = 1;
 
 const PERMISSIONS = {
   "content.read": { minTrust: "private", granted: true },
@@ -120,6 +121,9 @@ function validateRuntime(raw) {
   const entry = String(runtime.entry || "");
   if (!entry || entry.length > 180 || entry.startsWith("/") || entry.includes("\\") || entry.split("/").includes("..")) {
     fail("invalid-manifest", "Der Einstieg der Lernumgebung ist ungültig.");
+  }
+  if (runtime.themeContract != null && (!Number.isInteger(runtime.themeContract) || runtime.themeContract < 1)) {
+    fail("invalid-manifest", "runtime.themeContract muss eine positive Ganzzahl sein.", { themeContract: runtime.themeContract });
   }
   if (!entry.endsWith(".html")) fail("invalid-manifest", "Die Lernumgebung startet nur über eine HTML-Seite.");
   const index = String(runtime.index || "");
@@ -234,6 +238,7 @@ module.exports = {
   PAYLOAD_LIMITS,
   PAYLOAD_EXTENSIONS,
   HOSTED_PUBLISHER,
+  THEME_CONTRACT_SUPPORTED,
   RESERVED_PREFIX,
   FORMAT,
   FORMAT_VERSION,

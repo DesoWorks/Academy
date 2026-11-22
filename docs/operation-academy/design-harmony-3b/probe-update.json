@@ -1,0 +1,20 @@
+{
+  "profileUntouched": true,
+  "temp": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3b-93ZvOG",
+  "seed": "1.0.2",
+  "sameVersionCode": "same-version-different-content",
+  "brokenCode": "incompatible-theme",
+  "beforeVersion": "1.0.2",
+  "afterFailVersion": "1.0.2",
+  "afterBrokenVersion": "1.0.2",
+  "version": "1.0.3",
+  "compatible": true,
+  "themeContract": 1,
+  "markerUnchangedOnFail": true,
+  "progressUnchangedOnFail": true,
+  "progressKept": true,
+  "newScriptHasAcademyTheme": true,
+  "oldScriptLacksAcademyTheme": true,
+  "oldFolderRemains": true,
+  "pathChanged": true
+}

@@ -30,7 +30,7 @@
       text(title, entry.name + " " + entry.version);
       var meta = document.createElement("p");
       meta.className = "meta";
-      text(meta, entry.publisher + " · Version " + entry.version + " · " + entry.state + " · " + (entry.updateAvailable ? "Aktualisierung verfügbar" : "Keine Aktualisierung") + " · " + entry.sizeBytes + " Bytes");
+      text(meta, entry.publisher + " · Installiert: " + entry.version + " · Verfügbar: " + shell.availableLabel(entry) + " · " + shell.statusReason(entry) + " · " + entry.sizeBytes + " Bytes");
       if (entry.description) {
         var beschreibung = document.createElement("p");
         text(beschreibung, entry.description);
@@ -38,10 +38,13 @@
       }
       var actions = document.createElement("div");
       actions.className = "zeile";
-      var open = document.createElement("button");
-      open.type = "button";
-      text(open, "Öffnen");
-      open.addEventListener("click", function () { show(entry.id); });
+      var open = null;
+      if (shell.canOpen(entry)) {
+        open = document.createElement("button");
+        open.type = "button";
+        text(open, "Öffnen");
+        open.addEventListener("click", function () { show(entry.id); });
+      }
       var toggle = document.createElement("button");
       toggle.type = "button";
       text(toggle, entry.state === "disabled" ? "Aktivieren" : "Deaktivieren");
@@ -57,7 +60,25 @@
           refresh();
         });
       });
-      actions.append(open, toggle, remove);
+      if (open) actions.appendChild(open);
+      if (entry.canUpdate === true) {
+        var update = document.createElement("button");
+        update.type = "button";
+        text(update, "Aktualisieren");
+        update.addEventListener("click", function () {
+          update.disabled = true;
+          say("Aktualisierung läuft.", false);
+          api.moduleInstallCatalog(entry.id).then(function (response) {
+            say(response && response.ok ? "Aktualisiert. Lernstände bleiben liegen." : ((response && response.message) || "Aktualisierung abgebrochen. Es wurde nichts verändert."), !(response && response.ok));
+            refresh();
+          }).catch(function () {
+            say("Aktualisierung fehlgeschlagen. Es wurde nichts verändert.", true);
+            update.disabled = false;
+          });
+        });
+        actions.appendChild(update);
+      }
+      actions.append(toggle, remove);
       box.append(title, meta);
       if (box._beschreibung) box.appendChild(box._beschreibung);
       box.appendChild(actions);

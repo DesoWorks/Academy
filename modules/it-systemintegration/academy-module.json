@@ -8,7 +8,7 @@
     "id": "publisher.desoworks",
     "name": "DesoWorks"
   },
-  "version": "1.0.1",
+  "version": "1.0.3",
   "license": "UNLICENSED",
   "language": "de",
   "core": ">=0.3.0 <0.4.0",
@@ -33,6 +33,7 @@
   ],
   "runtime": {
     "kind": "hosted-web",
+    "themeContract": 1,
     "entry": "index.html",
     "index": "content/payload-index.json"
   },

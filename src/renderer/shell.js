@@ -123,8 +123,63 @@
 
   function updateLabel(entry) {
     if (entry.updateAvailable === true) return "Aktualisierung verfügbar";
-    if (entry.updateAvailable === false) return "Aktuell";
-    return "Aktualisierung: nicht geprüft";
+    return "Nicht geprüft";
+  }
+
+  function availableLabel(entry) {
+    return entry.availableVersion ? String(entry.availableVersion) : "Nicht geprüft";
+  }
+
+  function canOpen(entry) {
+    return entry.compatible !== false && entry.state === "active";
+  }
+
+  function updateFailure(entry) {
+    return typeof entry.lastUpdateError === "string" && entry.lastUpdateError ? entry.lastUpdateError : null;
+  }
+
+  // Fünf Zustände, jeweils mit eigenem Satz. Der Installationszustand (aktiv, gestört) bleibt davon getrennt.
+  function statusReason(entry) {
+    var failure = updateFailure(entry);
+    if (failure) return "Aktualisierung fehlgeschlagen: " + failure;
+    if (entry.compatible === false) {
+      var reason = entry.compatibilityReason || "Das Modul passt nicht zu dieser Academy.";
+      if (entry.updateAvailable === true) return "Inkompatibel, Aktualisierung erforderlich: " + reason;
+      if (entry.updateAvailable === false) return "Keine Aktualisierung verfügbar: " + reason;
+      return "Inkompatibel: " + reason;
+    }
+    if (entry.state === "disabled") return "Deaktiviert: Aktivieren, um das Modul zu öffnen.";
+    if (entry.state === "faulted") return "Gestört: " + (entry.faultReason || "Das Modul wurde angehalten.");
+    if (entry.state === "active") return entry.updateAvailable === true ? "Aktualisierung verfügbar" : "Kompatibel und startbereit";
+    return stateLabel(entry.state);
+  }
+
+  // Startet die vorhandene Katalog-Installation. Der Bestätigungsdialog der Anwendung bleibt davor.
+  function updateButton(entry, status) {
+    var button = el("button", "", "Aktualisieren");
+    button.type = "button";
+    button.addEventListener("click", function () {
+      var api = window.academyDesktop;
+      if (!api || typeof api.moduleInstallCatalog !== "function") {
+        text(status, "Die Aktualisierung ist nur in der Desktop-Anwendung möglich.");
+        return;
+      }
+      button.disabled = true;
+      text(status, "Aktualisierung läuft …");
+      api.moduleInstallCatalog(entry.id).then(function (response) {
+        if (response && response.ok) {
+          text(status, "Aktualisiert. Die Ansicht wird neu geladen.");
+          window.location.reload();
+          return;
+        }
+        text(status, (response && response.message) || "Die Aktualisierung wurde abgebrochen. Es wurde nichts verändert.");
+        button.disabled = false;
+      }).catch(function () {
+        text(status, "Die Aktualisierung ist fehlgeschlagen. Es wurde nichts verändert.");
+        button.disabled = false;
+      });
+    });
+    return button;
   }
 
   function progressLabel(entry) {
@@ -140,14 +195,29 @@
     card.appendChild(el("h3", "", entry.name + " " + entry.version));
     if (entry.description) card.appendChild(el("p", "", entry.description));
     card.appendChild(el("p", "meta", "Herausgeber: " + entry.publisher));
-    card.appendChild(el("p", "meta", stateLabel(entry.state) + " · " + updateLabel(entry)));
+    card.appendChild(el("p", "meta", "Installiert: " + entry.version + " · Verfügbar: " + availableLabel(entry)));
+    card.appendChild(el("p", "meta", statusReason(entry)));
     var progress = progressLabel(entry);
     if (progress) card.appendChild(el("p", "meta", progress));
-    var actions = el("div", "zeile");
-    var open = el("a", "knopf", "Öffnen");
-    open.href = "/module.html#" + encodeURIComponent(entry.id);
-    actions.appendChild(open);
-    card.appendChild(actions);
+    var openable = canOpen(entry);
+    var updatable = entry.canUpdate === true;
+    if (openable || updatable) {
+      var actions = el("div", "zeile");
+      if (openable) {
+        var open = el("a", "knopf", "Öffnen");
+        open.href = "/module.html#" + encodeURIComponent(entry.id);
+        actions.appendChild(open);
+      }
+      if (updatable) {
+        var status = el("p", "meta");
+        status.setAttribute("role", "status");
+        actions.appendChild(updateButton(entry, status));
+        card.appendChild(actions);
+        card.appendChild(status);
+      } else {
+        card.appendChild(actions);
+      }
+    }
     return card;
   }
 
@@ -165,6 +235,9 @@
     activeTheme: activeTheme,
     writeTheme: writeTheme,
     visibleModules: visibleModules,
+    canOpen: canOpen,
+    statusReason: statusReason,
+    availableLabel: availableLabel,
     moduleCard: moduleCard
   };
 

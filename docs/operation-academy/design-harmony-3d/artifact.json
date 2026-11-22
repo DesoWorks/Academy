@@ -1,0 +1,39 @@
+{
+  "extractedFromInstaller": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-modules\\it-systemintegration",
+  "manifest": {
+    "version": "1.0.3",
+    "themeContract": 1,
+    "sizeBytes": 62017,
+    "declaredSize": 62017,
+    "signed": false,
+    "trust": "private"
+  },
+  "payload": {
+    "entries": 249,
+    "ok": 249,
+    "bad": 0,
+    "unpackedDiffers": 0
+  },
+  "installer": {
+    "path": "D:\\Desoworks\\Workspace\\Academy\\dist\\DesoWorks-Academy-Setup-0.3.1-dev.6.local.exe",
+    "bytes": 133444558,
+    "sha256": "e7774f9da833abe4575949fdf5e3b5accdc2264dc226171fd3c923f5a8789c5f"
+  },
+  "packagedVersion": "0.3.1-dev.6.local",
+  "asarHasIncompatibleTheme": true,
+  "asarHasSameVersion": true,
+  "asarHasAccent": true,
+  "buildInfo": {
+    "commit": "95f0033dfa3ba3f6b51155c014dbc19a4178a7f3",
+    "builtAt": "2026-11-22T18:05:30.206Z",
+    "note": "Lokaler DEV-Release-Kandidat Etappe 3D. Kein Actions-Lauf, kein Push. Arbeitsbaum enthaelt uncommittete Design-Harmony-Aenderungen."
+  },
+  "asarMatch": {
+    "src/main.js": true,
+    "src/modules/manager.js": true,
+    "src/modules/spec.js": true,
+    "src/renderer/design-tokens.css": true,
+    "src/renderer/module.js": true,
+    "src/renderer/shell.js": true
+  }
+}
