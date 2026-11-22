@@ -1,8 +1,8 @@
 {
   "core": "0.3.0",
-  "temp": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV",
+  "temp": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3c-HvaywV",
   "profileUntouched": true,
-  "profileMarker": "C:\\Users\\Denni\\AppData\\Roaming\\DesoWorks\\Academy\\module-packages\\desoworks.it-systemintegration\\1.0.2\\web\\js\\anzeige-glossar.js",
+  "profileMarker": "C:\\Users\\<Benutzer>\\AppData\\Roaming\\DesoWorks\\Academy\\module-packages\\desoworks.it-systemintegration\\1.0.2\\web\\js\\anzeige-glossar.js",
   "legacyHadContract": false,
   "seedVersion": "1.0.2",
   "before": {
@@ -29,7 +29,7 @@
     "trust": "private",
     "signed": false,
     "signatureField": null,
-    "zipPath": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV\\desoworks.it-systemintegration-1.0.3.zip",
+    "zipPath": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3c-HvaywV\\desoworks.it-systemintegration-1.0.3.zip",
     "zipBytes": 11924920,
     "zipSha256": "bce122626fffddf3fc9526ee394794c68bc405045248899310e2179fc31ebd7a",
     "hashRejected": true,
@@ -43,7 +43,7 @@
     "canUpdate": false,
     "themeContract": 1,
     "signature": "absent",
-    "installPath": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3c-HvaywV\\data\\module-packages\\desoworks.it-systemintegration\\1.0.3",
+    "installPath": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3c-HvaywV\\data\\module-packages\\desoworks.it-systemintegration\\1.0.3",
     "progress": {
       "tasks": {
         "lf3-dhcp": {

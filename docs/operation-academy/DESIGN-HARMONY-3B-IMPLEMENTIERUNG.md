@@ -1,6 +1,6 @@
 # Design Harmony 3B – Implementierung (Jarvis)
 
-Stand: 22.11.2026. Lokal umgesetzt, nicht committet, nicht gepusht, kein Release. Das Benutzerprofil `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy` wurde weder gelesen noch beschrieben. Alle Tests laufen in temporären Verzeichnissen.
+Stand: 22.11.2026. Lokal umgesetzt, nicht committet, nicht gepusht, kein Release. Das Benutzerprofil `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy` wurde weder gelesen noch beschrieben. Alle Tests laufen in temporären Verzeichnissen.
 
 ## Geänderte Dateien (von mir in Etappe 3B)
 

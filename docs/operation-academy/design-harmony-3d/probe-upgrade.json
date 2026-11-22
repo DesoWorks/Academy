@@ -1,9 +1,9 @@
 {
   "source": "extracted-installer",
-  "catalogFile": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-catalog\\official.json",
-  "bundledDir": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-modules\\it-systemintegration",
+  "catalogFile": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-catalog\\official.json",
+  "bundledDir": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3d-installer\\resources\\academy-modules\\it-systemintegration",
   "core": "0.3.0",
-  "temp": "C:\\Users\\Denni\\AppData\\Local\\Temp\\academy-3d-AFSsDj",
+  "temp": "C:\\Users\\<Benutzer>\\AppData\\Local\\Temp\\academy-3d-AFSsDj",
   "profileUntouched": true,
   "seedVersion": "1.0.2",
   "bundledVersion": "1.0.3",

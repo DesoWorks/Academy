@@ -22,9 +22,9 @@ Bezugsstand: 22.11.2026, lesender Vergleich der relativen Pfade in Quellbaum und
 | Nur in 1.0.2 installiert (`ONLY_INST`) | **Keine: 0 Dateien** |
 | Nur im Quellbaum (`ONLY_SRC`) | `academy-module.json` |
 
-**Installierter Paketordner:** `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy\module-packages\desoworks.it-systemintegration\1.0.2` – laut Koordinator **ohne** `academy-module.json`.
+**Installierter Paketordner:** `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy\module-packages\desoworks.it-systemintegration\1.0.2` – laut Koordinator **ohne** `academy-module.json`.
 
-**Verified-Cache:** Das Manifest 1.0.2 liegt laut Koordinator, bezogen auf die beiden untersuchten Ablagen, **nur** unter `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy\updates\modules\verified\desoworks.it-systemintegration\1.0.2\academy-module.json`. Es deklariert `version: 1.0.2`; `runtime.themeContract` fehlt. Es zählt nicht als Datei des installierten Paketordners. Ein fehlendes Theme-Level gilt bei `hosted-web` nach [Theme-Vertrag 3](THEME-CONTRACT-3.md) nicht als v1.
+**Verified-Cache:** Das Manifest 1.0.2 liegt laut Koordinator, bezogen auf die beiden untersuchten Ablagen, **nur** unter `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy\updates\modules\verified\desoworks.it-systemintegration\1.0.2\academy-module.json`. Es deklariert `version: 1.0.2`; `runtime.themeContract` fehlt. Es zählt nicht als Datei des installierten Paketordners. Ein fehlendes Theme-Level gilt bei `hosted-web` nach [Theme-Vertrag 3](THEME-CONTRACT-3.md) nicht als v1.
 
 ### Zehn gemeldete echte Inhaltsdiffs
 

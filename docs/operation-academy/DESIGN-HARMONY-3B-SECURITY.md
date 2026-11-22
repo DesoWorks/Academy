@@ -104,7 +104,7 @@ if (compare(pack.manifest.version, existing.version) === 0) {
 | Objekt | Grund |
 |---|---|
 | `module_kv` (alle Zeilen) | Lernstände. Ein fehlgeschlagener oder abgelehnter Versuch darf sie nicht lesen-ändern, schreiben, löschen oder migrieren. |
-| Benutzerprofil `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy` | Produktivdaten des Commanders. Proben laufen nur gegen ein temporäres Profil. |
+| Benutzerprofil `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy` | Produktivdaten des Commanders. Proben laufen nur gegen ein temporäres Profil. |
 | Signaturregeln (`verifyTrust`, `trustedKeys`, `signature.js`) | Keine Lockerung, keine neue Ausnahme. Das Private-Vertrauensmodell bleibt unverändert. |
 | App-ID | Muss gleich bleiben, sonst wechselt das Profilverzeichnis und die Lernstände scheinen zu verschwinden. |
 | Downgrade-Sperre (Zeile 427) | Bleibt. Die neue Prüfung wird ergänzt, nicht ersetzt. |

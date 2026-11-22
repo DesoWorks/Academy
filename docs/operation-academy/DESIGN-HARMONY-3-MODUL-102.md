@@ -4,7 +4,7 @@
 Dokumentation der Unterschiede in der Theme‑Erkennung zwischen der im Benutzerprofil installierten Version von **desoworks.it-systemintegration 1.0.2** und der Quell‑Datei im Repository.
 
 ## Installierte Datei
-- **Pfad**: `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy\module-packages\desoworks.it-systemintegration\1.0.2\web\js\anzeige-glossar.js`
+- **Pfad**: `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy\module-packages\desoworks.it-systemintegration\1.0.2\web\js\anzeige-glossar.js`
 - **data‑Attribute gesetzt**: `document.documentElement.dataset.theme` wird auf `current.theme` gesetzt. Zusätzlich werden die Klassen `mehr-abstand` (bei `current.spacing`) und `ruhige-ansicht` (bei `current.ruhig` oder systemReduceMotion) umgeschaltet.
 - **Speicher‑Key**: `localStorage`‑Schlüssel `it-ausbildung.anzeige.v1`. Das Objekt enthält die Felder `text`, `spacing`, `theme` und `ruhig` (in `current.ruhig` liegt ein Typo, aber der Wert wird trotzdem gespeichert).
 - **Verhalten**: Die installierte Version ignoriert das Attribut `data-academy-theme`; das Theme wird ausschließlich aus dem Persistenz‑Objekt gelesen.

@@ -6,7 +6,7 @@
 
 ### 1. Seed – temporäres Profil mit vorhandenem Lernstand
 
-Rick führte die Probe mit `probe-update.js` gegen eine Kopie des Profils mit installiertem Modul `desoworks.it-systemintegration` **1.0.2** aus. Das temporäre Profil lag unter `academy-3b-93ZvOG`. Als vorhandener Lernstand wurde unter anderem der Marker `lf3-dhcp` verwendet. Das Produktivprofil `C:\Users\Denni\AppData\Roaming\DesoWorks\Academy` wurde nicht geschrieben.
+Rick führte die Probe mit `probe-update.js` gegen eine Kopie des Profils mit installiertem Modul `desoworks.it-systemintegration` **1.0.2** aus. Das temporäre Profil lag unter `academy-3b-93ZvOG`. Als vorhandener Lernstand wurde unter anderem der Marker `lf3-dhcp` verwendet. Das Produktivprofil `C:\Users\<Benutzer>\AppData\Roaming\DesoWorks\Academy` wurde nicht geschrieben.
 
 Der vorgesehene Kandidat ist **1.0.3**, also ein Versionsübergang von **1.0.2 auf 1.0.3**. Er führt den Quellstand und die benötigten Inhalte zusammen; Theme-Vertrag **1** bleibt enthalten. Der geprüfte Quellstand enthält unter anderem `anzeige-glossar.js` mit `data-academy-theme`. Im bisherigen Paketordner 1.0.2 fehlte dieses Attribut. Der Quellstand bleibt damit maßgeblich für die Theme-Korrekturen; die Updateprobe bestätigte, dass der installierte neue Paketstand das Attribut enthält.
 

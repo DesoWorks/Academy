@@ -101,7 +101,7 @@ Die Sicherheitsmechanismen, die du ausdrücklich genannt hast, sind im Code in d
 - CSP und Fensteroptionen liegen in Dateien, die nicht im Diff stehen (`window.js` u. a.).
 
 ### B11 – Lokale Pfade mit Windows-Benutzername in den neuen Nachweisen – NIEDRIG
-- Im Commit stehen Berichte und Sondenprotokolle mit absoluten Pfaden, die den Windows-Benutzernamen enthalten (`C:\Users\Denni\AppData\…`). Beispiele:
+- Im Commit stehen Berichte und Sondenprotokolle mit absoluten Pfaden, die den Windows-Benutzernamen enthalten (`C:\Users\<Benutzer>\AppData\…`). Beispiele:
   - `design-harmony-3d/artifact.json:2`
   - `design-harmony-3d/probe-upgrade.json:3`, `:4`, `:6`
   - `design-harmony-3d/probe-uebersicht.json:2`
