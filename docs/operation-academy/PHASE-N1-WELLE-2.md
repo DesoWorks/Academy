@@ -71,3 +71,10 @@ Die unabhängigen Pakete liefen parallel. Die Implementierung blieb bei JARVIS, 
 ## Nächster Schritt
 
 Den Actions-Lauf nach dem Zeilenende-Commit abwarten. Wenn `npm test` besteht, erzeugt der Build-Job mit dem vorhandenen Secret das erste signierte DEV-Artefakt. Erst dann ist das Pipeline-Kriterium belegt. Ein Stable-Release bleibt gesperrt.
+
+
+## Nachtrag Actions
+
+Zweiter Lauf nach `.gitattributes`: https://github.com/DesoWorks/Academy/actions/runs/45012452830
+
+Commit `0777690`. Job `test` wieder fehlgeschlagen, 4 mal `Eine Nutzlastdatei hat die falsche Größe`. Job `build` wieder übersprungen. Die Zeilenende-Regel hat diesen Fehler nicht behoben. Ein Actions-Build ist weiterhin nicht belegt.
