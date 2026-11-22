@@ -34,7 +34,7 @@ test("Shell-Seiten und Beispielmodul sind vorhanden", () => {
 test("package.json bündelt keine fremde Plattform", () => {
   const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
   assert.equal(pkg.name, "desoworks-academy");
-  assert.equal(pkg.version, "0.3.0");
+  assert.equal(pkg.version, "0.3.1");
   assert.equal(pkg.build.appId, "dev.desoworks.academy");
   for (const entry of pkg.build.extraResources) {
     assert.notEqual(entry.from, "../");

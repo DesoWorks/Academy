@@ -65,7 +65,8 @@ jobs:
           node -e "require('fs').writeFileSync('build/build-info.json', JSON.stringify({commit: process.env.GITHUB_SHA, builtAt: new Date().toISOString()}, null, 2))"
       - name: Windows-Installer bauen
         shell: bash
-        run: npx electron-builder --win nsis -c.extraMetadata.version="${{ steps.meta.outputs.version }}"
+        # CI erkennt sonst eine implizite Veroeffentlichung. Veroeffentlicht wird nur im Job publish.
+        run: npx electron-builder --win nsis --publish never -c.extraMetadata.version="${{ steps.meta.outputs.version }}"
       - name: Manifest erzeugen und signieren
         shell: bash
         env:

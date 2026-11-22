@@ -1,7 +1,7 @@
 {
   "name": "desoworks-academy",
   "productName": "DesoWorks Academy",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Eigenständige Academy-Plattform von DesoWorks mit neutralem Core und installierbaren Lernmodulen",
   "author": "DesoWorks",
