@@ -69,19 +69,23 @@
       if (m.unterthemen && m.unterthemen.length) {
         var topics = document.createElement("ul");
         m.unterthemen.forEach(function (u) {
-          var available = m.status === "verfuegbar" && u.status === "verfuegbar" && u.datei;
+          var available = window.UEBERSICHT_STATUS
+            ? window.UEBERSICHT_STATUS.lektionOffen(u, m)
+            : m.status === "verfuegbar" && u.status === "verfuegbar" && u.datei;
           if (available) {
-            var entry = item({ id: u.id, label: u.titel, href: base + u.datei, page: u.page });
+            var entry = item({ id: u.fortschritt === "isoliert" ? "" : u.id, label: u.titel, href: base + u.datei, page: u.page });
             entry.classList.add("nav-topic"); topics.appendChild(entry);
           } else {
             var planned = document.createElement("li"); planned.className = "nav-planned nav-topic";
-            planned.setAttribute("aria-disabled", "true"); planned.textContent = u.titel + " — In Kürze"; topics.appendChild(planned);
+            var lockedLabel = window.UEBERSICHT_STATUS ? window.UEBERSICHT_STATUS.statusInfo(m).label : "In Kürze";
+            planned.setAttribute("aria-disabled", "true"); planned.textContent = u.titel + " — " + lockedLabel; topics.appendChild(planned);
           }
         });
         field.appendChild(topics);
       } else if (m.status !== "verfuegbar") {
         var planned = document.createElement("div"); planned.className = "nav-planned";
-        planned.setAttribute("aria-disabled", "true"); planned.textContent = "In Kürze"; field.appendChild(planned);
+        var plannedInfo = window.UEBERSICHT_STATUS ? window.UEBERSICHT_STATUS.statusInfo(m) : { label: "Geplant" };
+        planned.setAttribute("aria-disabled", "true"); planned.textContent = plannedInfo.label + " · noch keine Lerninhalte"; field.appendChild(planned);
       }
       groupLi.appendChild(field);
       sub.appendChild(groupLi);

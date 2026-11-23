@@ -105,6 +105,15 @@
 .overview-lesson.planned { border-style: dashed; color: var(--farbe-geplant-tekst); background: var(--farbe-geplant-flaeche); }
 .overview-lesson.planned .modul-status { margin-top: 0; color: var(--farbe-geplant-tekst); }
 .overview-planned { margin: 0; padding: 0 1rem 1rem 2.6rem; color: var(--farbe-geplant-tekst); }
+.overview-coverage-hint { margin: 0; padding: 0 1rem .8rem 2.6rem; color: var(--farbe-text-leise); }
+.overview-legend { margin: 0 0 1.25rem; padding: .9rem 1rem; border: 1px solid var(--farbe-rahmen); border-radius: var(--radius); background: var(--farbe-flaeche); }
+.overview-legend dl { display: grid; gap: .55rem; margin: .4rem 0 0; }
+.overview-legend div { display: grid; grid-template-columns: minmax(8rem, 11rem) 1fr; gap: .2rem .8rem; }
+.overview-legend dt { font-weight: 700; }
+.overview-legend dd { margin: 0; }
+@media (max-width: 40rem) {
+  .overview-legend div { grid-template-columns: 1fr; }
+}
 #jahre { display: block; }
 #jahre > .overview-year { height: auto; align-self: start; }
 @media (max-width: 560px) {

@@ -1,0 +1,49 @@
+.diagnose-banner,
+.diagnose-kette,
+.diagnose-block,
+.diagnose-ergebnis,
+.diagnose-hilfe-text {
+  border: 2px solid var(--farbe-rahmen);
+  border-radius: .75rem;
+  background: var(--farbe-flaeche);
+  color: var(--farbe-text);
+}
+.diagnose-banner { margin: 0 0 1rem; padding: .9rem 1rem; }
+.diagnose-banner strong { display: block; margin-bottom: .25rem; }
+.diagnose-kette {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; padding: .8rem;
+  list-style: none;
+}
+.diagnose-kette li {
+  flex: 1 1 8rem; min-width: 0; padding: .7rem; border: 2px solid var(--farbe-rahmen);
+  border-radius: .6rem; text-align: center; overflow-wrap: anywhere;
+}
+.diagnose-kette li + li::before { content: "Weg: "; font-weight: 700; }
+.diagnose-hinweis, .diagnose-plan, .diagnose-stand { overflow-wrap: anywhere; }
+.diagnose-aktionen, .knopf-reihe { display: flex; flex-wrap: wrap; gap: .5rem; }
+.diagnose-aktionen .knopf, .diagnose-hilfen .knopf, .diagnose-form .knopf { min-height: 44px; }
+.diagnose-aktionen .knopf:focus-visible,
+.diagnose-hilfen .knopf:focus-visible,
+.diagnose-form .knopf:focus-visible,
+.diagnose-option:focus-within,
+.diagnose-block:focus {
+  outline: 3px solid var(--farbe-akzent);
+  outline-offset: 2px;
+}
+.diagnose-protokoll, .diagnose-form, .diagnose-hilfen { margin-top: 1.2rem; }
+.diagnose-block, .diagnose-ergebnis, .diagnose-hilfe-text { margin: .6rem 0; padding: .8rem 1rem; }
+.diagnose-form fieldset { border: 2px solid var(--farbe-rahmen); border-radius: .75rem; margin: .8rem 0; padding: .8rem; }
+.diagnose-option {
+  display: flex; gap: .7rem; align-items: flex-start; margin: .45rem 0; padding: .7rem;
+  border: 2px solid var(--farbe-rahmen); border-radius: .6rem; cursor: pointer;
+}
+.diagnose-option:has(:checked) { border-color: var(--farbe-akzent); font-weight: 700; }
+.diagnose-ergebnis[tabindex="-1"]:focus { outline: 3px solid var(--farbe-akzent); outline-offset: 2px; }
+@media (max-width: 40rem) {
+  .diagnose-kette { display: grid; }
+}
+@media (forced-colors: active) {
+  .diagnose-banner, .diagnose-kette, .diagnose-block, .diagnose-ergebnis, .diagnose-option {
+    border-color: CanvasText; background: Canvas; color: CanvasText; forced-color-adjust: none;
+  }
+}

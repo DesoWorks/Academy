@@ -28,7 +28,7 @@
       jahr: 1,
       titel: "1. Ausbildungsjahr",
       module: [
-        { id: "lf1", lernfeld: "Lernfeld 1", titel: "Ausbildungsbetrieb und berufliche Rolle", status: "verfuegbar",
+        { id: "lf1", lernfeld: "Lernfeld 1", titel: "Ausbildungsbetrieb und berufliche Rolle", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf1-betrieb-aufgaben", typ: "lektion", titel: "Dein Ausbildungsbetrieb und deine Aufgaben", beschreibung: "Betrieb, Abteilung und Team unterscheiden; Aufgaben und Ansprechpersonen einordnen.", page: "lf1-ausbildungsbetrieb", status: "verfuegbar", datei: "module/lf1-ausbildungsbetrieb.html" },
             { id: "lf1-leitbild-ziele", typ: "lektion", titel: "Woran orientiert sich ein Betrieb?", beschreibung: "Ökonomische, ökologische und soziale Ziele sowie das Leitbild unterscheiden.", page: "lf1-leitbild", status: "verfuegbar", datei: "module/lf1-leitbild.html" },
@@ -42,7 +42,7 @@
             { id: "lf1-reflexion", typ: "lektion", titel: "Rolle und eigenes Handeln reflektieren", beschreibung: "Eine fiktive berufliche Situation auswerten und einen nächsten Entwicklungsschritt benennen.", page: "lf1-reflexion", status: "verfuegbar", datei: "module/lf1-reflexion.html" },
             { id: "lf1-lernziel", typ: "lernzielkontrolle", titel: "LF1 Lernzielkontrolle", beschreibung: "24 Fragen zu den vorhandenen Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf1-lernziel", status: "verfuegbar", datei: "module/lf1-lernziel.html" }
           ] },
-        { id: "lf2", lernfeld: "Lernfeld 2", titel: "Arbeitsplätze nach Kundenwunsch ausstatten", status: "verfuegbar",
+        { id: "lf2", lernfeld: "Lernfeld 2", titel: "Arbeitsplätze nach Kundenwunsch ausstatten", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf2-kundenbedarf", typ: "lektion", titel: "Kundenbedarf verstehen", beschreibung: "Fiktiven Auftrag in Wünsche, Anforderungen und offene Rückfragen gliedern.", page: "lf2-kundenbedarf", status: "verfuegbar", datei: "module/lf2-kundenbedarf.html" },
             { id: "lf2-kriterien", typ: "lektion", titel: "Anforderungen in Kriterien übersetzen", beschreibung: "Pflicht- und Wunschkriterien aus dem Bedarf ableiten.", page: "lf2-kriterien", status: "verfuegbar", datei: "module/lf2-kriterien.html" },
@@ -58,7 +58,7 @@
             { id: "lf2-auswertung", typ: "lektion", titel: "Auftrag auswerten und verbessern", beschreibung: "Fiktiven Auftrag anhand von Kriterien auswerten und Verbesserungen ableiten.", page: "lf2-auswertung", status: "verfuegbar", datei: "module/lf2-auswertung.html" },
             { id: "lf2-lernziel", typ: "lernzielkontrolle", titel: "LF2 Lernzielkontrolle", beschreibung: "24 Fragen zu den vorhandenen Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf2-lernziel", status: "verfuegbar", datei: "module/lf2-lernziel.html" }
           ] },
-        { id: "lf3", lernfeld: "Lernfeld 3", titel: "Netzwerkgrundlagen und Client-Anbindung", status: "verfuegbar",
+        { id: "lf3", lernfeld: "Lernfeld 3", titel: "Netzwerkgrundlagen und Client-Anbindung", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf3-client-anbindung", typ: "lektion", titel: "Client-Anbindung: vom Anschluss bis zur Verbindung", beschreibung: "Bausteine einer fiktiven Client-Anbindung benennen und eine Verbindungsskizze lesen.", page: "lf3-client-anbindung", status: "verfuegbar", datei: "module/lf3-client-anbindung.html" },
             { id: "lf3-ipv4-konfiguration", typ: "lektion", titel: "IPv4-Konfiguration eines Clients lesen", beschreibung: "Adresse, Präfix/Netzmaske und Gateway einer fiktiven Client-Anzeige lesen und mit einer Testnetz-Karte vergleichen.", page: "lf3-ipv4-konfiguration", status: "verfuegbar", datei: "module/lf3-ipv4-konfiguration.html" },
@@ -71,9 +71,10 @@
             { id: "lf3-netzmaske", typ: "lektion", titel: "Netzmaske und Netz-/Geräteanteil", beschreibung: "Lektion 2: Beispiel 192.168.1.20/24.",
               status: "verfuegbar", datei: "module/netzmaske.html", page: "netzmaske" },
             { id: "lf3-subnetting", typ: "lektion", titel: "Subnetting: /24 in zwei /25-Netze teilen", beschreibung: "Lektion 3: zwei gleich große Teilnetze Schritt für Schritt.", page: "subnetting", status: "verfuegbar", datei: "module/subnetting.html" },
+            { id: "lf3-diagnose-pilot", typ: "lektion", titel: "Diagnoselabor: Dienst nicht erreichbar", beschreibung: "Fiktive Aufträge untersuchen. Der Pilotstand bleibt von den Lernzielkontrollen getrennt.", page: "lf3-diagnose-labor", status: "verfuegbar", datei: "module/lf3-diagnose-labor.html", fortschritt: "isoliert" },
             { id: "lf3-lernziel", typ: "lernzielkontrolle", titel: "LF3 Lernzielkontrolle", beschreibung: "24 Fragen zu den vorhandenen Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf3-lernziel", status: "verfuegbar", datei: "module/lf3-lernziel.html" },
           ] },
-        { id: "lf4", lernfeld: "Lernfeld 4", titel: "Schutzbedarf und Grundlagen der IT-Sicherheit", status: "verfuegbar",
+        { id: "lf4", lernfeld: "Lernfeld 4", titel: "Schutzbedarf und Grundlagen der IT-Sicherheit", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf4-schutzbedarf", typ: "lektion", titel: "Schutzbedarf erkennen", beschreibung: "Hohen, mittleren und niedrigen Schutzbedarf an fiktiven Beispielen unterscheiden.", page: "lf4-schutzbedarf", status: "verfuegbar", datei: "module/lf4-schutzbedarf.html" },
             { id: "lf4-schutzziele", typ: "lektion", titel: "Schutzziele unterscheiden", beschreibung: "Vertraulichkeit, Integrität und Verfügbarkeit an fiktiven Beispielen unterscheiden.", page: "lf4-schutzziele", status: "verfuegbar", datei: "module/lf4-schutzziele.html" },
@@ -83,7 +84,7 @@
             { id: "lf4-vorfall", typ: "lektion", titel: "Einen Vorfall beobachten und melden", beschreibung: "Beobachtung, Meldung und offenen Stand trennen, ohne Ursache zu behaupten.", page: "lf4-vorfall", status: "verfuegbar", datei: "module/lf4-vorfall.html" },
             { id: "lf4-lernziel", typ: "lernzielkontrolle", titel: "LF4 Lernzielkontrolle", beschreibung: "24 Fragen zu den vorhandenen Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf4-lernziel", status: "verfuegbar", datei: "module/lf4-lernziel.html" }
           ] },
-        { id: "lf5", lernfeld: "Lernfeld 5", titel: "Programmiergrundlagen und Datenverwaltung", status: "verfuegbar",
+        { id: "lf5", lernfeld: "Lernfeld 5", titel: "Programmiergrundlagen und Datenverwaltung", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf5-anweisung", typ: "lektion", titel: "Anweisung und Daten unterscheiden", beschreibung: "An einer fiktiven Übungskarte Anweisung und Daten trennen.", page: "lf5-anweisung", status: "verfuegbar", datei: "module/lf5-anweisung.html" },
             { id: "lf5-werte", typ: "lektion", titel: "Einfache Werte lesen", beschreibung: "Text, ganze Zahl und Ja oder Nein an einer fiktiven Karte unterscheiden.", page: "lf5-werte", status: "verfuegbar", datei: "module/lf5-werte.html" },
@@ -103,7 +104,7 @@
       jahr: 2,
       titel: "2. Ausbildungsjahr",
       module: [
-        { id: "lf6", lernfeld: "Lernfeld 6", titel: "Support und Bearbeitung von Servicefällen", status: "verfuegbar",
+        { id: "lf6", lernfeld: "Lernfeld 6", titel: "Support und Bearbeitung von Servicefällen", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf6-anfrage", typ: "lektion", titel: "Eine Serviceanfrage einordnen", beschreibung: "Eine fiktive Anfrage notieren, ohne die Ursache festzulegen.", page: "lf6-anfrage", status: "verfuegbar", datei: "module/lf6-anfrage.html" },
             { id: "lf6-fragen", typ: "lektion", titel: "Die Störung enger fassen", beschreibung: "Eine fiktive Serviceanfrage durch sichere Rückfragen eingrenzen.", page: "lf6-fragen", status: "verfuegbar", datei: "module/lf6-fragen.html" },
@@ -118,7 +119,7 @@
             { id: "lf6-qualitaet", typ: "lektion", titel: "Den Bearbeitungsprozess reflektieren", beschreibung: "Einen fiktiven Bearbeitungsprozess auswerten und eine prüfbare Maßnahme zur Qualität vorschlagen.", page: "lf6-qualitaet", status: "verfuegbar", datei: "module/lf6-qualitaet.html" },
             { id: "lf6-kontrolle", typ: "lernzielkontrolle", titel: "LF6 Lernzielkontrolle", beschreibung: "24 Fragen zu den vorhandenen Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf6-kontrolle", status: "verfuegbar", datei: "module/lf6-kontrolle.html" }
           ] },
-        { id: "lf7", lernfeld: "Lernfeld 7", titel: "Cyber-physische Systeme ergänzen", status: "verfuegbar",
+        { id: "lf7", lernfeld: "Lernfeld 7", titel: "Cyber-physische Systeme ergänzen", status: "verfuegbar", abdeckung: "im-aufbau",
           unterthemen: [
             { id: "lf7-system", typ: "lektion", titel: "Ein cyber-physisches System erkennen", beschreibung: "Kundenauftrag, Sensor, Steuerung, Aktor und IT-System an einer fiktiven Raumklima-Station unterscheiden.", page: "lf7-system", status: "verfuegbar", datei: "module/lf7-system.html" },
             { id: "lf7-schnittstelle", typ: "lektion", titel: "Den Datenfluss an der Schnittstelle beschreiben", beschreibung: "Physische Größe, digitalen Messwert, Einheit, Zeitpunkt und vorgesehenen Nachrichtenaustausch unterscheiden.", page: "lf7-schnittstelle", status: "verfuegbar", datei: "module/lf7-schnittstelle.html" },
@@ -130,7 +131,7 @@
             { id: "lf7-sicherheit", typ: "lektion", titel: "Betriebssicherheit und Datensicherheit unterscheiden", beschreibung: "Sicheren Betrieb, Vertraulichkeit, Integrität und Verfügbarkeit am Lernmodell abgrenzen.", page: "lf7-sicherheit", status: "verfuegbar", datei: "module/lf7-sicherheit.html" },
             { id: "lf7-kontrolle", typ: "lernzielkontrolle", titel: "LF7 Lernzielkontrolle", beschreibung: "24 Fragen nur zu den acht neuen LF7-Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf7-kontrolle", status: "verfuegbar", datei: "module/lf7-kontrolle.html" }
           ] },
-        { id: "lf8", lernfeld: "Lernfeld 8", titel: "Datenaustausch zwischen Systemen", status: "kommt-bald",
+        { id: "lf8", lernfeld: "Lernfeld 8", titel: "Datenaustausch zwischen Systemen", status: "kommt-bald", abdeckung: "in-vorbereitung",
           unterthemen: [
             { id: "lf8-quellen", typ: "lektion", titel: "Datenquellen und ihren Zweck unterscheiden", beschreibung: "Kasse und Schichttabelle als Quellen eines fiktiven Auftrags benennen und ihren Zweck beschreiben.", page: "lf8-quellen", status: "verfuegbar", datei: "module/lf8-quellen.html" },
             { id: "lf8-struktur", typ: "lektion", titel: "Struktur, Format und Zugriff einer Quelle beschreiben", beschreibung: "Felder, Format und Zugriff einer fiktiven Quelle beschreiben und fehlende Angaben sichtbar lassen.", page: "lf8-struktur", status: "verfuegbar", datei: "module/lf8-struktur.html" },
@@ -142,7 +143,7 @@
             { id: "lf8-reflexion", typ: "lektion", titel: "Werkzeug und Dokumentationsqualität beurteilen", beschreibung: "Das gewählte Werkzeug und die eigene Notiz an einem fiktiven Fall beurteilen.", page: "lf8-reflexion", status: "verfuegbar", datei: "module/lf8-reflexion.html" },
             { id: "lf8-kontrolle", typ: "lernzielkontrolle", titel: "LF8 Lernzielkontrolle", beschreibung: "24 Fragen zu den acht LF8-Lektionen. Nach der Abgabe gesperrt. Zurücksetzen nur mit dem Passwort der Lernzielkontrolle.", page: "lf8-kontrolle", status: "verfuegbar", datei: "module/lf8-kontrolle.html" }
           ] },
-        { id: "lf9", lernfeld: "Lernfeld 9", titel: "Planung und Einrichtung von Netzwerken und Diensten", status: "kommt-bald",
+        { id: "lf9", lernfeld: "Lernfeld 9", titel: "Planung und Einrichtung von Netzwerken und Diensten", status: "kommt-bald", abdeckung: "in-vorbereitung",
           unterthemen: [
             { id: "lf9-anforderung", typ: "lektion", titel: "Anforderungen an das Netzwerk mit dem Kunden klären", beschreibung: "Anforderungen an das Netzwerk im fiktiven Kundenauftrag klären.", page: "lf9-anforderung", status: "verfuegbar", datei: "module/lf9-anforderung.html" },
             { id: "lf9-ist", typ: "lektion", titel: "Den vorhandenen Zustand beschreiben, ohne ihn zu verändern", beschreibung: "Den vorhandenen Zustand im fiktiven Beispiel beschreiben, ohne ihn zu verändern.", page: "lf9-ist", status: "verfuegbar", datei: "module/lf9-ist.html" },
@@ -160,10 +161,67 @@
       jahr: 3,
       titel: "3. Ausbildungsjahr",
       module: [
-        { id: "lf10b", lernfeld: "Lernfeld 10b", titel: "Serveradministration und Automatisierung", status: "kommt-bald" },
-        { id: "lf11b", lernfeld: "Lernfeld 11b", titel: "Sicherer Betrieb vernetzter IT-Systeme", status: "kommt-bald" },
-        { id: "lf12b", lernfeld: "Lernfeld 12b", titel: "Planung und Umsetzung eines Systemintegrationsprojekts", status: "kommt-bald" }
+        { id: "lf10b", lernfeld: "Lernfeld 10b", titel: "Serveradministration und Automatisierung", status: "kommt-bald", abdeckung: "geplant" },
+        { id: "lf11b", lernfeld: "Lernfeld 11b", titel: "Sicherer Betrieb vernetzter IT-Systeme", status: "kommt-bald", abdeckung: "geplant" },
+        { id: "lf12b", lernfeld: "Lernfeld 12b", titel: "Planung und Umsetzung eines Systemintegrationsprojekts", status: "kommt-bald", abdeckung: "geplant" }
       ]
     }
   ];
+
+  var ABDECKUNG = {
+    "verfuegbar": {
+      label: "Verfügbar",
+      hinweis: "Dieses Lernfeld kann geöffnet und bearbeitet werden. Das allein sagt nicht, dass der berufliche Lernfeldumfang vollständig ist."
+    },
+    "im-aufbau": {
+      label: "Im Aufbau",
+      hinweis: "Vorhandene Karten sind bearbeitbar. Der Lernfeldumfang ist noch nicht vollständig abgedeckt."
+    },
+    "in-vorbereitung": {
+      label: "In Vorbereitung",
+      hinweis: "Es gibt Inhalte. Sie sind noch nicht zur Bearbeitung freigegeben."
+    },
+    geplant: {
+      label: "Geplant",
+      hinweis: "Dieses Lernfeld ist angekündigt und hat noch keine nutzbaren Lerninhalte."
+    }
+  };
+
+  function abdeckungVon(field) {
+    if (field && ABDECKUNG[field.abdeckung]) return field.abdeckung;
+    if (field && field.status === "verfuegbar") return "im-aufbau";
+    return field && field.unterthemen && field.unterthemen.length ? "in-vorbereitung" : "geplant";
+  }
+  function statusInfo(field) {
+    var key = abdeckungVon(field);
+    return {
+      key: key,
+      label: ABDECKUNG[key].label,
+      hinweis: ABDECKUNG[key].hinweis,
+      offen: !!(field && field.status === "verfuegbar")
+    };
+  }
+  function lektionOffen(lesson, field) {
+    return !!(field && field.status === "verfuegbar" && lesson && lesson.status === "verfuegbar" && lesson.datei);
+  }
+  function feldzeile(field, abgeschlossen) {
+    var info = statusInfo(field);
+    if (info.offen) return info.label + " · " + abgeschlossen + " abgeschlossen";
+    if (info.key === "in-vorbereitung") return info.label + " · nicht freigegeben";
+    return info.label + " · noch keine Lerninhalte";
+  }
+  global.UEBERSICHT_STATUS = {
+    abdeckung: ABDECKUNG,
+    abdeckungVon: abdeckungVon,
+    statusInfo: statusInfo,
+    lektionOffen: lektionOffen,
+    feldzeile: feldzeile
+  };
 })(typeof window !== "undefined" ? window : globalThis);
+if (typeof module !== "undefined" && module.exports) {
+  var academyRoot = typeof window !== "undefined" ? window : globalThis;
+  module.exports = {
+    MODULE_DATEN: academyRoot.MODULE_DATEN,
+    UEBERSICHT_STATUS: academyRoot.UEBERSICHT_STATUS
+  };
+}

@@ -19,11 +19,20 @@
   }
   function allLessons(field) { return (field.unterthemen || []).filter(function (x) { return x.typ !== "werkzeug"; }); }
   function fieldAvailable(field) { return !!field && field.status === "verfuegbar"; }
-  function isAvailable(lesson, field) { return fieldAvailable(field) && lesson.status === "verfuegbar" && !!lesson.datei; }
+  function isAvailable(lesson, field) {
+    return window.UEBERSICHT_STATUS
+      ? window.UEBERSICHT_STATUS.lektionOffen(lesson, field)
+      : fieldAvailable(field) && lesson.status === "verfuegbar" && !!lesson.datei;
+  }
   function completionCount(lessons, field) {
     return lessons.filter(function (lesson) {
-      return isAvailable(lesson, field) && window.LERNFORTSCHRITT && window.LERNFORTSCHRITT.abgeschlossen(lesson.id);
+      return lesson.fortschritt !== "isoliert" && isAvailable(lesson, field) && window.LERNFORTSCHRITT && window.LERNFORTSCHRITT.abgeschlossen(lesson.id);
     }).length;
+  }
+  function coverage(field) {
+    return window.UEBERSICHT_STATUS
+      ? window.UEBERSICHT_STATUS.statusInfo(field)
+      : { key: "geplant", label: "Geplant", hinweis: "", offen: false };
   }
   function makeLesson(lesson, field) {
     var li = erzeuge("li", isAvailable(lesson, field) ? "overview-lesson available" : "overview-lesson planned");
@@ -42,7 +51,7 @@
     } else {
       li.setAttribute("aria-disabled", "true");
       li.appendChild(erzeuge("span", "unterthema-titel", lesson.titel));
-      li.appendChild(erzeuge("span", "modul-status", "◷ In Kürze"));
+      li.appendChild(erzeuge("span", "modul-status", coverage(field).label));
     }
     return li;
   }
@@ -66,13 +75,14 @@
     var title = erzeuge("span", "overview-field-title", (field.lernfeld ? field.lernfeld + " · " : "") + field.titel);
     summary.appendChild(title);
     var lessons = allLessons(field);
-    var available = lessons.filter(function (lesson) { return isAvailable(lesson, field); }).length;
-    var planned = lessons.length - available;
+    var info = coverage(field);
     var completed = completionCount(lessons, field);
-    var status = lessons.length && fieldAvailable(field)
-      ? available + " verfügbar" + (planned ? " · " + planned + " In Kürze" : "") + " · " + completed + " abgeschlossen"
-      : "In Kürze";
+    var status = window.UEBERSICHT_STATUS
+      ? window.UEBERSICHT_STATUS.feldzeile(field, completed)
+      : info.label;
     summary.appendChild(erzeuge("span", "overview-field-count", status));
+    details.dataset.coverage = info.key;
+    details.dataset.access = info.offen ? "offen" : "gesperrt";
     details.appendChild(summary);
     if (lessons.length) {
       var list = erzeuge("ul", "overview-lessons");
@@ -80,9 +90,11 @@
       lessons.forEach(function (lesson) { list.appendChild(makeLesson(lesson, field)); });
       details.appendChild(list);
     } else {
-      var plannedBox = erzeuge("p", "overview-planned", "◷ In Kürze");
+      var plannedBox = erzeuge("p", "overview-planned", coverage(field).label + " · noch keine Lerninhalte");
       plannedBox.setAttribute("aria-disabled", "true"); details.appendChild(plannedBox);
     }
+    var hint = erzeuge("p", "overview-coverage-hint", coverage(field).hinweis);
+    details.appendChild(hint);
     configureDisclosure(details, summary, state, "field:" + field.id, false, !!forceOpen);
     return details;
   }
@@ -119,6 +131,24 @@
       section.setAttribute("aria-labelledby", "einstieg-titel");
       var h = erzeuge("h2", null, "Einstieg"); h.id = "einstieg-titel"; section.appendChild(h);
       var list = erzeuge("ul", "modul-liste"); entry.forEach(function (m) { list.appendChild(makeEntry(m)); }); section.appendChild(list); target.appendChild(section);
+    }
+    if (window.UEBERSICHT_STATUS) {
+      var legend = erzeuge("section", "overview-legend");
+      legend.setAttribute("aria-labelledby", "status-legende");
+      var legendTitle = erzeuge("h2", null, "Was die Status bedeuten");
+      legendTitle.id = "status-legende";
+      legend.appendChild(legendTitle);
+      var definition = erzeuge("dl");
+      Object.keys(window.UEBERSICHT_STATUS.abdeckung).forEach(function (key) {
+        var item = window.UEBERSICHT_STATUS.abdeckung[key];
+        var row = erzeuge("div");
+        row.appendChild(erzeuge("dt", null, item.label));
+        row.appendChild(erzeuge("dd", null, item.hinweis));
+        definition.appendChild(row);
+      });
+      legend.appendChild(definition);
+      legend.appendChild(erzeuge("p", null, "Im aktuellen Modul ist kein Lernfeld als Verfügbar gekennzeichnet. Erreichbare Karten sind nicht dasselbe wie ein vollständig abgedecktes Lernfeld."));
+      target.appendChild(legend);
     }
     years.forEach(function (year) {
       var detail = makeYear(year, state, returningField);

@@ -196,6 +196,11 @@
             },
             {
               "type": "text",
+              "id": "module-lf3-diagnose-labor-html",
+              "text": "module/lf3-diagnose-labor.html — Diagnoselabor: Dienst nicht erreichbar · Lernfeld 3"
+            },
+            {
+              "type": "text",
               "id": "module-lf3-dns-html",
               "text": "module/lf3-dns.html — DNS: Namen und IP-Adressen unterscheiden · Lernfeld 3"
             },

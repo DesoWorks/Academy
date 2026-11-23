@@ -64,6 +64,11 @@
       "size": 2578
     },
     {
+      "path": "web/css/lf3-diagnose.css",
+      "sha256": "f0bf11b2dda034339017e76be904395699efc0d1ff212027a5d6498eadc193fb",
+      "size": 2197
+    },
+    {
       "path": "web/css/lf89-praxis.css",
       "sha256": "d426ff96bcaf81b06c7c8102e65544e7d0c6d31ce37eacc17ba7be1323563370",
       "size": 1697
@@ -90,8 +95,8 @@
     },
     {
       "path": "web/css/startseite.css",
-      "sha256": "2896ef2f81bc109a45a007c7fcb660465cc79a39fd85a0222f17a01bcee9d7dc",
-      "size": 6251
+      "sha256": "d4c8b555a2dc7ec959fdca8496cf4dc90b6a37eef888abb25f2ce153d778e018",
+      "size": 6857
     },
     {
       "path": "web/css/styles.css",
@@ -115,8 +120,8 @@
     },
     {
       "path": "web/index.html",
-      "sha256": "4b713931c409da250ffb7c345365b942b32db4ce934e0d451a82f73454af8131",
-      "size": 2309
+      "sha256": "20a4f46269fe536b97e11d2f245b9ce37a6876729f84758a5f0822f0e414bb22",
+      "size": 2352
     },
     {
       "path": "web/js/anzeige-glossar.js",
@@ -307,6 +312,16 @@
       "path": "web/js/lf3-dhcp.js",
       "sha256": "32d9ced9664ce309f11cf47a7220c78f9b6ff5c07f68a339f831ca588554e1c7",
       "size": 9210
+    },
+    {
+      "path": "web/js/lf3-diagnose-kern.js",
+      "sha256": "dfeab8150dc99424eedb381a314b937990ba92274b308c2276a2f34f97f18617",
+      "size": 18553
+    },
+    {
+      "path": "web/js/lf3-diagnose-labor.js",
+      "sha256": "253cff8e4d424e0249491f983829136853462389ca36045e1d20ff0a3178297d",
+      "size": 13943
     },
     {
       "path": "web/js/lf3-dns.js",
@@ -665,13 +680,13 @@
     },
     {
       "path": "web/js/module-daten.js",
-      "sha256": "dcada04ac5920e27ebb2378b54e1707d08c8951607bdce1179ae2a6aaed8e285",
-      "size": 30814
+      "sha256": "03a733d49db85cc591ea72e3597e702c06917ecc7eb5dee1046ea1ed96b07c93",
+      "size": 33519
     },
     {
       "path": "web/js/navigation.js",
-      "sha256": "433b7f055b41b3a6a74e201ebef8d1c2609b066c11668a3809846b282c0ef80a",
-      "size": 13328
+      "sha256": "e136e1e37175166d3ebde5f2adb82451723b785d9792cd2990014eccf3bd2e1a",
+      "size": 13736
     },
     {
       "path": "web/js/netzmaske.js",
@@ -710,8 +725,8 @@
     },
     {
       "path": "web/js/startseite.js",
-      "sha256": "518f00470aaf3bee80a846044b70806e8a0abcd2ac7f9aea37943da31209d06b",
-      "size": 8350
+      "sha256": "31ae1b3504a1d633944e392ad7226d91f6449890cc58db8f4b67cf7c9e02f2da",
+      "size": 9707
     },
     {
       "path": "web/js/subnetting.js",
@@ -902,6 +917,11 @@
       "path": "web/module/lf3-dhcp.html",
       "sha256": "60d5fc99a93f1934f832b41aa17f48842b4adeb7cda6fab98585dafbfe17ce51",
       "size": 7849
+    },
+    {
+      "path": "web/module/lf3-diagnose-labor.html",
+      "sha256": "335c6a43eb5020424aff3eca2945eedf4c8233cf99f0076a2a8a9d9dc166e008",
+      "size": 2703
     },
     {
       "path": "web/module/lf3-dns.html",
