@@ -245,7 +245,7 @@ test("Rollenmatrix: Dunkel besteht nur aus Aliasen auf --dw-*, ohne Hexwerte", (
   const tokens = read("src/renderer/design-tokens.css");
   const dunkel = cssBlock(tokens, ":root:not([data-academy-theme]),");
   const roles = roleValues(dunkel);
-  assert.deepEqual(Object.keys(roles).sort(), ["akzent", "akzent-dunkel", "aktiv-tekst", "fokus", "flaeche", "geplant-flaeche", "geplant-tekst", "hintergrund", "hover-flaeche", "kontroll-flaeche", "kontroll-text", "rahmen", "text", "text-leise"].sort());
+  assert.deepEqual(Object.keys(roles).sort(), ["akzent", "akzent-dunkel", "aktiv-tekst", "erklaerung-flaeche", "fehler", "fokus", "flaeche", "geplant-flaeche", "geplant-tekst", "hintergrund", "hinweis-flaeche", "hinweis-text", "hover-flaeche", "kontroll-flaeche", "kontroll-text", "leiste", "ok", "rahmen", "rueckzeile", "text", "text-leise", "warn"].sort());
   for (const value of Object.values(roles)) assert.match(value, /^var\(--dw-[a-z-]+\)$/);
   assert.doesNotMatch(dunkel, /#[0-9a-fA-F]{3,8}/);
   assert.equal(roles.fokus, "var(--dw-focus)");

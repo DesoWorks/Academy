@@ -30,6 +30,7 @@
   function buildNavigation() {
     var host = document.getElementById("navigation");
     if (!host) return;
+    host.setAttribute("aria-label", "Academy-Navigation");
     var current = document.body.getAttribute("data-seite") || "";
     var list = el("ul", "navigation");
     NAV.forEach(function (entry) {

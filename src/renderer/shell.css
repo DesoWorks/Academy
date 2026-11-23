@@ -248,3 +248,12 @@ body.modul-offen #ergebnis:empty { display: none; }
 
 .fehler { color: var(--fehler); }
 .ok { color: var(--ok); }
+
+/* Schmale Fenster: nur der horizontale Innenabstand sinkt.
+   Senkrechte Trefferfläche und Fokusumriss bleiben. */
+@media (max-width: 840px) {
+  .navigation a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}

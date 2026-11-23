@@ -60,6 +60,14 @@
   --farbe-geplant-flaeche: var(--dw-surface);
   --farbe-geplant-tekst: var(--dw-text-muted);
   --farbe-fokus: var(--dw-focus);
+  --farbe-hinweis-flaeche: var(--dw-surface-raised);
+  --farbe-hinweis-text: var(--dw-text);
+  --farbe-erklaerung-flaeche: var(--dw-surface-raised);
+  --farbe-leiste: var(--dw-border);
+  --farbe-rueckzeile: var(--dw-canvas);
+  --farbe-ok: var(--dw-ok);
+  --farbe-warn: var(--dw-focus);
+  --farbe-fehler: var(--dw-accent-hover);
 }
 
 /* Quelle: modules/it-systemintegration/web/css/styles.css, :root, Zeilen 5-11 (Stand 2026-11-22). */
@@ -78,6 +86,14 @@
   --farbe-geplant-tekst: #4d5866;
   --farbe-rahmen: #c9d4e4;
   --farbe-fokus: var(--farbe-akzent);
+  --farbe-hinweis-flaeche: #eef4fc;
+  --farbe-hinweis-text: #1b2430;
+  --farbe-erklaerung-flaeche: #f1f5fb;
+  --farbe-leiste: #dde6f2;
+  --farbe-rueckzeile: #f1f5fa;
+  --farbe-ok: #1b7a3d;
+  --farbe-warn: #8a4b00;
+  --farbe-fehler: #b4251d;
 }
 
 /* Quelle: modules/it-systemintegration/web/css/styles.css, html[data-theme="kontrast"], Zeilen 441-442 (Stand 2026-11-22). */
@@ -96,4 +112,12 @@
   --farbe-geplant-tekst: #111;
   --farbe-rahmen: #333;
   --farbe-fokus: var(--farbe-akzent);
+  --farbe-hinweis-flaeche: #fff;
+  --farbe-hinweis-text: #000;
+  --farbe-erklaerung-flaeche: #fff;
+  --farbe-leiste: #000;
+  --farbe-rueckzeile: #fff;
+  --farbe-ok: #075b21;
+  --farbe-warn: #653700;
+  --farbe-fehler: #8a0000;
 }

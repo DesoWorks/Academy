@@ -20,7 +20,36 @@
     .opt input{margin-top:.3rem}
     .result{margin-top:1rem;padding:1rem;border:2px solid var(--primaer,#0754a6);border-radius:.75rem}
     .result[hidden]{display:none}
-    .skizze{padding:1rem;border:2px solid var(--farbe-rahmen);border-radius:.75rem;background:var(--farbe-flaeche);color:var(--farbe-text);font-family:monospace;white-space:pre-wrap;line-height:1.7}
+    .weg{--weg-flaeche:#f4fbfa;--weg-karte:#ffffff;--weg-linie:#0b6e66;--weg-text:#102420;--weg-leise:#1c4e49;margin:1rem 0 1.2rem;padding:1.15rem 1rem 1rem;border:2px solid var(--weg-linie);border-radius:1rem;background:var(--weg-flaeche);color:var(--weg-text);max-width:100%}
+    html[data-theme="dunkel"] .weg{--weg-flaeche:#0c1e26;--weg-karte:#12303a;--weg-linie:#5ee0d6;--weg-text:#f7fffe;--weg-leise:#d7f6f3}
+    html[data-theme="kontrast"] .weg{--weg-flaeche:#ffffff;--weg-karte:#ffffff;--weg-linie:#000000;--weg-text:#000000;--weg-leise:#000000;border-width:3px}
+    .weg-kopf h3{margin:0;text-align:center;font-size:1.35rem;line-height:1.25;color:var(--weg-text)}
+    .weg-kopf p{margin:.35rem 0 0;text-align:center;color:var(--weg-leise)}
+    .weg-kette{display:flex;flex-wrap:nowrap;justify-content:center;align-items:stretch;gap:.35rem;list-style:none;margin:.95rem 0 .35rem;padding:0}
+    .weg-glied{display:flex;flex-direction:row;align-items:center;gap:.3rem;flex:1 1 0;min-width:0;max-width:100%}
+    .weg-station{flex:1 1 auto;min-width:0;display:grid;justify-items:center;align-content:center;gap:.12rem;padding:.7rem .35rem .6rem;border:2px solid var(--weg-linie);border-radius:.85rem;background:var(--weg-karte);text-align:center}
+    html[data-theme="kontrast"] .weg-station{border-width:3px}
+    .weg-symbol{display:block;width:2.6rem;height:2.6rem;color:var(--weg-linie)}
+    .weg-symbol svg,.weg-pfeil-icon svg{display:block;width:100%;height:100%}
+    .weg-name,.weg-rolle{display:block;max-width:100%;overflow-wrap:anywhere}
+    .weg-name{font-weight:700;line-height:1.15;font-size:.92rem}
+    .weg-rolle{color:var(--weg-leise);font-size:.82rem;line-height:1.2}
+    .weg-pfeil{flex:0 0 4.4rem;display:grid;justify-items:center;align-content:center;gap:.1rem;margin:0;color:var(--weg-text);font-size:.68rem;font-weight:700;line-height:1.15;text-align:center}
+    .weg-pfeil-icon{display:block;width:1.7rem;height:1.7rem;color:var(--weg-linie)}
+    .weg-formel,.weg-folge,.weg-hinweis{margin:.45rem 0 0;text-align:center}
+    .weg-formel{font-weight:700}
+    .weg-hinweis{color:var(--weg-leise)}
+    .weg-station:focus-visible{outline:3px solid var(--weg-linie);outline-offset:3px}
+    @media (max-width:46rem){
+      .weg-kette{flex-wrap:wrap}
+      .weg-glied{flex:1 1 100%;flex-direction:column}
+      .weg-pfeil{flex-basis:auto;font-size:.78rem}
+      .weg-pfeil-icon{transform:rotate(90deg)}
+    }
+    @media (forced-colors:active){
+      .weg,.weg-station{border-color:CanvasText;background:Canvas;color:CanvasText;forced-color-adjust:none}
+      .weg-symbol,.weg-pfeil-icon,.weg-kopf p,.weg-rolle,.weg-hinweis{color:CanvasText}
+    }
   </style>
 </head>
 <body data-page="lf3-client-anbindung" data-base="../">
@@ -61,16 +90,48 @@
       <h2>Der Übungsauftrag: Mira-01</h2>
       <p>Im fiktiven Schulungsraum soll der Übungs-Laptop <strong>Mira-01</strong> eine vorbereitete Verbindung zum isolierten Testnetz „Lernnetz“ erhalten. Du sollst die bereitgestellte Skizze lesen und die Geräte- und Verbindungskarten zuordnen.</p>
       <h3>Verbindungsskizze</h3>
-      <div class="skizze" role="img" aria-label="Skizze der Verbindung von Mira-01 über ein Netzwerkkabel und die Netzwerkdose zum Switch und weiter ins fiktive Lernnetz">Mira-01 (Client)
-    │ Netzwerkkabel
-    ▼
-Netzwerkdose im Schulungsraum
-    │ Gebäudeverkabelung
-    ▼
-Switch (verbindet Geräte im lokalen Netz)
-    │ Verbindung zum Übungsnetz
-    ▼
-Fiktives Testnetz „Lernnetz“</div>
+      <figure class="weg">
+        <figcaption class="weg-kopf">
+          <h3 id="weg-titel">Vom Client zum Lernnetz</h3>
+          <p>Vereinfachter, fiktiver Verbindungsweg</p>
+        </figcaption>
+        <ol class="weg-kette" aria-labelledby="weg-titel">
+          <li class="weg-glied">
+            <div class="weg-station" data-station="client">
+              <span class="weg-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect x="7" y="8" width="34" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M18 36h12M24 30v6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+              <span class="weg-name">Mira-01</span>
+              <span class="weg-rolle">Client</span>
+            </div>
+            <p class="weg-pfeil"><span class="weg-pfeil-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h14M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Netzwerk&shy;kabel</span></p>
+          </li>
+          <li class="weg-glied">
+            <div class="weg-station" data-station="dose">
+              <span class="weg-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect x="12" y="7" width="24" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="18" y="18" width="12" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M24 26v7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+              <span class="weg-name">Netzwerk<br>dose</span>
+              <span class="weg-rolle">Anschluss</span>
+            </div>
+            <p class="weg-pfeil"><span class="weg-pfeil-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h14M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Gebäude&shy;verkabelung</span></p>
+          </li>
+          <li class="weg-glied">
+            <div class="weg-station" data-station="switch">
+              <span class="weg-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect x="5" y="16" width="38" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="14" cy="24" r="2.1" fill="currentColor"/><circle cx="21.5" cy="24" r="2.1" fill="currentColor"/><circle cx="29" cy="24" r="2.1" fill="currentColor"/><circle cx="36.5" cy="24" r="2.1" fill="currentColor"/></svg></span>
+              <span class="weg-name">Switch</span>
+              <span class="weg-rolle">LAN</span>
+            </div>
+            <p class="weg-pfeil"><span class="weg-pfeil-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h14M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Übungs&shy;netz</span></p>
+          </li>
+          <li class="weg-glied weg-glied-ende">
+            <div class="weg-station" data-station="lernnetz">
+              <span class="weg-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M18 34h16.5a7.2 7.2 0 0 0 .6-14.4 9.2 9.2 0 0 0-17.6-2.2A6.4 6.4 0 0 0 18 34z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></span>
+              <span class="weg-name">Lernnetz</span>
+              <span class="weg-rolle">Testnetz</span>
+            </div>
+          </li>
+        </ol>
+        <p class="weg-formel">Client → Anschluss → Vermittlung → Zielnetz</p>
+        <p class="weg-folge">Lesbare Folge: Mira-01, Netzwerkkabel, Netzwerkdose, Gebäudeverkabelung, Switch, fiktives Lernnetz.</p>
+        <p class="weg-hinweis">Schematische Darstellung · kein produktives Netzwerk</p>
+      </figure>
       <div class="steps">
         <article class="step"><h3>Gerät</h3><p>Mira-01 ist das Endgerät, das die Verbindung nutzt.</p></article>
         <article class="step"><h3>Verbindungsweg</h3><p>Kabel und Gebäudeverkabelung bilden in der Skizze den Übertragungsweg.</p></article>

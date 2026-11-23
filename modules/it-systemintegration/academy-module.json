@@ -8,7 +8,7 @@
     "id": "publisher.desoworks",
     "name": "DesoWorks"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "UNLICENSED",
   "language": "de",
   "core": ">=0.3.0 <0.4.0",
@@ -17,7 +17,7 @@
     "content.read",
     "progress.write"
   ],
-  "sizeBytes": 62017,
+  "sizeBytes": 62019,
   "subject": "IT-Systemintegration",
   "audience": "Ausbildung",
   "status": "private",

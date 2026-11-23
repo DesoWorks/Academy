@@ -37,6 +37,9 @@ body {
   background: var(--farbe-hintergrund);
 }
 
+/* Inhaltslinks nutzen die bestehende Akzentrolle, nicht das Browser-Blau. */
+a { color: var(--farbe-akzent-dunkel); }
+
 /* Tastatur: Sprung-Link */
 .skip-link {
   position: absolute;
@@ -56,10 +59,18 @@ button:focus-visible {
   outline: 3px solid var(--farbe-akzent);
   outline-offset: 2px;
 }
+/* Die primäre Schaltfläche ist mit dem Akzent gefüllt. Ein Rahmen in derselben Farbe verschwindet.
+   Die Textfarbe ist in Hell, Dunkel und Kontrast bereits definiert und vom Füllton verschieden. */
+.knopf-haupt:focus-visible {
+  outline: 3px solid var(--farbe-text);
+  outline-offset: 3px;
+}
 
 .kopf {
-  background: linear-gradient(135deg, var(--farbe-kopf-von) 0%, var(--farbe-kopf-bis) 100%);
-  color: var(--farbe-kopf-text);
+  background: var(--farbe-flaeche);
+  color: var(--farbe-text);
+  border-bottom: 1px solid var(--farbe-rahmen);
+  box-shadow: inset 4px 0 0 var(--farbe-akzent);
   padding: 1.5rem 1rem;
 }
 .kopf-inhalt { max-width: 860px; margin: 0 auto; min-width: 0; }
@@ -71,10 +82,9 @@ button:focus-visible {
   text-decoration: none;
 }
 .kopf-logo img { display: block; width: 100%; height: auto; aspect-ratio: 708 / 114; object-fit: contain; }
-.kopf-logo:focus-visible { outline: 3px solid #ffd166; outline-offset: 4px; }
+.kopf-logo:focus-visible { outline: 3px solid var(--farbe-fokus, var(--farbe-akzent)); outline-offset: 4px; }
 .kopf-marke {
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.8rem;
   opacity: 0.9;
@@ -186,6 +196,8 @@ body:is(
 
 .hinweis-box {
   background: var(--farbe-hinweis-flaeche);
+  color: var(--farbe-hinweis-text, var(--farbe-text));
+  border: 1px solid var(--farbe-rahmen);
   border-left: 6px solid var(--farbe-akzent);
   border-radius: 8px;
   padding: 1rem 1.2rem;
@@ -274,6 +286,8 @@ body:is(
 .dialog-hintergrund[hidden] { display: none; }
 .dialog {
   background: var(--farbe-flaeche);
+  color: var(--farbe-text);
+  border: 1px solid var(--farbe-rahmen);
   border-radius: var(--radius);
   max-width: 520px;
   width: 100%;
@@ -434,6 +448,7 @@ body:is(
     border: 1px solid CanvasText;
   }
   a:focus-visible, button:focus-visible { outline: 3px solid Highlight; }
+  .knopf-haupt:focus-visible { outline: 3px solid Highlight; outline-offset: 3px; }
 }
 
 
@@ -458,6 +473,19 @@ html[data-theme="kontrast"] {
   --farbe-aktiv-tekst: #fff;
   --farbe-hinweis-flaeche: #fff; --farbe-hover-flaeche: #e6e6e6; --farbe-erklaerung-flaeche: #fff;
   --farbe-leiste: #ddd; --farbe-rueckzeile: #fff; --farbe-kopf-von: #003a70; --farbe-kopf-bis: #00284d; --farbe-kopf-text: #fff;
+}
+/* Kontrastmodus: klare Schwarz-Weiss-Abgrenzung, kein Akzentbalken.
+   Steht nach dem Tokenblock, damit der erste Selektor die Variablen bleibt. */
+html[data-theme="kontrast"] .kopf,
+:root[data-academy-theme="kontrast"] .kopf {
+  border: 3px solid #000;
+  box-shadow: none;
+}
+html[data-theme="kontrast"] .hinweis-box,
+:root[data-academy-theme="kontrast"] .hinweis-box,
+html[data-theme="kontrast"] .dialog,
+:root[data-academy-theme="kontrast"] .dialog {
+  border: 3px solid #000;
 }
 html.mehr-abstand body { line-height: 1.9; }
 html.mehr-abstand p, html.mehr-abstand li, html.mehr-abstand dd { margin-bottom: 1.15em; }

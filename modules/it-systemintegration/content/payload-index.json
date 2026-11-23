@@ -95,8 +95,8 @@
     },
     {
       "path": "web/css/styles.css",
-      "sha256": "97a47a728bbc8c4d2d1816d8ac8c7dfdcab84c2510515b7a5bbcc2395053d035",
-      "size": 24316
+      "sha256": "8e60c415138937f9c77688cb128dc5052f1aee73d7c747bc8af31f3411f71d5d",
+      "size": 25503
     },
     {
       "path": "web/css/windows-werkzeugkiste.css",
@@ -895,8 +895,8 @@
     },
     {
       "path": "web/module/lf3-client-anbindung.html",
-      "sha256": "8a6570bdb6df488d3bd915a39211437c4293fad74f51abc19240def645ed8906",
-      "size": 7587
+      "sha256": "9635a45ba65bfb8177f52f492920446015d665de141f24b679b7f34fdbdb6018",
+      "size": 13570
     },
     {
       "path": "web/module/lf3-dhcp.html",
