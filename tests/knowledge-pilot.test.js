@@ -180,12 +180,12 @@ test("Labor und Übersicht führen keine System- oder Netzwerkaufrufe aus", () =
   assert.doesNotThrow(() => new Function(fs.readFileSync(path.join(WEB, "js", "navigation.js"), "utf8")));
 });
 
-test("Versionsangaben bleiben unverändert", () => {
+test("Release-Kandidat hebt nur die Modulversion auf 1.0.5", () => {
   const paket = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "package.json"), "utf8"));
   const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "modules", "it-systemintegration", "academy-module.json"), "utf8"));
   const version = fs.readFileSync(path.join(__dirname, "..", "src", "core", "version.js"), "utf8");
   assert.equal(paket.version, "0.3.1");
-  assert.equal(manifest.version, "1.0.4");
+  assert.equal(manifest.version, "1.0.5");
   assert.match(version, /CORE_VERSION = "0\.3\.0"/);
 });
 

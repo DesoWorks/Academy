@@ -167,8 +167,8 @@ test("installiertes Modul ohne Theme-Vertrag: sichtbar, inkompatibel, nicht öff
   modules.close();
 });
 
-test("gebündeltes Quellmodul it-systemintegration deklariert themeContract 1 bei Version 1.0.4", () => {
+test("gebündeltes Quellmodul it-systemintegration deklariert themeContract 1 bei Version 1.0.5", () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "modules", "it-systemintegration", "academy-module.json"), "utf8"));
   assert.equal(manifest.runtime.themeContract, 1);
-  assert.equal(manifest.version, "1.0.4");
+  assert.equal(manifest.version, "1.0.5");
 });
